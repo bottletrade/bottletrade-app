@@ -1,0 +1,8 @@
+<div class="grid-block" ng-if="user">
+	<div class="grid-content" ng-if="user.facebook">
+		<img ng-if="!user.facebook.cachedUserProfile.picture.data.is_silhoutte" 
+			ng-src="{{ user.facebook.cachedUserProfile.picture.data.url }}"></img>
+			
+		{{ user.facebook.cachedUserProfile.link }}
+	</div>
+</div>

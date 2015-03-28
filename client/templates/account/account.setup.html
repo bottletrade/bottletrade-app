@@ -1,0 +1,23 @@
+<div class="grid-block vertical">
+	<div class="grid-content shrink">
+		<h4>Choose a social account to login with...</h4>
+	</div>
+	<div class="grid-block shrink">
+		<div class="grid-content text-center icon-left">
+			<a class="button primary" ng-repeat="provider in providers" ng-click="selectProvider(provider)">
+				<img class="iconic-sm" zf-iconic="" ng-if="provider.name == 'Facebook'" data-icon="social" data-type="facebook"></img>
+				<img class="iconic-sm" zf-iconic="" ng-if="provider.name == 'Twitter'" data-icon="social" data-type="twitter"></img>
+				<img class="iconic-sm" zf-iconic="" ng-if="provider.name == 'Google'" data-icon="plus"></img>
+				<img class="iconic-sm" zf-iconic="" ng-if="provider.name == 'BottleTrade'" data-icon="envelope" data-state="closed"></img>
+				{{ provider.name }}
+			</a>
+		</div>
+	</div>
+	<div class="grid-content" ng-if="provider && provider.name == 'BottleTrade'">
+		<form>
+			<label>Email
+				<input type="text" placeholder="email">
+			</label>
+		</form>
+	</div>
+</div>

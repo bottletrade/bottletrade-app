@@ -1,0 +1,93 @@
+<zf-offcanvas id="menu" position="right" ng-click="$event.stopPropagation()">
+	<ul class="menu-bar vertical primary user-menu-with-badge">
+		<li class="user-menu-title" ng-if="user">
+			<div>
+				<span class="float-left" ng-show="!user.facebook">
+					<img src="/assets/img/profile/siloutte.jpg"/>
+					Nick
+				</span>
+				<span class="float-left" ng-show="user.facebook">
+					<img ng-if="user.facebook.cachedUserProfile.picture.data.is_silhoutte" 
+						 src="/assets/img/profile/siloutte.jpg">
+					</img>
+					<img ng-if="!user.facebook.cachedUserProfile.picture.data.is_silhoutte"
+						 ng-src="{{ user.facebook.cachedUserProfile.picture.data.url }}">
+					</img>
+					{{ user.facebook.displayName }}
+				</span>
+				<span class="float-right">
+					<a><img zf-iconic="" data-src="/assets/img/iconic/cog.svg" class="iconic-sm"/></a>
+				</span>
+			</div>
+		</li>	
+		<li ng-if="!user">
+			<a ui-sref="app.account.login">LOGIN</a>
+		</li>
+		<li>
+			<a>CELLAR</a>
+		</li>
+		<li class="user-menu-title">
+			MESSAGES
+		</li>
+		<li class="user-menu-with-badge">
+			<a><div><span class="float-left">INBOX</span><span class="alert badge float-right">42</span></div></a>
+		</li>
+		<li>
+			<a>COMPOSE</a>
+		</li>
+		<li class="user-menu-title">
+			TRADING
+		</li>
+		<li class="user-menu-with-badge">
+			<a><div><span class="float-left">INCOMING</span><span class="alert badge float-right">99+</span></div></a>
+		</li>
+		<li>
+			<a>FIND A TRADER</a>
+		</li>
+	</ul>
+</zf-offcanvas>
+<div class="grid-frame vertical" ng-click="closeMenu()">
+	<div class="grid-block shrink title-bar-block show-for-small hide-for-medium">
+		<div class="grid-block primary title-bar">
+			<div class="left">
+				<ul class="menu-bar primary condense">
+					<li><a><img class="float-left" src="/assets/img/template/BT-title.png"/></a></li>
+				</ul>
+			</div>
+			<div class="right">
+				<ul class="menu-bar primary condense float-right">
+					<li><a ng-click="toggleMenu(); $event.stopPropagation()"><img zf-iconic="" data-src="/assets/img/iconic/cog.svg" class="iconic-sm"></img></a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="grid-block shrink title-bar-block show-for-medium hide-for-small">
+		<div class="grid-block primary title-bar">
+			<div class="left">
+				<ul class="menu-bar primary condense">
+					<li><a><img class="float-left" src="/assets/img/template/BT-title.png"/></a></li>
+		         	<li><a ui-sref="app.home">HOME</a></li>
+		         	<li><a ui-sref="app.store">STORE</a></li>
+		         	<li><a ui-sref="app.educate.home">EDUCATE</a></li>
+		         	<li><a ui-sref="app.blog">BLOG</a></li>
+				</ul>
+			</div>
+			<div class="right">
+				<ul class="menu-bar primary condense float-right">
+					<li><a ui-sref="app.account.login">LOGIN</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+    <div class="grid-block main-view" ng-class="['ui-animation']" ui-view>
+    </div>
+    <div class="grid-content shrink hide-for-medium" style="padding: 0;">
+ 	<ul id="main-footer-menu-bar" class="menu-bar icon-top primary">
+		<li><a ui-sref="app.home"><img zf-iconic="" data-src="/assets/img/iconic/home.svg" class="iconic-sm">Home</a></li>
+		<li><a ui-sref="app.store"><img zf-iconic="" data-src="/assets/img/iconic/cart.svg" class="iconic-sm">Store</a></li>
+		<li><a ui-sref="app.educate.home"><img zf-iconic="" data-src="/assets/img/iconic/document.svg" class="iconic-sm">Educate</a></li>
+		<li><a ui-sref="app.blog"><img zf-iconic="" data-src="/assets/img/iconic/comment-square.svg" class="iconic-sm">Blog</a></li>
+		<li><a href="#"><img zf-iconic="" data-src="/assets/img/iconic/cog.svg" class="iconic-sm">More</a></li>
+	</ul>
+     </div>
+   </div>
