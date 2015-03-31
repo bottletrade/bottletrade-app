@@ -9,14 +9,7 @@
 var gulp           = require('gulp'),
     rimraf         = require('rimraf'),
     runSequence    = require('run-sequence'),
-    frontMatter    = require('gulp-front-matter'),
-    autoprefixer   = require('gulp-autoprefixer'),
-    sass           = require('gulp-ruby-sass'),
-    uglify         = require('gulp-uglify'),
-    concat         = require('gulp-concat'),
-    connect        = require('gulp-connect'),
-    chmod          = require('gulp-chmod'),
-    jshint         = require('gulp-jshint'),
+    $              = require('gulp-load-plugins')(),
     path           = require('path'),
     modRewrite     = require('connect-modrewrite'),
     dynamicRouting = require('./bower_components/foundation-apps/bin/gulp-dynamic-routing');
@@ -73,27 +66,22 @@ gulp.task('copy', function() {
   gulp.src(dirs, {
     base: './client/'
   })
-    .pipe(chmod(666))
     .pipe(gulp.dest('./build'));
 
   // Iconic SVG icons
   gulp.src('./bower_components/foundation-apps/iconic/**/*')
-    .pipe(chmod(666))
     .pipe(gulp.dest('./build/assets/img/iconic/'));
 });
 
 // Compiles Sass
 gulp.task('sass', function() {
   return gulp.src('client/assets/scss/app.scss')
-    .pipe(sass({
-      loadPath: sassPaths,
-      style: 'nested',
-      bundleExec: true
+    .pipe($.sass({
+      includePaths: sassPaths,
+      outputStyle: 'nested',
+      errLogToConsole: true
     }))
-    .on('error', function(e) {
-      console.log(e);
-    })
-    .pipe(autoprefixer({
+    .pipe($.autoprefixer({
       browsers: ['last 2 versions', 'ie 10']
     }))
     .pipe(gulp.dest('./build/assets/css/'));
@@ -103,33 +91,31 @@ gulp.task('sass', function() {
 gulp.task('uglify', function() {
   // App JavaScript
   return gulp.src(appJS)
-    .pipe(chmod(666))
-    .pipe(uglify({
+    .pipe($.uglify({
       beautify: true,
       mangle: false
     }).on('error', function(e) {
       console.log(e);
     }))
-    .pipe(concat('app.js'))
+    .pipe($.concat('app.js'))
     .pipe(gulp.dest('./build/assets/js/'))
   ;
 });
 
 gulp.task('jshint', function() {
   return gulp.src(appJS)
-    .pipe(jshint({
+    .pipe($.jshint({
       "globalstrict": true,
       "globals": {
         "angular": false
       }
     }))
-    .pipe(jshint.reporter('jshint-stylish'));
+    .pipe($.jshint.reporter('jshint-stylish'));
 });
 
 // Copies your app's page templates and generates URLs for them
 gulp.task('copy-templates', ['copy'], function() {
   return gulp.src('./client/templates/**/*.html')
-    .pipe(chmod(666))
     .pipe(dynamicRouting({
       path: 'build/assets/js/routes.js',
       root: 'client'
@@ -140,7 +126,7 @@ gulp.task('copy-templates', ['copy'], function() {
 
 // Starts a test server, which you can view at http://localhost:8080
 gulp.task('server:start', function() {
-  connect.server({
+  $.connect.server({
     root: './build',
     middleware: function() {
       return [

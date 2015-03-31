@@ -9,7 +9,7 @@
 	svg {
 		margin-bottom: 0.25rem;
 	}
-	
+
 	margin-bottom: 0 !important;
 	width: 100%;
 }
@@ -22,23 +22,24 @@
 	width: 100%;
 	padding: 0;
 }
-@font-face {font-family: title;
-src: url('../fonts/Press Style.ttf')
-	,url('../fonts/Press_Style.eot');}
-
-@font-face {font-family: button_font;
-src: url('../fonts/Gotham-Bold.otf')
-	,url('../fonts/Gotham-Bold.eot')}
-
-@font-face {font-family: main-font;
-src: url('../fonts/Gotham-Book.otf')
-	,url('../fonts/Gotham-Bold.eot');
+@font-face {
+	font-family: title;
+	src: url('../fonts/Press Style.ttf'),url('../fonts/Press_Style.eot');
 }
-	
+
+@font-face {
+	font-family: button_font;
+	src: url('../fonts/Gotham-Bold.otf'),url('../fonts/Gotham-Bold.eot');
+}
+
+@font-face {
+	font-family: main-font;
+	src: url('../fonts/Gotham-Book.otf'),url('../fonts/Gotham-Bold.eot');
+}
+
 @font-face {
 	font-family: login;
-	src: url('../fonts/LeagueGothic-Regular.otf')
-    	,url('../fonts/LeagueGothic-Regular.eot');
+	src: url('../fonts/LeagueGothic-Regular.otf'),url('../fonts/LeagueGothic-Regular.eot');
 }
 
 /* BACKGROUND */
@@ -57,15 +58,15 @@ body {
 	padding: 0;
 	width: 100%;
 	border: none;
-	
+
 	.title-bar {
 		padding: 0;
 		width: 100%;
 		border: none;
-		
+
 		.left, .right {
 			ul.menu-bar li a img {
-				width: auto; 
+				width: auto;
 				margin: auto;
 				padding-left: 0.25rem;
 			}
@@ -74,27 +75,27 @@ body {
 
 	&.show-for-small {
 		max-height: 32px;
-		
+
 		.title-bar {
 			.menu-bar {
 				margin: 0 !important;
 				padding: 0 !important;
-			
+
 				li {
 					a {
 						max-height: 32px;
 						padding: 0.5rem;
-						
+
 						.iconic {
 							margin: 0;
 						}
 					}
 				}
 			}
-			
+
 			.left {
 				height: 32px;
-				
+
 				.menu-bar {
 					li > a {
 						padding: 0;
@@ -105,7 +106,7 @@ body {
 					a > img {
 						height: 25px;
 					}
-					
+
 					height: 32px;
 				}
 			}
@@ -113,7 +114,7 @@ body {
 	}
 	&.hide-for-small {
 		max-height: 48px;
-		
+
 		.title-bar {
 			&.primary {
 				padding: 0;
@@ -121,7 +122,7 @@ body {
 			svg {
 				margin: 0px !important;
 			}
-			
+
 			.left {
 				.menu-bar {
 					li, li > a {
@@ -129,19 +130,19 @@ body {
 					}
 					li:first-child > a {
 						padding: 0;
-						
+
 						>img {
 							height: 38px;
 						}
 					}
-					
+
 					height: 48px;
 				}
 			}
-			
+
 			.left, .right {
 				height: 48px;
-				
+
 				li {
 					a {
 						margin: 0;
@@ -178,10 +179,10 @@ body {
 #menu {
 	background-color: $primary-color;
 	border-left: 4px solid #000;
-	
+
 	.menu-bar li {
 		border-bottom: 1px solid #999;
-		
+
 		img {
 		width: 32px;
 		height: 32px;
@@ -198,7 +199,7 @@ body {
 			}
 		}
 	}
-		
+
 }
 
 .videoWrapper {

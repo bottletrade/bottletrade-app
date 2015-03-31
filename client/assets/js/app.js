@@ -4,7 +4,7 @@
   angular.module('application', [
     'ui.router',
     'ngAnimate',
-    
+
     // firebase
     'firebase',
     'firebase.routeSecurity',
@@ -14,7 +14,7 @@
     'foundation',
     'foundation.dynamicRouting',
     'foundation.dynamicRouting.animations',
-    
+
     // hotfix for svg loading issues
     'ngSVGAttributes'
   ])
@@ -31,7 +31,7 @@
       enabled:true,
       requireBase: false
     });
-    
+
     $stateProvider
     .state("app", {
         controller: "IndexCtrl",
@@ -57,16 +57,28 @@
       authRequired: true
     })
     .state("app.educate", {
-      url: "/account",
+      url: "/educate",
       abstract: true,
-      template: '<div class="grid-block" ng-class="[\'ui-animation\']" ui-view/>',
+      template: '<div class="grid-block" ui-view/>',
+      authRequired: false
+    })
+    .state("app.store", {
+      url: "/store",
+      abstract: false,
+      templateUrl: "/templates/store.html",
+      authRequired: false
+    })
+    .state("app.blog", {
+      url: "/blog",
+      abstract: false,
+      templateUrl: "/templates/blog.html",
       authRequired: false
     })
     .state("app.account", {
       url: "/account",
       abstract: true,
       controller: "AccountCtrl",
-      template: '<div class="grid-block" ng-class="[\'ui-animation\']" ui-view/>',
+      template: '<div class="grid-block" ui-view/>',
       authRequired: false
     })
     .state("app.account.login", {
@@ -78,12 +90,12 @@
       templateUrl: "/templates/account/account.setup.html"
     });
   }
-  
+
   run.$inject = ['$rootScope'];
 
   function run($rootScope, $state) {
     FastClick.attach(document.body);
-    
+
     $rootScope.$on("$stateChangeError", function(event, toState, toParams, fromState, fromParams, error) {
       // We can catch the error thrown when the $requireAuth promise is rejected
       // and redirect the user back to the home page

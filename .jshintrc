@@ -1,0 +1,9 @@
+{
+  "globalstrict": true,
+  "globals": {
+    "angular": false,
+    "moment": false,
+    "$": false
+  },
+  "quotmark" : false
+}
