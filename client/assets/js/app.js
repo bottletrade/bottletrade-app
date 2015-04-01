@@ -4,6 +4,7 @@
   angular.module('application', [
     'ui.router',
     'ngAnimate',
+    'ngResource',
 
     // firebase
     'firebase',
@@ -15,17 +16,15 @@
     'foundation.dynamicRouting',
     'foundation.dynamicRouting.animations',
 
+    // untappd
+    'untappd',
+
     // hotfix for svg loading issues
     'ngSVGAttributes'
-  ])
-    .config(config)
-    .run(run)
-  ;
+  ]);
 
-  config.$inject = ['$urlRouterProvider', '$locationProvider', '$stateProvider'];
-
-  function config($urlProvider, $locationProvider, $stateProvider) {
-    $urlProvider.otherwise('/');
+  angular.module('application').config(function ($urlRouterProvider, $locationProvider, $stateProvider) {
+    $urlRouterProvider.otherwise('/');
 
     $locationProvider.html5Mode({
       enabled:true,
@@ -34,16 +33,16 @@
 
     $stateProvider
     .state("app", {
-        controller: "IndexCtrl",
-        templateUrl: "templates/app.html",
-        authRequired: false,
-        abstract: true,
-        resolve: {
-          "user": ["Auth", function(Auth) {
-            return Auth.$waitForAuth();
-          }]
-        }
-      })
+      controller: "IndexCtrl",
+      templateUrl: "templates/app.html",
+      authRequired: false,
+      abstract: true,
+      resolve: {
+        "user": ["Auth", function(Auth) {
+          return Auth.$waitForAuth();
+        }]
+      }
+    })
     .state("app.home", {
       url: "/",
       controller: "HomeCtrl",
@@ -89,11 +88,9 @@
       url: "/setup",
       templateUrl: "/templates/account/account.setup.html"
     });
-  }
+  });
 
-  run.$inject = ['$rootScope'];
-
-  function run($rootScope, $state) {
+  angular.module('application').run(function($rootScope, $state) {
     FastClick.attach(document.body);
 
     $rootScope.$on("$stateChangeError", function(event, toState, toParams, fromState, fromParams, error) {
@@ -103,6 +100,6 @@
         $state.go("home");
       }
     });
-  }
+  });
 
 })();

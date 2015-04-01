@@ -9,7 +9,7 @@
       { id: 'google', name: 'Google' },
       { id: 'email', name: 'BottleTrade' }
     ];
-    
+
   }]);
-  
+
 })();

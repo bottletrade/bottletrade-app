@@ -42,6 +42,8 @@ var foundationJS = [
 var appJS = [
   'client/assets/js/firebase.routeSecurity.js',
   'client/assets/js/firebase.utils.js',
+  'client/assets/js/untappd.js',
+  'client/assets/js/untappd.config.js',
   'client/assets/js/app.js',
   'client/assets/js/**/*.js'
 ];
@@ -91,12 +93,13 @@ gulp.task('sass', function() {
 gulp.task('uglify', function() {
   // App JavaScript
   return gulp.src(appJS)
-    .pipe($.uglify({
+    .pipe($.ngAnnotate())
+    /*.pipe($.uglify({
       beautify: true,
       mangle: false
     }).on('error', function(e) {
       console.log(e);
-    }))
+    }))*/
     .pipe($.concat('app.js'))
     .pipe(gulp.dest('./build/assets/js/'))
   ;

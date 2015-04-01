@@ -11,5 +11,5 @@
       { id: 'email',    name: 'Email',    icon: 'icon-envelope' }
     ])
   ;
-  
+
 })();

@@ -3,7 +3,7 @@
 
   angular.module('application').controller("AccountCtrl", ["$scope", "$state", "firebaseRef", "user", function($scope, $state, firebaseRef, user) {
     $scope.user = user;
-    
+
     $scope.providers = [
       { id: 'twitter',  name: 'Twitter' },
       { id: 'facebook', name: 'Facebook' },
@@ -12,10 +12,10 @@
     ];
     $scope.email = "";
     $scope.password = "";
-    
+
     $scope.selectProvider = function(provider) {
       $scope.provider = provider;
-      
+
       if (provider.name != "BottleTrade") {
         firebaseRef().authWithOAuthPopup(provider.id, function(error, authData) {
           if (error) {
@@ -27,7 +27,7 @@
         });
       }
     };
-    
+
     $scope.createUser = function() {
       $scope.message = null;
       $scope.error = null;
@@ -42,5 +42,5 @@
       });
     };
   }]);
-  
+
 })();

@@ -7,7 +7,7 @@
 					Nick
 				</span>
 				<span class="float-left" ng-show="user.facebook">
-					<img ng-if="user.facebook.cachedUserProfile.picture.data.is_silhoutte" 
+					<img ng-if="user.facebook.cachedUserProfile.picture.data.is_silhoutte"
 						 src="/assets/img/profile/siloutte.jpg">
 					</img>
 					<img ng-if="!user.facebook.cachedUserProfile.picture.data.is_silhoutte"
@@ -19,7 +19,7 @@
 					<a><img zf-iconic="" data-src="/assets/img/iconic/cog.svg" class="iconic-sm"/></a>
 				</span>
 			</div>
-		</li>	
+		</li>
 		<li ng-if="!user">
 			<a ui-sref="app.account.login">LOGIN</a>
 		</li>
@@ -79,7 +79,7 @@
 			</div>
 		</div>
 	</div>
-    <div class="grid-block main-view" ng-class="['ui-animation']" ui-view>
+    <div class="grid-block main-view" ui-view>
     </div>
     <div class="grid-content shrink hide-for-medium" style="padding: 0;">
  	<ul id="main-footer-menu-bar" class="menu-bar icon-top primary">
