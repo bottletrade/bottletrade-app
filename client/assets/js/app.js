@@ -87,6 +87,11 @@
     .state("app.account.setup", {
       url: "/setup",
       templateUrl: "/templates/account/account.setup.html"
+    })
+    .state("app.account.settings", {
+      url: "/settings",
+      templateUrl: "/templates/account/account.settings.html",
+      authRequired: false
     });
   });
 

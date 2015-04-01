@@ -15,9 +15,6 @@
 					</img>
 					{{ user.facebook.displayName }}
 				</span>
-				<span class="float-right">
-					<a><img zf-iconic="" data-src="/assets/img/iconic/cog.svg" class="iconic-sm"/></a>
-				</span>
 			</div>
 		</li>
 		<li ng-if="!user">
@@ -26,11 +23,14 @@
 		<li>
 			<a>CELLAR</a>
 		</li>
+		<li>
+			<a ui-sref="app.account.settings.resetpassword" ng-click="closeMenu()">ACCOUNT SETTINGS</a>
+		</li>
 		<li class="user-menu-title">
 			MESSAGES
 		</li>
 		<li class="user-menu-with-badge">
-			<a><div><span class="float-left">INBOX</span><span class="alert badge float-right">42</span></div></a>
+			<a><div><span class="float-left">INBOX</span></div><div><span class="alert badge float-right">42</span></div></a>
 		</li>
 		<li>
 			<a>COMPOSE</a>
@@ -39,7 +39,7 @@
 			TRADING
 		</li>
 		<li class="user-menu-with-badge">
-			<a><div><span class="float-left">INCOMING</span><span class="alert badge float-right">99+</span></div></a>
+			<a><div><span class="float-left">INCOMING</span></div><div><span class="alert badge float-right">99+</span></div></a>
 		</li>
 		<li>
 			<a>FIND A TRADER</a>
