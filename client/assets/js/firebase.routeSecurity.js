@@ -65,7 +65,7 @@
     // A function to check whether the current path requires authentication,
     // and if so, whether a redirect to a login page is needed.
     _authRequiredRedirect: function (state, path) {
-      if (state.authRequired && !this._authenticated) {
+      if (state.data && state.data.authRequired && !this._authenticated) {
         if (state.pathTo === undefined) {
           this._redirectTo = this._location.path();
         } else {

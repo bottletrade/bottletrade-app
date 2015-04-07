@@ -1,3 +1,9 @@
+---
+name: app.profile
+url: /profile
+controller: ProfileCtrl
+data: { authRequired: true }
+---
 <div class="grid-block" ng-if="user">
 	<div class="grid-content" ng-if="user.facebook">
 		<img ng-if="!user.facebook.cachedUserProfile.picture.data.is_silhoutte"

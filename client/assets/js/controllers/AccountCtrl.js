@@ -22,7 +22,7 @@
             console.log("Login Failed!", error);
           } else {
             console.log("Authenticated successfully with payload:", authData);
-            $state.go("profile");
+            $state.go("app.profile");
           }
         });
       }

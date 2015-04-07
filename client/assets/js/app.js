@@ -38,60 +38,10 @@
       authRequired: false,
       abstract: true,
       resolve: {
-        "user": ["Auth", function(Auth) {
+        "user": ["Auth", "$state", function(Auth, $state) {
           return Auth.$waitForAuth();
         }]
       }
-    })
-    .state("app.home", {
-      url: "/",
-      controller: "HomeCtrl",
-      templateUrl: "/templates/home.html",
-      authRequired: false
-    })
-    .state("app.profile", {
-      url: "/profile",
-      controller: "ProfileCtrl",
-      templateUrl: "/templates/profile.html",
-      authRequired: true
-    })
-    .state("app.educate", {
-      url: "/educate",
-      abstract: true,
-      template: '<div class="grid-block" ui-view/>',
-      authRequired: false
-    })
-    .state("app.store", {
-      url: "/store",
-      abstract: false,
-      templateUrl: "/templates/store.html",
-      authRequired: false
-    })
-    .state("app.blog", {
-      url: "/blog",
-      abstract: false,
-      templateUrl: "/templates/blog.html",
-      authRequired: false
-    })
-    .state("app.account", {
-      url: "/account",
-      abstract: true,
-      controller: "AccountCtrl",
-      template: '<div class="grid-block" ui-view/>',
-      authRequired: false
-    })
-    .state("app.account.login", {
-      url: "/login",
-      templateUrl: "/templates/account/account.login.html"
-    })
-    .state("app.account.setup", {
-      url: "/setup",
-      templateUrl: "/templates/account/account.setup.html"
-    })
-    .state("app.account.settings", {
-      url: "/settings",
-      templateUrl: "/templates/account/account.settings.html",
-      authRequired: false
     });
   });
 
