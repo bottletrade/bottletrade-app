@@ -51,6 +51,7 @@ data: { authRequired: true }
         -->
         <span>Beer Name: {{ beer.beer.beer_name }}</span>
         <span>Brewery: {{ beer.brewery.brewery_name }}</span>
+        <span>Brewery Url: {{ beer.brewery.contact.url }}</span>
       </div>
     </div>
   </div>
@@ -63,19 +64,6 @@ data: { authRequired: true }
           brewery_label: "https://d1c8v1qci5en44.cloudfront.net/site/brewery_logos/brewery-millerBrewing.jpg"
           brewery_name: "Miller Brewing Company"
           brewery_slug: "miller-brewing-company"
-          contact: {
-            twitter: "MillerCoors",
-            facebook: "http://www.facebook.com/MillerCoors",
-            instagram: "",
-            url: "http://www.millercoors.com"
-          }
-          country_name: "United States"
-          location: {
-            brewery_city: "Milwaukee",
-            brewery_state: "WI",
-            lat: 43.0422,
-            lng: -87.9631
-          }
         -->
         <span>Brewery: {{ brewery.brewery.brewery_name }}</span>
       </div>

@@ -21,7 +21,7 @@
 			<a ui-sref="app.account.login">LOGIN</a>
 		</li>
 		<li>
-			<a>CELLAR</a>
+			<a ui-sref="app.cellar" ng-click="closeMenu()">CELLAR</a>
 		</li>
 		<li>
 			<a ui-sref="app.account.settings.resetpassword" ng-click="closeMenu()">ACCOUNT SETTINGS</a>
@@ -30,7 +30,7 @@
 			MESSAGES
 		</li>
 		<li class="user-menu-with-badge">
-			<a><div><span class="float-left">INBOX</span></div><div><span class="alert badge float-right">42</span></div></a>
+			<a ui-sref="app.messages" ng-click="closeMenu()"><div><span class="float-left">INBOX</span></div><div><span class="alert badge float-right">42</span></div></a>
 		</li>
 		<li>
 			<a>COMPOSE</a>
@@ -44,6 +44,9 @@
 		<li>
 			<a>FIND A TRADER</a>
 		</li>
+		<li>
+			<a ui-sref="app.search" ng-click="closeMenu()">SEARCH</a>
+		</li>
 	</ul>
 </zf-offcanvas>
 <div class="grid-frame vertical" ng-click="closeMenu()">
@@ -51,7 +54,12 @@
 		<div class="grid-block primary title-bar">
 			<div class="left">
 				<ul class="menu-bar primary condense">
-					<li><a><img class="float-left" src="/assets/img/template/BT-title.png"/></a></li>
+					<li><img style="width: 100px; margin-top: 3px;" class="float-left" src="/assets/img/template/BT-title.png"/></li>
+					<li>
+						<div class="shrink grid-content">
+					    <input class="small-input" type="text" ng-model="search" placeholder="Search"></input>
+					  </div>
+					</li>
 				</ul>
 			</div>
 			<div class="right">
@@ -70,6 +78,11 @@
 		         	<li><a ui-sref="app.store">STORE</a></li>
 		         	<li><a ui-sref="app.educate.home">EDUCATE</a></li>
 		         	<li><a ui-sref="app.blog">BLOG</a></li>
+							<li>
+								<div class="shrink grid-content">
+									<input class="medium-up-input" type="text" ng-model="search" placeholder="Search"></input>
+								</div>
+							</li>
 				</ul>
 			</div>
 			<div class="right">

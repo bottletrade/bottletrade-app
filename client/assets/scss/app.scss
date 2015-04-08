@@ -53,6 +53,27 @@ background-color: #e0c0b3;background-image:url('data:image/svg+xml;base64,PHN2Zy
 body {
 	background-color: $primary-color;
 }
+#message-interface {
+	.email-folders {
+		height: 100%;
+		width: 100%;
+		background-color: #FFF;
+		border: 2px solid #C9C9C9;
+	}
+}
+
+input[type="text"] {
+	&.small-input {
+		height: 1.2rem;
+		margin: .4rem 0rem 0rem 0rem;
+		padding: .4rem;
+	}
+	&.medium-up-input {
+		height: 2rem;
+		margin: .5rem 0rem 0rem 0rem;
+		padding: .4rem;
+	}
+}
 
 .title-bar-block {
 	padding: 0;
