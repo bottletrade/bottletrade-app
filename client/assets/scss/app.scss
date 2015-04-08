@@ -53,15 +53,38 @@ background-color: #e0c0b3;background-image:url('data:image/svg+xml;base64,PHN2Zy
 body {
 	background-color: $primary-color;
 }
-#message-interface {
-	.email-folders {
-		height: 100%;
-		width: 100%;
-		background-color: #FFF;
-		border: 2px solid #C9C9C9;
+#folders {
+	.block-list {
+		margin-left: 0rem;
+		margin-right: 0rem;
+	}
+	.close-button {
+		top: .5rem !important;
 	}
 }
+#message-thread {
+	.message-list {
+		border-bottom: 1px solid #C9C9C9;
+		border-top: 1px solid #C9C9C9;
+		padding: .2rem 0rem;
+	}
+}
+#open-folders {
+	&.grid-block {
+		background-color: #FFF;
+		text-align: center;
+		background-color: #FFF;
+		border: 1px solid #C9C9C9;
+		box-shadow: 0px 5px 8px #888888;
+		padding: 2px;
+	}
+}
+#messages {
+	&.grid-block {
+		background-color: #FFF;
 
+	}
+}
 input[type="text"] {
 	&.small-input {
 		height: 1.2rem;
