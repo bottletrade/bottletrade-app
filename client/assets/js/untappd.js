@@ -18,35 +18,21 @@
               id: '@_id'
     });
   })
-  .factory('UntappdBeerSearch',function($resource, UntappdConfig) {
-    var baseUrl = UntappdConfig.ApiBaseUrl + '/search/beer?q=:search&' + 'client_id=:client_id&client_secret=:client_secret';
+  .factory('UntappdSearch',function($resource, UntappdConfig) {
+    var baseUrl = UntappdConfig.ApiBaseUrl + '/search/beer?q=:query&' + 'client_id=:client_id&client_secret=:client_secret';
     return $resource(baseUrl, {
               client_id: UntappdConfig.ClientId,
               client_secret: UntappdConfig.ClientSecret,
-              search: '@_search'
+              query: '@_query'
            }, {
              query: {
                method: 'GET',
-               isArray: true,
                transformResponse: function (data) {
-                 return angular.fromJson(data).response.beers.items;
-               }
-             }
-           }
-    );
-  })
-  .factory('UntappdBrewerySearch',function($resource, UntappdConfig) {
-    var baseUrl = UntappdConfig.ApiBaseUrl + '/search/brewery?q=:search&' + 'client_id=:client_id&client_secret=:client_secret';
-    return $resource(baseUrl, {
-              client_id: UntappdConfig.ClientId,
-              client_secret: UntappdConfig.ClientSecret,
-              search: '@_search'
-           }, {
-             query: {
-               method: 'GET',
-               isArray: true,
-               transformResponse: function (data) {
-                 return angular.fromJson(data).response.brewery.items;
+                 var jsonData = angular.fromJson(data);
+                 return {
+                   beers: jsonData.response.beers.items,
+                   breweries: jsonData.response.breweries.items
+                 };
                }
              }
            }

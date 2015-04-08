@@ -5,6 +5,7 @@
     'ui.router',
     'ngAnimate',
     'ngResource',
+    'ngLodash',
 
     // firebase
     'firebase',
@@ -38,8 +39,12 @@
       authRequired: false,
       abstract: true,
       resolve: {
-        "user": ["Auth", "$state", function(Auth, $state) {
-          return Auth.$waitForAuth();
+        "user": ["Auth", "$rootScope", function(Auth, $rootScope) {
+          var user = Auth.$waitForAuth();
+          user.then(function(user) {
+            $rootScope.user = user;
+          });
+          return user;
         }]
       }
     });

@@ -13,7 +13,7 @@
     this._rootScope = $rootScope;
     this._loginPath = path;
     this._redirectTo = null;
-    this._authenticated = !!($rootScope.auth && $rootScope.auth.user);
+    this._authenticated = false;
     this._init();
   }
 
@@ -65,6 +65,8 @@
     // A function to check whether the current path requires authentication,
     // and if so, whether a redirect to a login page is needed.
     _authRequiredRedirect: function (state, path) {
+      this._authenticated = !!(this._rootScope.user && this._rootScope.user.auth);
+
       if (state.data && state.data.authRequired && !this._authenticated) {
         if (state.pathTo === undefined) {
           this._redirectTo = this._location.path();

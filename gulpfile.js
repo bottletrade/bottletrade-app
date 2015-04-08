@@ -22,21 +22,9 @@ var sassPaths = [
   'client/assets/scss',
   'bower_components/foundation-apps/scss'
 ];
-// These files include Foundation for Apps and its dependencies
-var foundationJS = [
-  'bower_components/fastclick/lib/fastclick.js',
-  'bower_components/viewport-units-buggyfill/viewport-units-buggyfill.js',
-  'bower_components/tether/tether.js',
-  'bower_components/hammerjs/hammer.js',
-  'bower_components/angular/angular.js',
-  'bower_components/angular-animate/angular-animate.js',
-  'bower_components/angular-ui-router/release/angular-ui-router.js',
-  'bower_components/foundation-apps/js/vendor/**/*.js',
-  'bower_components/foundation-apps/js/angular/**/*.js',
-  '!bower_components/foundation-apps/js/angular/app.js',
-  'bower_components/firebase/firebase.js',
-  'bower_components/angularfire/dist/angularfire.js',
-  'vendor/angular-svg-base/src/svgDirs.js'
+var appDepJs = [
+  'vendor/angular-svg-base/src/svgDirs.js',
+  'bower_components/ng-lodash/build/ng-lodash.js'
 ];
 // These files are for your app's JavaScript
 var appJS = [
@@ -92,7 +80,7 @@ gulp.task('sass', function() {
 // Compiles and copies the Foundation for Apps JavaScript, as well as your app's custom JS
 gulp.task('uglify', function() {
   // App JavaScript
-  return gulp.src(appJS)
+  return gulp.src(appDepJs.concat(appJS))
     .pipe($.ngAnnotate())
     /*.pipe($.uglify({
       beautify: true,
