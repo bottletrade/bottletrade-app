@@ -53,6 +53,11 @@ background-color: #e0c0b3;background-image:url('data:image/svg+xml;base64,PHN2Zy
 body {
 	background-color: $primary-color;
 }
+
+input.describe {
+	min-height: 100px;
+}
+
 #folders {
 	.block-list {
 		margin-left: 0rem;
@@ -118,7 +123,7 @@ input[type="text"] {
 	}
 
 	&.show-for-small {
-		max-height: 32px;
+		max-height: 50px;
 
 		.title-bar {
 			.menu-bar {

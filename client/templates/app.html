@@ -50,21 +50,27 @@
 	</ul>
 </zf-offcanvas>
 <div class="grid-frame vertical" ng-click="closeMenu()">
-	<div class="grid-block shrink title-bar-block show-for-small hide-for-medium">
+	<div class="grid-block title-bar-block show-for-small hide-for-medium">
 		<div class="grid-block primary title-bar">
 			<div class="left">
-				<ul class="menu-bar primary condense">
-					<li><img style="width: 100px; margin-top: 3px;" class="float-left" src="/assets/img/template/BT-title.png"/></li>
+				<ul class="menu-bar">
 					<li>
-						<div class="shrink grid-content">
-					    <input class="small-input" type="text" ng-model="search" placeholder="Search"></input>
-					  </div>
+						<img style="width: 100px; margin-top: 3px;" class="float-left" src="/assets/img/template/BT-title.png"/></li>
+					<li>
+						<span class="inline-label">
+							<input type="search" placeholder="Search a thing">
+							<a href="#" class="button">Search</a>
+						</span>
 					</li>
 				</ul>
 			</div>
 			<div class="right">
 				<ul class="menu-bar primary condense float-right">
-					<li><a ng-click="toggleMenu(); $event.stopPropagation()"><img zf-iconic="" data-src="/assets/img/iconic/cog.svg" class="iconic-sm"></img></a></li>
+					<li>
+						<a ng-click="toggleMenu(); $event.stopPropagation()">
+							<img zf-iconic="" data-src="/assets/img/iconic/cog.svg" class="iconic-sm"></img>
+						</a>
+					</li>
 				</ul>
 			</div>
 		</div>
