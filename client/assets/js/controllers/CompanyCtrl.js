@@ -2,7 +2,7 @@
   'use strict';
 
   angular.module('application').controller("CompanyCtrl",
-    function($scope, $state, $stateParams, BTConstants) {
+    function($scope, $state, $stateParams, lodash, BTConstants) {
       if ($state.includes("app.brewery")) {
         $scope.compType = BTConstants.companies.brewery;
       } else if ($state.includes("app.winery")) {
