@@ -33,7 +33,8 @@ var appJS = [
   'client/assets/js/untappd.js',
   'client/assets/js/untappd.config.js',
   'client/assets/js/app.js',
-  'client/assets/js/**/*.js'
+  'client/assets/js/**/*.js',
+  'client/bottletrade/**/*.js'
 ];
 
 // 3. TASKS
@@ -48,6 +49,7 @@ gulp.task('clean', function(cb) {
 gulp.task('copy', function() {
   var dirs = [
     './client/**/*.*',
+    '!./client/bottletrade/**/*.js',
     '!./client/templates/**/*.*',
     '!./client/assets/{scss,fonts,js}/**/*.*'
   ];

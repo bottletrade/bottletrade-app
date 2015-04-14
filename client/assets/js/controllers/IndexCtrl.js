@@ -1,20 +1,19 @@
 (function() {
   'use strict';
 
-  angular.module('application').controller("IndexCtrl", ['$scope', '$timeout', 'FoundationApi', 'user',
-                                                         function($scope, $timeout, foundationApi, user) {
+  angular.module('application').controller("IndexCtrl", function($scope, $rootScope, $timeout, FoundationApi, user) {
 	  $scope.user = user;
+    $scope.search = "";
 
 	  $scope.closeMenu = function() {
 		  $timeout(function() {
-			  foundationApi.publish('menu', 'close');
+			  FoundationApi.publish('menu', 'close');
 		  });
 	  };
 	  $scope.toggleMenu = function() {
 		  $timeout(function() {
-			  foundationApi.publish('menu', 'toggle');
+			  FoundationApi.publish('menu', 'toggle');
 		  });
 	  };
-  }]);
-
+  });
 })();

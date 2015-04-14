@@ -1,0 +1,17 @@
+---
+name: app.beer
+url: /beer/:id
+controller: BeverageCtrl
+---
+<div class="grid-block vertical" ng-init="addingBeverage = false">
+  <div class="grid-content" ng-show="!addingBeverage">
+    <a class="button" ng-click="addingBeverage = true">Add</a>
+  </div>
+  <add-beverage type="bevType" created="createdBeverage(beverage); addingBeverage = false" ng-show="addingBeverage"></add-beverage>
+  <div class="grid-block" ng-if="!beer && !addingBeverage">
+    <div class="grid-content">
+      <span>Beer not found</span>
+    </div>
+  </div>
+  <beer-info beer="beer" ng-if="beer && !addingBeverage"></beer-info>
+</div>

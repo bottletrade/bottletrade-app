@@ -1,6 +1,8 @@
 (function() {
   'use strict';
 
+  angular.module('bottletrade', []);
+
   angular.module('application', [
     'ui.router',
     'ngAnimate',
@@ -17,8 +19,8 @@
     'foundation.dynamicRouting',
     'foundation.dynamicRouting.animations',
 
-    // untappd
-    'untappd',
+    // bottletrade
+    'bottletrade',
 
     // hotfix for svg loading issues
     'ngSVGAttributes'

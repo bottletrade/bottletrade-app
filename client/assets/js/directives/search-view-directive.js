@@ -1,18 +1,27 @@
 (function() {
   'use strict';
 
-  angular.module('application').controller("SearchCtrl", function($scope, lodash, user, UntappdSearch) {
-    $scope.query = "";
-    $scope.results = [];
-    $scope.loading = false;
+  angular.module('application').directive('searchView', function(firebaseRef) {
+    return {
+      replace: true,
+      templateUrl: 'partials/search-view.html',
+      scope: {
+        query: '='
+      },
+      link: function(scope, element) {
+        scope.results = [];
+        scope.loading = false;
+        /*
+        scope.searchLocal = function(val) {
+          firebaseRef().child('user').orderByChild('name').startAt(val).endAt(val + "~").on('child_added',  function(snapshot) {
+            var key = snapshot.key();
+          });
+        };
 
-    $scope.$watch('query', function(newVal, oldVal) {
-      if (newVal) {
-        UntappdSearch.query({query: newVal}).$promise.then(function(results) {
-          var newBeerIds, newBreweryIds, oldBeerIds, oldBreweryIds;
+        scope.searchUntappd = function(val) {
+          UntappdSearch.query({query: val}).$promise.then(function(results) {
+            var newBeerIds, newBreweryIds, oldBeerIds, oldBreweryIds;
 
-          // make sure search results are for the latest query
-          if ($scope.query === newVal) {
             newBeerIds = lodash.map(results.beers, function(result) {
               return result.beer.bid;
             });
@@ -64,10 +73,15 @@
                 });
               }
             });
+          });
+        };
+*/
+        scope.$watch('query', function(newVal, oldVal) {
+          if (newVal) {
+            scope.searchLocal(newVal);
           }
         });
       }
-    });
+    };
   });
-
 })();

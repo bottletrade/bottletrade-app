@@ -92,15 +92,18 @@
 			</div>
 		</div>
 	</div>
-    <div class="grid-block main-view" ui-view>
-    </div>
-    <div class="grid-content shrink hide-for-medium" style="padding: 0;">
- 	<ul id="main-footer-menu-bar" class="menu-bar icon-top primary">
-		<li><a ui-sref="app.home"><img zf-iconic="" data-src="/assets/img/iconic/home.svg" class="iconic-sm">Home</a></li>
-		<li><a ui-sref="app.store"><img zf-iconic="" data-src="/assets/img/iconic/cart.svg" class="iconic-sm">Store</a></li>
-		<li><a ui-sref="app.educate.home"><img zf-iconic="" data-src="/assets/img/iconic/document.svg" class="iconic-sm">Educate</a></li>
-		<li><a ui-sref="app.blog"><img zf-iconic="" data-src="/assets/img/iconic/comment-square.svg" class="iconic-sm">Blog</a></li>
-		<li><a href="#"><img zf-iconic="" data-src="/assets/img/iconic/cog.svg" class="iconic-sm">More</a></li>
-	</ul>
-     </div>
-   </div>
+  <div class="grid-block fadeIn main-view" ng-show="search.length === 0" ui-view>
+  </div>
+	<div class="grid-block fadeIn main-view" ng-if="search.length > 0">
+		<search-view query="search"></search-view>
+	</div>
+  <div class="grid-content shrink collapse hide-for-medium">
+	 	<ul id="main-footer-menu-bar" class="menu-bar icon-top primary">
+			<li><a ui-sref="app.home"><img zf-iconic="" data-src="/assets/img/iconic/home.svg" class="iconic-sm">Home</a></li>
+			<li><a ui-sref="app.store"><img zf-iconic="" data-src="/assets/img/iconic/cart.svg" class="iconic-sm">Store</a></li>
+			<li><a ui-sref="app.educate.home"><img zf-iconic="" data-src="/assets/img/iconic/document.svg" class="iconic-sm">Educate</a></li>
+			<li><a ui-sref="app.blog"><img zf-iconic="" data-src="/assets/img/iconic/comment-square.svg" class="iconic-sm">Blog</a></li>
+			<li><a href="#"><img zf-iconic="" data-src="/assets/img/iconic/cog.svg" class="iconic-sm">More</a></li>
+		</ul>
+  </div>
+</div>
