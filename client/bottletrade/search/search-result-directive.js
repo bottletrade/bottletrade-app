@@ -1,10 +1,10 @@
 (function() {
   'use strict';
 
-  angular.module('application').directive('searchResult', function() {
+  angular.module('bottletrade').directive('searchResult', function() {
     return {
       replace: true,
-      templateUrl: 'partials/search-result.html',
+      templateUrl: '/bottletrade/search/search-result.html',
       scope: {
         result: '=',
         query: '='

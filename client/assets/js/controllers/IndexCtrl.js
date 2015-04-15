@@ -1,9 +1,21 @@
 (function() {
   'use strict';
 
-  angular.module('application').controller("IndexCtrl", function($scope, $rootScope, $timeout, FoundationApi, user) {
+  angular.module('application').controller("IndexCtrl", function($scope, $state, $rootScope, $timeout, FoundationApi, SearchService, user) {
 	  $scope.user = user;
-    $scope.search = "";
+    $scope.searchConfig = SearchService.getConfig();
+
+    $scope.$watch("searchConfig.query", function(query) {
+      if ($state.includes("app.search")) {
+        // already at search page, set url
+        $state.go("app.search", { query: query }, { notify: false });
+      } else {
+        // not at search page, redirect to search page if query is provided
+        if (query) {
+          $state.go("app.search", { query: query });
+        }
+      }
+    });
 
 	  $scope.closeMenu = function() {
 		  $timeout(function() {

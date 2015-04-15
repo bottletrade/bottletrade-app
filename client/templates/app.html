@@ -59,7 +59,7 @@
 					<li>
 						<div class="grid-block">
 							<span class="inline-label">
-							<input type="search" placeholder="Search">
+							<input type="search" placeholder="Search" ng-model="searchConfig.query">
 							<a href="#" class="dark button">SEARCH</a>
 							</span>
 						</div>
@@ -89,7 +89,7 @@
 							<li>
 								<div class="grid-block">
 									<span class="inline-label">
-									<input type="search" placeholder="Search">
+									<input type="search" placeholder="Search" ng-model="searchConfig.query">
 									<a href="#" class="dark button">SEARCH</a>
 									</span>
 								</div>
@@ -103,11 +103,7 @@
 			</div>
 		</div>
 	</div>
-  <div class="grid-block fadeIn main-view" ng-show="search.length === 0" ui-view>
-  </div>
-	<div class="grid-block fadeIn main-view" ng-if="search.length > 0">
-		<search-view query="search"></search-view>
-	</div>
+  <div class="grid-block fadeIn main-view" ui-view></div>
   <div class="grid-content shrink collapse hide-for-medium">
 	 	<ul id="main-footer-menu-bar" class="menu-bar icon-top primary">
 			<li><a ui-sref="app.home"><img zf-iconic="" data-src="/assets/img/iconic/home.svg" class="iconic-sm">Home</a></li>

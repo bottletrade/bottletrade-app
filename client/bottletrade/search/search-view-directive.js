@@ -1,24 +1,48 @@
 (function() {
   'use strict';
 
-  angular.module('application').directive('searchView', function(firebaseRef) {
+  angular.module('bottletrade').directive('searchView', function($state, $timeout, BeerSearch) {
     return {
       replace: true,
-      templateUrl: 'partials/search-view.html',
+      templateUrl: '/bottletrade/search/search-view.html',
       scope: {
         query: '='
       },
       link: function(scope, element) {
+        var lastQueryTime = null, lastQueryVal = "";
+
         scope.results = [];
         scope.loading = false;
-        /*
-        scope.searchLocal = function(val) {
-          firebaseRef().child('user').orderByChild('name').startAt(val).endAt(val + "~").on('child_added',  function(snapshot) {
-            var key = snapshot.key();
-          });
-        };
 
-        scope.searchUntappd = function(val) {
+        scope.performSearch = function(val) {
+          var currentQueryTime;
+
+          // don't run search if same query
+          if (val === lastQueryVal) {
+            return;
+          }
+
+          currentQueryTime = new Date();
+          lastQueryTime = currentQueryTime;
+          lastQueryVal = val;
+          scope.results.splice(0, scope.results.length);
+
+          BeerSearch.searchByName(val, function(id, beer) {
+            // ignore if not for current query
+            if (lastQueryTime !== currentQueryTime) {
+              return;
+            }
+
+            $timeout(function() {
+              scope.results.push({
+                type: 'beer',
+                beer: beer
+              });
+            });
+          });
+          /*
+
+          firebaseRef().
           UntappdSearch.query({query: val}).$promise.then(function(results) {
             var newBeerIds, newBreweryIds, oldBeerIds, oldBreweryIds;
 
@@ -73,12 +97,15 @@
                 });
               }
             });
-          });
+          });*/
         };
-*/
+
         scope.$watch('query', function(newVal, oldVal) {
           if (newVal) {
-            scope.searchLocal(newVal);
+            scope.performSearch(newVal);
+          } else {
+            // clear results
+            scope.results.splice(0, scope.results.length);
           }
         });
       }

@@ -1,0 +1,18 @@
+---
+name: app.distilleries
+url: /distilleries?id
+data: { authRequired: false }
+controller: DistilleriesCtrl
+---
+<div class="grid-block vertical">
+  <div class="grid-content" ng-show="!adding">
+    <a class="button" ng-click="adding = true">Add</a>
+  </div>
+	<add-distillery created="createdDistillery(distillery); adding = false" ng-show="adding"></add-distillery>
+  <div class="grid-block vertical" ng-if="distillery">
+    <distillery-display distillery="distillery"></distillery-display>
+  </div>
+  <div class="grid-block vertical" ng-if="distilleries">
+    <distillery-display ng-repeat="distillery in distilleries" data-distillery="distillery"></distillery-display>
+  </div>
+</div>
