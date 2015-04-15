@@ -5,7 +5,7 @@ controller: BeverageCtrl
 ---
 <div class="grid-block vertical" ng-init="addingBeverage = false">
   <div class="grid-content" ng-show="!addingBeverage">
-    <a class="button" ng-click="addingBeverage = true">Add</a>
+    <br /><a class="button" ng-click="addingBeverage = true">Add</a>
   </div>
   <add-beverage type="bevType" created="createdBeverage(beverage); addingBeverage = false" ng-show="addingBeverage"></add-beverage>
   <div class="grid-block" ng-if="!beer && !addingBeverage">

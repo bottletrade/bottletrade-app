@@ -1,8 +1,48 @@
-<div class="grid-block vertical">
+<div class="vertical grid-block">
   <div class="grid-content">
-    <input ng-model="beverage.name" type="text"></input>
-  </div>
-  <div class="grid-content">
-    <a class="button" ng-click="save()">Save</a>
+    <p class="text-center">ADD A BEER</p>
+    <div class="grid-container small-12 medium-6">
+      <form>
+        <label>
+          Beer Name:
+          <input ng-model="beverage.name" type="text"></input>
+        </label>
+
+        <label>
+          Brewed By:
+          <input ng-model="beverage.brewedBy" type="text"></input>
+        </label>
+
+        <label>
+          Bottle Size:
+          <input ng-model="beverage.volume" type="text"></input>
+        </label>
+
+        <label>
+          Quantity:
+          <input ng-model="beverage.quantity" type="text"></input>
+        </label>
+
+        <label>
+          Bottled On Date:
+          <input ng-model="beverage.bottleDate" type="text"></input>
+        </label>
+
+        <label>
+          Purchase Price:
+          <input ng-model="beverage.purchasePrice" type="text"></input>
+        </label>
+
+        <label>
+          Description:
+          <input ng-model="beverage.description" type="text" class="describe"></input>
+        </label>
+
+        <div class="grid-content">
+          <a class="button" ng-click="save()">Save</a>
+        </div>
+
+      </div>
+    </form>
   </div>
 </div>

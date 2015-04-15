@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  angular.module('bottletrade').directive('addCompany', function(BTService) {
+  angular.module('bottletrade').directive('addCompany', function(BTConstants, BTService) {
     return {
       replace: true,
       templateUrl: '/bottletrade/companies/add-company-directive/add-company.html',
