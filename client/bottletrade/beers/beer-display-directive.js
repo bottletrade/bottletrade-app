@@ -1,10 +1,10 @@
 (function() {
   'use strict';
 
-  angular.module('bottletrade').directive('beerInfo', function(BTService) {
+  angular.module('bottletrade').directive('beerDisplay', function() {
     return {
       replace: true,
-      templateUrl: '/bottletrade/beverages/beer-info-directive/beer-info.html',
+      templateUrl: '/bottletrade/beers/beer-display.html',
       scope: {
         beer: '='
       },

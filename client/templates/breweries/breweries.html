@@ -1,0 +1,18 @@
+---
+name: app.breweries
+url: /breweries?id
+data: { authRequired: false }
+controller: BreweriesCtrl
+---
+<div class="grid-block vertical">
+  <div class="grid-content" ng-show="!addingBrewery">
+    <a class="button" ng-click="addingBrewery = true">Add</a>
+  </div>
+	<add-brewery type="brewery" created="createdBrewery(brewery); addingBrewery = false" ng-show="addingBrewery"></add-brewery>
+  <div class="grid-block vertical" ng-if="brewery">
+    <brewery-display brewery="brewery"></brewery-display>
+  </div>
+  <div class="grid-block vertical" ng-if="breweries">
+    <brewery-display ng-repeat="brewery in breweries" data-brewery="brewery"></brewery-display>
+  </div>
+</div>

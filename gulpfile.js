@@ -34,6 +34,7 @@ var appJS = [
   'client/assets/js/untappd.config.js',
   'client/assets/js/app.js',
   'client/assets/js/**/*.js',
+  'client/templates/**/*.js',
   'client/bottletrade/**/*.js'
 ];
 
