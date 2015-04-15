@@ -57,8 +57,12 @@
 					<li>
 						<img style="width: 100px; margin-top: 3px;" class="float-left" src="/assets/img/template/BT-title.png"/></li>
 					<li>
-							<input class="small-input" placeholder="Search">
-						</span>
+						<div class="grid-block">
+							<span class="inline-label">
+							<input type="search" placeholder="Search">
+							<a href="#" class="dark button">SEARCH</a>
+							</span>
+						</div>
 					</li>
 				</ul>
 			</div>
@@ -73,18 +77,21 @@
 			</div>
 		</div>
 	</div>
-	<div class="grid-block shrink title-bar-block show-for-medium hide-for-small">
+	<div class="grid-block title-bar-block show-for-medium hide-for-small">
 		<div class="grid-block primary title-bar">
 			<div class="left">
-				<ul class="menu-bar primary condense">
-					<li><a><img class="float-left" src="/assets/img/template/BT-title.png"/></a></li>
+				<ul class="menu-bar primary">
+					<li><img class="float-left" src="/assets/img/template/BT-title.png"/></li>
 		         	<li><a ui-sref="app.home">HOME</a></li>
 		         	<li><a ui-sref="app.store">STORE</a></li>
 		         	<li><a ui-sref="app.educate.home">EDUCATE</a></li>
 		         	<li><a ui-sref="app.blog">BLOG</a></li>
 							<li>
-								<div class="shrink grid-content">
-									<input class="medium-up-input" type="text" ng-model="search" placeholder="Search"></input>
+								<div class="grid-block">
+									<span class="inline-label">
+									<input type="search" placeholder="Search">
+									<a href="#" class="dark button">SEARCH</a>
+									</span>
 								</div>
 							</li>
 				</ul>

@@ -4,15 +4,15 @@ url: /beers?id
 data: { authRequired: false }
 controller: BeersCtrl
 ---
-<div class="grid-block vertical">
-  <div class="grid-content" ng-show="!addingBeer">
-    <a class="button" ng-click="addingBeer = true">Add</a>
+<div class="grid-block wrap">
+  <div class="grid-container" ng-show="!addingBeer">
+    <br /><a class="button" ng-click="addingBeer = true">Add A Beer</a>
   </div>
 	<add-beer type="brewery" created="createdBeer(beer); addingBeer = false" ng-show="addingBeer"></add-beer>
-  <div class="grid-block vertical" ng-if="beer">
+  <div class="grid-block" ng-if="beer">
     <beer-display beer="beer"></beer-display>
   </div>
-  <div class="grid-block vertical" ng-if="beers">
+  <div class="grid-block wrap" ng-if="beers">
     <beer-display ng-repeat="beer in beers" data-beer="beer"></beer-display>
   </div>
 </div>

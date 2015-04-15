@@ -96,12 +96,15 @@ input[type="text"] {
 		margin: .6rem 0rem 0rem 0rem;
 		padding: .2rem;
 	}
-	&.medium-up-input {
-		height: 2rem;
-		margin: .5rem 0rem 0rem 0rem;
-		padding: .4rem;
-	}
 }
+
+.input-bg {
+	background-color: #FFF;
+	border: .2rem solid #C9C9C9;
+	border-radius: .4rem;
+	margin: 1rem;
+}
+
 
 .title-bar-block {
 	padding: 0;
@@ -112,14 +115,6 @@ input[type="text"] {
 		padding: 0;
 		width: 100%;
 		border: none;
-
-		.left, .right {
-			ul.menu-bar li a img {
-				width: auto;
-				margin: auto;
-				padding-left: 0.25rem;
-			}
-		}
 	}
 
 	&.show-for-small {
@@ -131,8 +126,19 @@ input[type="text"] {
 				padding: 0 !important;
 
 				li {
+					span.inline-label {
+						height: 20px;
+						margin: 3px 0px 0px 5px;
+						padding: 0px;
+						input {
+							height: 20px;
+						}
+						a.button {
+							height: 20px;
+						}
+					}
 					a {
-						max-height: 32px;
+						max-height: 48px;
 						padding: 0.5rem;
 
 						.iconic {
@@ -140,26 +146,46 @@ input[type="text"] {
 						}
 					}
 				}
+				img {
+					padding: 0 .1rem;
+				}
 			}
 		}
 	}
 	&.hide-for-small {
-		max-height: 48px;
+		max-height: 55px;
 
 		.title-bar {
-			&.primary {
-				padding: 0;
-			}
+			.menu-bar {
+				margin: 0 !important;
+				padding: 0 !important;
+				max-height: 55px;
+						li {
+							span.inline-label {
+								height: 24px;
+								margin-top: 8px 0px 0px 10px;
+								a.button {
+									height: 40px;
+								}
+							}
+							a {
+							}
+						}
+					img {
+						padding: 10px 0px 0px 8px;
+						height: 40px;
+						width: 120px;
+					}
 			svg {
 				margin: 0px !important;
 			}
 
-			.left, .right {
-				height: 48px;
-			}
+
 		}
 	}
 }
+}
+
 
 .educate {
 	padding-top: 1rem;

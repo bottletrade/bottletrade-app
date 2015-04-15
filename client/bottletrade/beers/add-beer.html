@@ -1,4 +1,4 @@
-<div class="vertical grid-block">
+<div class="vertical grid-block input-bg">
   <div class="grid-content">
     <p class="text-center">ADD A BEER</p>
     <div class="grid-container small-12 medium-6">
@@ -15,7 +15,7 @@
 
         <label>
           Bottle Size:
-          <input ng-model="beer.volume" type="text"></input>
+          <input ng-model="beer.volume" type="text" placeholder="oz. liter ml etc"></input>
         </label>
 
         <label>
@@ -25,12 +25,12 @@
 
         <label>
           Bottled On Date:
-          <input ng-model="beer.bottleDate" type="text"></input>
+          <input ng-model="beer.bottleDate" type="date"></input>
         </label>
 
         <label>
           Purchase Price:
-          <input ng-model="beer.purchasePrice" type="text"></input>
+          <input ng-model="beer.purchasePrice" type="text" maxlength="250"></input>
         </label>
 
         <label>
