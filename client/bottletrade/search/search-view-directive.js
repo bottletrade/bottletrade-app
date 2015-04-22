@@ -1,7 +1,15 @@
 (function() {
   'use strict';
 
-  angular.module('bottletrade').directive('searchView', function($state, $timeout, BeerSearch) {
+  angular.module('bottletrade').directive('searchView', function(
+    $state,
+    $timeout,
+    BeerSearch,
+    BrewerySearch,
+    SpiritSearch,
+    DistillerySearch,
+    WineSearch,
+    WinerySearch) {
     return {
       replace: true,
       templateUrl: '/bottletrade/search/search-view.html',
@@ -37,6 +45,76 @@
               scope.results.push({
                 type: 'beer',
                 beer: beer
+              });
+            });
+          });
+
+          BrewerySearch.searchByName(val, function(id, brewery) {
+            // ignore if not for current query
+            if (lastQueryTime !== currentQueryTime) {
+              return;
+            }
+
+            $timeout(function() {
+              scope.results.push({
+                type: 'brewery',
+                brewery: brewery
+              });
+            });
+          });
+
+          SpiritSearch.searchByName(val, function(id, spirit) {
+            // ignore if not for current query
+            if (lastQueryTime !== currentQueryTime) {
+              return;
+            }
+
+            $timeout(function() {
+              scope.results.push({
+                type: 'spirit',
+                spirit: spirit
+              });
+            });
+          });
+
+          DistillerySearch.searchByName(val, function(id, distillery) {
+            // ignore if not for current query
+            if (lastQueryTime !== currentQueryTime) {
+              return;
+            }
+
+            $timeout(function() {
+              scope.results.push({
+                type: 'distillery',
+                distillery: distillery
+              });
+            });
+          });
+
+          WineSearch.searchByName(val, function(id, wine) {
+            // ignore if not for current query
+            if (lastQueryTime !== currentQueryTime) {
+              return;
+            }
+
+            $timeout(function() {
+              scope.results.push({
+                type: 'wine',
+                wine: wine
+              });
+            });
+          });
+
+          WinerySearch.searchByName(val, function(id, winery) {
+            // ignore if not for current query
+            if (lastQueryTime !== currentQueryTime) {
+              return;
+            }
+
+            $timeout(function() {
+              scope.results.push({
+                type: 'winery',
+                winery: winery
               });
             });
           });

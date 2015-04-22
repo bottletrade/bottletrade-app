@@ -9,7 +9,7 @@
         $scope.spirits = SpiritList;
       }
 
-      $scope.createdSpirit = function(spirit) {
+      $scope.created = function(spirit) {
         $state.go('app.spirits', { id: spirit.key() });
       };
   });

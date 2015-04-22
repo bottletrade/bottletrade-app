@@ -5,7 +5,7 @@
   <div class="grid-block fadeIn" ng-show="query.length > 0 && results.length == 0">
     <span>No results found</span>
   </div>
-  <div class="grid-block vertical">
+  <div class="grid-block wrap">
     <search-result class="fadeIn" ng-repeat="result in results" result="result"></search-result>
   </div>
 </div>

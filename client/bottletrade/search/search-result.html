@@ -1,5 +1,20 @@
-<div class="grid-block vertical shrink search-result">
-  <div class="grid-block shrink search-result-beer" ng-if="result.type == 'beer'">
+<div class="grid-block shrink search-result">
+  <div class="grid-block search-result-beer" ng-if="result.type == 'beer'">
     <beer-display beer="result.beer"></beer-display>
+  </div>
+  <div class="grid-block search-result-brewery" ng-if="result.type == 'brewery'">
+    <brewery-display beer="result.brewery"></brewery-display>
+  </div>
+  <div class="grid-block search-result-spirit" ng-if="result.type == 'spirit'">
+    <spirit-display spirit="result.spirit"></spirit-display>
+  </div>
+  <div class="grid-block search-result-distillery" ng-if="result.type == 'distillery'">
+    <distillery-display distillery="result.distillery"></distillery-display>
+  </div>
+  <div class="grid-block search-result-wine" ng-if="result.type == 'wine'">
+    <wine-display wine="result.wine"></wine-display>
+  </div>
+  <div class="grid-block search-result-winery" ng-if="result.type == 'winery'">
+    <winery-display winery="result.winery"></winery-display>
   </div>
 </div>

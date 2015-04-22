@@ -1,0 +1,48 @@
+<div class="vertical grid-block input-bg">
+  <div class="grid-content">
+    <p class="text-center">ADD A BEER</p>
+    <div class="grid-container small-12 medium-6">
+      <form>
+        <label>
+          Beer Name:
+          <input ng-model="wine.name" type="text"></input>
+        </label>
+
+        <label>
+          Brewed By:
+          <input ng-model="wine.brewedBy" type="text"></input>
+        </label>
+
+        <label>
+          Bottle Size:
+          <input ng-model="wine.volume" type="text" placeholder="oz. liter ml etc"></input>
+        </label>
+
+        <label>
+          Quantity:
+          <input ng-model="wine.quantity" type="text"></input>
+        </label>
+
+        <label>
+          Bottled On Date:
+          <input ng-model="wine.bottleDate" type="date"></input>
+        </label>
+
+        <label>
+          Purchase Price:
+          <input ng-model="wine.purchasePrice" type="text" maxlength="250"></input>
+        </label>
+
+        <label>
+          Description:
+          <input ng-model="wine.description" type="text" class="describe"></input>
+        </label>
+
+        <div class="grid-content">
+          <a class="button" ng-click="save()">Save</a>
+        </div>
+
+      </div>
+    </form>
+  </div>
+</div>

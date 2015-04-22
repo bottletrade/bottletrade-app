@@ -1,0 +1,61 @@
+<div class="vertical grid-block">
+  <div class="grid-content">
+    <p class="text-center">ADD A BREWERY</p>
+    <div class="grid-container small-12 medium-6">
+      <form>
+        <label>
+          Brewery Name:
+          <input ng-model="winery.name" type="text"></input>
+        </label>
+
+        <label>
+          Address:
+          <input ng-model="winery.address" type="text"></input>
+        </label>
+
+        <label>
+          Extended Address:
+          <input ng-model="winery.extaddress" type="text"></input>
+        </label>
+
+        <label>
+          City:
+          <input ng-model="winery.city" type="text"></input>
+        </label>
+        <label>
+          Postal Code:
+          <input ng-model="winery.postalcode" type="text"></input>
+        </label>
+
+        <label>
+          Country:
+          <input ng-model="winery.country" type="text"></input>
+        </label>
+
+        <label>
+          Phone:
+          <input ng-model="winery.phone" type="text"></input>
+        </label>
+
+        <label>
+          eMail Address:
+          <span class="inline-label">
+          <span class="form-label">www.</span>
+          <input ng-model="winery.email" type="text"></input>
+          <span class="form-label">.com</span>
+          </span>
+        </label>
+
+        <label>
+          Description:
+          <input ng-model="winery.description" type="text" class="describe"></input>
+        </label>
+
+        <div class="grid-content">
+          <a class="button" ng-click="save()">Save</a>
+        </div>
+
+      </div>
+    </form>
+  </div>
+</div>

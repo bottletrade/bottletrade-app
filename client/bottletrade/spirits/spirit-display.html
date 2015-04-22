@@ -1,0 +1,20 @@
+<div class="grid-block small-6 medium-3">
+  <div class="grid-content">
+    <div class="dark card">
+      <img src="http://placekitten.com/g/400/200">
+      <div class="card-divider">
+        <h4>Name: {{ spirit.name }}</h4>
+      </div>
+      <div class="card-section">
+        <p>Brewery: {{ spirit.distilledBy }}</p>
+        <p>Bottle Size: {{ spirit.volume }}</p>
+        <p>Quantity: {{ spirit.quantity }}</p>
+        <p>Bottled On: {{ spirit.bottleDate }}</p>
+        <p>Purchase Price: {{ spirit.purchasePrice }}</p>
+        <p>Description: {{ spirit.description }}</p>
+        <a class="button secondary" ui-sref="app.spirits({id: spirit.$id})">Go to Spirit</a>
+        <a class="button secondary" ui-sref="app.spirits({id: spirit.$id})">Add to Cellar</a>
+      </div>
+    </div>
+  </div>
+</div>

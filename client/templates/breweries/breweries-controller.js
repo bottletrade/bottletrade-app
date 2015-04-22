@@ -9,7 +9,7 @@
         $scope.breweries = BreweryList;
       }
 
-      $scope.createdBrewery = function(brewery) {
+      $scope.created = function(brewery) {
         $state.go('app.breweries', { id: brewery.key() });
       };
   });

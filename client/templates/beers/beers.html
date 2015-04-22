@@ -5,12 +5,12 @@ data: { authRequired: false }
 controller: BeersCtrl
 ---
 <div class="grid-block wrap">
-  <div class="grid-container" ng-show="!addingBeer">
-    <br /><a class="button" ng-click="addingBeer = true">Add A Beer</a>
+  <div class="grid-container" ng-show="!adding">
+    <br /><a class="button" ng-click="adding = true">Add A Beer</a>
   </div>
-	<add-beer type="brewery" created="createdBeer(beer); addingBeer = false" ng-show="addingBeer"></add-beer>
+	<add-beer created="created(beer); adding = false" ng-show="adding"></add-beer>
   <div class="grid-block" ng-if="beer">
-    <beer-display beer="beer"></beer-display>
+    <beer-display data-beer="beer"></beer-display>
   </div>
   <div class="grid-block wrap" ng-if="beers">
     <beer-display ng-repeat="beer in beers" data-beer="beer"></beer-display>

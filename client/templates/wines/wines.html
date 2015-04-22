@@ -8,9 +8,9 @@ controller: WinesCtrl
   <div class="grid-content" ng-show="!adding">
     <a class="button" ng-click="adding = true">Add</a>
   </div>
-	<add-wine created="createdBeer(beer); adding = false" ng-show="adding"></add-wine>
+	<add-wine created="created(wine); adding = false" ng-show="adding"></add-wine>
   <div class="grid-block vertical" ng-if="wine">
-    <wine-display wine="wine"></wine-display>
+    <wine-display data-wine="wine"></wine-display>
   </div>
   <div class="grid-block vertical" ng-if="wines">
     <wine-display ng-repeat="wine in wines" data-wine="wine"></wine-display>
