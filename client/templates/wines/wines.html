@@ -4,15 +4,15 @@ url: /wines?id
 data: { authRequired: false }
 controller: WinesCtrl
 ---
-<div class="grid-block vertical">
-  <div class="grid-content" ng-show="!adding">
-    <a class="button" ng-click="adding = true">Add</a>
+<div class="grid-block wrap">
+  <div class="small-12 grid-container text-center" ng-show="!adding">
+    <br /><a class="button" ng-click="adding = true">Add A Wine</a>
   </div>
 	<add-wine created="created(wine); adding = false" ng-show="adding"></add-wine>
-  <div class="grid-block vertical" ng-if="wine">
+  <div class="grid-block" ng-if="wine">
     <wine-display data-wine="wine"></wine-display>
   </div>
-  <div class="grid-block vertical" ng-if="wines">
+  <div class="grid-block wrap" ng-if="wines">
     <wine-display ng-repeat="wine in wines" data-wine="wine"></wine-display>
   </div>
 </div>

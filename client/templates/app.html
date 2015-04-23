@@ -44,13 +44,31 @@
 		<li>
 			<a>FIND A TRADER</a>
 		</li>
+		<li class="user-menu-title">
+			FIND
+		</li>
 		<li>
-			<a ui-sref="app.search" ng-click="closeMenu()">SEARCH</a>
+			<a ui-sref="app.beers" ng-click="closeMenu()">BEER</a>
+		</li>
+		<li>
+			<a ui-sref="app.breweries" ng-click="closeMenu()">BREWERIES</a>
+		</li>
+		<li>
+			<a ui-sref="app.wines" ng-click="closeMenu()">WINE</a>
+		</li>
+		<li>
+			<a ui-sref="app.wineries" ng-click="closeMenu()">WINERIES</a>
+		</li>
+		<li>
+			<a ui-sref="app.spirits" ng-click="closeMenu()">SPIRITS</a>
+		</li>
+		<li>
+			<a ui-sref="app.distilleries" ng-click="closeMenu()">DISTILLERIES</a>
 		</li>
 	</ul>
 </zf-offcanvas>
 <div class="grid-frame vertical" ng-click="closeMenu()">
-	<div class="grid-block title-bar-block show-for-small hide-for-medium">
+	<div class="grid-block title-bar-block shrink show-for-small hide-for-medium">
 		<div class="grid-block primary title-bar">
 			<div class="left">
 				<ul class="menu-bar primary">
@@ -77,7 +95,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="grid-block title-bar-block show-for-medium hide-for-small">
+	<div class="grid-block title-bar-block shrink show-for-medium hide-for-small">
 		<div class="grid-block primary title-bar">
 			<div class="left">
 				<ul class="menu-bar primary">

@@ -1,0 +1,24 @@
+
+  <div class="grid-content">
+    <div class="dark card">
+      <img src="http://placekitten.com/g/400/200">
+      <div class="card-divider">
+        <h3 class="text-center">{{ beer.name }}<br /><small>Beer Summary</small></h3>
+      </div>
+      <div class="card-section card-text">
+        <p>Brewery: {{ beer.brewedBy }}</p>
+        <p>Style: {{ beer.style }}</p>
+        <p>ABV: {{ beer.abv }}</p>
+        <p>IBU: {{ beer.ibu }}</p>
+        <p>SRM: {{ beer.srm }}</p>
+        <p>UPC: {{ beer.upc }}</p>
+        <p>Bottle Size: {{ beer.volume }}</p>
+        <p>Quantity: {{ beer.quantity }}</p>
+        <p>Bottled On: {{ beer.bottleDate }}</p>
+        <p>Purchase Price: {{ beer.purchasePrice }}</p>
+        <p>Description: {{ beer.description }}</p>
+        <a class="button secondary" ui-sref="app.beers({id: beer.$id})">Go to Beer</a>
+        <a class="button secondary" ui-sref="app.beers({id: beer.$id})">Add to Cellar</a>
+      </div>
+    </div>
+  </div>

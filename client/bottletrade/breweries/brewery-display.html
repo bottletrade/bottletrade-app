@@ -1,7 +1,18 @@
-<div class="grid-block">
-  <div class="grid-block">
-    <div class="grid-content">
-      <p>{{ brewery.name }}</p>
+<div class="grid-block small-6 medium-3">
+  <div class="grid-content">
+    <div class="dark card">
+      <img src="http://placekitten.com/g/400/200">
+      <div class="card-divider">
+        <h3 class="text-center">{{ brewery.name }}<br /><small>Brewery</small></h3>
+      </div>
+      <div class="card-section card-text">
+        <p>{{ brewery.address }}<br />{{ brewery.extaddress }}<br />{{ brewery.city }}, {{ brewery.state }} {{ brewery.postalcode }}<br />{{ brewery.country }}</p>
+        <p>Phone: {{ brewery.phone }}</p>
+        <p>Etablished: {{ brewery.established }}</p>
+        <p>eMail: {{ brewery.email }}</p>
+        <p>Description: {{ brewery.description }}</p>
+        <a class="button secondary" ui-sref="app.breweries({id: breweries.$id})">Go to Brewery</a>
+      </div>
     </div>
   </div>
 </div>

@@ -1,4 +1,4 @@
-<div class="vertical grid-block input-bg">
+<div class="small-12 vertical grid-block input-bg">
   <div class="grid-content">
     <p class="text-center">ADD A BEER</p>
     <div class="grid-container small-12 medium-6">
@@ -11,6 +11,31 @@
         <label>
           Brewed By:
           <input ng-model="beer.brewedBy" type="text"></input>
+        </label>
+
+        <label>
+          Bottle Style:
+          <input ng-model="beer.style" type="text"></input>
+        </label>
+
+        <label>
+          ABV:
+          <input ng-model="beer.abv" type="text"></input>
+        </label>
+
+        <label>
+          IBU:
+          <input ng-model="beer.ibu" type="text"></input>
+        </label>
+
+        <label>
+          SRM:
+          <input ng-model="beer.srm" type="text"></input>
+        </label>
+
+        <label>
+          UPC:
+          <input ng-model="beer.upc" type="text"></input>
         </label>
 
         <label>
@@ -35,7 +60,7 @@
 
         <label>
           Description:
-          <input ng-model="beer.description" type="text" class="describe"></input>
+          <textarea ng-model="beer.description"></textarea>
         </label>
 
         <div class="grid-content">

@@ -4,15 +4,15 @@ url: /distilleries?id
 data: { authRequired: false }
 controller: DistilleriesCtrl
 ---
-<div class="grid-block vertical">
-  <div class="grid-content" ng-show="!adding">
-    <a class="button" ng-click="adding = true">Add</a>
+<div class="grid-block wrap">
+  <div class="small-12 grid-container text-center" ng-show="!adding">
+    <br /><a class="button" ng-click="adding = true">Add A Distillery</a>
   </div>
 	<add-distillery created="created(distillery); adding = false" ng-show="adding"></add-distillery>
-  <div class="grid-block vertical" ng-if="distillery">
+  <div class="grid-block" ng-if="distillery">
     <distillery-display data-distillery="distillery"></distillery-display>
   </div>
-  <div class="grid-block vertical" ng-if="distilleries">
+  <div class="grid-block wrap" ng-if="distilleries">
     <distillery-display ng-repeat="distillery in distilleries" data-distillery="distillery"></distillery-display>
   </div>
 </div>

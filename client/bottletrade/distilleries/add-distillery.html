@@ -1,10 +1,10 @@
-<div class="vertical grid-block">
+<div class="small-12 vertical grid-block input-bg">
   <div class="grid-content">
     <p class="text-center">ADD A DISTILLERY</p>
     <div class="grid-container small-12 medium-6">
       <form>
         <label>
-          Distillery Name:
+          Brewery Name:
           <input ng-model="distillery.name" type="text"></input>
         </label>
 
@@ -22,6 +22,12 @@
           City:
           <input ng-model="distillery.city" type="text"></input>
         </label>
+
+        <label>
+          State:
+          <input ng-model="distillery.state" type="text"></input>
+        </label>
+
         <label>
           Postal Code:
           <input ng-model="distillery.postalcode" type="text"></input>
@@ -38,17 +44,18 @@
         </label>
 
         <label>
+          Established:
+          <input ng-model="distillery.established" type="text"></input>
+        </label>
+
+        <label>
           eMail Address:
-          <span class="inline-label">
-          <span class="form-label">www.</span>
           <input ng-model="distillery.email" type="text"></input>
-          <span class="form-label">.com</span>
-          </span>
         </label>
 
         <label>
           Description:
-          <input ng-model="distillery.description" type="text" class="describe"></input>
+          <textarea ng-model="distillery.description" class="describe"></textarea>
         </label>
 
         <div class="grid-content">

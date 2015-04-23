@@ -4,15 +4,15 @@ url: /spirits?id
 data: { authRequired: false }
 controller: SpiritsCtrl
 ---
-<div class="grid-block vertical">
-  <div class="grid-content" ng-show="!adding">
-    <a class="button" ng-click="adding = true">Add</a>
+<div class="grid-block wrap">
+  <div class="small-12 grid-container text-center" ng-show="!adding">
+    <br /><a class="button" ng-click="adding = true">Add A Spirit</a>
   </div>
 	<add-spirit created="created(spirit); adding = false" ng-show="adding"></add-spirit>
-  <div class="grid-block vertical" ng-if="spirit">
+  <div class="grid-block" ng-if="spirit">
     <spirit-display data-spirit="spirit"></spirit-display>
   </div>
-  <div class="grid-block vertical" ng-if="spirits">
+  <div class="grid-block wrap" ng-if="spirits">
     <spirit-display ng-repeat="spirit in spirits" data-spirit="spirit"></spirit-display>
   </div>
 </div>

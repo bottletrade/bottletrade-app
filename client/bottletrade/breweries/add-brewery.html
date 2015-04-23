@@ -1,4 +1,4 @@
-<div class="vertical grid-block">
+<div class="small-12 vertical grid-block input-bg">
   <div class="grid-content">
     <p class="text-center">ADD A BREWERY</p>
     <div class="grid-container small-12 medium-6">
@@ -22,6 +22,12 @@
           City:
           <input ng-model="brewery.city" type="text"></input>
         </label>
+
+        <label>
+          State:
+          <input ng-model="brewery.state" type="text"></input>
+        </label>
+
         <label>
           Postal Code:
           <input ng-model="brewery.postalcode" type="text"></input>
@@ -38,17 +44,18 @@
         </label>
 
         <label>
+          Established:
+          <input ng-model="brewery.established" type="text"></input>
+        </label>
+
+        <label>
           eMail Address:
-          <span class="inline-label">
-          <span class="form-label">www.</span>
           <input ng-model="brewery.email" type="text"></input>
-          <span class="form-label">.com</span>
-          </span>
         </label>
 
         <label>
           Description:
-          <input ng-model="brewery.description" type="text" class="describe"></input>
+          <textarea ng-model="brewery.description" class="describe"></textarea>
         </label>
 
         <div class="grid-content">

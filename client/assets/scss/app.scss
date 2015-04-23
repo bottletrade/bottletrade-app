@@ -54,8 +54,12 @@ body {
 	background-color: $primary-color;
 }
 
-input.describe {
-	min-height: 100px;
+.card-text p {
+		line-height: 1;
+		margin-bottom: .45rem;
+}
+.card-divider {
+	
 }
 
 #folders {
