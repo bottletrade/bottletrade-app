@@ -10,9 +10,9 @@ controller: WineriesCtrl
   </div>
 	<add-winery created="created(winery); adding = false" ng-show="adding"></add-winery>
   <div class="grid-block" ng-if="winery">
-    <winery-display data-winery="winery"></winery-display>
+    <winery-display class="small-12" data-winery="winery"></winery-display>
   </div>
   <div class="grid-block wrap" ng-if="wineries">
-    <winery-display ng-repeat="winery in wineries" data-winery="winery"></winery-display>
+    <winery-summary class="small-12 medium-4 large-2" ng-repeat="winery in wineries" data-winery="winery"></winery-summary>
   </div>
 </div>

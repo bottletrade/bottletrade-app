@@ -11,6 +11,7 @@
       <p>Bottled On: {{ spirit.bottleDate }}</p>
       <p>Purchase Price: {{ spirit.purchasePrice }}</p>
       <p>Description: {{ spirit.description }}</p>
+      <a class="button secondary" ui-sref="app.spirits({id: spirit.$id})">Go to Spirit</a>
       <a class="button secondary" ui-sref="app.spirits({id: spirit.$id})">Add to Cellar</a>
     </div>
   </div>

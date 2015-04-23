@@ -10,9 +10,9 @@ controller: DistilleriesCtrl
   </div>
 	<add-distillery created="created(distillery); adding = false" ng-show="adding"></add-distillery>
   <div class="grid-block" ng-if="distillery">
-    <distillery-display data-distillery="distillery"></distillery-display>
+    <distillery-display class="small-12" data-distillery="distillery"></distillery-display>
   </div>
   <div class="grid-block wrap" ng-if="distilleries">
-    <distillery-display ng-repeat="distillery in distilleries" data-distillery="distillery"></distillery-display>
+    <distillery-summary class="small-12 medium-4 large-2" ng-repeat="distillery in distilleries" data-distillery="distillery"></distillery-summary>
   </div>
 </div>

@@ -10,9 +10,9 @@ controller: SpiritsCtrl
   </div>
 	<add-spirit created="created(spirit); adding = false" ng-show="adding"></add-spirit>
   <div class="grid-block" ng-if="spirit">
-    <spirit-display data-spirit="spirit"></spirit-display>
+    <spirit-display class="small-12" data-spirit="spirit"></spirit-display>
   </div>
   <div class="grid-block wrap" ng-if="spirits">
-    <spirit-display ng-repeat="spirit in spirits" data-spirit="spirit"></spirit-display>
+    <spirit-summary class="small-12 medium-4 large-2" ng-repeat="spirit in spirits" data-spirit="spirit"></spirit-summary>
   </div>
 </div>

@@ -11,6 +11,7 @@
       <p>Bottled On: {{ wine.bottleDate }}</p>
       <p>Purchase Price: {{ wine.purchasePrice }}</p>
       <p>Description: {{ wine.description }}</p>
+      <a class="button secondary" ui-sref="app.wines({id: wine.$id})">Go to Wine</a>
       <a class="button secondary" ui-sref="app.wines({id: wine.$id})">Add to Cellar</a>
     </div>
   </div>
