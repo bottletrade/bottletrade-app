@@ -4,15 +4,15 @@ url: /bottles?id
 data: { authRequired: false }
 controller: BottlesCtrl
 ---
-<div class="grid-block vertical">
-  <div class="grid-content" ng-show="!adding">
-    <a class="button" ng-click="adding = true">Add</a>
+<div class="grid-block wrap">
+  <div class="small-12 grid-container text-center" ng-show="!adding">
+    <br /><a class="button" ng-click="adding = true">Add A Bottle</a>
   </div>
 	<add-bottle created="created(bottle); adding = false" ng-show="adding"></add-bottle>
-  <div class="grid-block vertical" ng-if="bottle">
-    <bottle-display data-bottle="bottle"></bottle-display>
+  <div class="grid-block" ng-if="bottle">
+    <bottle-display class="small-12" data-bottle="bottle"></bottle-display>
   </div>
-  <div class="grid-block vertical" ng-if="bottles">
-    <bottle-summary ng-repeat="bottle in bottles" data-bottle="bottle"></bottle-summary>
+  <div class="grid-block wrap" ng-if="bottles">
+    <bottle-summary class="small-12 medium-4 large-2" ng-repeat="bottle in bottles" data-bottle="bottle"></bottle-summary>
   </div>
 </div>
