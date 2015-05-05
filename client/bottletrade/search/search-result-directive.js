@@ -6,8 +6,7 @@
       replace: true,
       templateUrl: '/bottletrade/search/search-result.html',
       scope: {
-        result: '=',
-        query: '='
+        result: '='
       },
       link: function(scope, element) {
       }

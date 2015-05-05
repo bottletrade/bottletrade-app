@@ -42,6 +42,8 @@
             }
 
             $timeout(function() {
+              beer.$id = id;
+
               scope.results.push({
                 type: 'beer',
                 beer: beer
@@ -56,6 +58,8 @@
             }
 
             $timeout(function() {
+              brewery.$id = id;
+
               scope.results.push({
                 type: 'brewery',
                 brewery: brewery
@@ -70,6 +74,8 @@
             }
 
             $timeout(function() {
+              spirit.$id = id;
+
               scope.results.push({
                 type: 'spirit',
                 spirit: spirit
@@ -84,6 +90,8 @@
             }
 
             $timeout(function() {
+              distillery.$id = id;
+
               scope.results.push({
                 type: 'distillery',
                 distillery: distillery
@@ -98,6 +106,8 @@
             }
 
             $timeout(function() {
+              wine.$id = id;
+
               scope.results.push({
                 type: 'wine',
                 wine: wine
@@ -112,6 +122,8 @@
             }
 
             $timeout(function() {
+              winery.$id = id;
+
               scope.results.push({
                 type: 'winery',
                 winery: winery

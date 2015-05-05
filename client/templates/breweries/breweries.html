@@ -4,15 +4,21 @@ url: /breweries?id
 data: { authRequired: false }
 controller: BreweriesCtrl
 ---
-<div class="grid-block wrap">
+<div class="grid-block wrap" ng-if="brewery">
+  <div class="small-12 grid-container text-center" ng-show="!editing">
+    <br /><a class="button" ng-click="editing = true">Edit Brewery</a>
+  </div>
+  <add-brewery updated="updated(brewery); editing = false" brewery="brewery" ng-show="editing"></add-brewery>
+  <div class="grid-block" ng-show="!editing">
+    <brewery-display class="small-12" data-brewery="brewery"></brewery-display>
+  </div>
+</div>
+<div class="grid-block wrap" ng-if="breweries">
   <div class="small-12 grid-container text-center" ng-show="!adding">
     <br /><a class="button" ng-click="adding = true">Add A Brewery</a>
   </div>
-	<add-brewery created="created(brewery); adding = false" ng-show="adding"></add-brewery>
-  <div class="grid-block" ng-if="brewery">
-    <brewery-display class="small-12" data-brewery="brewery"></brewery-display>
-  </div>
-  <div class="grid-block wrap" ng-if="breweries">
+  <add-brewery created="created(brewery); adding = false" ng-show="adding"></add-brewery>
+  <div class="grid-block wrap" ng-show="!adding">
     <brewery-summary class="small-12 medium-4 large-2" ng-repeat="brewery in breweries" data-brewery="brewery"></brewery-summary>
   </div>
 </div>

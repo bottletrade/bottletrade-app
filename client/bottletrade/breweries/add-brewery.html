@@ -1,6 +1,7 @@
 <div class="small-12 vertical grid-block input-bg">
   <div class="grid-content">
-    <p class="text-center">ADD A BREWERY</p>
+    <p class="text-center" ng-show="isNew">ADD A BREWERY</p>
+    <p class="text-center" ng-show="!isNew">EDIT BREWERY</p>
     <div class="grid-container small-12 medium-6">
       <form>
         <label>
