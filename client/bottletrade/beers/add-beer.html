@@ -1,8 +1,13 @@
-<div class="small-12 vertical grid-block input-bg">
-  <div class="grid-content">
-    <p class="text-center">ADD A BEER</p>
-    <div class="grid-container small-12 medium-6">
-      <form>
+<div class="grid-block vertical input-bg">
+  <div class="grid-content shrink">
+    <h2>Add A Beer</h2>
+    <p>Please review all information below and be as accurate as possible when adding beers. The Bottle Trade team reserves the right to make any changes after the beer has been submitted.</p>
+    <img src="http://placekitten.com/g/400/200">
+  </div>
+  <br />
+  <form>
+    <div class-"grid-block">
+      <div class="grid-content">
         <label>
           Beer Name:
           <input ng-model="beer.name" type="text"></input>
@@ -22,22 +27,32 @@
           ABV:
           <input ng-model="beer.abv" type="text"></input>
         </label>
+      </div>
 
-        <label>
-          IBU:
-          <input ng-model="beer.ibu" type="text"></input>
-        </label>
+      <div class="grid-block">
+        <div class="grid-content">
+          <label>
+            IBU:
+            <input ng-model="beer.ibu" type="text"></input>
+          </label>
+        </div>
 
-        <label>
-          SRM:
-          <input ng-model="beer.srm" type="text"></input>
-        </label>
+        <div class="grid-content">
+          <label>
+            SRM:
+            <input ng-model="beer.srm" type="text"></input>
+          </label>
+        </div>
 
-        <label>
-          UPC:
-          <input ng-model="beer.upc" type="text"></input>
-        </label>
+        <div class="grid-content">
+          <label>
+            UPC:
+            <input ng-model="beer.upc" type="text"></input>
+          </label>
+        </div>
+      </div>
 
+      <div class="grid-content">
         <label>
           Bottle Size:
           <input ng-model="beer.volume" type="text" placeholder="oz. liter ml etc"></input>
@@ -62,12 +77,11 @@
           Description:
           <textarea ng-model="beer.description"></textarea>
         </label>
-
-        <div class="grid-content">
-          <a class="button" ng-click="save()">Save</a>
-        </div>
-
       </div>
-    </form>
-  </div>
+
+      <div class="grid-content text-center">
+        <a class="button" ng-click="save()">Submit</a>
+      </div>
+    </div>
+  </form>
 </div>

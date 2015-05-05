@@ -105,9 +105,14 @@ input[type="text"] {
 
 .input-bg {
 	background-color: #FFF;
-	border: .2rem solid #C9C9C9;
-	border-radius: .4rem;
-	margin: 1rem;
+	p {
+		line-height: 1;
+		margin-bottom: .5rem;
+	}
+	h2 {
+		line-height: 1;
+		margin-bottom: 0rem;
+	}
 }
 
 
