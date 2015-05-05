@@ -147,5 +147,5 @@ gulp.task('default', ['build', 'server:start'], function() {
   gulp.watch(['./client/**/*.*', '!./client/templates/**/*.*', '!./client/**/*.js', '!./client/**/*.scss'], ['copy']);
 
   // Watch app templates
-  gulp.watch(['./client/templates/**/*.html'], ['copy-templates']);
+  gulp.watch(['./client/templates/**/*.html', './client/bottletrade/**/*.html'], ['copy-templates']);
 });
