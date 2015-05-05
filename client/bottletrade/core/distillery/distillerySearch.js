@@ -8,7 +8,7 @@
       };
 
       function searchByName(name, cb) {
-        firebaseRef('distilleries').orderByChild('name').startAt(name).endAt(name + "~")
+        firebaseRef('distilleries').orderByChild('search_name').startAt(name).endAt(name + "~")
           .on('child_added',  function(snapshot) {
             cb(snapshot.key(), snapshot.val());
           }

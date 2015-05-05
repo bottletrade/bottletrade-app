@@ -8,7 +8,7 @@
       };
 
       function searchByName(name, cb) {
-        firebaseRef('wines').orderByChild('name').startAt(name).endAt(name + "~")
+        firebaseRef('wines').orderByChild('search_name').startAt(name).endAt(name + "~")
           .on('child_added',  function(snapshot) {
             cb(snapshot.key(), snapshot.val());
           }

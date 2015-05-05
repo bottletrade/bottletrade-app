@@ -30,8 +30,6 @@ var appDepJs = [
 var appJS = [
   'client/assets/js/firebase.routeSecurity.js',
   'client/assets/js/firebase.utils.js',
-  'client/assets/js/untappd.js',
-  'client/assets/js/untappd.config.js',
   'client/assets/js/app.js',
   'client/assets/js/**/*.js',
   'client/templates/**/*.js',
@@ -143,10 +141,10 @@ gulp.task('default', ['build', 'server:start'], function() {
   gulp.watch(['./client/assets/scss/**/*', './scss/**/*'], ['sass']);
 
   // Watch JavaScript
-  gulp.watch(['./client/assets/js/**/*', './js/**/*'], ['jshint', 'uglify']);
+  gulp.watch(['./client/**/*.js'], ['jshint', 'uglify']);
 
   // Watch static files
-  gulp.watch(['./client/**/*.*', '!./client/templates/**/*.*', '!./client/assets/{scss,js}/**/*.*'], ['copy']);
+  gulp.watch(['./client/**/*.*', '!./client/templates/**/*.*', '!./client/**/*.js', '!./client/**/*.scss'], ['copy']);
 
   // Watch app templates
   gulp.watch(['./client/templates/**/*.html'], ['copy-templates']);

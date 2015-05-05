@@ -4,7 +4,16 @@
   angular.module('bottletrade').factory("Winery",
     function($firebaseObject, firebaseRef) {
       return function(id) {
-        return $firebaseObject(firebaseRef("wineries", id));
+        // create a new service based on $firebaseObject
+        var Winery = $firebaseObject.$extend({
+          "$save": function() {
+            // before saving object, update search name
+            this.search_name = this.name.toLowerCase();
+            return $firebaseObject.prototype.$save.call(this);
+          }
+        });
+
+        return new Winery(firebaseRef("wineries", id));
       };
     }
   );

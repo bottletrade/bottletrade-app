@@ -3,7 +3,17 @@
 
   angular.module('bottletrade').factory("WineList",
     function($firebaseArray, firebaseRef) {
-      return $firebaseArray(firebaseRef("wines"));
+      // create a new service based on $firebaseArray
+      var WineList = $firebaseArray.$extend({
+        "$add": function(data) {
+          // before adding object, create lowercase
+          // name property that can be used for search
+          data.search_name = data.name.toLowerCase();
+          return $firebaseArray.prototype.$add.call(this, data);
+        }
+      });
+
+      return new WineList(firebaseRef("wines"));
     }
   );
 })();
