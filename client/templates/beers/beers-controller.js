@@ -12,5 +12,9 @@
       $scope.created = function(beer) {
         $state.go('app.beers', { id: beer.key() });
       };
+
+      $scope.updated = function(brewery) {
+        $state.go('app.beers', { id: beer.key() });
+      };
   });
 })();

@@ -6,17 +6,27 @@
       replace: true,
       templateUrl: '/bottletrade/beers/add-beer.html',
       scope: {
-        created: '&'
+        created: '&',
+        beer: '=?',
+        updated: '&'
       },
-      link: function(scope, element) {
-        scope.beer = {
-          name: ""
-        };
+      link: function(scope, element, attrs) {
+        scope.isNew = !attrs.beer;
+
+        if (scope.isNew) {
+          scope.beer = {};
+        }
 
         scope.save = function() {
-          BeerList.$add(scope.beer).then(function(beer) {
-            scope.created({ beer: beer });
-          });
+          if (scope.isNew) {
+            BeerList.$add(scope.beer).then(function(beer) {
+              scope.created({ beer: beer });
+            });
+          } else {
+            scope.beer.$save().then(function(beer) {
+              scope.updated({ beer: beer });
+            });
+          }
         };
       }
     };

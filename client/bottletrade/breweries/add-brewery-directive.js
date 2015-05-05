@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  angular.module('bottletrade').directive('addBrewery', function(BreweryList, Brewery) {
+  angular.module('bottletrade').directive('addBrewery', function(BreweryList) {
     return {
       replace: true,
       templateUrl: '/bottletrade/breweries/add-brewery.html',
