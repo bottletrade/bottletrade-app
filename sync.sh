@@ -1,6 +1,6 @@
 #!/bin/bash
 while true
 do
-  git fetch
+  git pull
   sleep 60
 done
