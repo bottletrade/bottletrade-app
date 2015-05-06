@@ -1,9 +1,15 @@
-<div class="small-12 vertical grid-block input-bg">
+
+<div class="grid-block vertical input-bg">
   <div class="grid-content">
-    <p class="text-center" ng-show="isNew">ADD A BREWERY</p>
-    <p class="text-center" ng-show="!isNew">EDIT BREWERY</p>
-    <div class="grid-container small-12 medium-6">
-      <form>
+    <h2 ng-show="isNew">Add A Brewery</h2>
+    <h2 ng-show="!isNew">Edit Brewery</h2>
+    <p>Please review all information below and be as accurate as possible when adding breweries. The Bottle Trade team reserves the right to make any changes after the brewery has been submitted.</p>
+    <img src="/assets/img/displays/upload-image.jpg">
+  </div>
+  <br />
+  <form>
+    <div class-"grid-block">
+      <div class="grid-content">
         <label>
           Brewery Name:
           <input ng-model="brewery.name" type="text"></input>
@@ -13,57 +19,86 @@
           Address:
           <input ng-model="brewery.address" type="text"></input>
         </label>
+      </div>
+
+      <div class="grid-block">
+        <div class="grid-content">
+          <label>
+            City:
+            <input ng-model="brewery.city" type="text"></input>
+          </label>
+
+        </div>
+
+        <div class="grid-content">
+          <label>
+            State:
+            <input ng-model="brewery.state" type="text"></input>
+          </label>
+        </div>
+      </div>
+      <div class="grid-block">
+        <div class="grid-content">
+          <label>
+            Postal Code:
+            <input ng-model="brewery.postalcode" type="text"></input>
+          </label>
+        </div>
+
+        <div class="grid-content">
+          <label>
+            Country:
+            <input ng-model="brewery.country" type="text"></input>
+          </label>
+        </div>
+      </div>
+
+      <div class="grid-content">
+        <label>
+          Brewery Type:</label>
+          <select ng-model="brewery.type">
+            <option>Lager</option>
+            <option>IPA</option>
+            <option>Pale Ale</option>
+          </select>
 
         <label>
-          Extended Address:
-          <input ng-model="brewery.extaddress" type="text"></input>
+          Website:
+          <input ng-model="brewery.website" type="text"></input>
         </label>
 
         <label>
-          City:
-          <input ng-model="brewery.city" type="text"></input>
+          FaceBook URL:
+          <input ng-model="brewery.fburl" type="text"></input>
         </label>
+      </div>
 
-        <label>
-          State:
-          <input ng-model="brewery.state" type="text"></input>
-        </label>
+      <div class="grid-block">
+        <div class="grid-content">
+          <label>
+            Twitter Name:
+            <input ng-model="brewery.twitter" type="text"></input>
+          </label>
+        </div>
+        <div class="grid-content">
+          <label>
+            Instagram Name:
+            <input ng-model="brewery.instagram" type="text"></input>
+          </label>
+        </div>
+      </div>
 
-        <label>
-          Postal Code:
-          <input ng-model="brewery.postalcode" type="text"></input>
-        </label>
-
-        <label>
-          Country:
-          <input ng-model="brewery.country" type="text"></input>
-        </label>
-
-        <label>
-          Phone:
-          <input ng-model="brewery.phone" type="text"></input>
-        </label>
-
-        <label>
-          Established:
-          <input ng-model="brewery.established" type="text"></input>
-        </label>
-
-        <label>
-          eMail Address:
-          <input ng-model="brewery.email" type="text"></input>
-        </label>
-
+      <div class="grid-content">
         <label>
           Description:
           <textarea ng-model="brewery.description" class="describe"></textarea>
         </label>
-
-        <div class="grid-content">
-          <a class="button" ng-click="save()">Save</a>
-        </div>
-
       </div>
-    </form>
-  </div>
+    </div>
+
+      <div class="grid-content text-center">
+        <a class="button" ng-click="save()">Submit</a>
+      </div>
+
+  </form>
 </div>
