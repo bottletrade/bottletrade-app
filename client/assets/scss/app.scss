@@ -51,7 +51,7 @@ background-color: #e0c0b3;background-image:url('data:image/svg+xml;base64,PHN2Zy
 }
 
 body {
-	background-color: $primary-color;
+	background-color: #FFF;
 }
 
 .card-text p {
@@ -119,11 +119,11 @@ input[type="text"] {
 	background-color: #C2B49B;
 	border-top: 1px solid #716558;
 	label {
-		margin: .4rem 0rem 0rem 0rem;
+		margin: 0rem 0rem 0rem 0rem;
 		color: #FFF;
 	}
 	span {
-		margin: 0rem 0rem .4rem 0rem;
+		margin: 0rem 0rem .2rem 0rem;
 		color: #FFF;
 		font-size: 1rem;
 	}
