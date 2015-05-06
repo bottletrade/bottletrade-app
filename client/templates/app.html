@@ -70,34 +70,25 @@
 		</li>
 	</ul>
 </zf-offcanvas>
+
 <div class="grid-frame vertical" ng-click="closeMenu()">
-	<div class="grid-block title-bar-block shrink show-for-small hide-for-medium">
-		<div class="grid-block primary title-bar">
-			<div class="left">
-				<ul class="menu-bar primary">
-					<li>
-						<img style="width: 100px; margin-top: 3px;" class="float-left" src="/assets/img/template/BT-title.png"/></li>
-					<li>
-						<div class="grid-block">
-							<span class="inline-label">
-							<input type="search" placeholder="Search" ng-model="searchConfig.query">
-							<a href="#" class="dark button">SEARCH</a>
-							</span>
-						</div>
-					</li>
-				</ul>
-			</div>
-			<div class="right">
-				<ul class="menu-bar primary condense float-right">
-					<li>
-						<a ng-click="toggleMenu(); $event.stopPropagation()">
-							<img zf-iconic="" data-src="/assets/img/iconic/cog.svg" class="iconic-sm"></img>
-						</a>
-					</li>
-				</ul>
-			</div>
-		</div>
+	<div class="primary title-bar">
+	<div class="center title">
+		<span class="inline-label">
+			<input type="search" placeholder="Search" ng-model="searchConfig.query">
+			<a href="#" class="button dark">SEARCH</a>
+		</span>
 	</div>
+	<span class="left">
+		<lable>BT</label>
+	</span>
+	<span class="right">
+		<a ng-click="toggleMenu(); $event.stopPropagation()">
+			<img zf-iconic="" data-src="/assets/img/template/BT Menu Icons V1.svg" class="iconic-sm"></img>
+		</a>
+	</span>
+	</div>
+
 	<div class="grid-block title-bar-block shrink show-for-medium hide-for-small">
 		<div class="grid-block primary title-bar">
 			<div class="left">
@@ -124,6 +115,7 @@
 			</div>
 		</div>
 	</div>
+	<div class="grid-block wrap">
   <div class="grid-block fadeIn main-view" ui-view></div>
 	<div class="grid-block wrap shrink custom-footer">
 		<div class="grid-container">
@@ -155,6 +147,8 @@
 			</label>
 		</div>
 	</div>
+</div>
+</div>
 	<!-- Old Footer
   <div class="grid-content shrink collapse hide-for-medium">
 	 	<ul id="main-footer-menu-bar" class="menu-bar icon-top primary">
