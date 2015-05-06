@@ -1,8 +1,6 @@
 (function() {
   'use strict';
 
-  angular.module('bottletrade', []);
-
   angular.module('application', [
     'ui.router',
     'ngAnimate',

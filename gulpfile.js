@@ -30,10 +30,10 @@ var appDepJs = [
 var appJS = [
   'client/assets/js/firebase.routeSecurity.js',
   'client/assets/js/firebase.utils.js',
+  'client/bottletrade/bottletrade.js',
+  'client/bottletrade/**/*.js',
   'client/assets/js/app.js',
-  'client/assets/js/**/*.js',
-  'client/templates/**/*.js',
-  'client/bottletrade/**/*.js'
+  'client/**/*.js'
 ];
 
 // 3. TASKS

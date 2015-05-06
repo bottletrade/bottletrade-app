@@ -1,6 +1,6 @@
 <zf-offcanvas id="menu" position="right" ng-click="$event.stopPropagation()">
 	<ul class="menu-bar vertical primary user-menu-with-badge">
-		<li class="user-menu-title" ng-if="user">
+		<li class="user-menu-title" ng-if="user" ui-sref="app.profile()" zf-close="">
 			<div>
 				<span class="float-left" ng-show="!user.facebook">
 					<img src="/assets/img/profile/siloutte.jpg"/>
@@ -21,16 +21,16 @@
 			<a ui-sref="app.account.login">LOGIN</a>
 		</li>
 		<li>
-			<a ui-sref="app.cellar" ng-click="closeMenu()">CELLAR</a>
+			<a ui-sref="app.cellar" zf-close="">CELLAR</a>
 		</li>
 		<li>
-			<a ui-sref="app.account.settings.resetpassword" ng-click="closeMenu()">ACCOUNT SETTINGS</a>
+			<a ui-sref="app.account.settings.resetpassword" zf-close="">ACCOUNT SETTINGS</a>
 		</li>
 		<li class="user-menu-title">
 			MESSAGES
 		</li>
 		<li class="user-menu-with-badge">
-			<a ui-sref="app.messages" ng-click="closeMenu()"><div><span class="float-left">INBOX</span></div><div><span class="alert badge float-right">42</span></div></a>
+			<a ui-sref="app.messages" zf-close=""><div><span class="float-left">INBOX</span></div><div><span class="alert badge float-right">42</span></div></a>
 		</li>
 		<li>
 			<a>COMPOSE</a>
@@ -48,25 +48,25 @@
 			FIND
 		</li>
 		<li>
-			<a ui-sref="app.bottles({id:''})" ng-click="closeMenu()">BOTTLES</a>
+			<a ui-sref="app.bottles({id:''})" zf-close="">BOTTLES</a>
 		</li>
 		<li>
-			<a ui-sref="app.beers({id:''})" ng-click="closeMenu()">BEER</a>
+			<a ui-sref="app.beers({id:''})" zf-close="">BEER</a>
 		</li>
 		<li>
-			<a ui-sref="app.breweries({id:''})" ng-click="closeMenu()">BREWERIES</a>
+			<a ui-sref="app.breweries({id:''})" zf-close="">BREWERIES</a>
 		</li>
 		<li>
-			<a ui-sref="app.wines({id:''})" ng-click="closeMenu()">WINE</a>
+			<a ui-sref="app.wines({id:''})" zf-close="">WINE</a>
 		</li>
 		<li>
-			<a ui-sref="app.wineries({id:''})" ng-click="closeMenu()">WINERIES</a>
+			<a ui-sref="app.wineries({id:''})" zf-close="">WINERIES</a>
 		</li>
 		<li>
-			<a ui-sref="app.spirits({id:''})" ng-click="closeMenu()">SPIRITS</a>
+			<a ui-sref="app.spirits({id:''})" zf-close="">SPIRITS</a>
 		</li>
 		<li>
-			<a ui-sref="app.distilleries({id:''})" ng-click="closeMenu()">DISTILLERIES</a>
+			<a ui-sref="app.distilleries({id:''})" zf-close="">DISTILLERIES</a>
 		</li>
 	</ul>
 </zf-offcanvas>
