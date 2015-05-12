@@ -114,8 +114,24 @@ input[type="text"] {
 		margin-bottom: 0rem;
 	}
 }
-
+.title-bar {
+	height: 3rem;
+	.title {
+		.grid-block, .grid-content {
+			&.shrink {
+				overflow: visible;
+			}
+		}
+		.grid-content {
+			padding: 0px;
+		}
+		input, a.button {
+			margin: 0px;
+		}
+	}
+}
 .custom-footer {
+	align: bottom;
 	background-color: #C2B49B;
 	border-top: 1px solid #716558;
 	width: 100%;
@@ -132,14 +148,15 @@ input[type="text"] {
 		color: #FFF;
 		font-size: .8rem;
 	}
+	a:hover {
+		color: #000;
+		font-size: .8rem;
+	}
 	.grid-container {
 		line-height: 1rem;
 	}
 }
 
-.title-bar {
-	height: 3rem;
-}
 .educate {
 	padding-top: 1rem;
 }

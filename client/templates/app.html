@@ -1,3 +1,4 @@
+<!-- RIGHT OFF CANVAS - USER MENU -->
 <zf-offcanvas id="menu" position="right" ng-click="$event.stopPropagation()">
 	<ul class="menu-bar vertical primary user-menu-with-badge">
 		<li class="user-menu-title" ng-if="user" ui-sref="app.profile()" zf-close="">
@@ -71,24 +72,31 @@
 	</ul>
 </zf-offcanvas>
 
+<!-- HEADER -->
 <div class="grid-frame vertical" ng-click="closeMenu()">
-	<div class="primary title-bar">
-	<div class="center title">
-		<span class="inline-label">
-			<input type="search" placeholder="Search" ng-model="searchConfig.query">
-			<a href="#" class="button dark">SEARCH</a>
+	<div class="grid-block primary title-bar">
+		<div class="center title">
+			<div class="grid-block shrink v-align">
+				<div class="grid-content align-center">
+					<input type="search" ng-model="searchConfig.query"></input>
+				</div>
+				<div class="grid-content shrink align-center">
+					<a href="#" class="button dark">SEARCH</a>
+				</div>
+			</div>
+		</div>
+		<span class="left">
+			<lable>BT</label>
+		</span>
+		<span class="right">
+			<div style="width: 3rem; height: 3rem; float: right;">
+				<a ng-click="toggleMenu(); $event.stopPropagation()">
+					<svg zf-iconic="" data-src="/assets/img/template/BT Menu Icons V1.svg"></svg>
+				</a>
+			</div>
 		</span>
 	</div>
-	<span class="left">
-		<lable>BT</label>
-	</span>
-	<span class="right">
-		<a ng-click="toggleMenu(); $event.stopPropagation()">
-			<img zf-iconic="" data-src="/assets/img/template/BT Menu Icons V1.svg" class="iconic-sm"></img>
-		</a>
-	</span>
-	</div>
-
+<!--
 	<div class="grid-block title-bar-block shrink show-for-medium hide-for-small">
 		<div class="grid-block primary title-bar">
 			<div class="left">
@@ -115,39 +123,43 @@
 			</div>
 		</div>
 	</div>
+-->
+
+<!-- FOOTER -->
 	<div class="grid-block wrap">
-  <div class="grid-block fadeIn main-view" ui-view></div>
-	<div class="grid-block wrap shrink custom-footer">
-		<div class="grid-container">
-			<label>
-				SIGN UP FOR THE BOTTLETRADE NEWSLETTER
-				<span class="inline-label">
-					<input type="search" placeholder="YOUR EMAIL">
-					<a href="#" class="button">SIGN UP</a>
+  	<div class="grid-block fadeIn main-view" ui-view></div>
+		<div class="grid-block vertical medium-horizontal shrink custom-footer">
+			<div class="grid-container">
+				<label>
+					SIGN UP FOR THE BOTTLETRADE NEWSLETTER
+					<span class="inline-label">
+						<input type="search" placeholder="YOUR EMAIL">
+						<a href="#" class="button">SIGN UP</a>
+					</span>
+				</label>
+			</div>
+			<div class="grid-container">
+				<label class="text-center">FOLLOW US ON:</label>
+				<span>
+					<img src="/assets/img/template/instagram-icon-sm.png" width="35px" height="35px" />
+					<img src="/assets/img/template/twitter-icon-sm.png" width="35px" height="35px" />
+					<img src="/assets/img/template/facebook-icon-sm.png" width="35px" height="35px" />
 				</span>
-			</label>
-		</div>
-		<div class="grid-container">
-			<label class="text-center">FOLLOW US ON:</label>
-			<span>
-				<img src="/assets/img/template/instagram-icon-sm.png" width="35px" height="35px" />
-				<img src="/assets/img/template/twitter-icon-sm.png" width="35px" height="35px" />
-				<img src="/assets/img/template/facebook-icon-sm.png" width="35px" height="35px" />
-			</span>
-		</div>
-		<div class="grid-container text-center">
-			<span>
-				<a ui-sref="app.educate.houseRules">House Rules</a> |
-				<a ui-sref="app.educate.privacyPolicy">Privacy Policy</a> |
-				<a ui-sref="#">Contact Us</a> |
-				<a ui-sref="#">FAQ</a>
-			</span>
-			<label class="text-center">
-				&copy; Copyright 2013-2015 - BottleTrade LLC
-			</label>
+			</div>
+			<div class="grid-container text-center v-align">
+				<span>
+					<a ui-sref="app.educate.houseRules">House Rules</a> |
+					<a ui-sref="app.educate.privacyPolicy">Privacy Policy</a> |
+					<a ui-sref="#">Contact Us</a> |
+					<a ui-sref="#">FAQ</a>
+					<br />
+					<label>
+						&copy; Copyright 2013-2015 - BottleTrade LLC
+					</label>
+				</span>
+			</div>
 		</div>
 	</div>
-</div>
 </div>
 	<!-- Old Footer
   <div class="grid-content shrink collapse hide-for-medium">
@@ -160,4 +172,3 @@
 		</ul>
   </div>
 	 Old Footer End -->
-</div>
