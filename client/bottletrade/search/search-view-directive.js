@@ -4,12 +4,12 @@
   angular.module('bottletrade').directive('searchView', function(
     $state,
     $timeout,
-    BeerSearch,
-    BrewerySearch,
-    SpiritSearch,
-    DistillerySearch,
-    WineSearch,
-    WinerySearch) {
+    BeerManager,
+    BreweryManager,
+    SpiritManager,
+    DistilleryManager,
+    WineManager,
+    WineryManager) {
     return {
       replace: true,
       templateUrl: '/bottletrade/search/search-view.html',
@@ -35,7 +35,7 @@
           lastQueryVal = val;
           scope.results.splice(0, scope.results.length);
 
-          BeerSearch.searchByName(val, function(id, beer) {
+          BeerManager.searchByName(val, function(id, beer) {
             // ignore if not for current query
             if (lastQueryTime !== currentQueryTime) {
               return;
@@ -51,7 +51,7 @@
             });
           });
 
-          BrewerySearch.searchByName(val, function(id, brewery) {
+          BreweryManager.searchByName(val, function(id, brewery) {
             // ignore if not for current query
             if (lastQueryTime !== currentQueryTime) {
               return;
@@ -67,7 +67,7 @@
             });
           });
 
-          SpiritSearch.searchByName(val, function(id, spirit) {
+          SpiritManager.searchByName(val, function(id, spirit) {
             // ignore if not for current query
             if (lastQueryTime !== currentQueryTime) {
               return;
@@ -83,7 +83,7 @@
             });
           });
 
-          DistillerySearch.searchByName(val, function(id, distillery) {
+          DistilleryManager.searchByName(val, function(id, distillery) {
             // ignore if not for current query
             if (lastQueryTime !== currentQueryTime) {
               return;
@@ -99,7 +99,7 @@
             });
           });
 
-          WineSearch.searchByName(val, function(id, wine) {
+          WineManager.searchByName(val, function(id, wine) {
             // ignore if not for current query
             if (lastQueryTime !== currentQueryTime) {
               return;
@@ -115,7 +115,7 @@
             });
           });
 
-          WinerySearch.searchByName(val, function(id, winery) {
+          WineryManager.searchByName(val, function(id, winery) {
             // ignore if not for current query
             if (lastQueryTime !== currentQueryTime) {
               return;

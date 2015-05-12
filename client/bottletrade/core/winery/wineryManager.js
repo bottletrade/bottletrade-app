@@ -1,14 +1,14 @@
 (function() {
   'use strict';
 
-  angular.module('bottletrade').factory("DistillerySearch",
+  angular.module('bottletrade').factory("WineryManager",
     function(firebaseRef) {
       return {
         searchByName: searchByName
       };
 
       function searchByName(name, cb) {
-        firebaseRef('distilleries').orderByChild('search_name').startAt(name).endAt(name + "~")
+        firebaseRef('wineries').orderByChild('search_name').startAt(name).endAt(name + "~")
           .on('child_added',  function(snapshot) {
             cb(snapshot.key(), snapshot.val());
           }

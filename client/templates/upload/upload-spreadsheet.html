@@ -4,39 +4,48 @@ url: /upload
 data: { authRequired: false }
 controller: UploadCtrl
 ---
-<div class="grid-container" ng-show="parsedResults.length == 0">
-  <form>
-    <label>Beers
-      <input type="file" file-content="beers" ng-file-select="onFileSelect($files)">
-    </label>
-    <label>Breweries
-      <input type="file" file-content="breweries" ng-file-select="onFileSelect($files)">
-    </label>
-  </form>
-  <b>Progress:</b>
-  <progress value="{{ progress }}"></progress>
+<div class="grid-content" ng-show="parsedResults.length == 0">
+  <div class="grid-container">
+    <label>What's in the file?</label>
+    <input type="radio" ng-model="fileContents" value="beers" id="contentBeers"><label for="contentBeers">Beers</label>
+    <input type="radio" ng-model="fileContents" value="breweries" id="contentBreweries"><label for="contentBreweries">Breweries</label>
+  </div>
+  <div class="grid-container">
+    <form>
+      <input type="file" ng-file-select="onFileSelect($files)">
+    </form>
+  </div>
+  <div class="grid-container">
+    <a class="button" ng-click="upload()">Upload</a>
+  </div>
+  <div class="grid-container">
+    <b>Progress:</b>
+    <progress value="{{ progress }}"></progress>
+  </div>
 </div>
 <div class="grid-block vertical" ng-if="parsedResults.length > 0">
   <div class="grid-container">
-    <div class="grid-container">
-      <div class="grid-content">
-        <span>Your spreadsheet containing {{ fileContent }} has been loaded.  Please review and correct any errors before submitting.</span>
-        <a class="button">Submit</a>
-      </div>
-    </div>
+    <span>Your spreadsheet containing {{ fileContentType }} has been loaded.  Please review and correct any errors before submitting.</span>
+  </div>
+  <div class="grid-container">
+    <a class="button" ng-click="save()">Submit</a>
   </div>
   <div class="grid-block">
-    <table ng-if="fileContent == 'breweries'">
+    <table ng-if="fileContents == 'breweries'">
       <thead>
         <th>Name</th>
       </thead>
       <tbody>
         <tr ng-repeat="result in parsedResults">
-          <td>{{ result.name }}</td>
+          <td>
+            <span ng-show="result.nameExists === true"><img zf-iconic="" icon="circle-check" size="small"></img></span>
+            <span ng-show="result.nameExists === false"><img zf-iconic="" icon="circle-x" size="small"></img></span>
+            {{ result.name }}
+          </td>
         </tr>
       </tbody>
     </table>
-    <table ng-if="fileContent == 'beers'">
+    <table ng-if="fileContents == 'beers'">
       <thead>
         <tr>
           <th>Brewery</th>
@@ -45,8 +54,16 @@ controller: UploadCtrl
       </thead>
       <tbody>
         <tr ng-repeat="result in parsedResults">
-          <td>{{ result.brewery }}</td>
-          <td>{{ result.name }}</td>
+          <td>
+            <span ng-show="result.breweryExists === true"><img zf-iconic="" icon="circle-check" size="small"></img></span>
+            <span ng-show="result.breweryExists === false"><img zf-iconic="" icon="circle-x" size="small"></img></span>
+            {{ result.brewery }}
+          </td>
+          <td>
+            <span ng-show="result.nameExists === true"><img zf-iconic="" icon="circle-check" size="small"></img></span>
+            <span ng-show="result.nameExists === false"><img zf-iconic="" icon="circle-x" size="small"></img></span>
+            {{ result.name }}
+          </td>
         </tr>
       </tbody>
     </table>

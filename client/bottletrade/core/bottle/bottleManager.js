@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  angular.module('bottletrade').factory("BottleSearch",
+  angular.module('bottletrade').factory("BottleManager",
     function(firebaseRef) {
       return {
         searchByDescription: searchByDescription
