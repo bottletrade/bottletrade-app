@@ -5,12 +5,6 @@
       <h3 class="text-center">{{ wine.name }}<br /><small>Wine</small></h3>
     </div>
     <div class="card-section card-text">
-      <p>Brewery: {{ wine.madeBy }}</p>
-      <p>Bottle Size: {{ wine.volume }}</p>
-      <p>Quantity: {{ wine.quantity }}</p>
-      <p>Bottled On: {{ wine.bottleDate }}</p>
-      <p>Purchase Price: {{ wine.purchasePrice }}</p>
-      <p>Description: {{ wine.description }}</p>
       <a class="button secondary" ui-sref="app.wines({id: wine.$id})">Go to Wine</a>
       <a class="button secondary" ui-sref="app.wines({id: wine.$id})">Add to Cellar</a>
     </div>

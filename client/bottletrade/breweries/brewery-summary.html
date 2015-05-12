@@ -5,11 +5,6 @@
       <h3 class="text-center">{{ brewery.name }}<br /><small>Brewery</small></h3>
     </div>
     <div class="card-section card-text">
-      <p>{{ brewery.address }}<br />{{ brewery.extaddress }}<br />{{ brewery.city }}, {{ brewery.state }} {{ brewery.postalcode }}<br />{{ brewery.country }}</p>
-      <p>Phone: {{ brewery.phone }}</p>
-      <p>Etablished: {{ brewery.established }}</p>
-      <p>eMail: {{ brewery.email }}</p>
-      <p>Description: {{ brewery.description }}</p>
       <a class="button secondary" ui-sref="app.breweries({id: brewery.$id})">Go to Brewery</a>
     </div>
   </div>

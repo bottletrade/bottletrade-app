@@ -5,12 +5,6 @@
       <h3 class="text-center">{{ spirit.name }}<br /><small>Spirit</small></h3>
     </div>
     <div class="card-section card-text">
-      <p>Brewery: {{ spirit.distilledBy }}</p>
-      <p>Bottle Size: {{ spirit.volume }}</p>
-      <p>Quantity: {{ spirit.quantity }}</p>
-      <p>Bottled On: {{ spirit.bottleDate }}</p>
-      <p>Purchase Price: {{ spirit.purchasePrice }}</p>
-      <p>Description: {{ spirit.description }}</p>
       <a class="button secondary" ui-sref="app.spirits({id: spirit.$id})">Go to Spirit</a>
       <a class="button secondary" ui-sref="app.spirits({id: spirit.$id})">Add to Cellar</a>
     </div>

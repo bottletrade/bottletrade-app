@@ -2,16 +2,9 @@
   <div class="dark card">
     <img src="http://placekitten.com/g/400/200">
     <div class="card-divider">
-      <h3 class="text-center">{{ bottle.name }}<br /><small>Bottle Summary</small></h3>
+      <h3 class="text-center">{{ bottle.name }}<br /><small>Bottle</small></h3>
     </div>
     <div class="card-section card-text">
-      <p>Brewery: {{ bottle.brewedBy }}</p>
-      <p>Style: {{ bottle.style }}</p>
-      <p>Bottle Size: {{ bottle.volume }}</p>
-      <p>Quantity: {{ bottle.quantity }}</p>
-      <p>Bottled On: {{ bottle.bottleDate }}</p>
-      <p>Purchase Price: {{ bottle.purchasePrice }}</p>
-      <p>Description: {{ bottle.description }}</p>
       <a class="button secondary" ui-sref="app.bottles({id: bottle.$id})">Go to Bottle</a>
       <a class="button secondary">Make Trade</a>
     </div>
