@@ -131,7 +131,7 @@ input[type="text"] {
 	}
 }
 .custom-footer {
-	align: bottom;
+	align-self: flex-end;
 	background-color: #C2B49B;
 	border-top: 1px solid #716558;
 	width: 100%;
