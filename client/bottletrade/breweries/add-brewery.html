@@ -7,13 +7,20 @@
     <img src="/assets/img/displays/upload-image.jpg">
   </div>
   <br />
-  <form>
+  <form name="add_brewery_form">
     <div class-"grid-block">
       <div class="grid-content">
         <label>
           Brewery Name:
-          <input ng-model="brewery.name" type="text"></input>
+          <input ng-model="brewery.name" name="brewery_name" type="text" required></input>
         </label>
+        <div class="error-container"
+            ng-show="add_brewery_form.brewery_name.$invalid && add_brewery_form.$submitted">
+          <small class="error"
+              ng-show="add_brewery_form.brewery_name.$error.required">
+              *Brewery's name is required.
+          </small>
+        </div>
 
         <label>
           Address:
@@ -64,8 +71,14 @@
 
         <label>
           Website:
-          <input ng-model="brewery.website" type="text"></input>
+          <input ng-model="brewery.website" name="brewery_url" type="url"></input>
         </label>
+        <div class="error-container"
+            ng-show="add_brewery_form.brewery_url.$invalid && add_brewery_form.$submitted">
+          <small class="error">
+              *URL is not formatted correctly.
+          </small>
+        </div>
 
         <label>
           FaceBook URL:
@@ -77,14 +90,26 @@
         <div class="grid-content">
           <label>
             Twitter Name:
-            <input ng-model="brewery.twitter" type="text"></input>
+            <input ng-model="brewery.twitter" name="brewery_twitter" type="text" ng-pattern="/^[@][a-zA-Z0-9]+$/"></input>
           </label>
+          <div class="error-container"
+              ng-show="add_brewery_form.brewery_twitter.$invalid && add_brewery_form.$submitted">
+            <small class="error">
+                *Must read as "@example".
+            </small>
+          </div>
         </div>
         <div class="grid-content">
           <label>
             Instagram Name:
-            <input ng-model="brewery.instagram" type="text"></input>
+            <input ng-model="brewery.instagram" name="brewery_instagram" type="text" ng-pattern="/^[@][a-zA-Z0-9]+$/"></input>
           </label>
+          <div class="error-container"
+              ng-show="add_brewery_form.brewery_instagram.$invalid && add_brewery_form.$submitted">
+            <small class="error">
+                *Must read as "@example".
+            </small>
+          </div>
         </div>
       </div>
 
@@ -98,6 +123,13 @@
 
       <div class="grid-content text-center">
         <a class="button" ng-click="save()">Submit</a>
+        <div class="error-container"
+            ng-show="add_brewery_form.$invalid && add_brewery_form.$submitted">
+          <small class="error"
+              ng-show="add_brewery_form.beer_name.$error.required || add_brewery_form.beer_brewery.$error.required">
+              *Fix the issues above in RED.
+          </small>
+        </div>
       </div>
 
   </form>

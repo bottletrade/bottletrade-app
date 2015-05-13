@@ -18,14 +18,17 @@
         }
 
         scope.save = function() {
-          if (scope.isNew) {
-            BreweryList.$add(scope.brewery).then(function(brewery) {
-              scope.created({ brewery: brewery });
-            });
-          } else {
-            scope.brewery.$save().then(function(brewery) {
-              scope.updated({ brewery: brewery });
-            });
+          scope.add_brewery_form.$submitted=true;
+            if (scope.add_brewery_form.$valid) {
+              if (scope.isNew) {
+              BreweryList.$add(scope.brewery).then(function(brewery) {
+                scope.created({ brewery: brewery });
+              });
+            } else {
+              scope.brewery.$save().then(function(brewery) {
+                scope.updated({ brewery: brewery });
+              });
+            }
           }
         };
       }

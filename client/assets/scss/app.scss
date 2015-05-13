@@ -52,6 +52,7 @@ width: 100%;
 }
 body {
 	background-color: #FFF;
+	/*overflow: scroll;*/
 }
 
 .card-text p {
@@ -102,9 +103,14 @@ input[type="text"] {
 		padding: .2rem;
 	}
 }
-
+.error-container {
+	margin: -10px 0px 10px 2px;
+	.error {
+		color: #F00;
+		font-size: .8rem;
+	}
+}
 .input-bg {
-	background-color: #FFF;
 	p {
 		line-height: 1;
 		margin-bottom: .5rem;
