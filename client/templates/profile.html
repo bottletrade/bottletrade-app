@@ -4,11 +4,11 @@ url: /profile
 controller: ProfileCtrl
 data: { authRequired: true }
 ---
-<div class="grid-block" ng-if="user">
-	<div class="grid-content" ng-if="user.facebook">
-		<img ng-if="!user.facebook.cachedUserProfile.picture.data.is_silhoutte"
-			ng-src="{{ user.facebook.cachedUserProfile.picture.data.url }}"></img>
+<div class="grid-block" ng-if="$root.user">
+	<div class="grid-content" ng-if="$root.user.facebook">
+		<img ng-if="!$root.user.facebook.cachedUserProfile.picture.data.is_silhoutte"
+			ng-src="{{ $root.user.facebook.cachedUserProfile.picture.data.url }}"></img>
 
-		{{ user.facebook.cachedUserProfile.link }}
+		{{ $root.user.facebook.cachedUserProfile.link }}
 	</div>
 </div>

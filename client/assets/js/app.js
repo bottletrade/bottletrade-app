@@ -50,14 +50,24 @@
     });
   });
 
-  angular.module('application').run(function($rootScope, $state) {
+  angular.module('application').run(function($rootScope, $state, Auth) {
     FastClick.attach(document.body);
 
     $rootScope.$on("$stateChangeError", function(event, toState, toParams, fromState, fromParams, error) {
       // We can catch the error thrown when the $requireAuth promise is rejected
       // and redirect the user back to the home page
       if (error === "AUTH_REQUIRED") {
-        $state.go("home");
+        $state.go("app.home");
+      }
+    });
+
+    // handle updates to authentication
+    Auth.$onAuth(function(user) {
+      $rootScope.user = user;
+
+      if (!user) {
+        // redirect user to home if logging out
+        $state.go("app.home");
       }
     });
   });

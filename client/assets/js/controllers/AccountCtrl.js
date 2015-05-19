@@ -1,9 +1,7 @@
 (function() {
   'use strict';
 
-  angular.module('application').controller("AccountCtrl", ["$scope", "$state", "firebaseRef", "user", function($scope, $state, firebaseRef, user) {
-    $scope.user = user;
-
+  angular.module('application').controller("AccountCtrl", function($scope, $state, Auth, firebaseRef, user) {
     $scope.providers = [
       { id: 'twitter',  name: 'Twitter' },
       { id: 'facebook', name: 'Facebook' },
@@ -22,7 +20,9 @@
             console.log("Login Failed!", error);
           } else {
             console.log("Authenticated successfully with payload:", authData);
-            $state.go("app.profile");
+            Auth.$waitForAuth().then(function(user) {
+              $state.go("app.profile");
+            });
           }
         });
       }
@@ -41,6 +41,6 @@
         $scope.error = error;
       });
     };
-  }]);
+  });
 
 })();

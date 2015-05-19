@@ -1,8 +1,8 @@
 (function() {
   'use strict';
 
-  angular.module('application').controller("IndexCtrl", function($scope, $state, $rootScope, $timeout, FoundationApi, SearchService, user) {
-	  $scope.user = user;
+  angular.module('application').controller("IndexCtrl", function($scope, $state, $timeout, Auth, FoundationApi, SearchService, user) {
+    $scope.auth = Auth;
     $scope.searchConfig = SearchService.getConfig();
 
     $scope.$watch("searchConfig.query", function(query) {
