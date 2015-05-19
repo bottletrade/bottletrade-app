@@ -12,6 +12,14 @@
         brewery: "brewery",
         winery: "winery",
         distillery: "distillery"
+      },
+      firebase: {
+        beers: "beers",
+        wines: "wines",
+        spirits: "spirits",
+        breweries: "breweries",
+        wineries: "wineries",
+        distilleries: "distilleries"
       }
     })
   ;

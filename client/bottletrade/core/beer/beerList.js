@@ -2,7 +2,7 @@
   'use strict';
 
   angular.module('bottletrade').factory("BeerList",
-    function($firebaseArray, firebaseRef) {
+    function($firebaseArray, firebaseRef, BTConstants) {
       // create a new service based on $firebaseArray
       var BeerList = $firebaseArray.$extend({
         "$add": function(data) {
@@ -13,7 +13,7 @@
         }
       });
 
-      return new BeerList(firebaseRef("beers"));
+      return new BeerList(firebaseRef(BTConstants.firebase.beers));
     }
   );
 })();

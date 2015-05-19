@@ -2,9 +2,9 @@
   'use strict';
 
   angular.module('bottletrade').factory("Bottle",
-    function($firebaseObject, firebaseRef) {
+    function($firebaseObject, firebaseRef, BTConstants) {
       return function(id) {
-        return $firebaseObject(firebaseRef("bottles", id));
+        return $firebaseObject(firebaseRef(BTConstants.firebase.bottles, id));
       };
     }
   );

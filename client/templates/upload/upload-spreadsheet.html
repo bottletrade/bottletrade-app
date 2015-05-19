@@ -38,8 +38,8 @@ controller: UploadCtrl
       <tbody>
         <tr ng-repeat="result in parsedResults">
           <td>
-            <span ng-show="result.nameExists === true"><img zf-iconic="" icon="circle-check" size="small"></img></span>
-            <span ng-show="result.nameExists === false"><img zf-iconic="" icon="circle-x" size="small"></img></span>
+            <span ng-show="result.matchedBreweries"><img zf-iconic="" icon="circle-check" size="small"></img></span>
+            <span ng-show="!result.matchedBreweries"><img zf-iconic="" icon="circle-x" size="small"></img></span>
             {{ result.name }}
           </td>
         </tr>
@@ -55,13 +55,13 @@ controller: UploadCtrl
       <tbody>
         <tr ng-repeat="result in parsedResults">
           <td>
-            <span ng-show="result.breweryExists === true"><img zf-iconic="" icon="circle-check" size="small"></img></span>
-            <span ng-show="result.breweryExists === false"><img zf-iconic="" icon="circle-x" size="small"></img></span>
+            <span ng-show="result.matchedBreweries"><img zf-iconic="" icon="circle-check" size="small"></img></span>
+            <span ng-show="!result.matchedBreweries"><img zf-iconic="" icon="circle-x" size="small"></img></span>
             {{ result.brewery }}
           </td>
           <td>
-            <span ng-show="result.nameExists === true"><img zf-iconic="" icon="circle-check" size="small"></img></span>
-            <span ng-show="result.nameExists === false"><img zf-iconic="" icon="circle-x" size="small"></img></span>
+            <span ng-show="result.matchedBeers"><img zf-iconic="" icon="circle-check" size="small"></img></span>
+            <span ng-show="!result.matchedBeers"><img zf-iconic="" icon="circle-x" size="small"></img></span>
             {{ result.name }}
           </td>
         </tr>

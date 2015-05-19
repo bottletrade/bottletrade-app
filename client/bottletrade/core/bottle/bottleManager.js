@@ -2,13 +2,13 @@
   'use strict';
 
   angular.module('bottletrade').factory("BottleManager",
-    function(firebaseRef) {
+    function(firebaseRef, BTConstants) {
       return {
         searchByDescription: searchByDescription
       };
 
       function searchByDescription(desc, cb) {
-        firebaseRef('bottles').orderByChild('description').startAt("~" + desc).endAt("~" + desc + "~")
+        firebaseRef(BTConstants.firebase.bottles).orderByChild('description').startAt("~" + desc).endAt("~" + desc + "~")
           .on('child_added',  function(snapshot) {
             cb(snapshot.key(), snapshot.val());
           }

@@ -11,7 +11,7 @@
       $scope.upload = function () {
         fileReader.readAsText($scope.file, $scope)
           .then(function(data) {
-            var results, promises;
+            var results;
 
             // parse results
             switch ($scope.fileContents) {
@@ -32,19 +32,20 @@
             }
 
             // check for existing data
-            promises = [];
             switch ($scope.fileContents) {
               case "breweries":
                 results.forEach(function(result) {
                   if (result.name) {
                     // check if brewery name exists
                     $timeout(function() {
-                      BreweryManager.existsByName(result.name).then(function(exists) {
-                        result.nameExists = exists;
+                      BreweryManager.searchByNameExact(result.name).then(function(key, brewery) {
+                        // only create object once a result is returned
+                        if (!result.matchedBreweries) {
+                          result.matchedBreweries = {};
+                        }
+                        result.matchedBreweries[key] = brewery;
                       });
                     });
-                  } else {
-                    results.nameExists = false;
                   }
                 });
                 break;
@@ -53,23 +54,27 @@
                   if (result.brewery) {
                     // check if brewery exists
                     $timeout(function() {
-                      BreweryManager.existsByName(result.brewery).then(function(exists) {
-                        result.breweryExists = exists;
+                      BreweryManager.searchByNameExact(result.brewery).then(function(key, brewery) {
+                        // only create object once a result is returned
+                        if (!result.matchedBreweries) {
+                          result.matchedBreweries = {};
+                        }
+                        result.matchedBreweries[key] = brewery;
                       });
                     });
-                  } else {
-                    results.nameExists = false;
                   }
 
                   if (result.name) {
                     // check if beer name exists
                     $timeout(function() {
-                      BeerManager.existsByName(result.name).then(function(exists) {
-                        result.nameExists = exists;
+                      BeerManager.searchByNameExact(result.name).then(function(key, beer) {
+                        // only create object once a result is returned
+                        if (!result.matchedBeers) {
+                          result.matchedBeers = {};
+                        }
+                        result.matchedBeers[key] = beer;
                       });
                     });
-                  } else {
-                    results.nameExists = false;
                   }
                 });
                 break;

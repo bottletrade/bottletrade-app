@@ -2,17 +2,43 @@
   'use strict';
 
   angular.module('bottletrade').factory("WineManager",
-    function(firebaseRef) {
+    function(firebaseRef, BTConstants) {
       return {
-        searchByName: searchByName
+        searchByNameBegins: searchByNameBegins,
+        searchByNameEnds: searchByNameEnds,
+        searchByNameContains: searchByNameContains,
+        searchByNameExact: searchByNameExact
       };
 
-      function searchByName(name, cb) {
-        firebaseRef('wines').orderByChild('search_name').startAt(name).endAt(name + "~")
+      function searchByNameBegins(name) {
+        return _searchByName(name, "", "~", "", "~");
+      }
+
+      function searchByNameEnds(name) {
+        return _searchByName(name, "~", "", "~", "");
+      }
+
+      function searchByNameContains(name) {
+        return _searchByName(name, "~", "~", "~", "~");
+      }
+
+      function searchByNameExact(name) {
+        return _searchByName(name, "", "", "", "");
+      }
+
+      function _searchByName(name, startPrefix, startSuffix, endPrefix, endSuffix) {
+        var deferred = $q.defer(),
+            nameLower = name.toString().toLowerCase();
+
+        firebaseRef(BTConstants.firebase.wines).orderByChild('search_name')
+          .startAt(startPrefix + nameLower + startSuffix)
+          .endAt(endPrefix + nameLower + endSuffix)
           .on('child_added',  function(snapshot) {
-            cb(snapshot.key(), snapshot.val());
+            deferred.resolve(snapshot.key(), snapshot.val());
           }
         );
+
+        return deferred.promise;
       }
     }
   );
