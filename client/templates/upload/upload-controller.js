@@ -16,16 +16,16 @@
             // parse results
             switch ($scope.fileContents) {
               case "breweries":
-                if ($scope.file.type === "text/csv") {
+                if ($scope.file.name.endsWith(".csv")) {
                   results = spreadsheetParser.parseBreweryCsv(data);
-                } else if ($scope.file.type === "text/tsv") {
+                } else if ($scope.file.name.endsWith(".tsv")) {
                   results = spreadsheetParser.parseBreweryTsv(data);
                 }
                 break;
               case "beers":
-                if ($scope.file.type === "text/csv") {
+                if ($scope.file.name.endsWith(".csv")) {
                   results = spreadsheetParser.parseBeerCsv(data);
-                } else if ($scope.file.type === "text/tsv") {
+                } else if ($scope.file.name.endsWith(".tsv")) {
                   results = spreadsheetParser.parseBeerTsv(data);
                 }
                 break;
