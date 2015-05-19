@@ -4,6 +4,7 @@
   angular.module('bottletrade').directive('searchView', function(
     $state,
     $timeout,
+    lodash,
     BeerManager,
     BreweryManager,
     SpiritManager,
@@ -35,159 +36,72 @@
           lastQueryVal = val;
           scope.results.splice(0, scope.results.length);
 
-          BeerManager.searchByName(val, function(id, beer) {
+          BeerManager.searchByNameBegins(val, function(id, beer) {
+            addResult('beer', id, beer);
+          }, function(id, beer) {
+            removeResult('beer', id, beer);
+          });
+
+          BreweryManager.searchByNameBegins(val, function(id, brewery) {
+            addResult('brewery', id, brewery);
+          }, function(id, brewery) {
+            removeResult('brewery', id, brewery);
+          });
+
+          SpiritManager.searchByNameBegins(val, function(id, spirit) {
+            addResult('spirit', id, spirit);
+          }, function(id, spirit) {
+            removeResult('spirit', id, spirit);
+          });
+
+          DistilleryManager.searchByNameBegins(val, function(id, distillery) {
+            addResult('distillery', id, distillery);
+          }, function(id, distillery) {
+            removeResult('distillery', id, distillery);
+          });
+
+          WineManager.searchByNameBegins(val, function(id, wine) {
+            addResult('wine', id, wine);
+          }, function(id, wine) {
+            removeResult('wine', id, wine);
+          });
+
+          WineryManager.searchByNameBegins(val, function(id, winery) {
+            addResult('winery', id, winery);
+          }, function(id, winery) {
+            removeResult('winery', id, winery);
+          });
+
+          function addResult(type, id, obj) {
+            // ignore if not for current query
+            if (lastQueryTime !== currentQueryTime) {
+              return;
+            }
+
+            obj.$id = id;
+            $timeout(function() {
+              var resultObj = {};
+              resultObj.type = type;
+              resultObj[type] = obj;
+              scope.results.push(resultObj);
+            });
+          }
+
+          function removeResult(type, id, obj) {
             // ignore if not for current query
             if (lastQueryTime !== currentQueryTime) {
               return;
             }
 
             $timeout(function() {
-              beer.$id = id;
-
-              scope.results.push({
-                type: 'beer',
-                beer: beer
+              lodash.remove(scope.results, function(result) {
+                if (result.type == type && result[type].$id == id) {
+                  return true;
+                }
+                return false;
               });
             });
-          });
-
-          BreweryManager.searchByName(val, function(id, brewery) {
-            // ignore if not for current query
-            if (lastQueryTime !== currentQueryTime) {
-              return;
-            }
-
-            $timeout(function() {
-              brewery.$id = id;
-
-              scope.results.push({
-                type: 'brewery',
-                brewery: brewery
-              });
-            });
-          });
-
-          SpiritManager.searchByName(val, function(id, spirit) {
-            // ignore if not for current query
-            if (lastQueryTime !== currentQueryTime) {
-              return;
-            }
-
-            $timeout(function() {
-              spirit.$id = id;
-
-              scope.results.push({
-                type: 'spirit',
-                spirit: spirit
-              });
-            });
-          });
-
-          DistilleryManager.searchByName(val, function(id, distillery) {
-            // ignore if not for current query
-            if (lastQueryTime !== currentQueryTime) {
-              return;
-            }
-
-            $timeout(function() {
-              distillery.$id = id;
-
-              scope.results.push({
-                type: 'distillery',
-                distillery: distillery
-              });
-            });
-          });
-
-          WineManager.searchByName(val, function(id, wine) {
-            // ignore if not for current query
-            if (lastQueryTime !== currentQueryTime) {
-              return;
-            }
-
-            $timeout(function() {
-              wine.$id = id;
-
-              scope.results.push({
-                type: 'wine',
-                wine: wine
-              });
-            });
-          });
-
-          WineryManager.searchByName(val, function(id, winery) {
-            // ignore if not for current query
-            if (lastQueryTime !== currentQueryTime) {
-              return;
-            }
-
-            $timeout(function() {
-              winery.$id = id;
-
-              scope.results.push({
-                type: 'winery',
-                winery: winery
-              });
-            });
-          });
-          /*
-
-          firebaseRef().
-          UntappdSearch.query({query: val}).$promise.then(function(results) {
-            var newBeerIds, newBreweryIds, oldBeerIds, oldBreweryIds;
-
-            newBeerIds = lodash.map(results.beers, function(result) {
-              return result.beer.bid;
-            });
-            newBreweryIds = lodash.map(results.breweries, function(result) {
-              return result.brewery.brewery_id;
-            });
-
-            // remove results not still in list
-            lodash.remove($scope.results, function(result) {
-              if (result.type == 'beer') {
-                return !lodash.includes(newBeerIds, result.id);
-              } else if (result.type == 'brewery') {
-                return !lodash.includes(newBreweryIds, result.id);
-              }
-            });
-
-            oldBeerIds =  lodash.chain($scope.results)
-              .where(function(result) {
-                 return result.type == 'beer';
-              })
-              .pluck('id');
-
-            oldBreweryIds = lodash.chain($scope.results)
-              .where(function(result) {
-                return result.type == 'beer';
-              })
-              .pluck('id');
-
-            // add new beers to list
-            results.beers.forEach(function(data) {
-              if (!lodash.includes(oldBeerIds, data.beer.bid)) {
-                $scope.results.push({
-                  type: 'beer',
-                  id: data.beer.bid,
-                  name: data.beer.beer_name,
-                  data: data
-                });
-              }
-            });
-
-            // add new breweries to list
-            results.breweries.forEach(function(data) {
-              if (!lodash.includes(oldBreweryIds, data.brewery.brewery_id)) {
-                $scope.results.push({
-                  type: 'brewery',
-                  id: data.brewery.brewery_id,
-                  name: data.brewery.brewery_name,
-                  data: data
-                });
-              }
-            });
-          });*/
+          }
         };
 
         scope.$watch('query', function(newVal, oldVal) {
@@ -195,6 +109,8 @@
             scope.performSearch(newVal);
           } else {
             // clear results
+            lastQueryVal = "";
+            lastQueryTime = new Date();
             scope.results.splice(0, scope.results.length);
           }
         });

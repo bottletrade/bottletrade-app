@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  angular.module('bottletrade').factory("BreweryManager",
+  angular.module('bottletrade').factory("SpiritManager",
     function(firebaseRef, BTConstants) {
       return {
         searchByNameBegins: searchByNameBegins,
@@ -30,7 +30,7 @@
         var nameLower, query;
 
         nameLower = name.toString().toLowerCase();
-        query = firebaseRef(BTConstants.firebase.breweries).orderByChild('search_name')
+        query = firebaseRef(BTConstants.firebase.spirits).orderByChild('search_name')
                   .startAt(startPrefix + nameLower + startSuffix)
                   .endAt(endPrefix + nameLower + endSuffix);
 

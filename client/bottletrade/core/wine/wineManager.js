@@ -10,35 +10,41 @@
         searchByNameExact: searchByNameExact
       };
 
-      function searchByNameBegins(name) {
-        return _searchByName(name, "", "~", "", "~");
+      function searchByNameBegins(name, addedCallback, removedCallback) {
+        return _searchByName(name, "", "", "", "~", addedCallback, removedCallback);
       }
 
-      function searchByNameEnds(name) {
-        return _searchByName(name, "~", "", "~", "");
+      function searchByNameEnds(name, addedCallback, removedCallback) {
+        return _searchByName(name, "~", "", "~", "", addedCallback, removedCallback);
       }
 
-      function searchByNameContains(name) {
-        return _searchByName(name, "~", "~", "~", "~");
+      function searchByNameContains(name, addedCallback, removedCallback) {
+        return _searchByName(name, "~", "~", "~", "~", addedCallback, removedCallback);
       }
 
-      function searchByNameExact(name) {
-        return _searchByName(name, "", "", "", "");
+      function searchByNameExact(name, addedCallback, removedCallback) {
+        return _searchByName(name, "", "", "", "", addedCallback, removedCallback);
       }
 
-      function _searchByName(name, startPrefix, startSuffix, endPrefix, endSuffix) {
-        var deferred = $q.defer(),
-            nameLower = name.toString().toLowerCase();
+      function _searchByName(name, startPrefix, startSuffix, endPrefix, endSuffix, addedCallback, removedCallback) {
+        var nameLower, query;
 
-        firebaseRef(BTConstants.firebase.wines).orderByChild('search_name')
-          .startAt(startPrefix + nameLower + startSuffix)
-          .endAt(endPrefix + nameLower + endSuffix)
-          .on('child_added',  function(snapshot) {
-            deferred.resolve(snapshot.key(), snapshot.val());
-          }
-        );
+        nameLower = name.toString().toLowerCase();
+        query = firebaseRef(BTConstants.firebase.wines).orderByChild('search_name')
+                  .startAt(startPrefix + nameLower + startSuffix)
+                  .endAt(endPrefix + nameLower + endSuffix);
 
-        return deferred.promise;
+        if (addedCallback) {
+          query.on('child_added',  function(snapshot) {
+            addedCallback(snapshot.key(), snapshot.val());
+          });
+        }
+
+        if (removedCallback) {
+          query.on('child_removed',  function(snapshot) {
+            removedCallback(snapshot.key(), snapshot.val());
+          });
+        }
       }
     }
   );
