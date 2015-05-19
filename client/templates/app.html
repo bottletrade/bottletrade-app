@@ -1,24 +1,24 @@
 <!-- RIGHT OFF CANVAS - USER MENU -->
 <zf-offcanvas id="menu" position="right" ng-click="$event.stopPropagation()">
 	<ul class="menu-bar vertical primary user-menu-with-badge">
-		<li class="user-menu-title" ng-if="user" ui-sref="app.profile()" zf-close="">
+		<li class="user-menu-title" ng-if="$root.user" ui-sref="app.profile()" zf-close="">
 			<div>
-				<span class="float-left" ng-show="!user.facebook">
+				<span class="float-left" ng-show="!$root.user.facebook">
 					<img src="/assets/img/profile/siloutte.jpg"/>
 					Nick
 				</span>
-				<span class="float-left" ng-show="user.facebook">
-					<img ng-if="user.facebook.cachedUserProfile.picture.data.is_silhoutte"
+				<span class="float-left" ng-show="$root.user.facebook">
+					<img ng-if="$root.user.facebook.cachedUserProfile.picture.data.is_silhoutte"
 						 src="/assets/img/profile/siloutte.jpg">
 					</img>
-					<img ng-if="!user.facebook.cachedUserProfile.picture.data.is_silhoutte"
-						 ng-src="{{ user.facebook.cachedUserProfile.picture.data.url }}">
+					<img ng-if="!$root.user.facebook.cachedUserProfile.picture.data.is_silhoutte"
+						 ng-src="{{ $root.user.facebook.cachedUserProfile.picture.data.url }}">
 					</img>
-					{{ user.facebook.displayName }}
+					{{ $root.user.facebook.displayName }}
 				</span>
 			</div>
 		</li>
-		<li ng-if="!user">
+		<li ng-if="!$root.user">
 			<a ui-sref="app.account.login" zf-close="">LOGIN</a>
 		</li>
 		<li>
@@ -68,6 +68,9 @@
 		</li>
 		<li>
 			<a ui-sref="app.distilleries({id:''})" zf-close="">DISTILLERIES</a>
+		</li>
+		<li ng-if="$root.user">
+			<a ng-click="auth.$unauth()" zf-close="">LOGOUT</a>
 		</li>
 	</ul>
 </zf-offcanvas>
