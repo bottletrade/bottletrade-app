@@ -19,7 +19,7 @@
 			</div>
 		</li>
 		<li ng-if="!user">
-			<a ui-sref="app.account.login">LOGIN</a>
+			<a ui-sref="app.account.login" zf-close="">LOGIN</a>
 		</li>
 		<li>
 			<a ui-sref="app.cellar" zf-close="">CELLAR</a>
@@ -89,7 +89,7 @@
 			<a href="app.home">BT</a>
 		</span>
 		<span class="right">
-			<div style="width: 3rem; height: 3rem; float: right;">
+			<div class="menu-logo-position">
 				<a ng-click="toggleMenu(); $event.stopPropagation()">
 					<svg zf-iconic="" data-src="/assets/img/template/BT Menu Icons V1.svg"></svg>
 				</a>
@@ -129,8 +129,8 @@
 	<div class="grid-block wrap">
   	<div class="grid-block fadeIn main-view" ui-view></div>
 		<div class="grid-block vertical medium-horizontal shrink custom-footer">
-			<div class="grid-container">
-				<label>
+			<div class="grid-content">
+				<label class="text-center">
 					SIGN UP FOR THE BOTTLETRADE NEWSLETTER
 					<span class="inline-label">
 						<input type="search" placeholder="YOUR EMAIL">
@@ -140,7 +140,7 @@
 			</div>
 			<div class="grid-container">
 				<label class="text-center">FOLLOW US ON:</label>
-				<span>
+				<span class=" ">
 					<a href="http://instagram.com/thebottletrade" target="_blank"><img src="/assets/img/template/instagram-icon-sm.png" width="35px" height="35px" /></a>
 					<a href="https://twitter.com/thebottletrade" target="_blank"><img src="/assets/img/template/twitter-icon-sm.png" width="35px" height="35px" /></a>
 					<a href="https://www.facebook.com/BottleTrade" target="_blank"><img src="/assets/img/template/facebook-icon-sm.png" width="35px" height="35px" /></a>

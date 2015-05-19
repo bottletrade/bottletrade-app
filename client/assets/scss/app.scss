@@ -96,12 +96,13 @@ body {
 
 	}
 }
-input[type="text"] {
-	&.small-input {
-		height: 1.2rem;
-		margin: .6rem 0rem 0rem 0rem;
-		padding: .2rem;
-	}
+
+.menu-logo-position {
+	position: relative;
+	left: 8px;
+	width: 3rem;
+	height: 3rem;
+	float: right;
 }
 .error-container {
 	margin: -10px 0px 10px 2px;
