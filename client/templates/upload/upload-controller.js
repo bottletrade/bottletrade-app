@@ -11,7 +11,7 @@
       $scope.upload = function () {
         fileReader.readAsText($scope.file, $scope)
           .then(function(data) {
-            var results;
+            var results = [];
 
             // parse results
             switch ($scope.fileContents) {
