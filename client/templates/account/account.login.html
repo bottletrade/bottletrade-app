@@ -4,7 +4,7 @@ url: /login
 data:
 ---
 <div class="grid-block vertical">
-	<div class="grid-block vertical text-center" ng-if="user">
+	<div class="grid-block vertical text-center" ng-if="$root.user">
 		<div class="grid-content">
 			<h4>You're already logged in brah</h4>
 		</div>
@@ -12,7 +12,7 @@ data:
 			<a class="button" ui-sref="app.profile">Go to Profile</a>
 		</div>
 	</div>
-	<div class="grid-block vertical" ng-if="!user">
+	<div class="grid-block vertical" ng-if="!$root.user">
 		<div class="grid-content shrink text-center">
 			<h4>Choose a login option below...</h4>
 		</div>
