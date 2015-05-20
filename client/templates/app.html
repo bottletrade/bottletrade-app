@@ -5,7 +5,6 @@
 			<div>
 				<span class="float-left" ng-show="!$root.user.facebook">
 					<img src="/assets/img/profile/siloutte.jpg"/>
-					Nick
 				</span>
 				<span class="float-left" ng-show="$root.user.facebook">
 					<img ng-if="$root.user.facebook.cachedUserProfile.picture.data.is_silhoutte"
@@ -14,7 +13,7 @@
 					<img ng-if="!$root.user.facebook.cachedUserProfile.picture.data.is_silhoutte"
 						 ng-src="{{ $root.user.facebook.cachedUserProfile.picture.data.url }}">
 					</img>
-					{{ $root.user.facebook.displayName }}
+					<span style="font-stretch: condensed;">{{ $root.user.facebook.displayName }}</span>
 				</span>
 			</div>
 		</li>
@@ -131,8 +130,8 @@
 <!-- FOOTER -->
 	<div class="grid-block wrap">
   	<div class="grid-block fadeIn main-view" ui-view></div>
-		<div class="grid-block vertical medium-horizontal shrink custom-footer">
-			<div class="grid-content text-center">
+		<div class="grid-block vertical medium-horizontal custom-footer">
+			<div class="grid-content text-center shrink">
 				<label>
 					SIGN UP FOR THE BOTTLETRADE NEWSLETTER
 					<span class="inline-label">
@@ -156,7 +155,6 @@
 						<a ui-sref="app.educate.privacyPolicy">Privacy Policy</a> |
 						<a ui-sref="#">Contact Us</a> |
 						<a ui-sref="#">FAQ</a>
-						<br />
 						<label>
 							&copy; Copyright 2013-2015 - BottleTrade LLC
 						</label>
