@@ -1,11 +1,11 @@
-<div class="grid-block">
-  <div class="grid-block align-justify">
+<div class="grid-block small-up-3">
+  <div class="grid-block">
     <p>IMAGE</p>
   </div>
-  <div class="grid-block align-center">
+  <div class="grid-block">
     <h3 class="text-left">{{ beer.name }}<br /><small>Beer</small></h3>
   </div>
-  <div class="grid-block align-right">
+  <div class="grid-block">
     <a class="button secondary small" ui-sref="app.beers({id: beer.$id})">Go to Beer</a>
     <a class="button secondary small" ui-sref="app.beers({id: beer.$id, action: 'cellar'})">Add to Cellar</a>
   </div>
