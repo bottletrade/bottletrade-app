@@ -1,12 +1,12 @@
-<div class="grid-content">
-  <div class="dark card">
-    <img src="http://placekitten.com/g/400/200">
-    <div class="card-divider">
-      <h3 class="text-center">{{ beer.name }}<br /><small>Beer</small></h3>
-    </div>
-    <div class="card-section card-text">
-      <a class="button secondary" ui-sref="app.beers({id: beer.$id})">Go to Beer</a>
-      <a class="button secondary" ui-sref="app.beers({id: beer.$id, action: 'cellar'})">Add to Cellar</a>
-    </div>
+<div class="grid-block">
+  <div class="grid-block align-justify">
+    <p>IMAGE</p>
+  </div>
+  <div class="grid-block align-center">
+    <h3 class="text-left">{{ beer.name }}<br /><small>Beer</small></h3>
+  </div>
+  <div class="grid-block align-right">
+    <a class="button secondary small" ui-sref="app.beers({id: beer.$id})">Go to Beer</a>
+    <a class="button secondary small" ui-sref="app.beers({id: beer.$id, action: 'cellar'})">Add to Cellar</a>
   </div>
 </div>
