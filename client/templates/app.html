@@ -89,7 +89,7 @@
 			</div>
 		</div>
 		<span class="left">
-			<a href="app.home">BT</a>
+			<a ui-sref="app.home">BT</a>
 		</span>
 		<span class="right">
 			<div class="menu-logo-position">
@@ -132,8 +132,8 @@
 	<div class="grid-block wrap">
   	<div class="grid-block fadeIn main-view" ui-view></div>
 		<div class="grid-block vertical medium-horizontal shrink custom-footer">
-			<div class="grid-content">
-				<label class="text-center">
+			<div class="grid-content text-center">
+				<label>
 					SIGN UP FOR THE BOTTLETRADE NEWSLETTER
 					<span class="inline-label">
 						<input type="search" placeholder="YOUR EMAIL">
@@ -141,25 +141,27 @@
 					</span>
 				</label>
 			</div>
-			<div class="grid-container">
-				<label class="text-center">FOLLOW US ON:</label>
-				<span class="align-center">
+			<div class="grid-content text-center">
+				<label>FOLLOW US ON:</label>
+				<span>
 					<a href="http://instagram.com/thebottletrade" target="_blank"><img src="/assets/img/template/instagram-icon-sm.png" width="35px" height="35px" /></a>
 					<a href="https://twitter.com/thebottletrade" target="_blank"><img src="/assets/img/template/twitter-icon-sm.png" width="35px" height="35px" /></a>
 					<a href="https://www.facebook.com/BottleTrade" target="_blank"><img src="/assets/img/template/facebook-icon-sm.png" width="35px" height="35px" /></a>
 				</span>
 			</div>
-			<div class="grid-container text-center v-align">
-				<span>
-					<a ui-sref="app.educate.houseRules">House Rules</a> |
-					<a ui-sref="app.educate.privacyPolicy">Privacy Policy</a> |
-					<a ui-sref="#">Contact Us</a> |
-					<a ui-sref="#">FAQ</a>
-					<br />
-					<label class="text-center">
-						&copy; Copyright 2013-2015 - BottleTrade LLC
-					</label>
-				</span>
+			<div class="grid-block v-align">
+				<div class="grid-block align-center">
+					<span width="100%">
+						<a ui-sref="app.educate.houseRules">House Rules</a> |
+						<a ui-sref="app.educate.privacyPolicy">Privacy Policy</a> |
+						<a ui-sref="#">Contact Us</a> |
+						<a ui-sref="#">FAQ</a>
+						<br />
+						<label>
+							&copy; Copyright 2013-2015 - BottleTrade LLC
+						</label>
+					</span>
+				</div>
 			</div>
 		</div>
 	</div>
