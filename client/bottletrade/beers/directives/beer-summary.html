@@ -1,11 +1,13 @@
-<div class="grid-block small-up-3">
-  <div class="grid-block">
-    <p>IMAGE</p>
+<div class="grid-block" style="border: 1px solid #000; margin: .5rem .2rem 0 .2rem;">
+  <div class="grid-block align-left small-2">
+    <div style="border: 1px solid #C9C9C9; width: 50px; height: 50px;">
+      &nbsp;
+    </div>
   </div>
-  <div class="grid-block">
-    <h3 class="text-left">{{ beer.name }}<br /><small>Beer</small></h3>
+  <div class="grid-block small-5 v-align">
+    <h3 class="text-left">{{ beer.name }}<br /><p>Beer</p></h3>
   </div>
-  <div class="grid-block">
+  <div class="grid-block align-right small-5 v-align">
     <a class="button secondary small" ui-sref="app.beers({id: beer.$id})">Go to Beer</a>
     <a class="button secondary small" ui-sref="app.beers({id: beer.$id, action: 'cellar'})">Add to Cellar</a>
   </div>
