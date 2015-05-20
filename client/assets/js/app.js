@@ -8,9 +8,7 @@
     'ngLodash',
 
     // firebase
-    'firebase',
-    'firebase.routeSecurity',
-    'firebase.utils',
+    'bottletrade.firebase',
 
     // foundation
     'foundation',

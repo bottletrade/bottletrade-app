@@ -28,8 +28,6 @@ var appDepJs = [
 ];
 // These files are for your app's JavaScript
 var appJS = [
-  'client/assets/js/firebase.routeSecurity.js',
-  'client/assets/js/firebase.utils.js',
   'client/bottletrade/bottletrade.js',
   'client/bottletrade/**/*.js',
   'client/assets/js/app.js',
