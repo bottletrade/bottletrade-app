@@ -4,68 +4,198 @@ url: /upload
 data: { authRequired: false }
 controller: UploadCtrl
 ---
-<div class="grid-content" ng-show="parsedResults.length == 0">
-  <div class="grid-container">
-    <label>What's in the file?</label>
-    <input type="radio" ng-model="fileContents" value="beers" id="contentBeers"><label for="contentBeers">Beers</label>
-    <input type="radio" ng-model="fileContents" value="breweries" id="contentBreweries"><label for="contentBreweries">Breweries</label>
+<div class="grid-block vertical">
+  <div class="grid-content">
+    <div class="grid-container">
+      <h4>What do you want to upload?</h4>
+      <ul class="button-group segmented">
+        <li>
+          <input type="radio" ng-model="fileContents" value="beers" id="contentBeers">
+          <label for="contentBeers">Beers</label>
+        </li>
+        <li>
+          <input type="radio" ng-model="fileContents" value="breweries" id="contentBreweries">
+          <label for="contentBreweries">Breweries</label>
+        </li>
+        <li>
+          <input type="radio" ng-model="fileContents" value="wines" id="contentWines">
+          <label for="contentWines">Wines</label>
+        </li>
+        <li>
+          <input type="radio" ng-model="fileContents" value="wineries" id="contentWineries">
+          <label for="contentWineries">Wineries</label>
+        </li>
+        <li>
+          <input type="radio" ng-model="fileContents" value="spirits" id="contentSpirits">
+          <label for="contentSpirits">Spirits</label>
+        </li>
+        <li>
+          <input type="radio" ng-model="fileContents" value="distilleries" id="contentDistilleries">
+          <label for="contentDistilleries">Distilleries</label>
+        </li>
+      </ul>
+    </div>
   </div>
-  <div class="grid-container">
-    <form>
-      <input type="file" ng-file-select="onFileSelect($files)">
-    </form>
+  <div class="grid-block vertical" ng-show="fileContents && parsedResults.length == 0">
+    <div class="grid-content" ng-show="fileContents == 'beers'">
+      <h1>TODO: Fill with content describing how the spreadsheet should be formatted if uploading beers</h1>
+    </div>
+    <div class="grid-content" ng-show="fileContents == 'breweries'">
+      <h1>TODO: Fill with content describing how the spreadsheet should be formatted if uploading breweries</h1>
+    </div>
+    <div class="grid-content" ng-show="fileContents == 'wines'">
+      <h1>TODO: Fill with content describing how the spreadsheet should be formatted if uploading wines</h1>
+    </div>
+    <div class="grid-content" ng-show="fileContents == 'wineries'">
+      <h1>TODO: Fill with content describing how the spreadsheet should be formatted if uploading wineries</h1>
+    </div>
+    <div class="grid-content" ng-show="fileContents == 'spirits'">
+      <h1>TODO: Fill with content describing how the spreadsheet should be formatted if uploading spirits</h1>
+    </div>
+    <div class="grid-content" ng-show="fileContents == 'distilleries'">
+      <h1>TODO: Fill with content describing how the spreadsheet should be formatted if uploading distilleries</h1>
+    </div>
+    <div class="grid-content">
+      <div class="grid-container">
+        <form>
+          <input type="file" ng-file-select="onFileSelect($files)">
+        </form>
+      </div>
+      <div class="grid-container">
+        <a class="button" ng-click="upload()">Upload</a>
+      </div>
+      <div class="grid-container">
+        <b>Progress:</b>
+        <progress value="{{ progress }}"></progress>
+      </div>
+    </div>
   </div>
-  <div class="grid-container">
-    <a class="button" ng-click="upload()">Upload</a>
-  </div>
-  <div class="grid-container">
-    <b>Progress:</b>
-    <progress value="{{ progress }}"></progress>
-  </div>
-</div>
-<div class="grid-block vertical" ng-if="parsedResults.length > 0">
-  <div class="grid-container">
-    <span>Your spreadsheet containing {{ fileContentType }} has been loaded.  Please review and correct any errors before submitting.</span>
-  </div>
-  <div class="grid-container">
-    <a class="button" ng-click="save()">Submit</a>
-  </div>
-  <div class="grid-block">
-    <table ng-if="fileContents == 'breweries'">
-      <thead>
-        <th>Name</th>
-      </thead>
-      <tbody>
-        <tr ng-repeat="result in parsedResults">
-          <td>
-            <span ng-show="result.matchedBreweries"><img zf-iconic="" icon="circle-check" size="small"></img></span>
-            <span ng-show="!result.matchedBreweries"><img zf-iconic="" icon="circle-x" size="small"></img></span>
-            {{ result.name }}
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <table ng-if="fileContents == 'beers'">
-      <thead>
-        <tr>
-          <th>Brewery</th>
+  <div class="grid-block vertical" ng-show="parsedResults.length > 0">
+    <div class="grid-container">
+      <span>Your spreadsheet containing {{ fileContentType }} has been loaded.  Please review and correct any errors before submitting.</span>
+    </div>
+    <div class="grid-container">
+      <a class="button" ng-click="save()">Submit</a>
+    </div>
+    <div class="grid-block" ng-if="fileContents == 'breweries'">
+      <table>
+        <thead>
           <th>Name</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr ng-repeat="result in parsedResults">
-          <td>
-            <span ng-show="result.matchedBreweries"><img zf-iconic="" icon="circle-check" size="small"></img></span>
-            <span ng-show="!result.matchedBreweries"><img zf-iconic="" icon="circle-x" size="small"></img></span>
-            {{ result.brewery }}
-          </td>
-          <td>
-            <span ng-show="result.matchedBeers"><img zf-iconic="" icon="circle-check" size="small"></img></span>
-            <span ng-show="!result.matchedBeers"><img zf-iconic="" icon="circle-x" size="small"></img></span>
-            {{ result.name }}
-          </td>
-        </tr>
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          <tr ng-repeat="result in parsedResults">
+            <td>
+              <span ng-show="result.matchedBreweries"><img zf-iconic="" icon="circle-check" size="small"></img></span>
+              <span ng-show="!result.matchedBreweries"><img zf-iconic="" icon="circle-x" size="small"></img></span>
+              {{ result.name }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="grid-block" ng-if="fileContents == 'beers'">
+      <table>
+        <thead>
+          <tr>
+            <th>Brewery</th>
+            <th>Name</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="result in parsedResults">
+            <td>
+              <span ng-show="result.matchedBreweries"><img zf-iconic="" icon="circle-check" size="small"></img></span>
+              <span ng-show="!result.matchedBreweries"><img zf-iconic="" icon="circle-x" size="small"></img></span>
+              {{ result.brewery }}
+            </td>
+            <td>
+              <span ng-show="result.matchedBeers"><img zf-iconic="" icon="circle-check" size="small"></img></span>
+              <span ng-show="!result.matchedBeers"><img zf-iconic="" icon="circle-x" size="small"></img></span>
+              {{ result.name }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="grid-block" ng-if="fileContents == 'wineries'">
+      <table>
+        <thead>
+          <th>Name</th>
+        </thead>
+        <tbody>
+          <tr ng-repeat="result in parsedResults">
+            <td>
+              <span ng-show="result.matchedWineries"><img zf-iconic="" icon="circle-check" size="small"></img></span>
+              <span ng-show="!result.matchedWineries"><img zf-iconic="" icon="circle-x" size="small"></img></span>
+              {{ result.name }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="grid-block" ng-if="fileContents == 'wines'">
+      <table>
+        <thead>
+          <tr>
+            <th>Winery</th>
+            <th>Name</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="result in parsedResults">
+            <td>
+              <span ng-show="result.matchedWineries"><img zf-iconic="" icon="circle-check" size="small"></img></span>
+              <span ng-show="!result.matchedWineries"><img zf-iconic="" icon="circle-x" size="small"></img></span>
+              {{ result.winery }}
+            </td>
+            <td>
+              <span ng-show="result.matchedWines"><img zf-iconic="" icon="circle-check" size="small"></img></span>
+              <span ng-show="!result.matchedWines"><img zf-iconic="" icon="circle-x" size="small"></img></span>
+              {{ result.name }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="grid-block" ng-if="fileContents == 'distilleries'">
+      <table>
+        <thead>
+          <th>Name</th>
+        </thead>
+        <tbody>
+          <tr ng-repeat="result in parsedResults">
+            <td>
+              <span ng-show="result.matchedDistilleries"><img zf-iconic="" icon="circle-check" size="small"></img></span>
+              <span ng-show="!result.matchedDistilleries"><img zf-iconic="" icon="circle-x" size="small"></img></span>
+              {{ result.name }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="grid-block" ng-if="fileContents == 'spirits'">
+      <table>
+        <thead>
+          <tr>
+            <th>Distillery</th>
+            <th>Name</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="result in parsedResults">
+            <td>
+              <span ng-show="result.matchedDistilleries"><img zf-iconic="" icon="circle-check" size="small"></img></span>
+              <span ng-show="!result.matchedDistilleries"><img zf-iconic="" icon="circle-x" size="small"></img></span>
+              {{ result.distillery }}
+            </td>
+            <td>
+              <span ng-show="result.matchedSpirits"><img zf-iconic="" icon="circle-check" size="small"></img></span>
+              <span ng-show="!result.matchedSpirits"><img zf-iconic="" icon="circle-x" size="small"></img></span>
+              {{ result.name }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>

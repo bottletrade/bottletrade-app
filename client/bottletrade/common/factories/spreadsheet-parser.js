@@ -9,12 +9,30 @@
       beer: {
         brewery: 0,
         name: 1
+      },
+      winery: {
+        name: 0
+      },
+      wine: {
+        winery: 0,
+        name: 1
+      },
+      distillery: {
+        name: 0
+      },
+      spirit: {
+        distillery: 0,
+        name: 1
       }
     };
 
     return {
       parseBreweryCsv: parseBreweryCsv,
       parseBeerCsv: parseBeerCsv,
+      parseWineryCsv: parseWineryCsv,
+      parseWineCsv: parseWineCsv,
+      parseDistilleryCsv: parseDistilleryCsv,
+      parseSpiritCsv: parseSpiritCsv,
     };
 
     function parseBreweryCsv(csv) {
@@ -33,6 +51,48 @@
         results.push({
           brewery: row[col.beer.brewery],
           name: row[col.beer.name]
+        });
+      });
+      return results;
+    }
+
+    function parseWineryCsv(csv) {
+      var results = [];
+      parseCsv(csv).forEach(function(row) {
+        results.push({
+          name: row[col.winery.name]
+        });
+      });
+      return results;
+    }
+
+    function parseWineCsv(csv) {
+      var results = [];
+      parseCsv(csv).forEach(function(row) {
+        results.push({
+          winery: row[col.wine.winery],
+          name: row[col.wine.name]
+        });
+      });
+      return results;
+    }
+
+    function parseDistilleryCsv(csv) {
+      var results = [];
+      parseCsv(csv).forEach(function(row) {
+        results.push({
+          name: row[col.distillery.name]
+        });
+      });
+      return results;
+    }
+
+    function parseSpiritCsv(csv) {
+      var results = [];
+      parseCsv(csv).forEach(function(row) {
+        results.push({
+          distillery: row[col.spirit.distillery],
+          name: row[col.spirit.name]
         });
       });
       return results;
