@@ -2,10 +2,18 @@
   <div class="dark card">
     <img src="http://placekitten.com/g/400/200">
     <div class="card-divider">
-      <h3 class="text-center">{{ bottle.name }}<br /><small>Bottle Summary</small></h3>
+      <h3 class="text-center"><small>Bottle Summary</small></h3>
     </div>
     <div class="card-section card-text">
-      <p>Brewery: {{ bottle.brewedBy }}</p>
+      <div ng-if="bottle.type == 'beer'">
+        <p>Beer: {{ bottle.beverage.name }}</p>
+      </div>
+      <div ng-if="bottle.type == 'wine'">
+        <p>Wine: {{ bottle.beverage.name }}</p>
+      </div>
+      <div ng-if="bottle.type == 'spirit'">
+        <p>Spirit: {{ bottle.beverage.name }}</p>
+      </div>
       <p>Style: {{ bottle.style }}</p>
       <p>Bottle Size: {{ bottle.volume }}</p>
       <p>Quantity: {{ bottle.quantity }}</p>

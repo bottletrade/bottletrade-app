@@ -2,7 +2,7 @@
   'use strict';
 
   angular.module('bottletrade.bottles').factory("BottleManager",
-    function(firebaseRef, BTConstants) {
+    function(firebaseRef, BTConstants, BottleList) {
       return {
         searchByDescription: searchByDescription
       };

@@ -16,7 +16,7 @@
       <p>Bottled On: {{ beer.bottleDate }}</p>
       <p>Purchase Price: {{ beer.purchasePrice }}</p>
       <p>Description: {{ beer.description }}</p>
-      <a class="button secondary" ui-sref="app.beers({id: beer.$id})">Add to Cellar</a>
+      <a class="button secondary" ui-sref="app.beers({id: beer.$id, action: 'cellar'})">Add to Cellar</a>
     </div>
   </div>
 </div>

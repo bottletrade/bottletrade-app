@@ -1,52 +1,38 @@
 <div class="small-12 vertical grid-block input-bg">
   <div class="grid-content">
     <p class="text-center">ADD A BOTTLE</p>
+    <beer-summary class="small-12" beer="bottle.beverage" ng-if="bottle.type == 'beer'"></beer-summary>
+    <wine-summary class="small-12" beer="bottle.beverage" ng-if="bottle.type == 'wine'"></wine-summary>
+    <spirit-summary class="small-12" beer="bottle.beverage" ng-if="bottle.type == 'spirit'"></spirit-summary>
     <div class="grid-container small-12 medium-6">
       <form>
-        <label>
-          Beer Name:
-          <input ng-model="bottle.name" type="text"></input>
-        </label>
-
-        <label>
-          Brewed By:
-          <input ng-model="bottle.brewedBy" type="text"></input>
-        </label>
-
         <label>
           Bottle Style:
           <input ng-model="bottle.style" type="text"></input>
         </label>
-
         <label>
           Bottle Size:
           <input ng-model="bottle.volume" type="text" placeholder="oz. liter ml etc"></input>
         </label>
-
         <label>
           Quantity:
           <input ng-model="bottle.quantity" type="text"></input>
         </label>
-
         <label>
           Bottled On Date:
           <input ng-model="bottle.bottleDate" type="date"></input>
         </label>
-
         <label>
           Purchase Price:
           <input ng-model="bottle.purchasePrice" type="text" maxlength="250"></input>
         </label>
-
         <label>
           Description:
           <textarea ng-model="bottle.description"></textarea>
         </label>
-
         <div class="grid-content">
           <a class="button" ng-click="save()">Save</a>
         </div>
-
       </div>
     </form>
   </div>

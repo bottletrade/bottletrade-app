@@ -5,20 +5,22 @@ data: { authRequired: false }
 controller: BeersCtrl
 ---
 <div class="grid-block wrap" ng-if="beer">
-  <div class="small-12 grid-container text-center" ng-show="!editing">
-    <br /><a class="button" ng-click="editing = true">Edit Beer</a>
-  </div>
-  <add-beer updated="updated(beer); editing = false" beer="beer" ng-show="editing"></add-beer>
-  <div class="grid-block" ng-show="!editing">
+  <add-beer updated="updated(beer)" beer="beer" ng-show="action == 'edit'"></add-beer>
+  <add-bottle created="addedToCellar(bottle)" beer="beer" ng-if="action == 'cellar'"></add-bottle>
+  <div class="grid-block wrap" ng-show="action != 'edit' && action != 'cellar'">
+    <div class="small-12 grid-container text-center">
+      <a class="button" ui-sref="app.beers({id: beer.$id, action: 'edit'})">Edit Beer</a>
+      <a class="button" ui-sref="app.beers({id: beer.$id, action: 'cellar'})">Add To Cellar</a>
+    </div>
     <beer-display class="small-12" data-beer="beer"></beer-display>
   </div>
 </div>
 <div class="grid-container wrap" ng-if="beers">
-  <div class="small-12 grid-container text-center" ng-show="!adding">
-    <br /><a class="button" ng-click="adding = true">Add A Beer</a>
+  <div class="small-12 grid-container text-center" ng-show="action != 'new'">
+    <br /><a class="button" ui-sref="app.beers({id: 'new'})" ui-sref-opts="{reload:true}">Add A Beer</a>
   </div>
-  <add-beer created="created(beer); adding = false" ng-show="adding"></add-beer>
-  <div class="grid-block wrap" ng-show="!adding">
+  <add-beer created="created(beer)" ng-show="action == 'new'"></add-beer>
+  <div class="grid-block wrap" ng-show="action != 'new'">
     <beer-summary class="small-12 medium-4 large-2" ng-repeat="beer in beers" data-beer="beer"></beer-summary>
   </div>
 </div>

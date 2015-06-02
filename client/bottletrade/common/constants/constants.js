@@ -14,6 +14,7 @@
         distillery: "distillery"
       },
       firebase: {
+        bottles: "bottles",
         beers: "beers",
         wines: "wines",
         spirits: "spirits",

@@ -3,6 +3,11 @@
     ".read": true,
     ".write": true,
 
+    "bottles": {
+      // indexes
+      ".indexOn": ["search_description"]
+    },
+
     "breweries": {
       // indexes
       ".indexOn": ["search_name"],
