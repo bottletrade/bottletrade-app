@@ -1,22 +1,41 @@
-<div class="grid-content">
-  <div class="dark card">
+<div class="grid-block vertical">
+  <div class="grid-block" style="height:115px;">
     <img src="http://placekitten.com/g/400/200">
-    <div class="card-divider">
-      <h3 class="text-center">{{ beer.name }}<br /><small>Beer</small></h3>
+  </div>
+  <div class="grid-block" style="overflow: visible;">
+    <div class="grid-content align-left small-2" style="border: 2px solid #000; position: relative; top: -15px; margin: 0rem 0rem 0rem 1.5rem; height: 75px; width: 75px; z-index: 999; background-color: #FFF;">
+      <p class="text-center">bottle image</p>
     </div>
-    <div class="card-section card-text">
-      <p>Brewery: {{ beer.brewedBy }}</p>
-      <p>Style: {{ beer.style }}</p>
-      <p>ABV: {{ beer.abv }}</p>
-      <p>IBU: {{ beer.ibu }}</p>
-      <p>SRM: {{ beer.srm }}</p>
-      <p>UPC: {{ beer.upc }}</p>
-      <p>Bottle Size: {{ beer.volume }}</p>
-      <p>Quantity: {{ beer.quantity }}</p>
-      <p>Bottled On: {{ beer.bottleDate }}</p>
-      <p>Purchase Price: {{ beer.purchasePrice }}</p>
-      <p>Description: {{ beer.description }}</p>
+    <div class="grid-content text-left">
+      <h3>{{ beer.name }}</h3><br />
+      <h4>{{ beer.brewedBy }}</h4><br />
+      <h5>{{ beer.style }}</h5>
+    </div>
+    <div class="grid-content text-right" style="margin: .5rem 0rem 0rem 0rem;">
+      <zf-action-sheet id="my-actionsheet">
+        <zf-as-button><img zf-iconic="" icon="cog" size="medium"></zf-as-button>
+        <zf-as-content position="top">
+          <ul>
+            <li><a ui-sref="app.beers({id: beer.$id, action: 'edit'})">Edit {{ beer.name }}</a></li>
+            <li><a ui-sref="app.beers({id: beer.$id, action: 'cellar'})">Add {{ beer.name }} to Cellar</a></li>
+            <li><a>Add {{ beer.name }} to ISO</a></li>
+          </ul>
+        </zf-as-content>
+      </zf-action-sheet>
+    </div>
+  </div>
+  <div class="grid-content" style="overflow: visible;">
+    <h5 class="text-center">ABV: {{ beer.abv }} | SRM: {{ beer.srm }} | IBU: {{ beer.ibu }} | Rating</h5>
+  </div>
+  <div class="grid-content" style="padding: .5rem 4rem;">
+    <p class="text-justify">Description: {{ beer.description }} Here is the long description so i can see how it renders when someone enters a sedescripton.</p>
+  </div>
+  <div class="grid-block">
+    <div class="grid-content" style="text-align: right;">
       <a class="button secondary" ui-sref="app.beers({id: beer.$id, action: 'cellar'})">Add to Cellar</a>
+    </div>
+    <div class="grid-content" style="text-align: left;">
+      <a class="button secondary">Add to ISO</a>
     </div>
   </div>
 </div>

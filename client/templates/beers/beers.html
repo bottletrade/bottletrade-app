@@ -4,14 +4,10 @@ url: /beers/?id/?action
 data: { authRequired: false }
 controller: BeersCtrl
 ---
-<div class="grid-block wrap" ng-if="beer">
+<div class="grid-block" ng-if="beer">
   <add-beer updated="updated(beer)" beer="beer" ng-show="action == 'edit'"></add-beer>
   <add-bottle created="addedToCellar(bottle)" beer="beer" ng-if="action == 'cellar'"></add-bottle>
   <div class="grid-block wrap" ng-show="action != 'edit' && action != 'cellar'">
-    <div class="small-12 grid-container text-center">
-      <a class="button" ui-sref="app.beers({id: beer.$id, action: 'edit'})">Edit Beer</a>
-      <a class="button" ui-sref="app.beers({id: beer.$id, action: 'cellar'})">Add To Cellar</a>
-    </div>
     <beer-display class="small-12" data-beer="beer"></beer-display>
   </div>
 </div>
