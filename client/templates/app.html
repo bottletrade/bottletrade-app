@@ -131,7 +131,7 @@
 	<div class="grid-block wrap">
   	<div class="grid-block fadeIn main-view" ui-view></div>
 		<div class="grid-block vertical medium-horizontal custom-footer">
-			<div class="grid-content text-center shrink">
+			<div class="grid-content text-center shrink" ng-show="!$root.user">
 				<label>
 					SIGN UP FOR THE BOTTLETRADE NEWSLETTER
 					<span class="inline-label">
@@ -140,17 +140,17 @@
 					</span>
 				</label>
 			</div>
-			<div class="grid-content text-center">
-				<label>FOLLOW US ON:</label>
-				<span>
-					<a href="http://instagram.com/thebottletrade" target="_blank"><img src="/assets/img/template/instagram-icon-sm.png" width="35px" height="35px" /></a>
-					<a href="https://twitter.com/thebottletrade" target="_blank"><img src="/assets/img/template/twitter-icon-sm.png" width="35px" height="35px" /></a>
-					<a href="https://www.facebook.com/BottleTrade" target="_blank"><img src="/assets/img/template/facebook-icon-sm.png" width="35px" height="35px" /></a>
-				</span>
-			</div>
-			<div class="grid-block v-align">
-				<div class="grid-block align-center">
-					<span width="100%">
+			<div class="grid-block align-center wrap">
+				<div class="grid-content text-center shrink">
+					<label>FOLLOW US ON:</label>
+					<span>
+						<a href="http://instagram.com/thebottletrade" target="_blank"><img src="/assets/img/template/instagram-icon-sm.png" width="35px" height="35px" /></a>
+						<a href="https://twitter.com/thebottletrade" target="_blank"><img src="/assets/img/template/twitter-icon-sm.png" width="35px" height="35px" /></a>
+						<a href="https://www.facebook.com/BottleTrade" target="_blank"><img src="/assets/img/template/facebook-icon-sm.png" width="35px" height="35px" /></a>
+					</span>
+				</div>
+				<div class="grid-block v-align shrink">
+					<span class="text-center" width="100%">
 						<a ui-sref="app.educate.houseRules">House Rules</a> |
 						<a ui-sref="app.educate.privacyPolicy">Privacy Policy</a> |
 						<a ui-sref="#">Contact Us</a> |
