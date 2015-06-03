@@ -53,8 +53,7 @@ http://svgeneration.com/generate/Wood-Grain?base-color=e0c0b3&grain-color=e6d4ca
 	}
 	.thumbnail {
 			img {
-				width: 6rem;
-				height: 6rem;
+				height: 8rem;
 			}
 		border: 2px solid #000;
 		position: relative;
@@ -66,6 +65,13 @@ http://svgeneration.com/generate/Wood-Grain?base-color=e0c0b3&grain-color=e6d4ca
 	}
 	.cog-holder {
 		margin: .5rem 0rem 0rem 0rem;
+		li:first-child {
+			color: #FFF;
+			background-color: $primary-color;
+			height: 3rem;
+			margin: 0rem auto;
+			padding: .5rem 0rem;
+			}
 	}
 	.stat-holder {
 		overflow: visible;
@@ -78,6 +84,9 @@ http://svgeneration.com/generate/Wood-Grain?base-color=e0c0b3&grain-color=e6d4ca
 	}
 	.button-holder-right {
 		text-align: left;
+	}
+	.action-sheet {
+		background-color: primary-color;
 	}
 }
 
@@ -190,7 +199,7 @@ h5 {
 		}
 	}
 }
-.custom-footer {
+.non-user-custom-footer {
 	align-self: flex-end;
 	background-color: #C2B49B;
 	border-top: 1px solid #716558;
@@ -214,6 +223,15 @@ h5 {
 	}
 	.grid-container {
 		line-height: 1rem;
+	}
+}
+
+.user-custom-footer {
+	li {
+		border-right: 1px solid #FFF;
+	}
+	li:last-child {
+		border-right: 0px solid #FFF;
 	}
 }
 
