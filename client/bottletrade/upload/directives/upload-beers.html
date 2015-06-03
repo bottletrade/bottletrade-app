@@ -1,0 +1,43 @@
+<div class="grid-block vertical upload-beer">
+  <div class="grid-container">
+    <span>Your spreadsheet containing BEERS has been loaded.  Please review and correct any errors before submitting.</span>
+  </div>
+  <div class="grid-container">
+    <a class="button" ng-click="save()">Submit</a>
+  </div>
+  <div class="grid-container">
+    <table>
+      <thead>
+        <tr>
+          <th>STATUS</th>
+          <th>BREWERY</th>
+          <th>BEER</th>
+          <th>MORE</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="result in beers">
+          <td>
+            <span ng-show="totalMatchedBreweries(result) == 1 && totalMatchedBeers(result) == 1">FOUND</span>
+            <span ng-show="totalMatchedBreweries(result) == 1 && correctBeer">FOUND</span>
+            <span ng-show="correctBrewery && totalMatchedBeers(result) == 1">FOUND</span>
+            <span ng-show="correctBrewery && correctBeer">FOUND</span>
+            <span ng-show="totalMatchedBreweries(result) == 0 || totalMatchedBeers(result) == 0">NEW</span>
+            <span ng-show="totalMatchedBreweries(result) == 1 && totalMatchedBeers(result) == 1">FIX</span>
+          </td>
+          <td>
+            <span ng-show="result.matchedBreweries"><img zf-iconic="" icon="circle-check" size="small"></img></span>
+            <span ng-show="!result.matchedBreweries"><img zf-iconic="" icon="circle-x" size="small"></img></span>
+            {{ result.brewery }}
+          </td>
+          <td>
+            <span ng-show="result.matchedBeers"><img zf-iconic="" icon="circle-check" size="small"></img></span>
+            <span ng-show="!result.matchedBeers"><img zf-iconic="" icon="circle-x" size="small"></img></span>
+            {{ result.name }}
+          </td>
+          <td><a class="button">VIEW</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

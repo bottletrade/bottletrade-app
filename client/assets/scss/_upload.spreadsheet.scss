@@ -1,0 +1,41 @@
+@import "foundation";
+
+.upload-beer,
+.upload-spirit,
+.upload-wine {
+  table {
+    th {
+      width: calc(100%/4);
+    }
+    @include breakpoint(medium) {
+      th {
+        width: calc(100%/4);
+      }
+    }
+    @include breakpoint(large) {
+      th {
+        width: calc(100%/4);
+      }
+    }
+  }
+}
+
+.upload-brewery,
+.upload-distillery,
+.upload-winery {
+  table {
+    th {
+      width: calc(100%/3);
+    }
+    @include breakpoint(medium) {
+      th {
+        width: calc(100%/3);
+      }
+    }
+    @include breakpoint(large) {
+      th {
+        width: calc(100%/3);
+      }
+    }
+  }
+}

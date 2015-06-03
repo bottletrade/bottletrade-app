@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  angular.module('bottletrade').factory("SearchService",
+  angular.module('bottletrade.search').factory("SearchService",
     function() {
       var config = {
         query: ""

@@ -22,7 +22,7 @@
 
         <label>
           Brewed By:
-          <input ng-model="beer.brewedBy" name="beer_brewery" type="text" required></input>
+          <brewery-autocomplete selected="beer.brewery" input-name="beer_brewery"></brewery-autocomplete>
         </label>
         <div class="error-container"
             ng-show="add_beer_form.beer_brewery.$invalid && add_beer_form.$submitted">

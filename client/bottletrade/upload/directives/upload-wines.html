@@ -1,0 +1,32 @@
+<div class="grid-block vertical upload-wine">
+  <div class="grid-container">
+    <span>Your spreadsheet containing WINES has been loaded.  Please review and correct any errors before submitting.</span>
+  </div>
+  <div class="grid-container">
+    <a class="button" ng-click="save()">Submit</a>
+  </div>
+  <div class="grid-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Winery</th>
+          <th>Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="result in wines">
+          <td>
+            <span ng-show="result.matchedWineries"><img zf-iconic="" icon="circle-check" size="small"></img></span>
+            <span ng-show="!result.matchedWineries"><img zf-iconic="" icon="circle-x" size="small"></img></span>
+            {{ result.winery }}
+          </td>
+          <td>
+            <span ng-show="result.matchedWines"><img zf-iconic="" icon="circle-check" size="small"></img></span>
+            <span ng-show="!result.matchedWines"><img zf-iconic="" icon="circle-x" size="small"></img></span>
+            {{ result.name }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

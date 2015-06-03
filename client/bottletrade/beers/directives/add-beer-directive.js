@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  angular.module('bottletrade.beers').directive('addBeer', function(BeerList) {
+  angular.module('bottletrade.beers').directive('addBeer', function(FoundationApi, BeerList) {
     return {
       replace: true,
       templateUrl: '/bottletrade/beers/directives/add-beer.html',
@@ -16,6 +16,10 @@
         if (scope.isNew) {
           scope.beer = {};
         }
+
+        scope.$watch('brewedBy', function(newVal, oldVal) {
+
+        });
 
         scope.save = function() {
           scope.add_beer_form.$submitted=true;
