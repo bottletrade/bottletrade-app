@@ -185,20 +185,11 @@ h5 {
 
 .title-bar {
 	height: 3rem;
-	.title {
-		.grid-block, .grid-content {
-			&.shrink {
-				overflow: visible;
-			}
-		}
-		.grid-content {
-			padding: 0px;
-		}
-		input, a.button {
-			margin: 0px;
-		}
+	input {
+		margin: 0px;
 	}
 }
+
 .non-user-custom-footer {
 	align-self: flex-end;
 	background-color: #C2B49B;
@@ -227,11 +218,15 @@ h5 {
 }
 
 .user-custom-footer {
+	ul {
+		border-top: 1px solid #000;
+		width: 100%;
+	}
 	li {
-		border-right: 1px solid #FFF;
+		border-right: 1px solid #000;
 	}
 	li:last-child {
-		border-right: 0px solid #FFF;
+		border-right: 0px solid #000;
 	}
 }
 
