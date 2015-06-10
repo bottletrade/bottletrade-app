@@ -17,6 +17,6 @@ controller: BeersCtrl
   </div>
   <add-beer created="created(beer)" ng-show="action == 'new'"></add-beer>
   <div class="grid-block wrap" ng-show="action != 'new'">
-    <beer-summary class="small-12 medium-4 large-2" ng-repeat="beer in beers" data-beer="beer"></beer-summary>
+    <beer-summary ng-repeat="beer in beers" data-beer="beer"></beer-summary>
   </div>
 </div>

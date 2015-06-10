@@ -578,8 +578,8 @@ $dark-color: #232323;
 // 25. Title Bar
 // - - - - - - - - - - - - - - -
 
- $titlebar-center-width: 75%;
-// $titlebar-side-width: (100% - $titlebar-center-width) / 2;
+$titlebar-center-width: none;
+$titlebar-side-width: none;
 // $titlebar-background: #eee;
 // $titlebar-color: #000;
 // $titlebar-border: 1px solid #ccc;

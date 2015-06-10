@@ -188,6 +188,18 @@ h5 {
 	input {
 		margin: 0px;
 	}
+	.center {
+		width: 50%;
+	}
+	.button {
+		border: 1px solid #FFF;
+		margin: .8rem .2rem .8rem -.8rem;
+	}
+	.menu-position {
+		left: 8px;
+		width: 3rem;
+		height: 3rem;
+	}
 }
 
 .non-user-custom-footer {
@@ -220,13 +232,26 @@ h5 {
 .user-custom-footer {
 	ul {
 		border-top: 1px solid #000;
-		width: 100%;
 	}
 	li {
 		border-right: 1px solid #000;
 	}
 	li:last-child {
 		border-right: 0px solid #000;
+	}
+}
+
+.summary-container {
+	img {
+		width: 50px;
+		height: 50px;
+	}
+	div {
+		overflow: visible;
+	}
+	a {
+		padding: .5rem .5rem;
+		margin: .4rem .5rem;
 	}
 }
 
