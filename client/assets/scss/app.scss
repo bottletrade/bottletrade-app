@@ -193,12 +193,18 @@ h5 {
 	}
 	.button {
 		border: 1px solid #FFF;
-		margin: .8rem .2rem .8rem -.8rem;
+		margin: .8rem .2rem .8rem -.6rem;
 	}
 	.menu-position {
-		left: 8px;
 		width: 3rem;
 		height: 3rem;
+		float: right;
+	}
+	.left {
+		width: 35%;
+	}
+	.right {
+		width: 15%;
 	}
 }
 
