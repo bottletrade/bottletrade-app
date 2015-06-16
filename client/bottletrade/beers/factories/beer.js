@@ -9,7 +9,9 @@
           "$save": function() {
             // before saving object, update search name and brewery
             this.search_name = this.name.toLowerCase();
-            this.brewery = this.brewery.$id;
+            if (!angular.isString(this.brewery)) {
+              this.brewery = this.brewery.$id;
+            }
             return $firebaseObject.prototype.$save.call(this);
           },
           "$$updated": function(snapshot) {
@@ -17,7 +19,9 @@
             var changed = $firebaseObject.prototype.$$updated.apply(this, arguments);
 
             if (changed) {
-              this.brewery = new Brewery(this.brewery);
+              if (angular.isString(this.brewery)) {
+                this.brewery = new Brewery(this.brewery);
+              }
             }
 
             return changed;

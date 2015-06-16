@@ -5,7 +5,7 @@ data: { authRequired: false }
 controller: UploadCtrl
 ---
 <div class="grid-block align-center">
-  <div class="grid-block wrap small-up-1 small-12 medium-10 large-7 align-center upload-spreadsheet">
+  <div class="grid-block wrap small-up-1 small-12 medium-10 large-7 align-center upload-spreadsheet" ng-show="fileResults.length == 0">
     <div class="grid-content">
       <h4 class="text-center">UPLOAD SPREADSHEET</h4>
       <p class="text-justify">Many enthusiasts have spent countless hours logging their bottle collection onto spreadsheets via Google Docs, Excel and Numbers for Mac. You can now import your spreadsheets by uploading your .CSV/.TSV file to the BottleTrade Network.</p>
@@ -18,29 +18,35 @@ controller: UploadCtrl
       <div class="grid-block small-12">
         <div class="grid-content small-4 text-center">
           <img src="/assets/img/BOTTLE.svg" />
-          <a class="hollow button expand">Breweries</a>
+          <a class="hollow button expand" ng-class="{'hollow': fileContents != 'breweries'}"
+              ng-click="fileContents = 'breweries'">Breweries</a>
         </div>
         <div class="grid-content small-4 text-center">
           <img src="/assets/img/BOTTLE.svg" />
-          <a class="hollow button expand">Wineries</a>
+          <a class="hollow button expand" ng-class="{'hollow': fileContents != 'wineries'}"
+              ng-click="fileContents = 'wineries'">Wineries</a>
         </div>
         <div class="grid-content small-4 text-center">
           <img src="/assets/img/BOTTLE.svg" />
-          <a class="hollow button expand">Distilleries</a>
+          <a class="hollow button expand" ng-class="{'hollow': fileContents != 'distilleries'}"
+              ng-click="fileContents = 'distilleries'">Distilleries</a>
         </div>
       </div>
       <div class="grid-block small-12">
         <div class="grid-content small-4 text-center">
           <img src="/assets/img/BOTTLE.svg" />
-          <a class="hollow button expand">Beers</a>
+          <a class="hollow button expand" ng-class="{'hollow': fileContents != 'beers'}"
+              ng-click="fileContents = 'beers'">Beers</a>
         </div>
         <div class="grid-content small-4 text-center">
           <img src="/assets/img/BOTTLE.svg" />
-          <a class="hollow button expand">Wine</a>
+          <a class="hollow button expand" ng-class="{'hollow': fileContents != 'wines'}"
+              ng-click="fileContents = 'wines'">Wines</a>
         </div>
         <div class="grid-content small-4 text-center">
           <img src="/assets/img/BOTTLE.svg" />
-          <a class="hollow button expand">Spirits</a>
+          <a class="hollow button expand" ng-class="{'hollow': fileContents != 'spirits'}"
+              ng-click="fileContents = 'spirits'">Spirits</a>
         </div>
       </div>
     </div>
@@ -63,45 +69,19 @@ controller: UploadCtrl
       <p class="text-center">Spreadsheets must be in the .CSV or .TSV format and can be uploaded below.</p>
     </div>
     <div class="grid-content text-center">
-      <a class="hollow button large">CHOOSE FILE</a>
+      <form style="display: none;">
+        <input id="spreadsheetFileUpload" type="file" ng-file-select="onFileSelect($files)">
+      </form>
+      <h6 ng-show="file != null">{{ file.name }}</h6>
+      <a class="hollow button large" ng-click="file == null ? clickFileInput() : upload()">{{ file == null ? 'CHOOSE FILE' : 'UPLOAD'}}</a>
     </div>
-    <div class="grid-block vertical" ng-show="fileContents && fileResults.length == 0">
-      <div class="grid-content" ng-show="fileContents == 'beers'">
-        <h1>TODO: Fill with content describing how the spreadsheet should be formatted if uploading beers</h1>
-      </div>
-      <div class="grid-content" ng-show="fileContents == 'breweries'">
-        <h1>TODO: Fill with content describing how the spreadsheet should be formatted if uploading breweries</h1>
-      </div>
-      <div class="grid-content" ng-show="fileContents == 'wines'">
-        <h1>TODO: Fill with content describing how the spreadsheet should be formatted if uploading wines</h1>
-      </div>
-      <div class="grid-content" ng-show="fileContents == 'wineries'">
-        <h1>TODO: Fill with content describing how the spreadsheet should be formatted if uploading wineries</h1>
-      </div>
-      <div class="grid-content" ng-show="fileContents == 'spirits'">
-        <h1>TODO: Fill with content describing how the spreadsheet should be formatted if uploading spirits</h1>
-      </div>
-      <div class="grid-content" ng-show="fileContents == 'distilleries'">
-        <h1>TODO: Fill with content describing how the spreadsheet should be formatted if uploading distilleries</h1>
-      </div>
-      <div class="grid-content">
-        <div class="grid-container">
-          <form>
-            <input type="file" ng-file-select="onFileSelect($files)">
-          </form>
-        </div>
-        <div class="grid-content">
-          <a class="hollow button expand" ng-click="upload()">Upload</a>
-        </div>
-      </div>
-    </div>
-    <div class="grid-block vertical" ng-if="fileResults.length > 0">
-      <upload-breweries file-data="fileResults" breweries="parsedResults" ng-if="fileContents == 'breweries'"></upload-breweries>
-      <upload-beers file-data="fileResults" beers="parsedResults" ng-if="fileContents == 'beers'"></upload-beers>
-      <upload-wines file-data="fileResults" wines="parsedResults" ng-if="fileContents == 'wines'"></upload-wines>
-      <upload-wineries file-data="fileResults" wineries="parsedResults" ng-if="fileContents == 'wineries'"></upload-wineries>
-      <upload-spirits file-data="fileResults" spirits="parsedResults" ng-if="fileContents == 'spirits'"></upload-spirits>
-      <upload-distilleries file-data="fileResults" distilleries="parsedResults" ng-if="fileContents == 'distilleries'"></upload-distilleries>
-    </div>
+  </div>
+  <div class="grid-block vertical" ng-if="fileResults.length > 0">
+    <upload-breweries file-data="fileResults" breweries="parsedResults" ng-if="fileContents == 'breweries'"></upload-breweries>
+    <upload-beers file-data="fileResults" beers="parsedResults" ng-if="fileContents == 'beers'"></upload-beers>
+    <upload-wines file-data="fileResults" wines="parsedResults" ng-if="fileContents == 'wines'"></upload-wines>
+    <upload-wineries file-data="fileResults" wineries="parsedResults" ng-if="fileContents == 'wineries'"></upload-wineries>
+    <upload-spirits file-data="fileResults" spirits="parsedResults" ng-if="fileContents == 'spirits'"></upload-spirits>
+    <upload-distilleries file-data="fileResults" distilleries="parsedResults" ng-if="fileContents == 'distilleries'"></upload-distilleries>
   </div>
 </div>

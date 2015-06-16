@@ -22,11 +22,13 @@
         };
 
         scope.totalMatchedBeers = function(result) {
-          return Object.keys(result.matchedBeers).length;
+          var obj = result.matchedBeers ? Object.keys(result.matchedBeers) : null;
+          return obj ? obj.length : 0;
         };
 
         scope.totalMatchedBreweries = function(result) {
-          return Object.keys(result.matchedBreweries).length;
+          var obj = result.matchedBreweries ? Object.keys(result.matchedBreweries) : null;
+          return obj ? obj.length : 0;
         };
 
         function addParsedBeerResult(result) {
@@ -57,7 +59,7 @@
             if (!result.addBeer) {
               beer = {
                 name: result.name.toString(),
-                brewery: result.correctBrewery
+                brewery: result.correctBrewery.key()
               };
 
               BeerList.$add(beer).then(function(b) {

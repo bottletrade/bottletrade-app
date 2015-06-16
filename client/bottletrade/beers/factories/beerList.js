@@ -9,7 +9,9 @@
           // before adding object, create lowercase
           // name property that can be used for search
           data.search_name = data.name.toLowerCase();
-          data.brewery = data.brewery.$id;
+          if (!angular.isString(data.brewery)) {
+            data.brewery = data.brewery.$id;
+          }
           return $firebaseArray.prototype.$add.call(this, data);
         },
         "$$updated": function(data) {
@@ -17,7 +19,9 @@
           var changed = $firebaseArray.prototype.$$updated.apply(this, arguments);
 
           if (changed) {
-            data.brewery = new Brewery(data.brewery);
+            if (angular.isString(data.brewery)) {
+              data.brewery = new Brewery(data.brewery);
+            }
           }
 
           return changed;

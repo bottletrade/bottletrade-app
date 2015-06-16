@@ -11,6 +11,13 @@
       $scope.fileResults = [];
       $scope.fileContents = '';
       $scope.fileData = '';
+      $scope.file = null;
+
+      $scope.clickFileInput = function() {
+        $timeout(function() {
+          document.getElementById('spreadsheetFileUpload').click();
+        });
+      };
 
       $scope.upload = function () {
         fileReader.readAsText($scope.file, $scope)
@@ -72,11 +79,13 @@
     }
   );
 
-  angular.module('application').directive("ngFileSelect",function(){
+  angular.module('application').directive("ngFileSelect",function($timeout){
     return {
       link: function($scope, elem, attrs){
         elem.bind("change", function(e){
-          $scope.file = (e.srcElement || e.target).files[0];
+          $timeout(function() {
+            $scope.file = (e.srcElement || e.target).files[0];
+          });
         });
       }
     };
