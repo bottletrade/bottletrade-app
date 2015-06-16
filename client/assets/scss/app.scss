@@ -295,8 +295,13 @@ h5 {
 		border: 1px solid #000;
 		padding: .4rem;
 		margin: 0 auto .4rem auto;
+		text-align: center;
+		font-size: 1rem;
+		max-width: 550px;
 	}
-
+	.upload-select {
+		max-width: 550px;
+	}
 }
 
 #menu {
