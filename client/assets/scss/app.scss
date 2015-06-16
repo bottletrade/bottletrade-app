@@ -235,8 +235,10 @@ h5 {
 	}
 }
 
-.user-custom-footer {
+.button-group {
 	ul {
+		width: 100%;
+		height: 5rem;
 		border-top: 1px solid #000;
 	}
 	li {
@@ -244,12 +246,6 @@ h5 {
 	}
 	li:last-child {
 		border-right: 0px solid #000;
-	}
-	&.button-group {
-		margin-bottom: -.2rem;
-	}
-	a {
-		padding: .2rem;
 	}
 }
 
