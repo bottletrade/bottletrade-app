@@ -8,7 +8,7 @@
     </div>
     <div class="grid-content text-left">
       <h3>{{ beer.name }}</h3><br />
-      <h4>{{ beer.brewedBy }}</h4><br />
+      <h4><a ui-sref="app.breweries({ id: beer.brewery.$id })">{{ beer.brewery.name }}</a></h4><br />
       <h5>{{ beer.style }}</h5>
     </div>
     <div class="grid-content text-right cog-holder">

@@ -2,6 +2,6 @@
   'use strict';
 
   angular.module('application').controller("ProfileCtrl", function($scope, user, BottleList) {
-    $scope.bottles = BottleList;
+    $scope.bottles = new BottleList();
   });
 })();

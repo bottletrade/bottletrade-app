@@ -29,7 +29,7 @@
         }
 
         scope.save = function() {
-          BottleList.$add(scope.bottle).then(function(bottle) {
+          (new BottleList()).$add(scope.bottle).then(function(bottle) {
             scope.created({ bottle: bottle });
           });
         };

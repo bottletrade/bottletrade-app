@@ -3,7 +3,7 @@
     <span>{{ selected.name }}</span><a class="button" ng-click="clearResult()">Clear</a>
   </div>
   <div ng-show="!selected">
-    <input ng-model="query" name="inputName" type="text" required></input>
+    <input ng-model="query" name="{{ inputName }}" type="text" required></input>
     <zf-action-sheet id="spirit-autocomplete">
       <zf-as-content position="bottom">
         <span ng-repeat="spirit in results" ng-click="selectResult(spirit)">{{ spirit.name }}</span>

@@ -32,7 +32,13 @@
         }
       });
 
-      return new BottleList(firebaseRef(BTConstants.firebase.bottles, $rootScope.user.auth.uid));
+      return function() {
+        if ($rootScope.user) {
+          return new BottleList(firebaseRef(BTConstants.firebase.bottles, $rootScope.user.auth.uid));
+        } else {
+          return null;
+        }
+      };
     }
   );
 })();

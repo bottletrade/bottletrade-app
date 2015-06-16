@@ -17,21 +17,22 @@
           scope.beer = {};
         }
 
-        scope.$watch('brewedBy', function(newVal, oldVal) {
-
-        });
-
         scope.save = function() {
           scope.add_beer_form.$submitted=true;
           if (scope.add_beer_form.$valid) {
-            if (scope.isNew) {
-              BeerList.$add(scope.beer).then(function(beer) {
-                scope.created({ beer: beer });
-              });
+            // verify brewery was provided
+            if (!scope.beer.brewery) {
+              scope.add_beer_form.beer_brewery.$setValidity("required",false);
             } else {
-              scope.beer.$save().then(function(beer) {
-                scope.updated({ beer: beer });
-              });
+              if (scope.isNew) {
+                BeerList.$add(scope.beer).then(function(beer) {
+                  scope.created({ beer: beer });
+                });
+              } else {
+                scope.beer.$save().then(function(beer) {
+                  scope.updated({ beer: beer });
+                });
+              }
             }
           }
         };

@@ -10,7 +10,7 @@
   <div class="grid-block align-right small-5 wrap">
     <div class="grid-content">
       <a class="expand button hollow small" ui-sref="app.beers({id: beer.$id})">Go to Beer</a>
-      <a class="expand button hollow small" ui-sref="app.beers({id: beer.$id, action: 'cellar'})">Add to Cellar</a>
+      <a class="expand button hollow small" ng-show="$root.user" ui-sref="app.beers({id: beer.$id, action: 'cellar'})">Add to Cellar</a>
     </div>
   </div>
 </div>

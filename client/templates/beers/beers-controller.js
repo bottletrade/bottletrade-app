@@ -2,7 +2,7 @@
   'use strict';
 
   angular.module('application').controller("BeersCtrl",
-    function($scope, $state, $stateParams, Beer, BeerList, BeerManager) {
+    function($scope, $state, $stateParams, $timeout, Beer, BeerList, BeerManager, FoundationApi) {
       if ($stateParams.id && $stateParams.id !== "new") {
         $scope.beer = new Beer($stateParams.id);
       } else {
@@ -24,17 +24,46 @@
       }
 
       $scope.created = function(beer) {
+        var beerData = $scope.beers.$getRecord(beer.key());
         $state.go('app.beers', { id: beer.key() });
+
+        $timeout(function() {
+          FoundationApi.publish('app-notifications', {
+            title: "Beer Added!",
+            content: beerData.name + " has been added to the BottleTrade network",
+            color: "success",
+            autoclose: '5000'
+          });
+        });
       };
 
       $scope.updated = function(beer) {
+        var beerData = $scope.beer;
         $state.go('app.beers', { id: beer.key() });
+
+        $timeout(function() {
+          FoundationApi.publish('app-notifications', {
+            title: "Beer Updated!",
+            content: beerData.name + " has been updated in the BottleTrade network",
+            color: "success",
+            autoclose: '5000'
+          });
+        });
       };
 
       $scope.addedToCellar = function(bottle) {
         bottle.once('value', function(snapshot) {
-          var data = snapshot.val();
-          $state.go('app.beers', { id: data.beverage, action: '' }, { reload: true });
+          var beerData = $scope.beer;
+          $state.go('app.beers', { id: beerData.$id, action: '' }, { reload: true });
+
+          $timeout(function() {
+            FoundationApi.publish('app-notifications', {
+              title: "Bottle Added!",
+              content: beerData.name + " has been added to your cellar",
+              color: "success",
+              autoclose: '5000'
+            });
+          });
         });
       };
   });
