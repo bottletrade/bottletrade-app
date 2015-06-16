@@ -4,37 +4,65 @@ url: /upload
 data: { authRequired: false }
 controller: UploadCtrl
 ---
-<div class="grid-block vertical">
+<div class="grid-block wrap upload-spreadsheet">
   <div class="grid-content">
-    <div class="grid-container">
-      <h4>What do you want to upload?</h4>
-      <ul class="button-group segmented">
-        <li>
-          <input type="radio" ng-model="fileContents" value="beers" id="contentBeers">
-          <label for="contentBeers">Beers</label>
-        </li>
-        <li>
-          <input type="radio" ng-model="fileContents" value="breweries" id="contentBreweries">
-          <label for="contentBreweries">Breweries</label>
-        </li>
-        <li>
-          <input type="radio" ng-model="fileContents" value="wines" id="contentWines">
-          <label for="contentWines">Wines</label>
-        </li>
-        <li>
-          <input type="radio" ng-model="fileContents" value="wineries" id="contentWineries">
-          <label for="contentWineries">Wineries</label>
-        </li>
-        <li>
-          <input type="radio" ng-model="fileContents" value="spirits" id="contentSpirits">
-          <label for="contentSpirits">Spirits</label>
-        </li>
-        <li>
-          <input type="radio" ng-model="fileContents" value="distilleries" id="contentDistilleries">
-          <label for="contentDistilleries">Distilleries</label>
-        </li>
-      </ul>
+    <h4 class="text-center">UPLOAD SPREADSHEET</h4>
+    <p class="text-justify">Many enthusiasts have spent countless hours logging their bottle collection onto spreadsheets via Google Docs, Excel and Numbers for Mac. You can now import your spreadsheets by uploading your .CSV/.TSV file to the BottleTrade Network.</p>
+    <hr>
+  </div>
+  <div class="grid-content">
+    <h4 class="text-center">WHAT ARE YOU UPLOADING?</h4>
+  </div>
+  <div class="grid-block wrap">
+    <div class="grid-block small-12">
+      <div class="grid-content small-4 text-center">
+        <img src="/assets/img/BOTTLE.svg" />
+        <a class="hollow button expand">Breweries</a>
+      </div>
+      <div class="grid-content small-4 text-center">
+        <img src="/assets/img/BOTTLE.svg" />
+        <a class="hollow button expand">Wineries</a>
+      </div>
+      <div class="grid-content small-4 text-center">
+        <img src="/assets/img/BOTTLE.svg" />
+        <a class="hollow button expand">Distilleries</a>
+      </div>
     </div>
+    <div class="grid-block small-12">
+      <div class="grid-content small-4 text-center">
+        <img src="/assets/img/BOTTLE.svg" />
+        <a class="hollow button expand">Beers</a>
+      </div>
+      <div class="grid-content small-4 text-center">
+        <img src="/assets/img/BOTTLE.svg" />
+        <a class="hollow button expand">Wine</a>
+      </div>
+      <div class="grid-content small-4 text-center">
+        <img src="/assets/img/BOTTLE.svg" />
+        <a class="hollow button expand">Spirits</a>
+      </div>
+    </div>
+  </div>
+  <div class="grid-content">
+    <hr>
+  </div>
+  <div class="grid-content">
+    <h4 class="text-center">PROPERLY FORMATTING YOUR .CSV or .TSV</h4>
+    <p class="text-justify">To make the import process as accurate as poosible, we ask that you properly format your spreadsheet for upload to the BottleTrade Network.</p>
+  </div>
+  <div class="grid-content">
+    <p class="text-center">Columns should be in order as follows:</p>
+    <div class="grid-container format-style">
+      <span class="text-center">Brewery Name - Beer Name - Size - Quantity - Date - Notes</span>
+    </div>
+    <p class="text-center">*Note - Only <i>Brewery</i> and <i>Beer</i> are required fields. Quantity will default to 1 if no quantity is entered.</p>
+    <hr>
+    <p class="text-center">Please remove any generic words from the <i>Brewery</i> and <i>Beer</i> fields such as the, brewery, beer, company, ale, etc.</p>
+    <hr>
+    <p class="text-center">Spreadsheets must be in the .CSV or .TSV format and can be uploaded below.</p>
+  </div>
+  <div class="grid-content">
+    <a class="hollow button expand">CHOOSE FILE</a>
   </div>
   <div class="grid-block vertical" ng-show="fileContents && fileResults.length == 0">
     <div class="grid-content" ng-show="fileContents == 'beers'">
@@ -61,8 +89,8 @@ controller: UploadCtrl
           <input type="file" ng-file-select="onFileSelect($files)">
         </form>
       </div>
-      <div class="grid-container">
-        <a class="button" ng-click="upload()">Upload</a>
+      <div class="grid-content">
+        <a class="hollow button expand" ng-click="upload()">Upload</a>
       </div>
     </div>
   </div>
