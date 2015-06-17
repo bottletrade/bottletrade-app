@@ -16,67 +16,120 @@ controller: UploadCtrl
     </div>
     <div class="grid-block wrap upload-select">
       <div class="grid-block small-12">
-        <div class="grid-content small-4 text-center">
+        <div class="grid-content small-4 text-center" ng-click="fileContents = 'breweries'">
           <img src="/assets/img/BOTTLE.svg" />
-          <a class="hollow button expand" ng-class="{'hollow': fileContents != 'breweries'}"
-              ng-click="fileContents = 'breweries'">Breweries</a>
+          <a class="hollow button expand" ng-class="{'hollow': fileContents != 'breweries'}">Breweries</a>
         </div>
-        <div class="grid-content small-4 text-center">
+        <div class="grid-content small-4 text-center" ng-click="fileContents = 'wineries'">
           <img src="/assets/img/BOTTLE.svg" />
-          <a class="hollow button expand" ng-class="{'hollow': fileContents != 'wineries'}"
-              ng-click="fileContents = 'wineries'">Wineries</a>
+          <a class="hollow button expand" ng-class="{'hollow': fileContents != 'wineries'}">Wineries</a>
         </div>
-        <div class="grid-content small-4 text-center">
+        <div class="grid-content small-4 text-center" ng-click="fileContents = 'distilleries'">
           <img src="/assets/img/BOTTLE.svg" />
-          <a class="hollow button expand" ng-class="{'hollow': fileContents != 'distilleries'}"
-              ng-click="fileContents = 'distilleries'">Distilleries</a>
+          <a class="hollow button expand" ng-class="{'hollow': fileContents != 'distilleries'}">Distilleries</a>
         </div>
       </div>
       <div class="grid-block small-12">
-        <div class="grid-content small-4 text-center">
+        <div class="grid-content small-4 text-center" ng-click="fileContents = 'beers'">
           <img src="/assets/img/BOTTLE.svg" />
-          <a class="hollow button expand" ng-class="{'hollow': fileContents != 'beers'}"
-              ng-click="fileContents = 'beers'">Beers</a>
+          <a class="hollow button expand" ng-class="{'hollow': fileContents != 'beers'}">Beers</a>
         </div>
-        <div class="grid-content small-4 text-center">
+        <div class="grid-content small-4 text-center" ng-click="fileContents = 'wines'">
           <img src="/assets/img/BOTTLE.svg" />
-          <a class="hollow button expand" ng-class="{'hollow': fileContents != 'wines'}"
-              ng-click="fileContents = 'wines'">Wines</a>
+          <a class="hollow button expand" ng-class="{'hollow': fileContents != 'wines'}">Wines</a>
         </div>
-        <div class="grid-content small-4 text-center">
+        <div class="grid-content small-4 text-center" ng-click="fileContents = 'spirits'">
           <img src="/assets/img/BOTTLE.svg" />
-          <a class="hollow button expand" ng-class="{'hollow': fileContents != 'spirits'}"
-              ng-click="fileContents = 'spirits'">Spirits</a>
+          <a class="hollow button expand" ng-class="{'hollow': fileContents != 'spirits'}">Spirits</a>
         </div>
       </div>
     </div>
-    <div class="grid-content">
-      <hr>
-    </div>
-    <div class="grid-content">
-      <h4 class="text-center">PROPERLY FORMATTING YOUR .CSV or .TSV</h4>
-      <p class="text-justify">To make the import process as accurate as poosible, we ask that you properly format your spreadsheet for upload to the BottleTrade Network.</p>
-    </div>
-    <div class="grid-content">
-      <p class="text-center">Columns should be in order as follows:</p>
-      <div class="grid-container format-style">
-        <span class="text-center">Brewery Name - Beer Name - Size - Quantity - Date - Notes</span>
+    <div class="grid-block wrap small-up-1" ng-show="fileContents">
+      <div class="grid-content">
+        <hr>
+        <h4 class="text-center">PROPERLY FORMATTING YOUR .CSV or .TSV</h4>
+        <p class="text-justify">To make the import process as accurate as poosible, we ask that you properly format your spreadsheet for upload to the BottleTrade Network.</p>
       </div>
-      <p class="text-center">*Note - Only <i>Brewery</i> and <i>Beer</i> are required fields. Quantity will default to 1 if no quantity is entered.</p>
-      <hr>
-      <p class="text-center">Please remove any generic words from the <i>Brewery</i> and <i>Beer</i> fields such as the, brewery, beer, company, ale, etc.</p>
-      <hr>
-      <p class="text-center">Spreadsheets must be in the .CSV or .TSV format and can be uploaded below.</p>
-    </div>
-    <div class="grid-content text-center">
-      <form style="display: none;">
-        <input id="spreadsheetFileUpload" type="file" ng-file-select="onFileSelect($files)">
-      </form>
-      <h6 ng-show="file != null">{{ file.name }}</h6>
-      <a class="hollow button large" ng-click="file == null ? clickFileInput() : upload()">{{ file == null ? 'CHOOSE FILE' : 'UPLOAD'}}</a>
+      <div class="grid-content">
+        <div ng-show="fileContents == 'bottles'">
+          <p class="text-center">Columns should be in order as follows:</p>
+          <div class="grid-container format-style">
+            <span class="text-center">Brewery Name - Beer Name - Size - Quantity - Date - Notes</span>
+          </div>
+          <p class="text-center">*Note - Only <i>Brewery</i> and <i>Beer</i> are required fields. Quantity will default to 1 if no quantity is entered.</p>
+          <hr>
+          <p class="text-center">Please remove any generic words from the <i>Brewery</i> and <i>Beer</i> fields such as the, brewery, beer, company, ale, etc.</p>
+        </div>
+        <div ng-show="fileContents == 'beers'">
+          <p class="text-center">Columns should be in order as follows:</p>
+          <div class="grid-container format-style">
+            <span class="text-center">Brewery Name - Beer Name</span>
+          </div>
+          <p class="text-center">*Note - Only <i>Brewery</i> and <i>Beer</i> are required fields.</p>
+          <hr>
+          <p class="text-center">Please remove any generic words from the <i>Brewery</i> and <i>Beer</i> fields such as the, brewery, beer, company, ale, etc.</p>
+        </div>
+        <div ng-show="fileContents == 'breweries'">
+          <p class="text-center">Columns should be in order as follows:</p>
+          <div class="grid-container format-style">
+            <span class="text-center">Brewery Name</span>
+          </div>
+          <p class="text-center">*Note - Only <i>Brewery</i> are required fields.</p>
+          <hr>
+          <p class="text-center">Please remove any generic words from the <i>Brewery</i> field such as the, brewery, company, ale, etc.</p>
+        </div>
+        <div ng-show="fileContents == 'wines'">
+          <p class="text-center">Columns should be in order as follows:</p>
+          <div class="grid-container format-style">
+            <span class="text-center">Winery Name - Wine Name</span>
+          </div>
+          <p class="text-center">*Note - Only <i>Winery</i> and <i>Wine</i> are required fields.</p>
+          <hr>
+          <p class="text-center">Please remove any generic words from the <i>Winery</i> and <i>Wine</i> fields such as the, winery, wine, company, etc.</p>
+        </div>
+        <div ng-show="fileContents == 'wineries'">
+          <p class="text-center">Columns should be in order as follows:</p>
+          <div class="grid-container format-style">
+            <span class="text-center">Winery Name</span>
+          </div>
+          <p class="text-center">*Note - Only <i>Winery</i> are required fields.</p>
+          <hr>
+          <p class="text-center">Please remove any generic words from the <i>Winery</i> field such as the, winery, company, etc.</p>
+        </div>
+        <div ng-show="fileContents == 'spirits'">
+          <p class="text-center">Columns should be in order as follows:</p>
+          <div class="grid-container format-style">
+            <span class="text-center">Distillery Name - Spirit Name</span>
+          </div>
+          <p class="text-center">*Note - Only <i>Distillery</i> and <i>Spirit</i> are required fields.</p>
+          <hr>
+          <p class="text-center">Please remove any generic words from the <i>Distillery</i> and <i>Spirit</i> fields such as the, distillery, spirit, company, etc.</p>
+        </div>
+        <div ng-show="fileContents == 'distilleries'">
+          <p class="text-center">Columns should be in order as follows:</p>
+          <div class="grid-container format-style">
+            <span class="text-center">Distillery Name</span>
+          </div>
+          <p class="text-center">*Note - Only <i>Distillery</i> are required fields.</p>
+          <hr>
+          <p class="text-center">Please remove any generic words from the <i>Distillery</i> field such as the, distillery, company, etc.</p>
+        </div>
+        <hr>
+        <p class="text-center">Spreadsheets must be in the .CSV or .TSV format and can be uploaded below.</p>
+      </div>
+      <div class="grid-content text-center">
+        <form style="display: none;">
+          <input id="spreadsheetFileUpload" type="file" ng-file-select="onFileSelect($files)">
+        </form>
+        <h6 ng-show="file != null">{{ file.name }}</h6>
+        <a class="hollow button large" ng-click="file == null ? clickFileInput() : upload()">{{ file == null ? 'CHOOSE FILE' : 'UPLOAD'}}</a>
+      </div>
     </div>
   </div>
   <div class="grid-block vertical" ng-if="fileResults.length > 0">
+    <div class="grid-content">
+      <h2>IMPORT RESULTS</h2>
+    </div>
     <upload-breweries file-data="fileResults" breweries="parsedResults" ng-if="fileContents == 'breweries'"></upload-breweries>
     <upload-beers file-data="fileResults" beers="parsedResults" ng-if="fileContents == 'beers'"></upload-beers>
     <upload-wines file-data="fileResults" wines="parsedResults" ng-if="fileContents == 'wines'"></upload-wines>

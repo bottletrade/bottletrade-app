@@ -21,16 +21,6 @@
           });
         };
 
-        scope.totalMatchedBeers = function(result) {
-          var obj = result.matchedBeers ? Object.keys(result.matchedBeers) : null;
-          return obj ? obj.length : 0;
-        };
-
-        scope.totalMatchedBreweries = function(result) {
-          var obj = result.matchedBreweries ? Object.keys(result.matchedBreweries) : null;
-          return obj ? obj.length : 0;
-        };
-
         function addParsedBeerResult(result) {
           handleBrewery();
 
@@ -70,33 +60,56 @@
         }
 
         function parseBeerResult(result) {
+          result.matchedBreweries = {};
+          result.matchedBeers = {};
+          result.status = getStatus(result);
+
           if (result.brewery) {
             // check if brewery exists
-            $timeout(function() {
-              BreweryManager.searchByNameExact(result.brewery, function(key, brewery) {
-                // only create object once a result is returned
-                if (!result.matchedBreweries) {
-                  result.matchedBreweries = {};
-                }
-                result.matchedBreweries[key] = brewery;
-              });
+            BreweryManager.searchByNameExact(result.brewery, function(key, brewery) {
+              result.matchedBreweries[key] = brewery;
+              result.status = getStatus(result);
             });
           }
 
           if (result.name) {
             // check if beer name exists
-            $timeout(function() {
-              BeerManager.searchByNameExact(result.name, function(key, beer) {
-                // only create object once a result is returned
-                if (!result.matchedBeers) {
-                  result.matchedBeers = {};
-                }
-                result.matchedBeers[key] = beer;
-              });
+            BeerManager.searchByNameExact(result.name, function(key, beer) {
+              result.matchedBeers[key] = beer;
+              result.status = getStatus(result);
             });
           }
 
           scope.beers.push(result);
+        }
+
+        function getStatus(result) {
+          if (totalMatchedBreweries(result) === 0) {
+            return "ADD BREWERY";
+          } else if (totalMatchedBreweries(result) > 1) {
+            return "SELECT BREWERY";
+          } else if (totalMatchedBeers(result) === 0) {
+            return "ADD BEER";
+          } else if (totalMatchedBeers(result) > 1) {
+            return "SELECT BEER";
+          } else if ((totalMatchedBreweries(result) === 1 && totalMatchedBeers(result) === 1) ||
+              (totalMatchedBreweries(result) === 1 && result.correctBeer) ||
+              (result.correctBrewery && totalMatchedBeers(result) === 1) ||
+              (result.correctBrewery && result.correctBeer)) {
+            return "MATCH";
+          } else {
+            return "ERROR";
+          }
+        }
+
+        function totalMatchedBeers(result) {
+          var obj = result.matchedBeers ? Object.keys(result.matchedBeers) : null;
+          return obj ? obj.length : 0;
+        }
+
+        function totalMatchedBreweries(result) {
+          var obj = result.matchedBreweries ? Object.keys(result.matchedBreweries) : null;
+          return obj ? obj.length : 0;
         }
       }
     };
