@@ -167,30 +167,44 @@ body {
 }
 
 .non-user-custom-footer {
-	align-self: flex-end;
-	background-color: #C2B49B;
 	border-top: 1px solid #716558;
-	width: 100%;
-	label {
-		margin: 0rem 0rem 0rem 0rem;
-		color: #FFF;
+	min-height: 70px;
+	@include breakpoint(small) {display: none;}
+	@include breakpoint(medium) {display: flex;}
+	&.title-bar .center {
+		width: 30%;
 	}
-	span {
-		margin: 0rem 0rem .2rem 0rem;
+	&.title-bar .left {
+		width: 40%;
+		input {
+			max-width: 350px;
+		}
+	}
+	&.title-bar .right {
+		width: 30%;
+		text-align: center;
+		color: #FFF;
+		font-size: .8rem;
+		a {
+			color: #FFF;
+			font-size: .8rem;
+		}
+		a:hover {
+			color: #C2B49B;
+			font-size: .8rem;
+		}
+	}
+	h4 {
+		margin: 0rem 0rem 0rem 0rem;
 		color: #FFF;
 		font-size: 1rem;
 	}
-	a {
-		color: #FFF;
-		font-size: .8rem;
+	span.inline-label {
+		margin: 0;
 	}
-	a:hover {
-		color: #000;
-		font-size: .8rem;
-	}
-	.grid-container {
-		line-height: 1rem;
-	}
+}
+.user-custom-footer {
+	min-height: 80px;
 }
 
 .button-group {

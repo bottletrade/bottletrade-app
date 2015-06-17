@@ -96,9 +96,34 @@
 
 	<div class="grid-block fadeIn main-view" ui-view></div>
 
-	<div class="grid-block wrap">
-		<div class="grid-block non-user-custom-footer show-for-medium">
-			<div class="grid-content text-center shrink">
+	<div class="primary title-bar non-user-custom-footer">
+		<div class="center title">
+			<h4>FOLLOW US ON:</h4>
+			<span>
+				<a href="http://instagram.com/thebottletrade" target="_blank"><img src="/assets/img/template/instagram-icon-sm.png" width="35px" height="35px" /></a>
+				<a href="https://twitter.com/thebottletrade" target="_blank"><img src="/assets/img/template/twitter-icon-sm.png" width="35px" height="35px" /></a>
+				<a href="https://www.facebook.com/BottleTrade" target="_blank"><img src="/assets/img/template/facebook-icon-sm.png" width="35px" height="35px" /></a>
+			</span>
+		</div>
+		<span class="left">
+			<h4>SIGN UP FOR THE BOTTLETRADE NEWSLETTER</h4>
+			<span class="inline-label">
+				<input type="search" placeholder="YOUR EMAIL">
+				<a href="#" class="button">SIGN UP</a>
+			</span>
+		</span>
+		<span class="right text-center align-center">
+			<a ui-sref="app.educate.houseRules">House Rules</a> |
+			<a ui-sref="app.educate.privacyPolicy">Privacy Policy</a> |
+			<a ui-sref="#">Contact Us</a> |
+			<a ui-sref="#">FAQ</a><br>
+				&copy; 2013-2015 - BottleTrade LLC
+		</span>
+	</div>
+<!--
+	<div class="clearfix grid-block show-for-medium non-user-custom-footer align-center">
+		<div class="grid-block wrap medium-12 large-10">
+			<div class="grid-content text-center shrink medium-5">
 				<label>
 					SIGN UP FOR THE BOTTLETRADE NEWSLETTER
 					<span class="inline-label">
@@ -107,8 +132,8 @@
 					</span>
 				</label>
 			</div>
-			<div class="grid-block align-center wrap">
-				<div class="grid-content text-center shrink">
+			<div class="grid-block align-center wrap medium-7">
+				<div class="grid-content text-center medium-3">
 					<label>FOLLOW US ON:</label>
 					<span>
 						<a href="http://instagram.com/thebottletrade" target="_blank"><img src="/assets/img/template/instagram-icon-sm.png" width="35px" height="35px" /></a>
@@ -116,7 +141,7 @@
 						<a href="https://www.facebook.com/BottleTrade" target="_blank"><img src="/assets/img/template/facebook-icon-sm.png" width="35px" height="35px" /></a>
 					</span>
 				</div>
-				<div class="grid-block v-align shrink">
+				<div class="grid-block medium-4">
 					<span class="text-center" width="100%">
 						<a ui-sref="app.educate.houseRules">House Rules</a> |
 						<a ui-sref="app.educate.privacyPolicy">Privacy Policy</a> |
@@ -130,7 +155,8 @@
 			</div>
 		</div>
 	</div>
-	<div class="clearfix hide-for-medium" style="background-color: #716558;">
+-->
+	<div class="clearfix hide-for-medium user-custom-footer" style="background-color: #716558;">
 		<ul class="button-group expand">
 			<li><a ui-sref="app.home"><img zf-iconic="" src="/assets/img/BT TRADER FEED ICON V1-01.svg"></a></li>
 			<li><a ui-sref="app.home"><img zf-iconic="" src="/assets/img/BT SEARCH ICON V1-01.svg"></a></li>
