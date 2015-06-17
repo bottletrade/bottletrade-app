@@ -1,0 +1,46 @@
+@font-face {
+	font-family: title;
+	src: url('../fonts/Press Style.ttf'),url('../fonts/Press_Style.eot');
+}
+
+@font-face {
+	font-family: button_font;
+	src: url('../fonts/Gotham-Bold.otf'),url('../fonts/Gotham-Bold.eot');
+}
+
+@font-face {
+	font-family: main-font;
+	src: url('../fonts/Gotham-Book.otf'),url('../fonts/Gotham-Bold.eot');
+}
+
+@font-face {
+	font-family: login;
+	src: url('../fonts/LeagueGothic-Regular.otf'),url('../fonts/LeagueGothic-Regular.eot');
+}
+
+p {
+	line-height: 1;
+	margin-bottom: .5rem;
+}
+.white {
+  color: #FFF;
+}
+p.small {
+  font-size: .8rem;
+}
+h2 {
+	line-height: 1;
+	margin-bottom: 0rem;
+}
+h3 {
+	line-height: 1;
+	margin-bottom: 0rem;
+}
+h4 {
+	line-height: 1;
+	margin-bottom: 0rem;
+}
+h5 {
+	line-height: 1;
+	margin-bottom: 0rem;
+}
