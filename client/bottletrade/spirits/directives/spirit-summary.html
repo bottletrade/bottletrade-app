@@ -1,10 +1,14 @@
-<div class="grid-content">
-  <div class="dark card">
-    <img src="http://placekitten.com/g/400/200">
-    <div class="card-divider">
-      <h3 class="text-center">{{ spirit.name }}<br /><small>Spirit</small></h3>
+<div class="grid-block summary-container small-12 medium-6 large-4" style="border-bottom: 1px solid #000;">
+  <div class="grid-block align-left small-2 v-align">
+    <img src="/assets/img/BOTTLE.svg" />
+  </div>
+  <div class="grid-block">
+    <div class="grid-content small-6 v-align">
+      <h4 class="text-left">{{ spirit.name }}<br /><small>Spirit</small></h4>
     </div>
-    <div class="card-section card-text">
+  </div>
+  <div class="grid-block align-right small-4 wrap">
+    <div class="grid-content">
       <a class="button secondary" ui-sref="app.spirits({id: spirit.$id})">Go to Spirit</a>
       <a class="button secondary" ui-sref="app.spirits({id: spirit.$id})">Add to Cellar</a>
     </div>

@@ -230,6 +230,9 @@ body {
 }
 
 .summary-container {
+	border-bottom: 1px solid #000;
+	@include breakpoint(medium) {border-right: 1px solid #000;}
+	@include breakpoint(medium) {padding: 3px;}
 	img {
 		width: 50px;
 		height: 50px;
@@ -238,8 +241,8 @@ body {
 		overflow: visible;
 	}
 	a {
-		padding: .5rem .5rem;
-		margin: .4rem .5rem;
+		padding: .2rem .2rem;
+		margin: .2rem 0rem;
 	}
 }
 

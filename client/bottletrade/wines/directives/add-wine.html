@@ -1,15 +1,22 @@
-<div class="vertical grid-block input-bg">
-  <div class="grid-content">
-    <p class="text-center">ADD A BEER</p>
+<div class="small-12 vertical grid-block">
+  <div class="grid-block wrap">
+    <div class="grid-content">
+      <p class="text-justify">Add the following bottle to your cellar. You may fill in the optional fields below or edit your bottle from your cellar later. When you're done click "Save" at the bottom of the page to submit this bottle to your cellar.</p>
+    </div>
+    <beer-summary beer="bottle.beverage" ng-if="bottle.type == 'beer'"></beer-summary>
+    <wine-summary beer="bottle.beverage" ng-if="bottle.type == 'wine'"></wine-summary>
+    <spirit-summary beer="bottle.beverage" ng-if="bottle.type == 'spirit'"></spirit-summary>
+  </div>
+  <div class="grid-content input-bg">
     <div class="grid-container small-12 medium-6">
       <form>
         <label>
-          Beer Name:
+          Wine Name:
           <input ng-model="wine.name" type="text"></input>
         </label>
 
         <label>
-          Brewed By:
+          Vinificated By:
           <input ng-model="wine.brewedBy" type="text"></input>
         </label>
 

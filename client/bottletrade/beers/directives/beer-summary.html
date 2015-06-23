@@ -3,11 +3,11 @@
     <img src="/assets/img/BOTTLE.svg" />
   </div>
   <div class="grid-block">
-    <div class="grid-content small-5 v-align">
+    <div class="grid-content small-6 v-align">
       <h4 class="text-left">{{ beer.name }}<br /><p>Beer</p></h4>
     </div>
   </div>
-  <div class="grid-block align-right small-5 wrap">
+  <div class="grid-block align-right small-4 wrap">
     <div class="grid-content">
       <a class="expand button hollow small" ui-sref="app.beers({id: beer.$id})">Go to Beer</a>
       <a class="expand button hollow small" ng-show="$root.user" ui-sref="app.beers({id: beer.$id, action: 'cellar'})">Add to Cellar</a>
