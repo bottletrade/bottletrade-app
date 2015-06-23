@@ -1,21 +1,18 @@
-<div class="grid-content">
-  <div class="dark card">
-    <img src="http://placekitten.com/g/400/200">
-    <div class="card-divider">
-      <h3 class="text-center">{{ bottle.name }}<br /><small>Bottle</small></h3>
+<div class="grid-block summary-container small-12 medium-6 large-4" style="border-bottom: 1px solid #000;">
+  <div class="grid-block align-left small-2 v-align">
+    <img src="/assets/img/BOTTLE.svg" />
+  </div>
+  <div class="grid-block">
+    <div class="grid-content small-6 v-align">
+      <h4 ng-if="bottle.type == 'beer'" class="text-left">Beer: {{ bottle.beverage.name }}</h4>
+      <h4 ng-if="bottle.type == 'wine'" class="text-left">Wine: {{ bottle.beverage.name }}</h4>
+      <h4 ng-if="bottle.type == 'spirit'" class="text-left">Spirit: {{ bottle.beverage.name }}</h4>
     </div>
-    <div class="card-section card-text">
-      <div ng-if="bottle.type == 'beer'">
-        <p>Beer: {{ bottle.beverage.name }}</p>
-      </div>
-      <div ng-if="bottle.type == 'wine'">
-        <p>Wine: {{ bottle.beverage.name }}</p>
-      </div>
-      <div ng-if="bottle.type == 'spirit'">
-        <p>Spirit: {{ bottle.beverage.name }}</p>
-      </div>
-      <a class="button secondary" ui-sref="app.bottles({id: bottle.$id})">Go to Bottle</a>
-      <a class="button secondary">Make Trade</a>
+  </div>
+  <div class="grid-block align-right small-4 wrap">
+    <div class="grid-content">
+      <a class="expand button hollow small" ui-sref="app.bottles({id: bottle.$id})">Edit Bottle Info</a>
+      <a class="expand button hollow small">Trade This Bottle</a>
     </div>
   </div>
 </div>

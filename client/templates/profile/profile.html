@@ -5,21 +5,27 @@ controller: ProfileCtrl
 data: { authRequired: true }
 ---
 <div class="grid-block vertical" ng-if="$root.user">
-	<div class="grid-block" style="border-bottom: 1px solid #000; margin: 5px 0px 5px 0px;" ng-if="$root.user.facebook">
+	<div class="grid-content shrink small-12" ng-if="$root.user.facebook">
 		<div class="grid-block shrink float-left">
 			<img ng-if="!$root.user.facebook.cachedUserProfile.picture.data.is_silhoutte" ng-src="{{ $root.user.facebook.cachedUserProfile.picture.data.url }}"></img></span>
 		</div>
-		<div class="grid-block float-left wrap">
+		<div class="grid-content float-left wrap">
 			<span><a href="{{ $root.user.facebook.cachedUserProfile.link }}">{{ $root.user.facebook.displayName }}</a>
 			<p>Trader Rating: &star;&star;&star;&star;&star;</p>
 		</div>
 	</div>
-	<div class="grid-content wrap" style="border-bottom: 1px solid #000; margin: 5px 0px 5px 0px;">
-		<h3>Cyber Cellar</h3>
+	<div class="grid-block wrap shrink">
+		<div class="grid-content small-12" style="background-color: #716558; height: 30px;">
+			<h3 class="white">Cyber Cellar</h3>
+		</div>
 		<bottle-summary class="small-12" ng-repeat="bottle in bottles" data-bottle="bottle"></bottle-summary>
 	</div>
-	<div class="grid-content wrap" style="border-bottom: 1px solid #000; margin: 5px 0px 5px 0px;">
-		<h3>Trader Reviews</h3>
-		<p>These are the reviews provided by users, these reviews are not editable.</p>
+	<div class="grid-block wrap shrink">
+		<div class="grid-content small-12" style="background-color: #716558; height: 30px;">
+			<h3 class="white">Trader Reviews</h3>
+		</div>
+		<div class="grid-content small-12">
+			<p>These are the reviews provided by users, these reviews are not editable.</p>
+		</div>
 	</div>
 </div>
