@@ -42,7 +42,7 @@
 		box-shadow: 0px 5px 15px #c9c9c9;
 	}
 	.cog-holder {
-		margin: .5rem 0rem 0rem 0rem;
+		padding: .5rem;
 		li:first-child {
 			color: #FFF;
 			background-color: $primary-color;
@@ -231,6 +231,7 @@ body {
 
 .summary-container {
 	border-bottom: 1px solid #000;
+	padding: 0px 3px;
 	@include breakpoint(medium) {border-right: 1px solid #000;}
 	@include breakpoint(medium) {padding: 3px;}
 	img {
