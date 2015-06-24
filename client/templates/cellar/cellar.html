@@ -8,5 +8,5 @@ data: { authRequired: true }
   <div class="grid-content small-12">
     <p>Cyber Cellar</p>
   </div>
-  <bottle-summary ng-repeat="bottle in bottles" data-bottle="bottle"></bottle-summary>
+  <bottle-summary ng-repeat="bottle in bottles" data-bottle="bottle" data-remove-bottle="bottleMgr.removeFromList(bottles,bottle)"></bottle-summary>
 </div>

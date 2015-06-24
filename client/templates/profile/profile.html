@@ -18,7 +18,7 @@ data: { authRequired: true }
 		<h4 class="white">Cyber Cellar</h4>
 	</div>
 	<div class="grid-block wrap shrink">
-		<bottle-summary class="small-12" ng-repeat="bottle in bottles" data-bottle="bottle"></bottle-summary>
+		<bottle-summary class="small-12" ng-repeat="bottle in bottles" data-bottle="bottle" data-remove-bottle="bottleMgr.removeFromList(bottles,bottle)"></bottle-summary>
 	</div>
 	<div class="grid-content small-12" style="background-color: #716558; height: 30px;">
 		<h4 class="white">Trader Reviews</h4>
