@@ -2,7 +2,8 @@
   <div class="grid-container">
     <table class="upload-spreadsheet">
       <thead>
-        <th>Name</th>
+        <th>STATUS</th>
+        <th>BREWERY</th>
       </thead>
       <tbody>
         <tr ng-repeat="result in breweries">
@@ -15,7 +16,7 @@
       </tbody>
     </table>
   </div>
-  <div class="grid-container">
+  <div class="grid-container shrink">
     <a class="button hollow" ng-click="save()">Upload Breweries</a>
   </div>
 </div>

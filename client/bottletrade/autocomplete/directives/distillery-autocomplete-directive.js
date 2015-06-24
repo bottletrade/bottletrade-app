@@ -12,13 +12,20 @@
       link: function(scope, element, attrs) {
         scope.selected = null;
         scope.query = "";
+        scope.uid = 'distillery-autocomplete-' + FoundationApi.generateUuid();
 
         AutoCompleteManager.prepareDistilleryAutoComplete(scope);
 
         scope.$watchCollection('results', function(newVal, oldVal) {
-          if (oldVal.length === 0 && (newVal && newVal.length > 0)) {
+          if (oldVal.length === 0 && newVal && newVal.length > 0) {
       		  $timeout(function() {
-              FoundationApi.publish('distillery-autocomplete', 'toggle');
+              FoundationApi.publish(scope.uid, 'show');
+      		  });
+          }
+
+          if (newVal.length === 0) {
+      		  $timeout(function() {
+              FoundationApi.publish(scope.uid, 'hide');
       		  });
           }
         });

@@ -57,6 +57,9 @@ gulp.task('copy', function() {
   })
     .pipe(gulp.dest('./build'));
 
+  gulp.src('./data/foundation.apps.js')
+    .pipe(gulp.dest('./build/assets/js'));
+
   // Iconic SVG icons
   gulp.src('./bower_components/foundation-apps/iconic/**/*')
     .pipe(gulp.dest('./build/assets/img/iconic/'));

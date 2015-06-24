@@ -1,6 +1,6 @@
 ---
 name: app.upload
-url: /upload
+url: /upload/:type
 data: { authRequired: false }
 controller: UploadCtrl
 ---
@@ -122,12 +122,12 @@ controller: UploadCtrl
           <input id="spreadsheetFileUpload" type="file" ng-file-select="onFileSelect($files)">
         </form>
         <h6 ng-show="file != null">{{ file.name }}</h6>
-        <a class="hollow button large" ng-click="file == null ? clickFileInput() : upload()">{{ file == null ? 'CHOOSE FILE' : 'UPLOAD'}}</a>
+        <a class="hollow button large" ng-click="clickFileInput()">CHOOSE FILE</a>
       </div>
     </div>
   </div>
   <div class="grid-block vertical" ng-if="fileResults.length > 0">
-    <div class="grid-content">
+    <div class="grid-content shrink text-center">
       <h2>IMPORT RESULTS</h2>
     </div>
     <upload-breweries file-data="fileResults" breweries="parsedResults" ng-if="fileContents == 'breweries'"></upload-breweries>

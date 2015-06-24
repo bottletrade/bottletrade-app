@@ -7,26 +7,31 @@
         searchByNameBegins: searchByNameBegins,
         searchByNameEnds: searchByNameEnds,
         searchByNameContains: searchByNameContains,
-        searchByNameExact: searchByNameExact
+        searchByNameExact: searchByNameExact,
+        searchByNameExactFromBrewery: searchByNameExactFromBrewery
       };
 
       function searchByNameBegins(name, addedCallback, removedCallback) {
-        _searchByName(name, "", "", "", "~", addedCallback, removedCallback);
+        _searchByName(name, null, "", "", "", "~", addedCallback, removedCallback);
       }
 
       function searchByNameEnds(name, addedCallback, removedCallback) {
-        _searchByName(name, "~", "", "~", "", addedCallback, removedCallback);
+        _searchByName(name, null, "~", "", "~", "", addedCallback, removedCallback);
       }
 
       function searchByNameContains(name, addedCallback, removedCallback) {
-        _searchByName(name, "~", "~", "~", "~", addedCallback, removedCallback);
+        _searchByName(name, null, "~", "~", "~", "~", addedCallback, removedCallback);
       }
 
       function searchByNameExact(name, addedCallback, removedCallback) {
-        _searchByName(name, "", "", "", "", addedCallback, removedCallback);
+        _searchByName(name, null, "", "", "", "", addedCallback, removedCallback);
       }
 
-      function _searchByName(name, startPrefix, startSuffix, endPrefix, endSuffix, addedCallback, removedCallback) {
+      function searchByNameExactFromBrewery(name, brewery, addedCallback, removedCallback) {
+        _searchByName(name, brewery, "", "", "", "", addedCallback, removedCallback);
+      }
+
+      function _searchByName(name, brewery, startPrefix, startSuffix, endPrefix, endSuffix, addedCallback, removedCallback) {
         var nameLower, query;
 
         nameLower = name.toString().toLowerCase();
@@ -37,13 +42,17 @@
 
         if (addedCallback) {
           query.on('child_added', function(snapshot) {
-            addedCallback(snapshot.key(), snapshot.val());
+            if (brewery && snapshot.val().brewery === brewery) {
+              addedCallback(snapshot.key(), snapshot.val());
+            }
           });
         }
 
         if (removedCallback) {
           query.on('child_removed', function(snapshot) {
-            removedCallback(snapshot.key(), snapshot.val());
+            if (brewery && snapshot.val().brewery === brewery) {
+              removedCallback(snapshot.key(), snapshot.val());
+            }
           });
         }
       }

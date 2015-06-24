@@ -4,9 +4,9 @@
   </div>
   <div ng-show="!selected">
     <input ng-model="query" name="{{ inputName }}" type="text" required></input>
-    <zf-action-sheet id="wine-autocomplete">
+    <zf-action-sheet id="{{ uid }}">
       <zf-as-content position="bottom">
-        <span ng-repeat="wine in results" ng-click="selectResult(wine)">{{ wine.name }}</span>
+        <span ng-repeat="wine in results" ng-click="selectResult(wine)">{{ wine.name }}<br></span>
       </zf-as-content>
     </zf-action-sheet>
   </div>

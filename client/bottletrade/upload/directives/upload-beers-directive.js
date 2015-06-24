@@ -21,6 +21,18 @@
           });
         };
 
+        scope.selectBrewery = function(result, brewery) {
+          result.matchedBeers = {};
+          result.correctBrewery = brewery;
+          result.status = getStatus(result);
+
+          // check if beer name exists
+          BeerManager.searchByNameExactFromBrewery(result.name, brewery.$id, function(key, beer) {
+            result.matchedBeers[key] = beer;
+            result.status = getStatus(result);
+          });
+        };
+
         function addParsedBeerResult(result) {
           handleBrewery();
 
@@ -67,6 +79,7 @@
           if (result.brewery) {
             // check if brewery exists
             BreweryManager.searchByNameExact(result.brewery, function(key, brewery) {
+              brewery.$id = key;
               result.matchedBreweries[key] = brewery;
               result.status = getStatus(result);
             });
@@ -75,6 +88,7 @@
           if (result.name) {
             // check if beer name exists
             BeerManager.searchByNameExact(result.name, function(key, beer) {
+              beer.$id = key;
               result.matchedBeers[key] = beer;
               result.status = getStatus(result);
             });
@@ -86,11 +100,11 @@
         function getStatus(result) {
           if (totalMatchedBreweries(result) === 0) {
             return "ADD BREWERY";
-          } else if (totalMatchedBreweries(result) > 1) {
+          } else if (!result.correctBrewery && totalMatchedBreweries(result) > 1) {
             return "SELECT BREWERY";
           } else if (totalMatchedBeers(result) === 0) {
             return "ADD BEER";
-          } else if (totalMatchedBeers(result) > 1) {
+          } else if (!result.correctBeer && totalMatchedBeers(result) > 1) {
             return "SELECT BEER";
           } else if ((totalMatchedBreweries(result) === 1 && totalMatchedBeers(result) === 1) ||
               (totalMatchedBreweries(result) === 1 && result.correctBeer) ||

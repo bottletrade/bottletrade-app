@@ -12,13 +12,20 @@
       link: function(scope, element, attrs) {
         scope.selected = null;
         scope.query = "";
+        scope.uid = 'spirit-autocomplete-' + FoundationApi.generateUuid();
 
         AutoCompleteManager.prepareSpiritAutoComplete(scope);
 
         scope.$watchCollection('results', function(newVal, oldVal) {
-          if (oldVal.length === 0 && (newVal && newVal.length > 0)) {
+          if (oldVal.length === 0 && newVal && newVal.length > 0) {
       		  $timeout(function() {
-              FoundationApi.publish('spirit-autocomplete', 'toggle');
+              FoundationApi.publish(scope.uid, 'show');
+      		  });
+          }
+
+          if (newVal.length === 0) {
+      		  $timeout(function() {
+              FoundationApi.publish(scope.uid, 'hide');
       		  });
           }
         });

@@ -2,16 +2,21 @@
   'use strict';
 
   angular.module('application').controller("UploadCtrl",
-    function ($scope, $timeout, fileReader, spreadsheetParser,
+    function ($scope, $timeout, $state, $stateParams, fileReader, spreadsheetParser,
               BeerList, BeerManager, BreweryList, BreweryManager,
               WineList, WineManager, WineryList, WineryManager,
               SpiritList, SpiritManager, DistilleryList, DistilleryManager) {
-      $scope.progress = 0;
       $scope.parsedResults = [];
       $scope.fileResults = [];
       $scope.fileContents = '';
       $scope.fileData = '';
       $scope.file = null;
+
+      $scope.$watch('fileContents', function(newVal) {
+        if (newVal) {
+          $state.go('.', { type: newVal }, { notify: false });
+        }
+      });
 
       $scope.clickFileInput = function() {
         $timeout(function() {
@@ -73,8 +78,10 @@
           });
       };
 
-      $scope.$on("fileProgress", function(e, progress) {
-          $scope.progress = progress.loaded / progress.total;
+      $timeout(function() {
+        if ($stateParams.type) {
+          $scope.fileContents = $stateParams.type;
+        }
       });
     }
   );
@@ -85,6 +92,7 @@
         elem.bind("change", function(e){
           $timeout(function() {
             $scope.file = (e.srcElement || e.target).files[0];
+            $scope.upload();
           });
         });
       }
