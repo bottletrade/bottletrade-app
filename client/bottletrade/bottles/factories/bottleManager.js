@@ -37,7 +37,7 @@
             });
           });
         });
-      };
+      }
 
       function searchByDescription(desc, cb) {
         firebaseRef(BTConstants.firebase.bottles).orderByChild('description').startAt("~" + desc).endAt("~" + desc + "~")

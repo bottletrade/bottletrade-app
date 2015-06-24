@@ -10,28 +10,40 @@
         beer: '=?',
         wine: '=?',
         spirit: '=?',
-        created: '&'
+        bottle: '=?',
+        created: '&',
+        updated: '&'
       },
       link: function(scope, element, attrs) {
-        scope.bottle = {
-          description: ""
-        };
+        scope.isNew = !attrs.bottle;
 
-        if (attrs.beer) {
-          scope.bottle.type = "beer";
-          scope.bottle.beverage = scope.beer;
-        } else if (attrs.wine) {
-          scope.bottle.type = "wine";
-          scope.bottle.beverage = scope.wine;
-        } else if (attrs.spirit) {
-          scope.bottle.type = "spirit";
-          scope.bottle.beverage = scope.spirit;
+        if (scope.isNew) {
+          scope.bottle = {
+            description: ""
+          };
+
+          if (attrs.beer) {
+            scope.bottle.type = "beer";
+            scope.bottle.beverage = scope.beer;
+          } else if (attrs.wine) {
+            scope.bottle.type = "wine";
+            scope.bottle.beverage = scope.wine;
+          } else if (attrs.spirit) {
+            scope.bottle.type = "spirit";
+            scope.bottle.beverage = scope.spirit;
+          }
         }
 
         scope.save = function() {
-          (new BottleList()).$add(scope.bottle).then(function(bottle) {
-            scope.created({ bottle: bottle });
-          });
+          if (scope.isNew) {
+            (new BottleList()).$add(scope.bottle).then(function(bottle) {
+              scope.created({ bottle: bottle });
+            });
+          } else {
+            scope.beer.$save().then(function(beer) {
+              scope.updated({ bottle: bottle });
+            });
+          }
         };
       }
     };

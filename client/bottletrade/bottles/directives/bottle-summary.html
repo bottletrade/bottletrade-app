@@ -8,7 +8,7 @@
     <h4 ng-if="bottle.type == 'spirit'" class="text-left">{{ bottle.beverage.name }}</h4>
   </div>
   <div class="grid-block align-right small-3 wrap">
-    <a class="expand button hollow small" ui-sref="app.bottles({id: bottle.$id})">Edit Bottle Info</a>
+    <a class="expand button hollow small" ui-sref="app.bottles({id: bottle.$id, action: 'edit'})">Edit Bottle Info</a>
     <a class="expand button hollow small">Trade This Bottle</a>
   </div>
   <div class="grid-block small-1 v-align align-center">
