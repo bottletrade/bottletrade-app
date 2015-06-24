@@ -1,15 +1,11 @@
-<div class="grid-block summary-container small-12 medium-6 large-4" style="border-bottom: 1px solid #000;">
+<div class="grid-block summary-container small-12 medium-6 large-4">
   <div class="grid-block align-left small-2 v-align">
     <img class="display-icon" src="/assets/img/displays/distillery-icon.png">
   </div>
-  <div class="grid-block">
-    <div class="grid-content small-6 v-align">
-      <h3 class="text-left">{{ distillery.name }}<br /><small>Distillery</small></h3>
-    </div>
+  <div class="grid-block small-7">
+    <h3 class="text-left">{{ distillery.name }}<br /><small>Distillery</small></h3>
   </div>
-  <div class="grid-block align-right small-4 wrap">
-    <div class="grid-content">
-      <a class="button secondary" ui-sref="app.distilleries({id: distillery.$id})">Go to Distillery</a>
-    </div>
+  <div class="grid-block align-right small-3 wrap">
+    <a class="button secondary" ui-sref="app.distilleries({id: distillery.$id})">Go to Distillery</a>
   </div>
 </div>

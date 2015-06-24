@@ -1,26 +1,44 @@
-<div class="grid-content">
-  <div class="dark card">
-    <img src="http://placekitten.com/g/400/200">
-    <div class="card-divider">
-      <h3 class="text-center"><small>Bottle Summary</small></h3>
+<div class="grid-block vertical beer-display">
+  <div class="grid-block">
+    <zf-interchange>
+      <img media="small" src="assets/img/Roseisle_Distillery_600-SM.jpg">
+      <img style="max-height: 200px; width: 100%;" media="medium" src="assets/img/Roseisle_Distillery_600-MED.jpg">
+      <img style="max-height: 300px; width: 100%;" media="large" src="assets/img/Roseisle_Distillery_600-LG.jpg">
+    </zf-interchange>
+  </div>
+  <div class="grid-block thumbnail-holder small-12">
+    <div class="grid-content align-left thumbnail shrink">
+      <img src="/assets/img/BOTTLE.svg">
     </div>
-    <div class="card-section card-text">
-      <div ng-if="bottle.type == 'beer'">
-        <p>Beer: {{ bottle.beverage.name }}</p>
-      </div>
-      <div ng-if="bottle.type == 'wine'">
-        <p>Wine: {{ bottle.beverage.name }}</p>
-      </div>
-      <div ng-if="bottle.type == 'spirit'">
-        <p>Spirit: {{ bottle.beverage.name }}</p>
-      </div>
-      <p>Style: {{ bottle.style }}</p>
-      <p>Bottle Size: {{ bottle.volume }}</p>
-      <p>Quantity: {{ bottle.quantity }}</p>
-      <p>Bottled On: {{ bottle.bottleDate }}</p>
-      <p>Purchase Price: {{ bottle.purchasePrice }}</p>
-      <p>Description: {{ bottle.description }}</p>
-      <a class="button secondary">Make Trade</a>
+    <div class="grid-content text-left">
+      <h3>{{ bottle.beverage.name }}</h3>
+      <p>{{ brewery.address }}<br />{{ brewery.city }}, {{ brewery.state }} {{ brewery.postalcode }}<br />{{ brewery.country }}</p>
+      <h5>{{ beer.style }}</h5>
     </div>
+    <div class="grid-block align-right cog-holder">
+      <zf-action-sheet id="my-actionsheet">
+        <zf-as-button><img zf-iconic="" icon="cog" size="medium"></zf-as-button>
+        <zf-as-content position="top">
+          <ul>
+            <li>What would you like to do?</li>
+            <li><a ui-sref="app.beers({id: beer.$id, action: 'edit'})">Edit {{ bottle.beverage.name }}</a></li>
+            <li><a>Edit Cover Photo</a></li>
+          </ul>
+        </zf-as-content>
+      </zf-action-sheet>
+    </div>
+  </div>
+  <div class="grid-content stat-holder">
+    <p>Style: {{ bottle.style }}</p>
+    <p>Bottle Size: {{ bottle.volume }}</p>
+    <p>Quantity: {{ bottle.quantity }}</p>
+    <p>Bottled On: {{ bottle.bottleDate }}</p>
+    <p>Purchase Price: {{ bottle.purchasePrice }}</p>
+      </div>
+  <div class="grid-content copy-holder">
+    <p>Description: {{ bottle.description }}</p>
+  </div>
+  <div class="grid-content button-holder-right">
+    <a class="button secondary">Make Trade</a>
   </div>
 </div>

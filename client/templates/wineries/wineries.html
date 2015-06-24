@@ -13,6 +13,6 @@ controller: WineriesCtrl
     <winery-display class="small-12" data-winery="winery"></winery-display>
   </div>
   <div class="grid-block wrap" ng-if="wineries">
-    <winery-summary class="small-12 medium-4 large-2" ng-repeat="winery in wineries" data-winery="winery"></winery-summary>
+    <winery-summary ng-repeat="winery in wineries" data-winery="winery"></winery-summary>
   </div>
 </div>

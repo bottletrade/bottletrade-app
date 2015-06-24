@@ -10,6 +10,6 @@ controller: BottlesCtrl
     <bottle-display class="small-12" ng-show="action != 'edit'" data-bottle="bottle" data-remove-bottle="bottleMgr.remove(bottle)"></bottle-display>
   </div>
   <div class="grid-block wrap" ng-if="bottles">
-    <bottle-summary class="small-12 medium-4 large-2" ng-repeat="bottle in bottles" data-bottle="bottle" data-remove-bottle="bottleMgr.removeFromList(bottles,bottle)"></bottle-summary>
+    <bottle-summary ng-repeat="bottle in bottles" data-bottle="bottle" data-remove-bottle="bottleMgr.removeFromList(bottles,bottle)"></bottle-summary>
   </div>
 </div>

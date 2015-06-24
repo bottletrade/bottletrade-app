@@ -6,7 +6,7 @@
       <img style="max-height: 300px; width: 100%;" media="large" src="assets/img/Roseisle_Distillery_600-LG.jpg">
     </zf-interchange>
   </div>
-  <div class="grid-block thumbnail-holder small-12">
+  <div class="grid-block thumbnail-holder small-12 shrink">
     <div class="grid-content align-left thumbnail shrink">
       <img src="/assets/img/BOTTLE.svg">
     </div>
@@ -21,7 +21,7 @@
         <zf-as-content position="top">
           <ul>
             <li>What would you like to do?</li>
-            <li><a ui-sref="app.beers({id: beer.$id, action: 'edit'})">Edit {{ brewery.name }}</a></li>
+            <li><a ui-sref="app.breweries({id: brewery.$id, action: 'edit'})">Edit {{ brewery.name }}</a></li>
             <li><a>Edit Cover Photo</a></li>
           </ul>
         </zf-as-content>
@@ -37,8 +37,5 @@
       </div>
   <div class="grid-content copy-holder">
     <p>Description: {{ brewery.description }}</p>
-  </div>
-  <div class="grid-content button-holder-right">
-    <a class="button secondary" ng-click="editing = true">Edit Brewery</a>
   </div>
 </div>

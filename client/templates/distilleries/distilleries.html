@@ -13,6 +13,6 @@ controller: DistilleriesCtrl
     <distillery-display class="small-12" data-distillery="distillery"></distillery-display>
   </div>
   <div class="grid-block wrap" ng-if="distilleries">
-    <distillery-summary class="small-12 medium-4 large-2" ng-repeat="distillery in distilleries" data-distillery="distillery"></distillery-summary>
+    <distillery-summary ng-repeat="distillery in distilleries" data-distillery="distillery"></distillery-summary>
   </div>
 </div>

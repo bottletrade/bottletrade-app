@@ -2,15 +2,11 @@
   <div class="grid-block align-left small-2 v-align">
     <img src="/assets/img/BOTTLE.svg" />
   </div>
-  <div class="grid-block">
-    <div class="grid-content small-4 v-align">
-      <h4 class="text-left">{{ brewery.name }}<br /><p>Brewery</p></h4>
-    </div>
+  <div class="grid-block small-7">
+    <h4 class="text-left">{{ brewery.name }}</h4>
   </div>
-  <div class="grid-block align-right small-6 wrap">
-    <div class="grid-content">
-      <a class="expand button hollow small" ui-sref="app.beers({id: beer.$id})">Go to Brewery</a>
-      <a class="expand button hollow small" ui-sref="app.beers({id: beer.$id, action: 'cellar'})">Edit Brewery Info</a>
-    </div>
+  <div class="grid-block align-right small-3 wrap">
+    <a class="expand button hollow small" ui-sref="app.breweries({id: brewery.$id})">Go to Brewery</a>
+    <a class="expand button hollow small" ui-sref="app.breweries({id: brewery.$id, action: 'cellar'})">Edit Brewery</a>
   </div>
 </div>

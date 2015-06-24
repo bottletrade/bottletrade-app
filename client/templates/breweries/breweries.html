@@ -16,6 +16,6 @@ controller: BreweriesCtrl
   </div>
   <add-brewery created="created(brewery); adding = false" ng-show="adding"></add-brewery>
   <div class="grid-block wrap" ng-show="!adding">
-    <brewery-summary class="small-12 medium-4 large-2" ng-repeat="brewery in breweries" data-brewery="brewery"></brewery-summary>
+    <brewery-summary ng-repeat="brewery in breweries" data-brewery="brewery"></brewery-summary>
   </div>
 </div>

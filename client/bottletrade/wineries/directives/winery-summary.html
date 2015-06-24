@@ -1,15 +1,11 @@
-<div class="grid-block summary-container small-12 medium-6 large-4" style="border-bottom: 1px solid #000;">
+<div class="grid-block summary-container small-12 medium-6 large-4">
   <div class="grid-block align-left small-2 v-align">
     <img src="/assets/img/BOTTLE.svg" />
   </div>
-  <div class="grid-block">
-    <div class="grid-content small-6 v-align">
-      <h4 class="text-left">{{ winery.name }}<br /><small>Winery</small></h4>
-    </div>
+  <div class="grid-block small-7">
+    <h4 class="text-left">{{ winery.name }}<br /><small>Winery</small></h4>
   </div>
-  <div class="grid-block align-right small-4 wrap">
-    <div class="grid-content">
-      <a class="button secondary" ui-sref="app.wineries({id: winery.$id})">Go to Winery</a>
-    </div>
+  <div class="grid-block align-right small-3 wrap">
+    <a class="expand button hollow small" ui-sref="app.wineries({id: winery.$id})">Go to Winery</a>
   </div>
 </div>
