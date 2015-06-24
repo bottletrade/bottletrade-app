@@ -5,9 +5,6 @@ data: { authRequired: false }
 controller: BreweriesCtrl
 ---
 <div class="grid-block wrap" ng-if="brewery">
-  <div class="small-12 grid-container text-center" ng-show="!editing">
-    <br /><a class="button" ng-click="editing = true">Edit Brewery</a>
-  </div>
   <add-brewery updated="updated(brewery); editing = false" brewery="brewery" ng-show="editing"></add-brewery>
   <div class="grid-block" ng-show="!editing">
     <brewery-display class="small-12" data-brewery="brewery"></brewery-display>

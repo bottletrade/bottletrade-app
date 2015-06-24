@@ -2,17 +2,17 @@
   <div class="grid-block">
     <zf-interchange>
       <img media="small" src="assets/img/Roseisle_Distillery_600-SM.jpg">
-      <img media="medium" src="assets/img/Roseisle_Distillery_600-MED.jpg">
-      <img media="large" src="assets/img/Roseisle_Distillery_600-LG.jpg">
+      <img style="max-height: 200px; width: 100%;" media="medium" src="assets/img/Roseisle_Distillery_600-MED.jpg">
+      <img style="max-height: 300px; width: 100%;" media="large" src="assets/img/Roseisle_Distillery_600-LG.jpg">
     </zf-interchange>
   </div>
-  <div class="grid-block thumbnail-holder">
-    <div class="grid-content align-left small-3 thumbnail">
+  <div class="grid-block thumbnail-holder small-12">
+    <div class="grid-content align-left thumbnail shrink">
       <img src="/assets/img/BOTTLE.svg">
     </div>
     <div class="grid-content text-left">
       <h3>{{ beer.name }}</h3>
-      <h4><a ui-sref="app.breweries({ id: beer.brewery.$id })">{{ beer.brewery.name }}</a></h4><br />
+      <h4><a ui-sref="app.breweries({ id: beer.brewery.$id })">{{ beer.brewery.name }}</a></h4>
       <h5>{{ beer.style }}</h5>
     </div>
     <div class="grid-block align-right cog-holder">
