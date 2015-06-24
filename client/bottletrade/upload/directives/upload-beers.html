@@ -17,14 +17,19 @@
             <div ng-switch-when="SELECT BREWERY">
               <span ng-repeat="brewery in result.matchedBreweries">{{ brewery.name }}<a class="button tiny" ng-click="selectBrewery(result, brewery)">Select</a><br></span>
             </div>
-            <div ng-switch-when="SELECT BEER">
-              <span ng-repeat="beer in result.matchedBeers">{{ brewery.name }}<a class="button tiny" ng-click="selectBrewery(result, brewery)">Select</a><br></span>
+            <div ng-switch-when="ADD BREWERY">
+              <span>{{ result.brewery }}<a class="button tiny" ng-click="addBrewery(result)">add</a></span>
             </div>
-            <span ng-switch-when="ADD BREWERY">{{ result.brewery }} <a class="button tiny" ng-click="result.addBrewery = true">add</a></span>
             <span ng-switch-default>{{ result.brewery }}</span>
           </td>
-          <td>
-            {{ result.name }}
+          <td ng-switch="result.status">
+            <div ng-switch-when="SELECT BEER">
+              <span ng-repeat="beer in result.matchedBeers">{{ beer.name }}<a class="button tiny" ng-click="selectBeer(result, beer)">Select</a><br></span>
+            </div>
+            <div ng-switch-when="ADD BEER">
+              <span>{{ result.name }}<a class="button tiny" ng-click="addBeer(result)">add</a></span>
+            </div>
+            <span ng-switch-default>{{ result.name }}</span>
           </td>
         </tr>
       </tbody>

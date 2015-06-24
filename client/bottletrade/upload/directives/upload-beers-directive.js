@@ -26,11 +26,26 @@
           result.correctBrewery = brewery;
           result.status = getStatus(result);
 
-          // check if beer name exists
+          // check if beer name exists for brewery
           BeerManager.searchByNameExactFromBrewery(result.name, brewery.$id, function(key, beer) {
             result.matchedBeers[key] = beer;
             result.status = getStatus(result);
           });
+        };
+
+        scope.addBrewery = function(result) {
+          result.addBrewery = true;
+          result.status = getStatus(result);
+        };
+
+        scope.selectBeer = function(result, beer) {
+          result.correctBeer = beer;
+          result.status = getStatus(result);
+        };
+
+        scope.addBeer = function(result) {
+          result.addBeer = true;
+          result.status = getStatus(result);
         };
 
         function addParsedBeerResult(result) {
@@ -98,18 +113,20 @@
         }
 
         function getStatus(result) {
-          if (totalMatchedBreweries(result) === 0) {
+          if (!result.addBrewery && totalMatchedBreweries(result) === 0) {
             return "ADD BREWERY";
           } else if (!result.correctBrewery && totalMatchedBreweries(result) > 1) {
             return "SELECT BREWERY";
-          } else if (totalMatchedBeers(result) === 0) {
+          } else if (!result.addBeer && totalMatchedBeers(result) === 0) {
             return "ADD BEER";
           } else if (!result.correctBeer && totalMatchedBeers(result) > 1) {
             return "SELECT BEER";
           } else if ((totalMatchedBreweries(result) === 1 && totalMatchedBeers(result) === 1) ||
               (totalMatchedBreweries(result) === 1 && result.correctBeer) ||
               (result.correctBrewery && totalMatchedBeers(result) === 1) ||
-              (result.correctBrewery && result.correctBeer)) {
+              (result.correctBrewery && result.correctBeer) ||
+              (result.correctBrewery && result.addBeer) ||
+              (result.addBrewery && result.addBeer)) {
             return "MATCH";
           } else {
             return "ERROR";
