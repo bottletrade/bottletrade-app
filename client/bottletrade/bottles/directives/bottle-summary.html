@@ -2,12 +2,10 @@
   <div class="grid-block align-left small-2 v-align">
     <img src="/assets/img/BOTTLE.svg" />
   </div>
-  <div class="grid-block">
-    <div class="grid-content small-5 v-align">
-      <h4 ng-if="bottle.type == 'beer'" class="text-left">Beer: {{ bottle.beverage.name }}</h4>
-      <h4 ng-if="bottle.type == 'wine'" class="text-left">Wine: {{ bottle.beverage.name }}</h4>
-      <h4 ng-if="bottle.type == 'spirit'" class="text-left">Spirit: {{ bottle.beverage.name }}</h4>
-    </div>
+  <div class="grid-block small-5">
+    <h4 ng-if="bottle.type == 'beer'" class="text-left">{{ bottle.beverage.name }}<small>{{ beer.brewery.name }}</small></h4>
+    <h4 ng-if="bottle.type == 'wine'" class="text-left">{{ bottle.beverage.name }}</h4>
+    <h4 ng-if="bottle.type == 'spirit'" class="text-left">{{ bottle.beverage.name }}</h4>
   </div>
   <div class="grid-block align-right small-4 wrap">
     <div class="grid-content">
@@ -16,6 +14,23 @@
     </div>
   </div>
   <div class="grid-block align-right small-1 wrap">
-    <a class="expand button hollow small">X</a>
+    <img zf-iconic="" icon="circle-x" size="medium">
+  </div>
+</div>
+
+
+
+<div class="grid-block summary-container small-12 medium-6 large-4">
+  <div class="grid-block align-left small-2 v-align">
+    <img src="/assets/img/BOTTLE.svg" />
+  </div>
+  <div class="grid-block small-6 v-align">
+    <h4 class="text-left">{{ beer.name }}<br /><small><a ui-sref="app.breweries({ id: beer.brewery.$id })">{{ beer.brewery.name }}</a></small></h4>
+  </div>
+  <div class="grid-block align-right small-4 wrap">
+    <div class="grid-content">
+      <a class="expand button hollow small" ui-sref="app.beers({id: beer.$id})">Go to Beer</a>
+      <a class="expand button hollow small" ng-show="$root.user" ui-sref="app.beers({id: beer.$id, action: 'cellar'})">Add to Cellar</a>
+    </div>
   </div>
 </div>

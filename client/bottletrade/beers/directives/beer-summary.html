@@ -1,11 +1,9 @@
-<div class="grid-block summary-container small-12 medium-6 large-4" style="border-bottom: 1px solid #000;">
+<div class="grid-block summary-container small-12 medium-6 large-4">
   <div class="grid-block align-left small-2 v-align">
     <img src="/assets/img/BOTTLE.svg" />
   </div>
-  <div class="grid-block">
-    <div class="grid-content small-6 v-align">
-      <h4 class="text-left">{{ beer.name }}<br /><p>Beer</p></h4>
-    </div>
+  <div class="grid-block small-6 v-align">
+    <h4 class="text-left">{{ beer.name }}<br /><small><a ui-sref="app.breweries({ id: beer.brewery.$id })">{{ beer.brewery.name }}</a></small></h4>
   </div>
   <div class="grid-block align-right small-4 wrap">
     <div class="grid-content">

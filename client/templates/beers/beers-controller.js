@@ -54,7 +54,7 @@
       $scope.addedToCellar = function(bottle) {
         bottle.once('value', function(snapshot) {
           var beerData = $scope.beer;
-          $state.go('app.beers', { id: beerData.$id, action: '' }, { reload: true });
+          $state.go('app.cellar', {}, { reload: true });
 
           $timeout(function() {
             FoundationApi.publish('app-notifications', {
