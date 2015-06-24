@@ -176,6 +176,9 @@ body {
 .non-user-custom-footer {
 	border-top: 1px solid #716558;
 	min-height: 70px;
+	width: 100%;
+	align-self: flex-end;
+	border-bottom: 0 !important;
 	@include breakpoint(small) {display: none;}
 	@include breakpoint(medium) {display: flex;}
 	&.title-bar .center {
