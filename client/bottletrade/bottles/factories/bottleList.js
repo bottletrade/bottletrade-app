@@ -10,6 +10,26 @@
           data.beverage = data.beverage.$id;
           return $firebaseArray.prototype.$add.call(this, data);
         },
+        "$$added": function(snapshot, prevChild) {
+          // call the super
+          var newChild = $firebaseArray.prototype.$$added.apply(this, arguments);
+
+          if (newChild) {
+            switch (newChild.type) {
+              case "beer":
+                newChild.beverage = new Beer(newChild.beverage);
+                break;
+              case "wine":
+                newChild.beverage = new Wine(newChild.beverage);
+                break;
+              case "spirit":
+                newChild.beverage = new Spirit(newChild.beverage);
+                break;
+            }
+          }
+
+          return newChild;
+        },
         "$$updated": function(data) {
           // call the super
           var changed = $firebaseArray.prototype.$$updated.apply(this, arguments);
