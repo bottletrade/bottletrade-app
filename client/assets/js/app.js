@@ -48,7 +48,7 @@
     });
   });
 
-  angular.module('application').run(function($rootScope, $state, Auth) {
+  angular.module('application').run(function($rootScope, $state, Auth, SearchService) {
     FastClick.attach(document.body);
 
     $rootScope.$on("$stateChangeError", function(event, toState, toParams, fromState, fromParams, error) {
@@ -56,6 +56,12 @@
       // and redirect the user back to the home page
       if (error === "AUTH_REQUIRED") {
         $state.go("app.home");
+      }
+    });
+
+    $rootScope.$on("$stateChangeSuccess", function(event, toState, toParams, fromState, fromParams) {
+      if (toState !== "app.search") {
+        SearchService.setQuery("");
       }
     });
 
