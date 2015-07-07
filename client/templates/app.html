@@ -76,13 +76,13 @@
 
 <!-- HEADER -->
 <div class="grid-frame vertical" ng-click="closeMenu()">
-	<div class="primary title-bar">
-		<div class="center title">
+	<div class="title-bar-custom">
+		<span class="left">
+			<a class="button hollow small" ui-sref="app.home">BOTTLE TRADE</a>
+		</span>
+		<div class="center">
 			<input type="search" ng-model="searchConfig.query" placeholder="Search"></input>
 		</div>
-		<span class="left">
-			<a class="button hollow medium" ui-sref="app.home">BOTTLE TRADE</a>
-		</span>
 		<span class="right">
 			<div class="menu-position">
 				<a ng-click="toggleMenu(); $event.stopPropagation()">
