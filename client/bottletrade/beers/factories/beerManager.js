@@ -42,7 +42,7 @@
 
         if (addedCallback) {
           query.on('child_added', function(snapshot) {
-            if (brewery && snapshot.val().brewery === brewery) {
+            if (!brewery || snapshot.val().brewery === brewery) {
               addedCallback(snapshot.key(), snapshot.val());
             }
           });
@@ -50,7 +50,7 @@
 
         if (removedCallback) {
           query.on('child_removed', function(snapshot) {
-            if (brewery && snapshot.val().brewery === brewery) {
+            if (!brewery || snapshot.val().brewery === brewery) {
               removedCallback(snapshot.key(), snapshot.val());
             }
           });
