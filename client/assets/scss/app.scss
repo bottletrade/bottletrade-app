@@ -155,14 +155,14 @@ body {
 	}
 }
 
-.top-bar-custom {
+.title-bar-custom {
+	margin-bottom: 3px;
 	background-color: #716558;
-	height: 42px !important;
+	height: 40px;
+	min-height: 40px;
 	input {
 		height: 34px;
 		margin: 3px;
-		padding: 1px;
-		font-size: 16pt;
 	}
 	a {
 		margin: 0px 0px;
@@ -186,6 +186,11 @@ body {
 		border: 1px solid #FFF;
 		color: #FFF;
 	}
+	.menu-position {
+		width: 2.5rem;
+		height: 2.5rem;
+		float: right;
+	}
 	.left {
 		margin: 3px 0px 0px 3px;
 		float: left;
@@ -194,18 +199,14 @@ body {
 	}
 	.right {
 		float: right;
-		margin: 0px 3px 0px 0px;
-	}
-	.menu-position {
-		width: 2.5rem;
-		height: 2.5rem;
-		float: right;
 	}
 }
 
 .non-user-custom-footer {
 	border-top: 1px solid #716558;
 	min-height: 70px;
+	@include breakpoint(small) {display: none;}
+	@include breakpoint(medium) {display: flex;}
 	&.title-bar .center {
 		width: 30%;
 	}
@@ -240,7 +241,6 @@ body {
 }
 .user-custom-footer {
 	min-height: 80px;
-	background-color: #716558;
 }
 
 .button-group {
