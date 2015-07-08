@@ -84,12 +84,6 @@ width: 100%;
 }
 body {
 	background-color: #FFF;
-	@include breakpoint(large) {
-		max-width: 1400px;
-		margin: 0px auto;
-		border-left: 1px solid #716558;
-		border-right: 1px solid #716558;
-		}
 	/*overflow: scroll;*/
 }
 
@@ -155,8 +149,7 @@ body {
 	}
 }
 
-.title-bar-custom {
-	margin-bottom: 3px;
+.top-bar-custom {
 	background-color: #716558;
 	height: 40px;
 	min-height: 40px;
@@ -202,7 +195,7 @@ body {
 	}
 }
 
-.non-user-custom-footer {
+.site-footer {
 	border-top: 1px solid #716558;
 	min-height: 70px;
 	@include breakpoint(small) {display: none;}
@@ -239,7 +232,7 @@ body {
 		margin: 0;
 	}
 }
-.user-custom-footer {
+.menu-footer {
 	min-height: 80px;
 }
 
