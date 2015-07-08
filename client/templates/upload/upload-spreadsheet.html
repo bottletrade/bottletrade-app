@@ -130,11 +130,6 @@ controller: UploadCtrl
     <div class="grid-content shrink text-center">
       <h2>IMPORT RESULTS</h2>
     </div>
-    <upload-breweries file-data="fileResults" breweries="parsedResults" ng-if="fileContents == 'breweries'"></upload-breweries>
-    <upload-beers file-data="fileResults" beers="parsedResults" ng-if="fileContents == 'beers'"></upload-beers>
-    <upload-wines file-data="fileResults" wines="parsedResults" ng-if="fileContents == 'wines'"></upload-wines>
-    <upload-wineries file-data="fileResults" wineries="parsedResults" ng-if="fileContents == 'wineries'"></upload-wineries>
-    <upload-spirits file-data="fileResults" spirits="parsedResults" ng-if="fileContents == 'spirits'"></upload-spirits>
-    <upload-distilleries file-data="fileResults" distilleries="parsedResults" ng-if="fileContents == 'distilleries'"></upload-distilleries>
+    <upload-data file-data="fileResults" file-contents="{{ fileContents }}" results="parsedResults"></upload-data>
   </div>
 </div>

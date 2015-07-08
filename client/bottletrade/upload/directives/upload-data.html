@@ -1,0 +1,47 @@
+<div class="grid-block vertical upload-{{ fileContents }}">
+  <div class="grid-container">
+    <table>
+      <thead>
+        <tr>
+          <th>STATUS</th>
+          <th ng-if="fileContents == 'beers' || fileContents == 'breweries'">BREWERY</th>
+          <th ng-if="fileContents == 'beers'">BEER</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="result in results">
+          <td ng-class="result.status == status.match ? 'success' : 'error'">
+            {{ result.status }}
+          </td>
+          <td>
+            <div ng-show="result.status == status.selectCompany">
+              <select ng-options="company as company.name for (key, company) in result.matchedCompanies" ng-model="result.correctCompany" ng-change="selectCompany(result)"></select>
+            </div>
+            <div ng-show="result.status == status.addCompany">
+              <span>{{ result.company }}<a class="button tiny" ng-click="addCompany(result.company)">add</a></span>
+            </div>
+            <span ng-show="result.status != status.selectCompany && result.status != status.addCompany">{{ result.company }}</span>
+          </td>
+          <td ng-if="fileContents == 'beers' || fileContents == 'wines' || fileContents == 'spirits'">
+            <div ng-show="result.status == status.selectBeverage">
+              <span ng-repeat="beverage in result.matchedBeverages">{{ beverage.name }}<a class="button tiny" ng-click="selectBeverage(result, beverage)">Select</a><br></span>
+            </div>
+            <div ng-show="result.status == status.addBeverage">
+              <span>{{ result.beverage }}<a class="button tiny" ng-click="addBeverage(result)">add</a></span>
+            </div>
+            <span ng-show="result.status != status.selectBeverage && result.status != status.addBeverage">{{ result.beverage }}</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="grid-container" ng-show="!uploadInProgress && !uploadComplete">
+    <a class="button hollow" ng-click="save()" ng-disabled="!uploadReady()">Upload</a>
+  </div>
+  <div class="grid-container" ng-show="uploadInProgress">
+    <span>Upload in progress...</span>
+  </div>
+  <div class="grid-container" ng-show="uploadComplete">
+    <span>Upload Complete!</span>
+  </div>
+</div>

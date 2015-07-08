@@ -39,7 +39,7 @@
       var results = [];
       parseCsv(csv).forEach(function(row) {
         results.push({
-          name: row[col.brewery.name]
+          company: row[col.brewery.name]
         });
       });
       return results;
@@ -49,8 +49,8 @@
       var results = [];
       parseCsv(csv).forEach(function(row) {
         results.push({
-          brewery: row[col.beer.brewery],
-          name: row[col.beer.name]
+          company: row[col.beer.brewery],
+          beverage: row[col.beer.name]
         });
       });
       return results;
@@ -60,7 +60,7 @@
       var results = [];
       parseCsv(csv).forEach(function(row) {
         results.push({
-          name: row[col.winery.name]
+          company: row[col.winery.name]
         });
       });
       return results;
@@ -70,8 +70,8 @@
       var results = [];
       parseCsv(csv).forEach(function(row) {
         results.push({
-          winery: row[col.wine.winery],
-          name: row[col.wine.name]
+          company: row[col.wine.winery],
+          beverage: row[col.wine.name]
         });
       });
       return results;
@@ -81,7 +81,7 @@
       var results = [];
       parseCsv(csv).forEach(function(row) {
         results.push({
-          name: row[col.distillery.name]
+          company: row[col.distillery.name]
         });
       });
       return results;
@@ -91,8 +91,8 @@
       var results = [];
       parseCsv(csv).forEach(function(row) {
         results.push({
-          distillery: row[col.spirit.distillery],
-          name: row[col.spirit.name]
+          company: row[col.spirit.distillery],
+          beverage: row[col.spirit.name]
         });
       });
       return results;

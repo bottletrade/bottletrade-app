@@ -1,8 +1,23 @@
 @import "foundation";
 
-.upload-beer,
-.upload-spirit,
-.upload-wine {
+.upload-beers,
+.upload-spirits,
+.upload-wines,
+.upload-breweries,
+.upload-distilleries,
+.upload-wineries {
+  td.error {
+    color: $alert-color
+  }
+
+  td.success {
+    color: $success-color
+  }
+}
+
+.upload-beers,
+.upload-spirits,
+.upload-wines {
   table {
     th {
       width: calc(100%/4);
@@ -20,9 +35,9 @@
   }
 }
 
-.upload-brewery,
-.upload-distillery,
-.upload-winery {
+.upload-breweries,
+.upload-distilleries,
+.upload-wineries {
   table {
     th {
       width: calc(100%/3);
