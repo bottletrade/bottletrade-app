@@ -196,21 +196,28 @@ body {
 }
 
 .site-footer {
+	align-self: flex-end;
+	background-color: #716558;
 	border-top: 1px solid #716558;
-	min-height: 70px;
-	@include breakpoint(small) {display: none;}
-	@include breakpoint(medium) {display: flex;}
-	&.title-bar .center {
-		width: 30%;
+	min-height: 65px;
+	.center {
+		text-align: center;
+		margin: 3px;
+		float: left;
+		width: 20%;
 	}
-	&.title-bar .left {
+	.left {
+		margin: 3px;
+		float: left;
 		width: 40%;
 		input {
 			max-width: 350px;
 		}
 	}
-	&.title-bar .right {
-		width: 30%;
+	.right {
+		text-align: center;
+		margin: 3px;
+		width: 40%;
 		text-align: center;
 		color: #FFF;
 		font-size: .8rem;
@@ -233,7 +240,7 @@ body {
 	}
 }
 .menu-footer {
-	min-height: 80px;
+	min-height: 58px;
 }
 
 .button-group {
