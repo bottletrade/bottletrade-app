@@ -196,13 +196,14 @@ body {
 }
 
 .site-footer {
+	padding: 3px;
 	align-self: flex-end;
 	background-color: #716558;
 	border-top: 1px solid #716558;
 	min-height: 65px;
 	.center {
+		margin-top: 3px;
 		text-align: center;
-		margin: 3px;
 		float: left;
 		width: 20%;
 	}
@@ -215,10 +216,8 @@ body {
 		}
 	}
 	.right {
-		text-align: center;
-		margin: 3px;
-		width: 40%;
-		text-align: center;
+		margin-top: 14px;
+		width: 39%;
 		color: #FFF;
 		font-size: .8rem;
 		a {
