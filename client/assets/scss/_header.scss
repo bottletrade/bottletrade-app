@@ -1,0 +1,45 @@
+.top-bar-custom {
+	background-color: #716558;
+	height: 40px;
+	min-height: 40px;
+	input {
+		height: 34px;
+		margin: 3px;
+	}
+	a {
+		margin: 0px 0px;
+	}
+	.center {
+		@include breakpoint(small) {
+			width: 70%;
+			max-width: 260px;
+			}
+		@include breakpoint(medium) {
+			width: 70%;
+			max-width: 1000px;
+			}
+		@include breakpoint(large) {
+			width: 80%;
+			max-width: 1200px;
+			}
+		float: left;
+	}
+	.button {
+		border: 1px solid #FFF;
+		color: #FFF;
+	}
+	.menu-position {
+		width: 2.5rem;
+		height: 2.5rem;
+		float: right;
+	}
+	.left {
+		margin: 3px 0px 0px 3px;
+		float: left;
+		max-width: 113px;
+		min-width: 113px;
+	}
+	.right {
+		float: right;
+	}
+}

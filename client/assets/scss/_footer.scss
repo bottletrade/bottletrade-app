@@ -1,0 +1,32 @@
+.site-footer {
+	padding: 3px;
+	align-self: flex-end;
+	background-color: #716558;
+	border-top: 1px solid #716558;
+	width: 100%;
+
+	.links-container span {
+		color: #FFF;
+		font-size: .8rem;
+		a {
+			color: #FFF;
+			font-size: .8rem;
+		}
+		a:hover {
+			color: #C2B49B;
+			font-size: .8rem;
+		}
+	}
+	h4 {
+		margin: 0;
+		color: #FFF;
+		font-size: 1rem;
+	}
+	span.inline-label {
+		margin: 0;
+	}
+}
+
+.menu-footer {
+	min-height: 58px;
+}
