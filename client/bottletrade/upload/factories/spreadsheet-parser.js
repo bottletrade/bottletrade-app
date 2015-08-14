@@ -4,7 +4,8 @@
   angular.module('bottletrade.common').factory('spreadsheetParser', function($q, $log) {
     var col = {
       brewery: {
-        name: 0
+        name: 0,
+        description: 1
       },
       beer: {
         brewery: 0,
@@ -39,7 +40,8 @@
       var results = [];
       parseCsv(csv).forEach(function(row) {
         results.push({
-          company: row[col.brewery.name]
+          company: row[col.brewery.name],
+          description: row[col.brewery.description]
         });
       });
       return results;

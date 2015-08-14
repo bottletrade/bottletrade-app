@@ -15,6 +15,7 @@
       },
       link: function(scope, element) {
         var newCompanies = {};
+        var newCompanyData = {};
         scope.uploadComplete = false;
         scope.uploadInProgress = false;
         scope.status = {
@@ -63,7 +64,8 @@
               // add all new companies
               Object.keys(newCompanies).forEach(function(companyName) {
                 var company = {
-                  name: companyName.toString()
+                  name: companyName.toString(),
+                  description: newCompanyData[companyName].description
                 };
 
                 switch (scope.fileContents) {
@@ -142,6 +144,19 @@
         scope.addCompany = function(companyName) {
           if (angular.isUndefined(newCompanies[companyName])) {
             newCompanies[companyName] = null;
+
+            // find first result using company
+            var firstCompany = lodash.first(scope.results, function(result) {
+              return result.company === companyName;
+            });
+            if (angular.isUndefined(firstCompany)) {
+              // no result matching company, invalid company was provided
+              return;
+            }
+
+            newCompanyData[companyName] = {
+              description: firstCompany.description
+            };
 
             // mark brewery added for other results with same brewery
             scope.results.forEach(function(result) {
