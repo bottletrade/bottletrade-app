@@ -113,7 +113,7 @@
           result.matchedBeverages = {};
           result.status = getStatus(result);
 
-          switch (fileContents)
+          switch (scope.fileContents)
           {
             case 'beers':
               // check if beer name exists for brewery
