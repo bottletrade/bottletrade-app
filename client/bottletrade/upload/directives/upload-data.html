@@ -4,8 +4,10 @@
       <thead>
         <tr>
           <th>STATUS</th>
+          <th ng-if="fileContents == 'wines' || fileContents == 'wineries'">WINERY</th>
+          <th ng-if="fileContents == 'spirits' || fileContents == 'distilleries'">DISTILLERY</th>
           <th ng-if="fileContents == 'beers' || fileContents == 'breweries'">BREWERY</th>
-          <th ng-if="fileContents == 'breweries'">DESCRIPTION</th>
+          <th ng-if="fileContents == 'breweries' || fileContents =='wineries' || fileContents =='distilleries'">DESCRIPTION</th>
           <th ng-if="fileContents == 'beers'">BEER</th>
         </tr>
       </thead>
@@ -32,7 +34,7 @@
             </div>
             <span ng-show="result.status != status.selectBeverage && result.status != status.addBeverage">{{ result.beverage }}</span>
           </td>
-          <td ng-if="fileContents == 'breweries'" style="overflow: ellipsis">
+          <td ng-if="fileContents == 'breweries' || fileContents =='wineries' || fileContents =='distilleries'">
             {{ result.description }}
           </td>
         </tr>

@@ -2,6 +2,7 @@
   'use strict';
 
   angular.module('bottletrade.common').factory('spreadsheetParser', function($q, $log) {
+    //these number defines the columns in the spreadsheet
     var col = {
       brewery: {
         name: 0,
@@ -12,14 +13,16 @@
         name: 1
       },
       winery: {
-        name: 0
+        name: 0,
+        description: 1
       },
       wine: {
         winery: 0,
         name: 1
       },
       distillery: {
-        name: 0
+        name: 0,
+        description: 1
       },
       spirit: {
         distillery: 0,
@@ -62,7 +65,8 @@
       var results = [];
       parseCsv(csv).forEach(function(row) {
         results.push({
-          company: row[col.winery.name]
+          company: row[col.winery.name],
+          description: row[col.winery.description]
         });
       });
       return results;
@@ -83,7 +87,8 @@
       var results = [];
       parseCsv(csv).forEach(function(row) {
         results.push({
-          company: row[col.distillery.name]
+          company: row[col.distillery.name],
+          description: row[col.distillery.description]
         });
       });
       return results;
