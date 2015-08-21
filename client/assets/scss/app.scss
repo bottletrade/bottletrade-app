@@ -62,7 +62,28 @@
 		background-color: primary-color;
 	}
 }
-
+.home-page {
+	.kill-bottom-margin {
+		margin-bottom: .2rem;
+		margin-right: 0rem;
+	}
+	.kill-margin {
+		margin: 0rem;
+		}
+	.condense {
+		font-stretch: condensed;
+	}
+	h3 {
+		margin: 2rem auto;
+	}
+	hr {
+		margin: .2rem
+	}
+	img.bottle-with-cirlce {
+		width: 150px;
+		height: 150px;
+	}
+}
 .main-view {
 background-color: #FFF;
 width: 100%;
