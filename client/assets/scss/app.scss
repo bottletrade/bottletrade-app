@@ -65,13 +65,17 @@
 .home-page {
 	.kill-bottom-margin {
 		margin-bottom: .2rem;
-		margin-right: 0rem;
+		margin-right: auto;
+		margin-left: auto;
 	}
 	.kill-margin {
 		margin: 0rem;
 		}
 	.condense {
 		font-stretch: condensed;
+	}
+	p.copy {
+		margin: 0rem 3rem .5rem 3rem;
 	}
 	h3, h2{
 		margin: 1.5rem auto;
