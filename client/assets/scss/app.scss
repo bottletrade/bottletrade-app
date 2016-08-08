@@ -1,6 +1,17 @@
 @import "settings";
+
+$primary-color: #716558;
+$secondary-color: #f1f1f1;
+$alert-color: #F04124;
+$info-color: #A0D3E8;
+$success-color: #43AC6A;
+$warning-color: #F08A24;
+$dark-color: #232323;
+$titlebar-center-width: none;
+$titlebar-side-width: none;
+
 @import "upload.spreadsheet";
-@import "foundation";
+@import "base";
 @import "global.text";
 @import "header";
 @import "footer";

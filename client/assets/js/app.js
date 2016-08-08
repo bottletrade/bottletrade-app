@@ -10,10 +10,10 @@
     // firebase
     'bottletrade.firebase',
 
-    // foundation
-    'foundation',
-    'foundation.dynamicRouting',
-    'foundation.dynamicRouting.animations',
+    // base apps
+    'base',
+    'base.dynamicRouting',
+    'base.dynamicRouting.animations',
 
     // bottletrade
     'bottletrade',
@@ -26,9 +26,11 @@
     $urlRouterProvider.otherwise('/');
 
     $locationProvider.html5Mode({
-      enabled:true,
+      enabled: false,
       requireBase: false
     });
+
+    $locationProvider.hashPrefix('!');
 
     $stateProvider
     .state("app", {
