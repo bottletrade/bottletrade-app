@@ -1,0 +1,15 @@
+<div class="grid-block wrap" ng-if="brewery">
+  <add-brewery updated="updated(brewery); editing = false" brewery="brewery" ng-show="editing"></add-brewery>
+  <div class="grid-block" ng-show="!editing">
+    <brewery-display class="small-12" data-brewery="brewery"></brewery-display>
+  </div>
+</div>
+<div class="grid-container wrap" ng-if="breweries">
+  <div class="small-12 grid-container text-center" ng-show="!adding">
+    <br /><a class="button" ng-click="adding = true">Add A Brewery</a>
+  </div>
+  <add-brewery created="created(brewery); adding = false" ng-show="adding"></add-brewery>
+  <div class="grid-block wrap" ng-show="!adding">
+    <brewery-summary ng-repeat="brewery in breweries" data-brewery="brewery"></brewery-summary>
+  </div>
+</div>

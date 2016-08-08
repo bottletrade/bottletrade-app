@@ -1,0 +1,9 @@
+<div class="grid-block wrap">
+  <div class="grid-block" ng-if="bottle">
+    <add-bottle updated="updated(bottle)" data-bottle="bottle" ng-show="action == 'edit'"></add-bottle>
+    <bottle-display class="small-12" ng-show="action != 'edit'" data-bottle="bottle" data-remove-bottle="bottleMgr.remove(bottle)"></bottle-display>
+  </div>
+  <div class="grid-block wrap" ng-if="bottles">
+    <bottle-summary ng-repeat="bottle in bottles" data-bottle="bottle" data-remove-bottle="bottleMgr.removeFromList(bottles,bottle)"></bottle-summary>
+  </div>
+</div>

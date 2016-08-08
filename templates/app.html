@@ -1,0 +1,135 @@
+<!-- RIGHT OFF CANVAS - USER MENU -->
+<zf-offcanvas id="menu" position="right" ng-click="$event.stopPropagation()">
+	<ul class="menu-bar vertical primary user-menu-with-badge">
+		<li class="user-menu-title" ng-if="$root.user" ui-sref="app.profile()" zf-close="">
+			<div>
+				<span class="float-left" ng-show="!$root.user.facebook">
+					<img src="/assets/img/profile/siloutte.jpg"/>
+				</span>
+				<span class="float-left" ng-show="$root.user.facebook">
+					<img ng-if="$root.user.facebook.cachedUserProfile.picture.data.is_silhoutte"
+						 src="/assets/img/profile/siloutte.jpg">
+					</img>
+					<img ng-if="!$root.user.facebook.cachedUserProfile.picture.data.is_silhoutte"
+						 ng-src="{{ $root.user.facebook.cachedUserProfile.picture.data.url }}">
+					</img>
+					<span style="font-stretch: condensed;">{{ $root.user.facebook.displayName }}</span>
+				</span>
+			</div>
+		</li>
+		<li ng-if="!$root.user">
+			<a ui-sref="app.account.login" zf-close="">LOGIN</a>
+		</li>
+		<li>
+			<a ui-sref="app.cellar" zf-close="">CELLAR</a>
+		</li>
+		<li>
+			<a ui-sref="app.account.settings.resetpassword" zf-close="">ACCOUNT SETTINGS</a>
+		</li>
+		<li class="user-menu-title">
+			MESSAGES
+		</li>
+		<li class="user-menu-with-badge">
+			<a ui-sref="app.messages" zf-close=""><div><span class="float-left">INBOX</span></div><div><span class="alert badge float-right">42</span></div></a>
+		</li>
+		<li>
+			<a>COMPOSE</a>
+		</li>
+		<li class="user-menu-title">
+			TRADING
+		</li>
+		<li class="user-menu-with-badge">
+			<a><div><span class="float-left">INCOMING</span></div><div><span class="alert badge float-right">99+</span></div></a>
+		</li>
+		<li>
+			<a>FIND A TRADER</a>
+		</li>
+		<li class="user-menu-title">
+			FIND
+		</li>
+		<li>
+			<a ui-sref="app.bottles({id:''})" zf-close="">BOTTLES</a>
+		</li>
+		<li>
+			<a ui-sref="app.beers({id:'', action:''})" zf-close="">BEER</a>
+		</li>
+		<li>
+			<a ui-sref="app.breweries({id:''})" zf-close="">BREWERIES</a>
+		</li>
+		<li>
+			<a ui-sref="app.wines({id:''})" zf-close="">WINE</a>
+		</li>
+		<li>
+			<a ui-sref="app.wineries({id:''})" zf-close="">WINERIES</a>
+		</li>
+		<li>
+			<a ui-sref="app.spirits({id:''})" zf-close="">SPIRITS</a>
+		</li>
+		<li>
+			<a ui-sref="app.distilleries({id:''})" zf-close="">DISTILLERIES</a>
+		</li>
+		<li ng-if="$root.user">
+			<a ng-click="auth.$unauth()" zf-close="">LOGOUT</a>
+		</li>
+	</ul>
+</zf-offcanvas>
+
+<!-- HEADER -->
+<div class="grid-frame vertical" ng-click="closeMenu()">
+	<div class="top-bar-custom">
+		<span class="left">
+			<a class="button hollow small" ui-sref="app.home">BOTTLE TRADE</a>
+		</span>
+		<div class="center">
+			<input type="search" ng-model="searchConfig.query" placeholder="Search"></input>
+		</div>
+		<span class="right">
+			<div class="menu-position">
+				<a ng-click="toggleMenu(); $event.stopPropagation()">
+					<svg zf-iconic="" data-src="/assets/img/template/BT Menu Icons V1.svg"></svg>
+				</a>
+			</div>
+		</span>
+	</div>
+
+	<zf-notification-set id="app-notifications" position="top-right"></zf-notification-set>
+
+	<div class="grid-block wrap view-wrap">
+		<div class="grid-block fadeIn main-view small-12" ui-view></div>
+		<div class="grid-block small-12 wrap site-footer show-for-medium v-align shrink">
+			<div class="grid-content collapse medium-6 large-5 text-center">
+				<h4>BOTTLETRADE NEWSLETTER:</h4>
+				<span class="inline-label">
+					<input type="search" placeholder="YOUR EMAIL">
+					<a href="#" class="button">SIGN UP</a>
+				</span>
+			</div>
+			<div class="grid-content collapse medium-6 large-2 text-center">
+				<h4>FOLLOW US ON:</h4>
+				<span>
+					<a href="http://instagram.com/thebottletrade" target="_blank"><img src="/assets/img/template/instagram-icon-sm.png" width="35px" height="35px" /></a>
+					<a href="https://twitter.com/thebottletrade" target="_blank"><img src="/assets/img/template/twitter-icon-sm.png" width="35px" height="35px" /></a>
+					<a href="https://www.facebook.com/BottleTrade" target="_blank"><img src="/assets/img/template/facebook-icon-sm.png" width="35px" height="35px" /></a>
+				</span>
+			</div>
+			<div class="grid-content collapse medium-12 large-5 align-center text-center links-container">
+				<span>
+					<a ui-sref="app.educate.houseRules">House Rules</a> |
+					<a ui-sref="app.educate.privacyPolicy">Privacy Policy</a> |
+					<a ui-sref="#">Contact Us</a> |
+					<a ui-sref="#">FAQ</a><br class="show-for-large">
+						&copy; 2013-2015 - BottleTrade LLC
+				</span>
+			</div>
+		</div>
+	</div>
+	<div class="clearfix hide-for-medium menu-footer">
+		<ul class="button-group expand">
+			<li><a ui-sref="app.home"><img zf-iconic="" src="/assets/img/BT TRADER FEED ICON V1-01.svg"></a></li>
+			<li><a ui-sref="app.home"><img zf-iconic="" src="/assets/img/BT SEARCH ICON V1-01.svg"></a></li>
+			<li><a ui-sref="app.home"><img zf-iconic="" src="/assets/img/BT INBOX ICON V1-01.svg"></a></li>
+			<li><a ui-sref="app.home"><img zf-iconic="" src="/assets/img/BT NOTIFICATION ICON V1-01.svg"></a></li>
+			<li><a ui-sref="app.home"><img zf-iconic="" src="/assets/img/BT PROFILE ICON V1.svg"></a></li>
+		</ul>
+	</div>
+</div>

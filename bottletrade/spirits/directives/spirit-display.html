@@ -1,0 +1,39 @@
+<div class="grid-block vertical beer-display">
+  <div class="grid-block">
+    <zf-interchange>
+      <img media="small" src="assets/img/Roseisle_Distillery_600-SM.jpg">
+      <img style="max-height: 200px; width: 100%;" media="medium" src="assets/img/Roseisle_Distillery_600-MED.jpg">
+      <img style="max-height: 300px; width: 100%;" media="large" src="assets/img/Roseisle_Distillery_600-LG.jpg">
+    </zf-interchange>
+  </div>
+  <div class="grid-block thumbnail-holder small-12">
+    <div class="grid-content align-left thumbnail shrink">
+      <img src="/assets/img/BOTTLE.svg">
+    </div>
+    <div class="grid-content text-left">
+      <h3>{{ spirit.name }}</h3>
+      <p><p>{{ spirit.distilledBy }}</p>
+    </div>
+    <div class="grid-block align-right cog-holder">
+      <zf-action-sheet id="my-actionsheet">
+        <zf-as-button><img zf-iconic="" icon="cog" size="medium"></zf-as-button>
+        <zf-as-content position="top">
+          <ul>
+            <li>What would you like to do?</li>
+            <li><a ui-sref="app.spirits({id: spirit.$id, action: 'edit'})">Edit {{ spirit.name }}</a></li>
+            <li><a>Edit Cover Photo</a></li>
+          </ul>
+        </zf-as-content>
+      </zf-action-sheet>
+    </div>
+  </div>
+  <div class="grid-content stat-holder">
+    <p>Bottle Size: {{ spirit.volume }}</p>
+    <p>Quantity: {{ spirit.quantity }}</p>
+    <p>Bottled On: {{ spirit.bottleDate }}</p>
+    <p>Purchase Price: {{ spirit.purchasePrice }}</p>
+  </div>
+  <div class="grid-content copy-holder">
+    <p>Description: {{ spirit.description }}</p>
+  </div>
+</div>

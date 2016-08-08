@@ -1,0 +1,136 @@
+
+<div class="grid-block vertical input-bg">
+  <div class="grid-content">
+    <h2 ng-show="isNew">Add A Brewery</h2>
+    <h2 ng-show="!isNew">Edit Brewery</h2>
+    <p>Please review all information below and be as accurate as possible when adding breweries. The Bottle Trade team reserves the right to make any changes after the brewery has been submitted.</p>
+    <img src="/assets/img/displays/upload-image.jpg">
+  </div>
+  <br />
+  <form name="add_brewery_form">
+    <div class-"grid-block">
+      <div class="grid-content">
+        <label>
+          Brewery Name:
+          <input ng-model="brewery.name" name="brewery_name" type="text" required></input>
+        </label>
+        <div class="error-container"
+            ng-show="add_brewery_form.brewery_name.$invalid && add_brewery_form.$submitted">
+          <small class="error"
+              ng-show="add_brewery_form.brewery_name.$error.required">
+              *Brewery's name is required.
+          </small>
+        </div>
+
+        <label>
+          Address:
+          <input ng-model="brewery.address" type="text"></input>
+        </label>
+      </div>
+
+      <div class="grid-block">
+        <div class="grid-content">
+          <label>
+            City:
+            <input ng-model="brewery.city" type="text"></input>
+          </label>
+
+        </div>
+
+        <div class="grid-content">
+          <label>
+            State:
+            <input ng-model="brewery.state" type="text"></input>
+          </label>
+        </div>
+      </div>
+      <div class="grid-block">
+        <div class="grid-content">
+          <label>
+            Postal Code:
+            <input ng-model="brewery.postalcode" type="text"></input>
+          </label>
+        </div>
+
+        <div class="grid-content">
+          <label>
+            Country:
+            <input ng-model="brewery.country" type="text"></input>
+          </label>
+        </div>
+      </div>
+
+      <div class="grid-content">
+        <label>
+          Brewery Type:</label>
+          <select ng-model="brewery.type">
+            <option>Lager</option>
+            <option>IPA</option>
+            <option>Pale Ale</option>
+          </select>
+
+        <label>
+          Website:
+          <input ng-model="brewery.website" name="brewery_url" type="url"></input>
+        </label>
+        <div class="error-container"
+            ng-show="add_brewery_form.brewery_url.$invalid && add_brewery_form.$submitted">
+          <small class="error">
+              *URL is not formatted correctly.
+          </small>
+        </div>
+
+        <label>
+          FaceBook URL:
+          <input ng-model="brewery.fburl" type="text"></input>
+        </label>
+      </div>
+
+      <div class="grid-block">
+        <div class="grid-content">
+          <label>
+            Twitter Name:
+            <input ng-model="brewery.twitter" name="brewery_twitter" type="text" ng-pattern="/^[@][a-zA-Z0-9]+$/"></input>
+          </label>
+          <div class="error-container"
+              ng-show="add_brewery_form.brewery_twitter.$invalid && add_brewery_form.$submitted">
+            <small class="error">
+                *Must read as "@example".
+            </small>
+          </div>
+        </div>
+        <div class="grid-content">
+          <label>
+            Instagram Name:
+            <input ng-model="brewery.instagram" name="brewery_instagram" type="text" ng-pattern="/^[@][a-zA-Z0-9]+$/"></input>
+          </label>
+          <div class="error-container"
+              ng-show="add_brewery_form.brewery_instagram.$invalid && add_brewery_form.$submitted">
+            <small class="error">
+                *Must read as "@example".
+            </small>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid-content">
+        <label>
+          Description:
+          <textarea ng-model="brewery.description" class="describe"></textarea>
+        </label>
+      </div>
+    </div>
+
+      <div class="grid-content text-center">
+        <a class="button" ng-click="save()">Submit</a>
+        <div class="error-container"
+            ng-show="add_brewery_form.$invalid && add_brewery_form.$submitted">
+          <small class="error"
+              ng-show="add_brewery_form.beer_name.$error.required || add_brewery_form.beer_brewery.$error.required">
+              *Fix the issues above in RED.
+          </small>
+        </div>
+      </div>
+
+  </form>
+</div>

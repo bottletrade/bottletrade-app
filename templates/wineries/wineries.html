@@ -1,0 +1,12 @@
+<div class="grid-block wrap">
+  <div class="small-12 grid-container text-center" ng-show="!adding">
+    <br /><a class="button" ng-click="adding = true">Add A Winery</a>
+  </div>
+	<add-winery created="created(winery); adding = false" ng-show="adding"></add-winery>
+  <div class="grid-block" ng-if="winery">
+    <winery-display class="small-12" data-winery="winery"></winery-display>
+  </div>
+  <div class="grid-block wrap" ng-if="wineries">
+    <winery-summary ng-repeat="winery in wineries" data-winery="winery"></winery-summary>
+  </div>
+</div>

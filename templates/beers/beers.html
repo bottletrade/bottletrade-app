@@ -1,0 +1,16 @@
+<div class="grid-block" ng-if="beer">
+  <add-beer updated="updated(beer)" beer="beer" ng-show="action == 'edit'"></add-beer>
+  <add-bottle created="addedToCellar(bottle)" beer="beer" ng-if="action == 'cellar'"></add-bottle>
+  <div class="grid-block wrap" ng-show="action != 'edit' && action != 'cellar'">
+    <beer-display class="small-12" data-beer="beer"></beer-display>
+  </div>
+</div>
+<div class="grid-container wrap" ng-if="beers">
+  <div class="small-12 grid-container text-center" ng-show="action != 'new'">
+    <br /><a class="button" ui-sref="app.beers({id: 'new'})" ui-sref-opts="{reload:true}">Add A Beer</a>
+  </div>
+  <add-beer created="created(beer)" ng-show="action == 'new'"></add-beer>
+  <div class="grid-block wrap" ng-show="action != 'new'">
+    <beer-summary ng-repeat="beer in beers" data-beer="beer"></beer-summary>
+  </div>
+</div>
