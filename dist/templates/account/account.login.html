@@ -1,0 +1,26 @@
+<div class="grid-block vertical">
+	<div class="grid-block vertical text-center" ng-if="$root.user">
+		<div class="grid-content">
+			<h4>You're already logged in brah</h4>
+		</div>
+		<div class="grid-content">
+			<a class="button" ui-sref="app.profile">Go to Profile</a>
+		</div>
+	</div>
+	<div class="grid-block vertical" ng-if="!$root.user">
+		<div class="grid-content shrink text-center">
+			<h4>Choose a login option below...</h4>
+		</div>
+		<div class="grid-block shrink">
+			<div class="grid-content text-center icon-left">
+				<a class="button primary" ng-repeat="provider in providers" ng-click="selectProvider(provider)">
+					<img class="iconic-sm" zf-iconic="" ng-if="provider.name == 'Facebook'" data-icon="social" data-type="facebook"></img>
+					<img class="iconic-sm" zf-iconic="" ng-if="provider.name == 'Twitter'" data-icon="social" data-type="twitter"></img>
+					<img class="iconic-sm" zf-iconic="" ng-if="provider.name == 'Google'" data-icon="plus"></img>
+					<img class="iconic-sm" zf-iconic="" ng-if="provider.name == 'BottleTrade'" data-icon="envelope" data-state="closed"></img>
+					{{ provider.name }}
+				</a>
+			</div>
+		</div>
+	</div>
+</div>

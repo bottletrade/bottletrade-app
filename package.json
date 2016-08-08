@@ -1,6 +1,12 @@
 {
   "name": "bottletrade-app",
-  "version": "0.0.1",
+  "version": "0.0.2",
+  "scripts": {
+    "publish-patch": "gulp publish:patch && git push --follow-tags && gulp publish:ghpages",
+    "publish-minor": "gulp publish:minor && git push --follow-tags && gulp publish:ghpages",
+    "publish-major": "gulp publish:major && git push --follow-tags && gulp publish:ghpages",
+    "publish-ghpages": "gulp publish:ghpages"
+  },
   "devDependencies": {
     "angular-base-apps": "~1.2.5",
     "connect-modrewrite": "^0.7.9",

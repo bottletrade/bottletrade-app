@@ -1,0 +1,55 @@
+<div class="small-12 vertical grid-block">
+  <div class="grid-block wrap">
+    <div class="grid-content">
+      <p class="text-justify">Add the following bottle to your cellar. You may fill in the optional fields below or edit your bottle from your cellar later. When you're done click "Save" at the bottom of the page to submit this bottle to your cellar.</p>
+    </div>
+    <beer-summary beer="bottle.beverage" ng-if="bottle.type == 'beer'"></beer-summary>
+    <wine-summary beer="bottle.beverage" ng-if="bottle.type == 'wine'"></wine-summary>
+    <spirit-summary beer="bottle.beverage" ng-if="bottle.type == 'spirit'"></spirit-summary>
+  </div>
+  <div class="grid-content input-bg">
+    <div class="grid-container small-12 medium-6">
+      <form>
+        <label>
+          Wine Name:
+          <input ng-model="wine.name" type="text"></input>
+        </label>
+
+        <label>
+          Vinificated By:
+          <input ng-model="wine.brewedBy" type="text"></input>
+        </label>
+
+        <label>
+          Bottle Size:
+          <input ng-model="wine.volume" type="text" placeholder="oz. liter ml etc"></input>
+        </label>
+
+        <label>
+          Quantity:
+          <input ng-model="wine.quantity" type="text"></input>
+        </label>
+
+        <label>
+          Bottled On Date:
+          <input ng-model="wine.bottleDate" type="date"></input>
+        </label>
+
+        <label>
+          Purchase Price:
+          <input ng-model="wine.purchasePrice" type="text" maxlength="250"></input>
+        </label>
+
+        <label>
+          Description:
+          <input ng-model="wine.description" type="text"></input>
+        </label>
+
+        <div class="grid-content">
+          <a class="button" ng-click="save()">Save</a>
+        </div>
+
+      </div>
+    </form>
+  </div>
+</div>

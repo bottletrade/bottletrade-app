@@ -1,0 +1,20 @@
+<div class="grid-block search-result wrap">
+  <div class="grid-block search-result-beer" ng-if="result.type == 'beer'">
+    <beer-summary beer="result.beer"></beer-summary>
+  </div>
+  <div class="grid-block search-result-brewery" ng-if="result.type == 'brewery'">
+    <brewery-summary brewery="result.brewery"></brewery-summary>
+  </div>
+  <div class="grid-block search-result-spirit" ng-if="result.type == 'spirit'">
+    <spirit-summary spirit="result.spirit"></spirit-summary>
+  </div>
+  <div class="grid-block search-result-distillery" ng-if="result.type == 'distillery'">
+    <distillery-summary distillery="result.distillery"></distillery-summary>
+  </div>
+  <div class="grid-block search-result-wine" ng-if="result.type == 'wine'">
+    <wine-summary wine="result.wine"></wine-summary>
+  </div>
+  <div class="grid-block search-result-winery" ng-if="result.type == 'winery'">
+    <winery-summary winery="result.winery"></winery-summary>
+  </div>
+</div>

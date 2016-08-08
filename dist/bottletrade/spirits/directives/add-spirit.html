@@ -1,0 +1,48 @@
+<div class="small-12 vertical grid-block input-bg">
+  <div class="grid-content">
+    <p class="text-center">ADD A SPIRIT</p>
+    <div class="grid-container small-12 medium-6">
+      <form>
+        <label>
+          Spirit Name:
+          <input ng-model="spirit.name" type="text"></input>
+        </label>
+
+        <label>
+          Distilled By:
+          <input ng-model="spirit.distilledBy" type="text"></input>
+        </label>
+
+        <label>
+          Bottle Size:
+          <input ng-model="spirit.volume" type="text" placeholder="oz. liter ml etc"></input>
+        </label>
+
+        <label>
+          Quantity:
+          <input ng-model="spirit.quantity" type="text"></input>
+        </label>
+
+        <label>
+          Bottled On Date:
+          <input ng-model="spirit.bottleDate" type="date"></input>
+        </label>
+
+        <label>
+          Purchase Price:
+          <input ng-model="spirit.purchasePrice" type="text" maxlength="250"></input>
+        </label>
+
+        <label>
+          Description:
+          <input ng-model="spirit.description" type="text"></input>
+        </label>
+
+        <div class="grid-content">
+          <a class="button" ng-click="save()">Save</a>
+        </div>
+
+      </div>
+    </form>
+  </div>
+</div>
