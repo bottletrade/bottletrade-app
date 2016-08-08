@@ -4,11 +4,11 @@
 		<li class="user-menu-title" ng-if="$root.user" ui-sref="app.profile()" zf-close="">
 			<div>
 				<span class="float-left" ng-show="!$root.user.facebook">
-					<img src="/assets/img/profile/siloutte.jpg"/>
+					<img src=assets/img/profile/siloutte.jpg"/>
 				</span>
 				<span class="float-left" ng-show="$root.user.facebook">
 					<img ng-if="$root.user.facebook.cachedUserProfile.picture.data.is_silhoutte"
-						 src="/assets/img/profile/siloutte.jpg">
+						 src=assets/img/profile/siloutte.jpg">
 					</img>
 					<img ng-if="!$root.user.facebook.cachedUserProfile.picture.data.is_silhoutte"
 						 ng-src="{{ $root.user.facebook.cachedUserProfile.picture.data.url }}">
@@ -86,7 +86,7 @@
 		<span class="right">
 			<div class="menu-position">
 				<a ng-click="toggleMenu(); $event.stopPropagation()">
-					<svg zf-iconic="" data-src="/assets/img/template/BT Menu Icons V1.svg"></svg>
+					<svg zf-iconic="" data-src=assets/img/template/BT Menu Icons V1.svg"></svg>
 				</a>
 			</div>
 		</span>
@@ -107,9 +107,9 @@
 			<div class="grid-content collapse medium-6 large-2 text-center">
 				<h4>FOLLOW US ON:</h4>
 				<span>
-					<a href="http://instagram.com/thebottletrade" target="_blank"><img src="/assets/img/template/instagram-icon-sm.png" width="35px" height="35px" /></a>
-					<a href="https://twitter.com/thebottletrade" target="_blank"><img src="/assets/img/template/twitter-icon-sm.png" width="35px" height="35px" /></a>
-					<a href="https://www.facebook.com/BottleTrade" target="_blank"><img src="/assets/img/template/facebook-icon-sm.png" width="35px" height="35px" /></a>
+					<a href="http://instagram.com/thebottletrade" target="_blank"><img src=assets/img/template/instagram-icon-sm.png" width="35px" height="35px" /></a>
+					<a href="https://twitter.com/thebottletrade" target="_blank"><img src=assets/img/template/twitter-icon-sm.png" width="35px" height="35px" /></a>
+					<a href="https://www.facebook.com/BottleTrade" target="_blank"><img src=assets/img/template/facebook-icon-sm.png" width="35px" height="35px" /></a>
 				</span>
 			</div>
 			<div class="grid-content collapse medium-12 large-5 align-center text-center links-container">
@@ -125,11 +125,11 @@
 	</div>
 	<div class="clearfix hide-for-medium menu-footer">
 		<ul class="button-group expand">
-			<li><a ui-sref="app.home"><img zf-iconic="" src="/assets/img/BT TRADER FEED ICON V1-01.svg"></a></li>
-			<li><a ui-sref="app.home"><img zf-iconic="" src="/assets/img/BT SEARCH ICON V1-01.svg"></a></li>
-			<li><a ui-sref="app.home"><img zf-iconic="" src="/assets/img/BT INBOX ICON V1-01.svg"></a></li>
-			<li><a ui-sref="app.home"><img zf-iconic="" src="/assets/img/BT NOTIFICATION ICON V1-01.svg"></a></li>
-			<li><a ui-sref="app.home"><img zf-iconic="" src="/assets/img/BT PROFILE ICON V1.svg"></a></li>
+			<li><a ui-sref="app.home"><img zf-iconic="" src=assets/img/BT TRADER FEED ICON V1-01.svg"></a></li>
+			<li><a ui-sref="app.home"><img zf-iconic="" src=assets/img/BT SEARCH ICON V1-01.svg"></a></li>
+			<li><a ui-sref="app.home"><img zf-iconic="" src=assets/img/BT INBOX ICON V1-01.svg"></a></li>
+			<li><a ui-sref="app.home"><img zf-iconic="" src=assets/img/BT NOTIFICATION ICON V1-01.svg"></a></li>
+			<li><a ui-sref="app.home"><img zf-iconic="" src=assets/img/BT PROFILE ICON V1.svg"></a></li>
 		</ul>
 	</div>
 </div>
