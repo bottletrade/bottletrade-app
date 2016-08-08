@@ -324,7 +324,7 @@ gulp.task('publish:ghpages', function() {
 });
 
 gulp.task('build:publish', function() {
-  return gulp.src(['./package.json', './bower.json', './dist/**/*'])
+  return gulp.src(['./package.json', './bower.json', './dist'])
     // commit the changes
     .pipe($.git.add())
     .pipe($.git.commit('bump version'))
