@@ -5,7 +5,7 @@
     return {
       restrict: 'E',
       replace: true,
-      templateUrl: '/bottletrade/bottles/directives/add-bottle.html',
+      templateUrl: 'bottletrade/bottles/directives/add-bottle.html',
       scope: {
         beer: '=?',
         wine: '=?',

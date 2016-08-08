@@ -4,7 +4,7 @@
   angular.module('bottletrade').directive('addWine', function(WineList) {
     return {
       replace: true,
-      templateUrl: '/bottletrade/wines/directives/add-wine.html',
+      templateUrl: 'bottletrade/wines/directives/add-wine.html',
       scope: {
         created: '&'
       },

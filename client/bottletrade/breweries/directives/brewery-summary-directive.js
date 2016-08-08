@@ -4,7 +4,7 @@
   angular.module('bottletrade.breweries').directive('brewerySummary', function() {
     return {
       replace: true,
-      templateUrl: '/bottletrade/breweries/directives/brewery-summary.html',
+      templateUrl: 'bottletrade/breweries/directives/brewery-summary.html',
       scope: {
         brewery: '='
       },

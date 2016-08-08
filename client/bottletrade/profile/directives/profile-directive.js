@@ -4,7 +4,7 @@
   angular.module('bottletrade.profile').directive('profile', function(Profile) {
     return {
       replace: true,
-      templateUrl: '/bottletrade/profile/directives/profile.html',
+      templateUrl: 'bottletrade/profile/directives/profile.html',
       scope: {
         username: '='
       },

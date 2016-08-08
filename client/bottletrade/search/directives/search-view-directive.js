@@ -13,7 +13,7 @@
     WineryManager) {
     return {
       replace: true,
-      templateUrl: '/bottletrade/search/directives/search-view.html',
+      templateUrl: 'bottletrade/search/directives/search-view.html',
       scope: {
         query: '='
       },

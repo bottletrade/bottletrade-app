@@ -4,7 +4,7 @@
   angular.module('bottletrade.beers').directive('addBeer', function(FoundationApi, BeerList) {
     return {
       replace: true,
-      templateUrl: '/bottletrade/beers/directives/add-beer.html',
+      templateUrl: 'bottletrade/beers/directives/add-beer.html',
       scope: {
         created: '&',
         beer: '=?',

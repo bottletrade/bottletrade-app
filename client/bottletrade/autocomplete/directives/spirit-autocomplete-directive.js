@@ -4,7 +4,7 @@
   angular.module('bottletrade.autocomplete').directive('spiritAutocomplete', function($timeout, FoundationApi, AutoCompleteManager) {
     return {
       replace: true,
-      templateUrl: '/bottletrade/autocomplete/directives/spirit-autocomplete.html',
+      templateUrl: 'bottletrade/autocomplete/directives/spirit-autocomplete.html',
       scope: {
         inputName: '@',
         selected: '='

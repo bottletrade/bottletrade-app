@@ -4,7 +4,7 @@
   angular.module('bottletrade.spirits').directive('spiritSummary', function() {
     return {
       replace: true,
-      templateUrl: '/bottletrade/spirits/directives/spirit-summary.html',
+      templateUrl: 'bottletrade/spirits/directives/spirit-summary.html',
       scope: {
         spirit: '='
       },

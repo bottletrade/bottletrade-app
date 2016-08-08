@@ -4,7 +4,7 @@
   angular.module('bottletrade.spirits').directive('addSpirit', function(SpiritList) {
     return {
       replace: true,
-      templateUrl: '/bottletrade/spirits/directives/add-spirit.html',
+      templateUrl: 'bottletrade/spirits/directives/add-spirit.html',
       scope: {
         created: '&'
       },

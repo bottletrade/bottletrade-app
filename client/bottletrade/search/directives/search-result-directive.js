@@ -4,7 +4,7 @@
   angular.module('bottletrade.search').directive('searchResult', function() {
     return {
       replace: true,
-      templateUrl: '/bottletrade/search/directives/search-result.html',
+      templateUrl: 'bottletrade/search/directives/search-result.html',
       scope: {
         result: '='
       },

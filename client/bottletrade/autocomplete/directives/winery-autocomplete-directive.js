@@ -4,7 +4,7 @@
   angular.module('bottletrade.autocomplete').directive('wineryAutocomplete', function($timeout, FoundationApi, AutoCompleteManager) {
     return {
       replace: true,
-      templateUrl: '/bottletrade/autocomplete/directives/winery-autocomplete.html',
+      templateUrl: 'bottletrade/autocomplete/directives/winery-autocomplete.html',
       scope: {
         inputName: '@',
         selected: '='

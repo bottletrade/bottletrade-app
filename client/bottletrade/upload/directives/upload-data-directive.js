@@ -7,7 +7,7 @@
              DistilleryList, SpiritList, DistilleryManager, SpiritManager) {
     return {
       replace: true,
-      templateUrl: '/bottletrade/upload/directives/upload-data.html',
+      templateUrl: 'bottletrade/upload/directives/upload-data.html',
       scope: {
         fileData: '=',
         fileContents: '@',
