@@ -5,11 +5,12 @@
   </div>
 </div>
 <div class="grid-block vertical" ng-if="breweries">
-  <div class="grid-content text-center shrink" ng-show="action == 'new'">
-    <a class="button" ui-sref="app.breweries({id: 'new'})" ui-sref-opts="{reload:true}">Add A Brewery</a>
-  </div>
   <add-brewery created="created(brewery)" ng-show="action == 'new'"></add-brewery>
   <div class="grid-block vertical" ng-show="action != 'new'">
+    <div class="grid-content shrink text-center">
+      <h3>Breweries</h3>
+      <a class="button small kill-margin" ui-sref="app.breweries({id: 'new'})" ui-sref-opts="{reload:true}">Add</a>
+    </div>
     <div class="grid-block shrink slideInLeft stagger" ng-repeat="brewery in breweries">
       <brewery-summary data-brewery="brewery"></brewery-summary>
     </div>

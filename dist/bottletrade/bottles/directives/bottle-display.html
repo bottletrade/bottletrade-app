@@ -24,8 +24,13 @@
           </zf-as-content>
         </zf-action-sheet>
       </h3>
-      <p>{{ brewery.address }}<br />{{ brewery.city }}, {{ brewery.state }} {{ brewery.postalcode }}<br />{{ brewery.country }}</p>
-      <h5>{{ beer.style }}</h5>
+      <div ng-if="bottle.type == 'beer'">
+        <h5 ng-if="bottle.beverage.brewery">from <a ui-sref="app.breweries({id: '{{ bottle.beverage.brewery.$id }}'})">{{ bottle.beverage.brewery.name }}</a></h5>
+        <p>
+          {{ bottle.beverage.brewery.address }}<br />
+          {{ bottle.beverage.brewery.city }}, {{ bottle.beverage.brewery.state }} {{ bottle.beverage.brewery.postalcode }}<br />
+          {{ bottle.beverage.brewery.country }}</p>
+      </div>
     </div>
   </div>
   <div class="grid-content stat-holder">

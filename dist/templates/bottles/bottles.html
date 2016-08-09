@@ -4,6 +4,12 @@
     <bottle-display ng-show="action != 'edit'" data-bottle="bottle" data-remove-bottle="bottleMgr.remove(bottle)"></bottle-display>
   </div>
   <div class="grid-block vertical" ng-if="bottles">
-    <bottle-summary class="shrink" ng-repeat="bottle in bottles" data-bottle="bottle" data-remove-bottle="bottleMgr.removeFromList(bottles,bottle)"></bottle-summary>
+    <div class="grid-content shrink text-center">
+      <h3>Your Bottles</h3>
+      <span ng-show="bottles.length == 0">no bottles in your cellar</span>
+    </div>
+    <div class="grid-block shrink slideInLeft stagger" ng-repeat="bottle in bottles">
+      <bottle-summary data-bottle="bottle" data-remove-bottle="bottleMgr.removeFromList(bottles,bottle)"></bottle-summary>
+    </div>
   </div>
 </div>
