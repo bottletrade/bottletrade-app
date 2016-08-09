@@ -1,7 +1,7 @@
 <!-- RIGHT OFF CANVAS - USER MENU -->
 <zf-offcanvas id="menu" position="right" ng-click="$event.stopPropagation()">
 	<ul class="menu-bar vertical primary user-menu-with-badge">
-		<li class="user-menu-title" ng-if="$root.user" ui-sref="app.profile()" zf-close="">
+		<li class="user-menu-title" ng-if="$root.user && !$root.user.isAnonymous" ui-sref="app.profile()" zf-close="">
 			<div>
 				<span class="float-left" ng-show="!$root.user.facebook">
 					<img src="assets/img/profile/siloutte.jpg"/>
@@ -44,6 +44,9 @@
 		<li>
 			<a>FIND A TRADER</a>
 		</li>
+		<li>
+			<a ui-sref="app.upload">UPLOAD</a>
+		</li>
 		<li class="user-menu-title">
 			FIND
 		</li>
@@ -68,8 +71,8 @@
 		<li>
 			<a ui-sref="app.distilleries({id:''})" zf-close="">DISTILLERIES</a>
 		</li>
-		<li ng-if="$root.user">
-			<a ng-click="auth.$unauth()" zf-close="">LOGOUT</a>
+		<li ng-if="$root.user && !$root.user.isAnonymous">
+			<a ng-click="signout()" zf-close="">LOGOUT</a>
 		</li>
 	</ul>
 </zf-offcanvas>

@@ -6,6 +6,7 @@
     'ngAnimate',
     'ngResource',
     'ngLodash',
+    'angucomplete-alt',
 
     // firebase
     'bottletrade.firebase',
@@ -38,21 +39,30 @@
       authRequired: false,
       abstract: true,
       resolve: {
-        "user": ["Auth", "$rootScope", function(Auth, $rootScope) {
-          var user = Auth.$waitForAuth();
-          user.then(function(user) {
-            $rootScope.user = user;
+        "user": ["$firebaseAuth", "$rootScope", function($firebaseAuth, $rootScope) {
+          return $firebaseAuth().$waitForSignIn().then(function(user) {
+            if (!user) {
+              return $firebaseAuth().$signInAnonymously();
+            } else {
+              $rootScope.user = user;
+            }
           });
-          return user;
         }]
       }
     });
+
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyBkom-6-JYJuUH0t77V-yWxXdboZ3daKoo",
+      authDomain: "bottletrade-8613d.firebaseapp.com",
+      databaseURL: "https://bottletrade-8613d.firebaseio.com",
+      storageBucket: "",
+    };
+    firebase.initializeApp(config);
   });
 
-  angular.module('application').run(function($rootScope, $state, Auth, SearchService) {
+  angular.module('application').run(function($firebaseAuth, $rootScope, $state, SearchService) {
     $rootScope.$on("$stateChangeError", function(event, toState, toParams, fromState, fromParams, error) {
-      // We can catch the error thrown when the $requireAuth promise is rejected
-      // and redirect the user back to the home page
       if (error === "AUTH_REQUIRED") {
         $state.go("app.home");
       }
@@ -65,8 +75,17 @@
     });
 
     // handle updates to authentication
-    Auth.$onAuth(function(user) {
-      $rootScope.user = user;
+    $firebaseAuth().$onAuthStateChanged(function(user) {
+      if (!user) {
+        // sign in anonymously
+        $firebaseAuth().$signInAnonymously().then(function() {
+          $rootScope.user = user;
+        }, function() {
+          $rootScope.user = null;
+        });
+      } else {
+        $rootScope.user = user;
+      }
     });
   });
 

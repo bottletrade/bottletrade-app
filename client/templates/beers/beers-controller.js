@@ -24,8 +24,8 @@
       }
 
       $scope.created = function(beer) {
-        var beerData = $scope.beers.$getRecord(beer.key());
-        $state.go('app.beers', { id: beer.key() });
+        var beerData = $scope.beers.$getRecord(beer.key);
+        $state.go('app.beers', { id: beer.key, action: '' });
 
         $timeout(function() {
           FoundationApi.publish('app-notifications', {
@@ -39,7 +39,7 @@
 
       $scope.updated = function(beer) {
         var beerData = $scope.beer;
-        $state.go('app.beers', { id: beer.key() });
+        $state.go('app.beers', { id: beer.key, action: '' });
 
         $timeout(function() {
           FoundationApi.publish('app-notifications', {

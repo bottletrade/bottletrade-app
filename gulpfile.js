@@ -67,7 +67,8 @@ var paths = {
       'bower_components/angular-ui-router/release/angular-ui-router.js',
       'bower_components/hammerjs/hammer.js',
       'bower_components/ng-lodash/build/ng-lodash.js',
-      'bower_components/angular-resource/angular-resource.js'
+      'bower_components/angular-resource/angular-resource.js',
+      'bower_components/angucomplete-alt/dist/angucomplete-alt.min.js'
     ],
     app: [
       'client/bottletrade/bottletrade.js',
@@ -108,13 +109,13 @@ gulp.task('copy', function() {
   })
     .pipe(gulp.dest('build')));
 
-  merged.add(gulp.src('./client/assets/font/**/*')
-    .pipe(gulp.dest('build/assets/font/')));
+  merged.add(gulp.src('./client/assets/fonts/**/*')
+    .pipe(gulp.dest('build/assets/fonts/')));
 
   merged.add(gulp.src('./client/assets/img/**/*')
     .pipe(gulp.dest('build/assets/img/')));
 
-  merged.add(gulp.src('./node_modules/angular-base-apps/iconic/**/*')
+  merged.add(gulp.src('./bower_components/angular-base-apps/iconic/*.svg')
     .pipe(gulp.dest('build/assets/img/iconic/')));
 
   return merged;
@@ -140,6 +141,7 @@ gulp.task('copy:templates', ['clean:templates', 'javascript'], function() {
 // Inject styles for docs-specific libraries
 gulp.task('css', ['sass'], function() {
   var dirs = [
+    'bower_components/angucomplete-alt/angucomplete-alt.css',
     'build/assets/css/app.css'
   ];
   return gulp.src(dirs)

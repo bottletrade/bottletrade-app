@@ -2,7 +2,7 @@
   'use strict';
 
   angular.module('bottletrade.spirits').factory("SpiritManager",
-    function(firebaseRef, BTConstants) {
+    function(firebaseRef, BTConstants, $firebaseArray) {
       return {
         searchByNameBegins: searchByNameBegins,
         searchByNameEnds: searchByNameEnds,
@@ -10,23 +10,23 @@
         searchByNameExact: searchByNameExact
       };
 
-      function searchByNameBegins(name, addedCallback, removedCallback) {
-        return _searchByName(name, "", "", "", "~", addedCallback, removedCallback);
+      function searchByNameBegins(name) {
+        return _searchByName(name, "", "", "", "~");
       }
 
-      function searchByNameEnds(name, addedCallback, removedCallback) {
-        return _searchByName(name, "~", "", "~", "", addedCallback, removedCallback);
+      function searchByNameEnds(name) {
+        return _searchByName(name, "~", "", "~", "");
       }
 
-      function searchByNameContains(name, addedCallback, removedCallback) {
-        return _searchByName(name, "~", "~", "~", "~", addedCallback, removedCallback);
+      function searchByNameContains(name) {
+        return _searchByName(name, "~", "~", "~", "~");
       }
 
-      function searchByNameExact(name, addedCallback, removedCallback) {
-        return _searchByName(name, "", "", "", "", addedCallback, removedCallback);
+      function searchByNameExact(name) {
+        return _searchByName(name, "", "", "", "");
       }
 
-      function _searchByName(name, startPrefix, startSuffix, endPrefix, endSuffix, addedCallback, removedCallback) {
+      function _searchByName(name, startPrefix, startSuffix, endPrefix, endSuffix) {
         var nameLower, query;
 
         nameLower = name.toString().toLowerCase();
@@ -34,17 +34,7 @@
                   .startAt(startPrefix + nameLower + startSuffix)
                   .endAt(endPrefix + nameLower + endSuffix);
 
-        if (addedCallback) {
-          query.on('child_added',  function(snapshot) {
-            addedCallback(snapshot.key(), snapshot.val());
-          });
-        }
-
-        if (removedCallback) {
-          query.on('child_removed',  function(snapshot) {
-            removedCallback(snapshot.key(), snapshot.val());
-          });
-        }
+        return $firebaseArray(query).$loaded();
       }
     }
   );

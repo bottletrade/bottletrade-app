@@ -4,8 +4,8 @@ url: /profile
 controller: ProfileCtrl
 data: { authRequired: true }
 ---
-<div class="grid-block vertical" ng-if="$root.user">
-	<div class="grid-content shrink small-12" ng-if="$root.user.facebook">
+<div class="grid-block vertical">
+	<div class="grid-content shrink" ng-if="$root.user.facebook">
 		<div class="grid-block shrink float-left">
 			<img ng-if="!$root.user.facebook.cachedUserProfile.picture.data.is_silhoutte" ng-src="{{ $root.user.facebook.cachedUserProfile.picture.data.url }}"></img></span>
 		</div>
@@ -14,18 +14,16 @@ data: { authRequired: true }
 			<p>Trader Rating: &star;&star;&star;&star;&star;</p>
 		</div>
 	</div>
-	<div class="grid-content small-12" style="background-color: #716558; height: 30px;">
-		<h4 class="white">Cyber Cellar</h4>
-	</div>
-	<div class="grid-block wrap shrink">
-		<bottle-summary class="small-12" ng-repeat="bottle in bottles" data-bottle="bottle" data-remove-bottle="bottleMgr.removeFromList(bottles,bottle)"></bottle-summary>
-	</div>
-	<div class="grid-content small-12" style="background-color: #716558; height: 30px;">
-		<h4 class="white">Trader Reviews</h4>
-	</div>
-	<div class="grid-block wrap shrink">
-		<div class="grid-content small-12">
-			<p>These are the reviews provided by users, these reviews are not editable.</p>
-		</div>
+	<div class="grid-content">
+		<zf-accordion>
+      <zf-accordion-item title="Cyber Cellar">
+				<div class="grid-block shrink" ng-repeat="bottle in $parent.$parent.bottles">
+					<bottle-summary data-bottle="bottle" data-remove-bottle="$parent.bottleMgr.removeFromList($parent.$parent.bottles, bottle)"></bottle-summary>
+				</div>
+			</zf-accordion-item>
+      <zf-accordion-item title="Trader Reviews">
+				<p>These are the reviews provided by users, these reviews are not editable.</p>
+			</zf-accordion-item>
+		</zf-accordion>
 	</div>
 </div>

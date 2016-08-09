@@ -15,7 +15,7 @@
         {{ beer.name }}
         <zf-action-sheet class="cog-holder">
           <zf-as-button><img zf-iconic="" icon="cog" size="small"></zf-as-button>
-          <zf-as-content position="bottom">
+          <zf-as-content position="top">
             <ul>
               <li>What would you like to do?</li>
               <li><a ui-sref="app.beers({id: beer.$id, action: 'edit'})">Edit {{ beer.name }}</a></li>

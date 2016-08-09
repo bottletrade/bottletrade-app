@@ -19,7 +19,14 @@
       }
 
       $scope.updated = function(bottle) {
-        $state.go('app.bottles', { id: bottle.key() });
+        $state.go('app.bottles', { id: bottle.key, action: '' });
+
+        FoundationApi.publish('app-notifications', {
+          title: "Bottle Added!",
+          content: bottle.beer.name + " has been added to your cellar",
+          color: "success",
+          autoclose: '5000'
+        });
       };
   });
 })();

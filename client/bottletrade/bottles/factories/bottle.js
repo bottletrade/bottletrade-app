@@ -33,7 +33,7 @@
           }
         });
 
-        return new Bottle(firebaseRef(BTConstants.firebase.bottles, $rootScope.user.auth.uid, id));
+        return new Bottle(firebaseRef(BTConstants.firebase.bottles, $rootScope.user.uid, id));
       };
     }
   );

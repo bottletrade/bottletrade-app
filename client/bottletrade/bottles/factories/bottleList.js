@@ -54,7 +54,7 @@
 
       return function() {
         if ($rootScope.user) {
-          return new BottleList(firebaseRef(BTConstants.firebase.bottles, $rootScope.user.auth.uid));
+          return new BottleList(firebaseRef(BTConstants.firebase.bottles, $rootScope.user.uid));
         } else {
           return null;
         }

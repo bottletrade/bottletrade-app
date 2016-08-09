@@ -294,3 +294,23 @@ body {
 	width: 100%;
 	height: 100%;
 }
+
+.search-container {
+  overflow-y: visible;
+
+  .angucomplete-row {
+    font-family: $font-normal;
+
+    .highlight {
+      font-weight: bold;
+    }
+  }
+
+  .angucomplete-selected-row {
+    background-color: $primary-color;
+  }
+
+  .angucomplete-dropdown {
+    width: 100%;
+  }
+}

@@ -10,7 +10,7 @@
       }
 
       $scope.created = function(distillery) {
-        $state.go('app.distilleries', { id: distillery.key() });
+        $state.go('app.distilleries', { id: distillery.key });
       };
   });
 })();

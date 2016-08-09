@@ -3,15 +3,26 @@
 
   angular.module('application').controller("BreweriesCtrl",
     function($scope, $state, $stateParams, $timeout, FoundationApi, Brewery, BreweryList) {
-      if ($stateParams.id) {
+      if ($stateParams.id && $stateParams.id !== "new") {
         $scope.brewery = new Brewery($stateParams.id);
       } else {
         $scope.breweries = BreweryList;
+        if ($stateParams.id === "new") {
+          $scope.action = "new";
+        }
+      }
+
+      if ($stateParams.action) {
+        switch ($stateParams.action) {
+          case "edit":
+            $scope.action = "edit";
+            break;
+        }
       }
 
       $scope.created = function(brewery) {
-        var breweryData = $scope.breweries.$getRecord(brewery.key());
-        $state.go('app.breweries', { id: brewery.key() });
+        var breweryData = $scope.breweries.$getRecord(brewery.key);
+        $state.go('app.breweries', { id: brewery.key, action: '' });
 
         $timeout(function() {
           FoundationApi.publish('app-notifications', {
@@ -25,7 +36,7 @@
 
       $scope.updated = function(brewery) {
         var breweryData = $scope.brewery;
-        $state.go('app.breweries', { id: brewery.key() });
+        $state.go('app.breweries', { id: brewery.key, action: '' });
 
         $timeout(function() {
           FoundationApi.publish('app-notifications', {

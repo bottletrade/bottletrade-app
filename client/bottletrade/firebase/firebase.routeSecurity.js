@@ -1,9 +1,9 @@
 (function (angular) {
   'use strict';
   angular.module('bottletrade.firebase.routeSecurity', ['ui.router'])
-    .run(function ($injector, $location, $rootScope, loginRedirectPath) {
+    .run(function ($injector, $location, $rootScope) {
       if ($injector.has('$state')) {
-        new RouteSecurityManager($location, $rootScope, $injector.get('$state'), loginRedirectPath);
+        new RouteSecurityManager($location, $rootScope, $injector.get('$state'), '/account/login');
       }
     });
 
@@ -65,7 +65,7 @@
     // A function to check whether the current path requires authentication,
     // and if so, whether a redirect to a login page is needed.
     _authRequiredRedirect: function (state, path) {
-      this._authenticated = !!(this._rootScope.user && this._rootScope.user.auth);
+      this._authenticated = !!(this._rootScope.user && !this._rootScope.user.isAnonymous);
 
       if (state.data && state.data.authRequired && !this._authenticated) {
         if (state.pathTo === undefined) {

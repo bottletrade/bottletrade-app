@@ -10,7 +10,7 @@
       }
 
       $scope.created = function(spirit) {
-        $state.go('app.spirits', { id: spirit.key() });
+        $state.go('app.spirits', { id: spirit.key });
       };
   });
 })();

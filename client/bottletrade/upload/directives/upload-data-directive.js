@@ -2,7 +2,7 @@
   'use strict';
 
   angular.module('bottletrade.upload').directive('uploadData',
-    function($q, $timeout, lodash, BreweryList, BeerList, BreweryManager, BeerManager,
+    function($log, $q, $timeout, lodash, BreweryList, BeerList, BreweryManager, BeerManager,
              WineryList, WineList, WineryManager, WineManager,
              DistilleryList, SpiritList, DistilleryManager, SpiritManager) {
     return {
@@ -65,28 +65,28 @@
               Object.keys(newCompanies).forEach(function(companyName) {
                 var company = {
                   name: companyName.toString(),
-                  description: newCompanyData[companyName].description
+                  description: newCompanyData[companyName].description || ""
                 };
 
                 switch (scope.fileContents) {
                   case 'beers':
                   case 'breweries':
                     companyPromises.push(BreweryList.$add(company).then(function(ref) {
-                      company.$id = ref.key();
+                      company.$id = ref.key;
                       newCompanies[companyName] = company;
                     }));
                     break;
                   case 'wines':
                   case 'wineries':
                     companyPromises.push(WineryList.$add(company).then(function(ref) {
-                      company.$id = ref.key();
+                      company.$id = ref.key;
                       newCompanies[companyName] = company;
                     }));
                     break;
                   case 'spirits':
                   case 'distilleries':
                     companyPromises.push(DistilleryList.$add(company).then(function(ref) {
-                      company.$id = ref.key();
+                      company.$id = ref.key;
                       newCompanies[companyName] = company;
                     }));
                     break;
@@ -104,7 +104,8 @@
                 }).finally(function() {
                   scope.uploadInProgress = false;
                 });
-              }).finally(function() {
+              }, function(err) {
+                $log.log(err);
                 scope.uploadInProgress = false;
               });
             });
@@ -119,22 +120,28 @@
           {
             case 'beers':
               // check if beer name exists for brewery
-              BeerManager.searchByNameExactFromBrewery(result.beverage, result.correctCompany.$id, function(key, beer) {
-                result.matchedBeverages[key] = beer;
+              BeerManager.searchByNameExactFromBrewery(result.beverage, result.correctCompany.$id).then(function(beers) {
+                beers.forEach(function(beer) {
+                  result.matchedBeverages[beer.$id] = beer;
+                });
                 result.status = getStatus(result);
               });
               break;
             case 'spirits':
               // check if spirit name exists for distillery
-              SpiritManager.searchByNameExactFromBrewery(result.beverage, result.correctCompany.$id, function(key, spirit) {
-                result.matchedBeverages[key] = spirit;
+              SpiritManager.searchByNameExactFromDistillery(result.beverage, result.correctCompany.$id).then(function(spirits) {
+                spirits.forEach(function(spirit) {
+                  result.matchedBeverages[spirit.$id] = spirit;
+                });
                 result.status = getStatus(result);
               });
               break;
             case 'wines':
               // check if wine name exists for brewery
-              WineManager.searchByNameExactFromBrewery(result.beverage, result.correctCompany.$id, function(key, wine) {
-                result.matchedBeverages[key] = wine;
+              WineManager.searchByNameExactFromWinery(result.beverage, result.correctCompany.$id).then(function(wines) {
+                wines.forEach(function(wine) {
+                  result.matchedBeverages[beer.$id] = wine;
+                });
                 result.status = getStatus(result);
               });
               break;
@@ -261,26 +268,29 @@
             switch (scope.fileContents) {
               case 'beers':
               case 'breweries':
-                BreweryManager.searchByNameExact(result.company, function(key, brewery) {
-                  brewery.$id = key;
-                  result.matchedCompanies[key] = brewery;
-                  result.status = getStatus(result);
+                BreweryManager.searchByNameExact(result.company).then(function(breweries) {
+                  breweries.forEach(function(brewery) {
+                    result.matchedCompanies[brewery.$id] = brewery;
+                    result.status = getStatus(result);
+                  });
                 });
                 break;
               case 'wines':
               case 'wineries':
-                WineryManager.searchByNameExact(result.company, function(key, winery) {
-                  winery.$id = key;
-                  result.matchedCompanies[key] = winery;
-                  result.status = getStatus(result);
+                WineryManager.searchByNameExact(result.company).then(function(wineries) {
+                  wineries.forEach(function(winery) {
+                    result.matchedCompanies[winery.$id] = winery;
+                    result.status = getStatus(result);
+                  });
                 });
                 break;
               case 'spirits':
               case 'distilleries':
-                DistilleryManager.searchByNameExact(result.company, function(key, distillery) {
-                  distillery.$id = key;
-                  result.matchedCompanies[key] = distillery;
-                  result.status = getStatus(result);
+                DistilleryManager.searchByNameExact(result.company).then(function(distilleries) {
+                  distilleries.forEach(function(distillery) {
+                    result.matchedCompanies[distillery.$id] = distillery;
+                    result.status = getStatus(result);
+                  });
                 });
                 break;
             }
@@ -290,24 +300,27 @@
             // check if beverage exists
             switch (scope.fileContents) {
               case 'beers':
-                BeerManager.searchByNameExact(result.beverage, function(key, beer) {
-                  beer.$id = key;
-                  result.matchedBeverages[key] = beer;
-                  result.status = getStatus(result);
+                BeerManager.searchByNameExact(result.beverage).then(function(beers) {
+                  beers.forEach(function(beer) {
+                    result.matchedCompanies[beer.$id] = beer;
+                    result.status = getStatus(result);
+                  });
                 });
                 break;
               case 'wines':
-                WineManager.searchByNameExact(result.beverage, function(key, wine) {
-                  wine.$id = key;
-                  result.matchedBeverages[key] = wine;
-                  result.status = getStatus(result);
+                WineManager.searchByNameExact(result.beverage).then(function(wines) {
+                  wines.forEach(function(wine) {
+                    result.matchedCompanies[wine.$id] = wine;
+                    result.status = getStatus(result);
+                  });
                 });
                 break;
               case 'spirits':
-                SpiritManager.searchByNameExact(result.beverage, function(key, spirit) {
-                  spirit.$id = key;
-                  result.matchedBeverages[key] = spirit;
-                  result.status = getStatus(result);
+                SpiritManager.searchByNameExact(result.beverage).then(function(spirits) {
+                  spirits.forEach(function(spirit) {
+                    result.matchedCompanies[spirit.$id] = spirit;
+                    result.status = getStatus(result);
+                  });
                 });
                 break;
             }

@@ -40,7 +40,7 @@
               scope.created({ bottle: bottle });
             });
           } else {
-            scope.beer.$save().then(function(beer) {
+            scope.bottle.$save().then(function(bottle) {
               scope.updated({ bottle: bottle });
             });
           }

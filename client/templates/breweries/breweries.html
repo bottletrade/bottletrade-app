@@ -1,21 +1,23 @@
 ---
 name: app.breweries
-url: /breweries?id
+url: /breweries?:id&:action
 data: { authRequired: false }
 controller: BreweriesCtrl
 ---
-<div class="grid-block wrap" ng-if="brewery">
-  <add-brewery updated="updated(brewery); editing = false" brewery="brewery" ng-show="editing"></add-brewery>
-  <div class="grid-block" ng-show="!editing">
-    <brewery-display class="small-12" data-brewery="brewery"></brewery-display>
+<div class="grid-block vertical" ng-if="brewery">
+  <add-brewery updated="updated(brewery); editing = false" brewery="brewery" ng-show="action == 'edit'"></add-brewery>
+  <div class="grid-block vertical" ng-show="action != 'edit'">
+    <brewery-display data-brewery="brewery"></brewery-display>
   </div>
 </div>
-<div class="grid-container wrap" ng-if="breweries">
-  <div class="small-12 grid-container text-center" ng-show="!adding">
-    <br /><a class="button" ng-click="adding = true">Add A Brewery</a>
+<div class="grid-block vertical" ng-if="breweries">
+  <div class="grid-content text-center shrink" ng-show="action == 'new'">
+    <a class="button" ui-sref="app.breweries({id: 'new'})" ui-sref-opts="{reload:true}">Add A Brewery</a>
   </div>
-  <add-brewery created="created(brewery); adding = false" ng-show="adding"></add-brewery>
-  <div class="grid-block wrap" ng-show="!adding">
-    <brewery-summary ng-repeat="brewery in breweries" data-brewery="brewery"></brewery-summary>
+  <add-brewery created="created(brewery)" ng-show="action == 'new'"></add-brewery>
+  <div class="grid-block vertical" ng-show="action != 'new'">
+    <div class="grid-block shrink slideInLeft stagger" ng-repeat="brewery in breweries">
+      <brewery-summary data-brewery="brewery"></brewery-summary>
+    </div>
   </div>
 </div>

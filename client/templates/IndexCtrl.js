@@ -1,8 +1,7 @@
 (function() {
   'use strict';
 
-  angular.module('application').controller("IndexCtrl", function($scope, $state, $timeout, Auth, FoundationApi, SearchService, user) {
-    $scope.auth = Auth;
+  angular.module('application').controller("IndexCtrl", function($scope, $state, $timeout, $firebaseAuth, FoundationApi, SearchService, user) {
     $scope.searchConfig = SearchService.getConfig();
 
     $scope.$watch("searchConfig.query", function(query) {
@@ -27,5 +26,9 @@
 			  FoundationApi.publish('menu', 'toggle');
 		  });
 	  };
+    $scope.signout = function() {
+      $firebaseAuth().$signOut();
+      $state.go("app.home");
+    };
   });
 })();

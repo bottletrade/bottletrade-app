@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  angular.module('bottletrade.autocomplete').directive('beerAutocomplete', function($timeout, FoundationApi, AutoCompleteManager) {
+  angular.module('bottletrade.autocomplete').directive('beerAutocomplete', function($timeout, FoundationApi, BeerManager) {
     return {
       replace: true,
       templateUrl: 'bottletrade/autocomplete/directives/beer-autocomplete.html',
@@ -10,34 +10,16 @@
         selected: '='
       },
       link: function(scope, element, attrs) {
-        scope.selected = null;
-        scope.query = "";
-        scope.uid = 'beer-autocomplete-' + FoundationApi.generateUuid();
-
-        AutoCompleteManager.prepareBeerAutoComplete(scope);
-
-        scope.$watchCollection('results', function(newVal, oldVal) {
-          if (oldVal.length === 0 && newVal && newVal.length > 0) {
-      		  $timeout(function() {
-              FoundationApi.publish(scope.uid, 'show');
-      		  });
-          }
-
-          if (newVal.length === 0) {
-      		  $timeout(function() {
-              FoundationApi.publish(scope.uid, 'hide');
-      		  });
-          }
-        });
-
-        scope.selectResult = function(result) {
-          scope.selected = result;
-          scope.query = result.name;
+        scope.runSearch = function(val) {
+          return BeerManager.searchByNameBegins(val);
         };
 
         scope.clearResult = function() {
-          scope.selected = false;
-          scope.query = "";
+          scope.selected = null;
+        };
+
+        scope.selectResult = function(selected) {
+          scope.selected = selected.originalObject;
         };
       }
     };

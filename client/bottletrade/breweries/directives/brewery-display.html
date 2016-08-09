@@ -6,26 +6,26 @@
       <img style="max-height: 300px; width: 100%;" media="large" src="assets/img/Roseisle_Distillery_600-LG.jpg">
     </zf-interchange>
   </div>
-  <div class="grid-block thumbnail-holder small-12 shrink">
+  <div class="grid-block shrink thumbnail-holder">
     <div class="grid-content align-left thumbnail shrink">
       <img src="assets/img/BOTTLE.svg">
     </div>
-    <div class="grid-content text-left">
-      <h3>{{ brewery.name }}</h3>
+    <div class="grid-content text-left copy-holder">
+      <h3>
+        {{ brewery.name }}
+        <zf-action-sheet class="cog-holder">
+          <zf-as-button><img zf-iconic="" icon="cog" size="small"></zf-as-button>
+          <zf-as-content position="top">
+            <ul>
+              <li>What would you like to do?</li>
+              <li><a ui-sref="app.breweries({id: brewery.$id, action: 'edit'})">Edit {{ brewery.name }}</a></li>
+              <li><a>Edit Cover Photo</a></li>
+            </ul>
+          </zf-as-content>
+        </zf-action-sheet>
+      </h3>
       <p>{{ brewery.address }}<br />{{ brewery.city }}, {{ brewery.state }} {{ brewery.postalcode }}<br />{{ brewery.country }}</p>
       <h5>{{ beer.style }}</h5>
-    </div>
-    <div class="grid-block align-right cog-holder">
-      <zf-action-sheet>
-        <zf-as-button><img zf-iconic="" icon="cog" size="medium"></zf-as-button>
-        <zf-as-content position="top">
-          <ul>
-            <li>What would you like to do?</li>
-            <li><a ui-sref="app.breweries({id: brewery.$id, action: 'edit'})">Edit {{ brewery.name }}</a></li>
-            <li><a>Edit Cover Photo</a></li>
-          </ul>
-        </zf-as-content>
-      </zf-action-sheet>
     </div>
   </div>
   <div class="grid-content stat-holder">
@@ -37,5 +37,10 @@
       </div>
   <div class="grid-content copy-holder">
     <p>Description: {{ brewery.description }}</p>
+  </div>
+  <div class="grid-content">
+    <h6>Beers</h6>
+    <span ng-show="beers.length == 0">No beers for brewery</span>
+    <beer-summary ng-repeat="beer in beers" data-beer="beer"></beer-summary>
   </div>
 </div>

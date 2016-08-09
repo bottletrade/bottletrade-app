@@ -29,7 +29,8 @@
     "ng-lodash": "~0.2.0",
     "lodash": "~3.6.0",
     "angular-filter": "~0.5.4",
-    "angular-resource": "^1.5.8"
+    "angular-resource": "^1.5.8",
+    "angucomplete-alt": "^2.4.1"
   },
   "resolutions": {
     "angular": "1.5.8"
