@@ -39,7 +39,7 @@
     <p>Description: {{ brewery.description }}</p>
   </div>
   <div class="grid-content">
-    <h6>Beers</h6>
+    <h3 class="text-center">Beers</h3>
     <span ng-show="beers.length == 0">No beers for brewery</span>
     <beer-summary ng-repeat="beer in beers" data-beer="beer"></beer-summary>
   </div>

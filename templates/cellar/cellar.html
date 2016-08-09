@@ -1,8 +1,8 @@
 <div class="grid-block vertical">
-  <div class="grid-content">
+  <div class="grid-content shrink">
     <p>Cyber Cellar</p>
   </div>
-  <div class="grid-block shrink" ng-repeat="bottle in bottles">
+  <div class="grid-block shrink slideInLeft stagger" ng-repeat="bottle in bottles">
     <bottle-summary data-bottle="bottle" data-remove-bottle="bottleMgr.removeFromList(bottles,bottle)"></bottle-summary>
   </div>
 </div>
