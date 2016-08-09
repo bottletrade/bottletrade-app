@@ -1,20 +1,20 @@
-<div class="grid-block search-result wrap">
-  <div class="grid-block search-result-beer" ng-if="result.type == 'beer'">
+<div class="grid-block search-result" ng-switch="result.type">
+  <div class="grid-block search-result-beer" ng-switch-when="beer">
     <beer-summary beer="result.beer"></beer-summary>
   </div>
-  <div class="grid-block search-result-brewery" ng-if="result.type == 'brewery'">
+  <div class="grid-block search-result-brewery" ng-switch-when="brewery">
     <brewery-summary brewery="result.brewery"></brewery-summary>
   </div>
-  <div class="grid-block search-result-spirit" ng-if="result.type == 'spirit'">
+  <div class="grid-block search-result-spirit" ng-switch-when="spirit">
     <spirit-summary spirit="result.spirit"></spirit-summary>
   </div>
-  <div class="grid-block search-result-distillery" ng-if="result.type == 'distillery'">
+  <div class="grid-block search-result-distillery" ng-switch-when="distillery">
     <distillery-summary distillery="result.distillery"></distillery-summary>
   </div>
-  <div class="grid-block search-result-wine" ng-if="result.type == 'wine'">
+  <div class="grid-block search-result-wine" ng-switch-when="wine">
     <wine-summary wine="result.wine"></wine-summary>
   </div>
-  <div class="grid-block search-result-winery" ng-if="result.type == 'winery'">
+  <div class="grid-block search-result-winery" ng-switch-when="winery">
     <winery-summary winery="result.winery"></winery-summary>
   </div>
 </div>
