@@ -24,14 +24,13 @@ $titlebar-side-width: none;
 .beer-display {
 	.thumbnail-holder {
 		overflow: visible;
+
 		.copy-holder {
 			padding: 1rem 1rem;
+			overflow: visible;
 		}
 	}
 	.thumbnail {
-		img {
-			height: 8rem;
-		}
 		width: 150px;
 		height: 150px;
 		border: 2px solid #000;
@@ -41,18 +40,20 @@ $titlebar-side-width: none;
 		z-index: 999;
 		background-color: #FFF;
 		box-shadow: 0px 5px 15px #c9c9c9;
+
+		img {
+			height: 8rem;
+		}
 	}
 
 	.cog-holder {
-		overflow: hidden;
-		padding: .5rem;
 		li:first-child {
 			color: #FFF;
 			background-color: $primary-color;
 			height: auto;
 			margin: 0rem auto;
 			padding: .5rem 0rem;
-			}
+		}
 	}
 	.stat-holder {
 		overflow: visible;

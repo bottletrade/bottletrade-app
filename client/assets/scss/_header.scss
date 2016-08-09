@@ -1,28 +1,23 @@
+$bottletrade-button-width: 113px;
+$bottletrade-menu-width: 40px;
+
 .top-bar-custom {
 	background-color: #716558;
 	height: 40px;
 	min-height: 40px;
-	input {
-		height: 34px;
-		margin: 3px;
-	}
 	a {
 		margin: 0px 0px;
 	}
 	.center {
-		@include breakpoint(small) {
-			width: 70%;
-			max-width: 260px;
-			}
-		@include breakpoint(medium) {
-			width: 70%;
-			max-width: 1000px;
-			}
-		@include breakpoint(large) {
-			width: 80%;
-			max-width: 1200px;
-			}
+		padding: 4px 6px;
 		float: left;
+		height: 100%;
+		width: calc(100% - #{$bottletrade-button-width} - #{$bottletrade-menu-width} - 12px);
+
+		input {
+			height: 32px;
+			margin: 0;
+		}
 	}
 	.button {
 		border: 1px solid #FFF;
@@ -36,8 +31,8 @@
 	.left {
 		margin: 3px 0px 0px 3px;
 		float: left;
-		max-width: 113px;
-		min-width: 113px;
+		max-width: $bottletrade-button-width;
+		min-width: $bottletrade-button-width;
 	}
 	.right {
 		float: right;

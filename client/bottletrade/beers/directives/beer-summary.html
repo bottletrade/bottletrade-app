@@ -1,11 +1,11 @@
-<div class="grid-block summary-container small-12 medium-6 large-4">
-  <div class="grid-block align-left small-2 v-align">
+<div class="grid-block summary-container">
+  <div class="grid-block align-left shrink v-align">
     <img src="assets/img/BOTTLE.svg" />
   </div>
-  <div class="grid-block small-7">
+  <div class="grid-block">
     <h4 class="text-left">{{ beer.name }}<br><small><a class="text-left" ui-sref="app.breweries({ id: beer.brewery.$id })">{{ beer.brewery.name }}</a></small></h4>
   </div>
-  <div class="grid-block align-right small-3 wrap">
+  <div class="grid-block align-right shrink">
     <a class="expand button hollow small" ui-sref="app.beers({id: beer.$id})">Go to Beer</a>
     <a class="expand button hollow small" ng-show="$root.user" ui-sref="app.beers({id: beer.$id, action: 'cellar'})">Add to Cellar</a>
   </div>
