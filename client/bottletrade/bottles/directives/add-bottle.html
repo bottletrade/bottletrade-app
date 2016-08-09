@@ -7,16 +7,14 @@
       <form>
         <label ng-if="bottle.type == 'beer'">
           Beer Name:
-          <h3>{{ beer.name }}</h3>
         </label>
         <label ng-if="bottle.type == 'wine'">
           Wine Name:
-          <h3>{{ wine.name }}</h3>
         </label>
         <label ng-if="bottle.type == 'spirit'">
           Spirit Name:
-          <h3> {{ spirit.name }}</h3>
         </label>
+        <h3> {{ bottle.beverage.name }}</h3>
 
         <label>
           Bottle Style:

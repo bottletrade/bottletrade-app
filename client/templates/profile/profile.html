@@ -15,7 +15,7 @@ data: { authRequired: true }
 		</div>
 	</div>
 	<div class="grid-content">
-		<zf-accordion>
+		<zf-accordion multi-open="true">
       <zf-accordion-item title="Cyber Cellar">
 				<div class="grid-block shrink" ng-repeat="bottle in $parent.$parent.bottles">
 					<bottle-summary data-bottle="bottle" data-remove-bottle="$parent.bottleMgr.removeFromList($parent.$parent.bottles, bottle)"></bottle-summary>

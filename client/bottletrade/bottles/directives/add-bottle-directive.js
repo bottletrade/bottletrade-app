@@ -37,11 +37,11 @@
         scope.save = function() {
           if (scope.isNew) {
             (new BottleList()).$add(scope.bottle).then(function(bottle) {
-              scope.created({ bottle: bottle });
+              scope.created({ bottle: scope.bottle });
             });
           } else {
-            scope.bottle.$save().then(function(bottle) {
-              scope.updated({ bottle: bottle });
+            scope.bottle.$save().then(function() {
+              scope.updated({ bottle: scope.bottle });
             });
           }
         };

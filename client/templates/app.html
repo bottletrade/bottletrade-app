@@ -17,7 +17,7 @@
 				</span>
 			</div>
 		</li>
-		<li ng-if="!$root.user">
+		<li ng-if="!$root.user || $root.user.isAnonymous">
 			<a ui-sref="app.account.login" zf-close="">LOGIN</a>
 		</li>
 		<li>

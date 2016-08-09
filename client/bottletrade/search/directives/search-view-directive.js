@@ -18,88 +18,62 @@
         query: '='
       },
       link: function(scope, element) {
-        var lastQueryTime = null, lastQueryVal = "";
+        var lastQueryVal = "";
 
         scope.results = [];
         scope.loading = false;
 
         scope.performSearch = function(val) {
-          var currentQueryTime;
-
           // don't run search if same query
           if (val === lastQueryVal) {
             return;
           }
 
-          currentQueryTime = new Date();
-          lastQueryTime = currentQueryTime;
           lastQueryVal = val;
           scope.results.splice(0, scope.results.length);
 
-          BeerManager.searchByNameBegins(val, function(id, beer) {
-            addResult('beer', id, beer);
-          }, function(id, beer) {
-            removeResult('beer', id, beer);
+          BeerManager.searchByNameBegins(val).then(function(beers) {
+            beers.forEach(function(beer) {
+              addResult('beer', beer);
+            });
           });
 
-          BreweryManager.searchByNameBegins(val, function(id, brewery) {
-            addResult('brewery', id, brewery);
-          }, function(id, brewery) {
-            removeResult('brewery', id, brewery);
+          BreweryManager.searchByNameBegins(val).then(function(breweries) {
+            breweries.forEach(function(brewery) {
+              addResult('brewery', brewery);
+            });
           });
 
-          SpiritManager.searchByNameBegins(val, function(id, spirit) {
-            addResult('spirit', id, spirit);
-          }, function(id, spirit) {
-            removeResult('spirit', id, spirit);
+          SpiritManager.searchByNameBegins(val).then(function(spirits) {
+            spirits.forEach(function(spirit) {
+              addResult('spirit', spirit);
+            });
           });
 
-          DistilleryManager.searchByNameBegins(val, function(id, distillery) {
-            addResult('distillery', id, distillery);
-          }, function(id, distillery) {
-            removeResult('distillery', id, distillery);
+          DistilleryManager.searchByNameBegins(val).then(function(distilleries) {
+            distilleries.forEach(function(distillery) {
+              addResult('distillery', distillery);
+            });
           });
 
-          WineManager.searchByNameBegins(val, function(id, wine) {
-            addResult('wine', id, wine);
-          }, function(id, wine) {
-            removeResult('wine', id, wine);
+          WineManager.searchByNameBegins(val).then(function(wines) {
+            wines.forEach(function(wine) {
+              addResult('wine', wine);
+            });
           });
 
-          WineryManager.searchByNameBegins(val, function(id, winery) {
-            addResult('winery', id, winery);
-          }, function(id, winery) {
-            removeResult('winery', id, winery);
+          WineryManager.searchByNameBegins(val).then(function(wineries) {
+            wineries.forEach(function(winery) {
+              addResult('winery', winery);
+            });
           });
 
-          function addResult(type, id, obj) {
-            // ignore if not for current query
-            if (lastQueryTime !== currentQueryTime) {
-              return;
-            }
-
-            obj.$id = id;
+          function addResult(type, obj) {
             $timeout(function() {
               var resultObj = {};
               resultObj.type = type;
               resultObj[type] = obj;
               scope.results.push(resultObj);
-            });
-          }
-
-          function removeResult(type, id, obj) {
-            // ignore if not for current query
-            if (lastQueryTime !== currentQueryTime) {
-              return;
-            }
-
-            $timeout(function() {
-              lodash.remove(scope.results, function(result) {
-                if (result.type == type && result[type].$id == id) {
-                  return true;
-                }
-                return false;
-              });
             });
           }
         };
@@ -109,8 +83,6 @@
             scope.performSearch(newVal);
           } else {
             // clear results
-            lastQueryVal = "";
-            lastQueryTime = new Date();
             scope.results.splice(0, scope.results.length);
           }
         });

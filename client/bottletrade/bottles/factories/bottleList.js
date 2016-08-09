@@ -7,24 +7,29 @@
       var BottleList = $firebaseArray.$extend({
         "$add": function(data) {
           // only store beverage ID not entire object
-          data.beverage = data.beverage.$id;
-          return $firebaseArray.prototype.$add.call(this, data);
+          var bev = data.beverage;
+          data.beverage = bev.$id;
+          return $firebaseArray.prototype.$add.call(this, data).then(function() {
+            data.beverage = bev;
+          });
         },
         "$$added": function(snapshot, prevChild) {
           // call the super
           var newChild = $firebaseArray.prototype.$$added.apply(this, arguments);
 
           if (newChild) {
-            switch (newChild.type) {
-              case "beer":
-                newChild.beverage = new Beer(newChild.beverage);
-                break;
-              case "wine":
-                newChild.beverage = new Wine(newChild.beverage);
-                break;
-              case "spirit":
-                newChild.beverage = new Spirit(newChild.beverage);
-                break;
+            if (angular.isString(newChild.beverage)) {
+              switch (newChild.type) {
+                case "beer":
+                  newChild.beverage = new Beer(newChild.beverage);
+                  break;
+                case "wine":
+                  newChild.beverage = new Wine(newChild.beverage);
+                  break;
+                case "spirit":
+                  newChild.beverage = new Spirit(newChild.beverage);
+                  break;
+              }
             }
           }
 

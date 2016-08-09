@@ -52,17 +52,14 @@
       };
 
       $scope.addedToCellar = function(bottle) {
-        bottle.once('value', function(snapshot) {
-          var beerData = $scope.beer;
-          $state.go('app.cellar', {}, { reload: true });
+        $state.go('app.cellar', {}, { reload: true });
 
-          $timeout(function() {
-            FoundationApi.publish('app-notifications', {
-              title: "Bottle Added!",
-              content: beerData.name + " has been added to your cellar",
-              color: "success",
-              autoclose: '5000'
-            });
+        $timeout(function() {
+          FoundationApi.publish('app-notifications', {
+            title: "Bottle Added!",
+            content: bottle.beverage.name + " has been added to your cellar",
+            color: "success",
+            autoclose: '5000'
           });
         });
       };

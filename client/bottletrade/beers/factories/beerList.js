@@ -8,11 +8,14 @@
         "$add": function(data) {
           // before adding object, create lowercase
           // name property that can be used for search
+          var brew = data.brewery;
           data.search_name = data.name.toLowerCase();
           if (!angular.isString(data.brewery)) {
-            data.brewery = data.brewery.$id;
+            data.brewery = brew.$id;
           }
-          return $firebaseArray.prototype.$add.call(this, data);
+          return $firebaseArray.prototype.$add.call(this, data).then(function() {
+            data.brewery = brew;
+          });
         },
         "$$added": function(snapshot, prevChild) {
           // call the super

@@ -19,11 +19,11 @@
       }
 
       $scope.updated = function(bottle) {
-        $state.go('app.bottles', { id: bottle.key, action: '' });
+        $state.go('app.bottles', { id: bottle.$id, action: '' });
 
         FoundationApi.publish('app-notifications', {
-          title: "Bottle Added!",
-          content: bottle.beer.name + " has been added to your cellar",
+          title: "Bottle Updated!",
+          content: bottle.beverage.name + " has been updated in your cellar",
           color: "success",
           autoclose: '5000'
         });

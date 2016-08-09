@@ -8,11 +8,14 @@
         var Beer = $firebaseObject.$extend({
           "$save": function() {
             // before saving object, update search name and brewery
+            var self = this, brew = this.brewery;
             this.search_name = this.name.toLowerCase();
             if (!angular.isString(this.brewery)) {
-              this.brewery = this.brewery.$id;
+              this.brewery = brew.$id;
             }
-            return $firebaseObject.prototype.$save.call(this);
+            return $firebaseObject.prototype.$save.call(this).then(function() {
+              self.brewery = brew;
+            });
           },
           "$$updated": function(snapshot) {
             // call the super

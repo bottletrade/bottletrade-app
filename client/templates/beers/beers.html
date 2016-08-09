@@ -12,11 +12,12 @@ controller: BeersCtrl
   </div>
 </div>
 <div class="grid-block vertical" ng-if="beers">
-  <div class="grid-content text-center shrink" ng-show="action != 'new'" style="margin-top: 1rem;">
-    <a class="button" ui-sref="app.beers({id: 'new'})" ui-sref-opts="{reload:true}">Add A Beer</a>
-  </div>
   <add-beer created="created(beer)" ng-show="action == 'new'"></add-beer>
   <div class="grid-block vertical" ng-show="action != 'new'">
+    <div class="grid-content shrink text-center">
+      <h3>Beers</h3>
+      <a class="button small kill-margin" ui-sref="app.beers({id: 'new'})" ui-sref-opts="{reload:true}">Add</a>
+    </div>
     <div class="grid-block shrink slideInLeft stagger" ng-repeat="beer in beers">
       <beer-summary data-beer="beer"></beer-summary>
     </div>

@@ -80,9 +80,6 @@ $titlebar-side-width: none;
 		margin-right: auto;
 		margin-left: auto;
 	}
-	.kill-margin {
-		margin: 0rem;
-		}
 	.condense {
 		font-stretch: condensed;
 	}
@@ -116,6 +113,9 @@ body {
 .display-icon {
 	width: 85px !important;
 	height: 80px;
+}
+.kill-margin {
+	margin: 0;
 }
 
 #folders {
