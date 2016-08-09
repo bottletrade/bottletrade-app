@@ -1,13 +1,5 @@
 <div class="grid-block vertical">
-	<div class="grid-block vertical text-center" ng-if="$root.user">
-		<div class="grid-content">
-			<h4>You're already logged in brah</h4>
-		</div>
-		<div class="grid-content">
-			<a class="button" ui-sref="app.profile">Go to Profile</a>
-		</div>
-	</div>
-	<div class="grid-block vertical" ng-if="!$root.user">
+	<div class="grid-block vertical" ng-if="!$root.user || $root.user.isAnonymous" ng-show="!selectedProvider">
 		<div class="grid-content shrink text-center">
 			<h4>Choose a login option below...</h4>
 		</div>
@@ -21,6 +13,17 @@
 					{{ provider.name }}
 				</a>
 			</div>
+		</div>
+	</div>
+	<div class="grid-block vertical slideInUp" ng-show="selectedProvider.name == 'BottleTrade'">
+		<div class="grid-content">
+			<form>
+				<label>Email</label>
+				<input type="text" placeholder="email" ng-model="loginData.email"></input>
+				<label>Password</label>
+				<input type="password" placeholder="password" ng-model="loginData.password"></input>
+				<a class="button" ng-click="loginUser()">Login</a>
+			</form>
 		</div>
 	</div>
 </div>

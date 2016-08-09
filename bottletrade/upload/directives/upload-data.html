@@ -42,7 +42,7 @@
     </table>
   </div>
   <div class="grid-container" ng-show="!uploadInProgress && !uploadComplete">
-    <a class="button hollow" ng-click="save()" ng-disabled="!uploadReady()">Upload</a>
+    <a class="button" ng-class="{'hollow': !uploadReady()}" ng-click="save()" ng-disabled="!uploadReady()">Upload</a>
   </div>
   <div class="grid-container" ng-show="uploadInProgress">
     <span>Upload in progress...</span>

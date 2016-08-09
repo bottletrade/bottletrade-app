@@ -1,11 +1,11 @@
 <div class="grid-block vertical" style="margin-top: .3rem;">
-  <div class="grid-block fadeIn" ng-show="query.length == 0">
+  <div class="grid-content fadeIn" ng-show="query.length == 0">
     <span>Enter a search term above</span>
   </div>
-  <div class="grid-block fadeIn" ng-show="query.length > 0 && results.length == 0">
+  <div class="grid-content fadeIn" ng-show="query.length > 0 && results.length == 0">
     <span>No results found</span>
   </div>
   <div class="grid-block vertical">
-    <search-result class="fadeIn" ng-repeat="result in results" result="result"></search-result>
+    <search-result class="fadeIn stagger" ng-repeat="result in results" result="result"></search-result>
   </div>
 </div>

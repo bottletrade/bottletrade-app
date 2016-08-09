@@ -1,6 +1,8 @@
-<div class="grid-block wrap">
-  <div class="grid-content small-12">
+<div class="grid-block vertical">
+  <div class="grid-content">
     <p>Cyber Cellar</p>
   </div>
-  <bottle-summary ng-repeat="bottle in bottles" data-bottle="bottle" data-remove-bottle="bottleMgr.removeFromList(bottles,bottle)"></bottle-summary>
+  <div class="grid-block shrink" ng-repeat="bottle in bottles">
+    <bottle-summary data-bottle="bottle" data-remove-bottle="bottleMgr.removeFromList(bottles,bottle)"></bottle-summary>
+  </div>
 </div>

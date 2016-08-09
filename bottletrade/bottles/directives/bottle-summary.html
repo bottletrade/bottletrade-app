@@ -1,17 +1,17 @@
-<div class="grid-block summary-container small-12 medium-6 large-4 clearfix">
-  <div class="grid-block align-left small-2 v-align">
+<div class="grid-block summary-container clearfix">
+  <div class="grid-content collapse shrink align-left v-align">
     <img src="assets/img/BOTTLE.svg" />
   </div>
-  <div class="grid-block small-6">
+  <div class="grid-content collapse">
     <h4 ng-if="bottle.type == 'beer'" class="text-left">{{ bottle.beverage.name }}<br><small>{{ bottle.beverage.brewery.name }}</small></h4>
     <h4 ng-if="bottle.type == 'wine'" class="text-left">{{ bottle.beverage.name }}</h4>
     <h4 ng-if="bottle.type == 'spirit'" class="text-left">{{ bottle.beverage.name }}</h4>
   </div>
-  <div class="grid-block align-right small-3 wrap">
+  <div class="grid-content collapse shrink align-right">
     <a class="expand button hollow small" ui-sref="app.bottles({id: bottle.$id, action: 'edit'})">Edit Bottle Info</a>
     <a class="expand button hollow small">Trade This Bottle</a>
   </div>
-  <div class="grid-block small-1 v-align align-center">
+  <div class="grid-content collapse shrink v-align align-center">
     <a ng-click="removeBottle({bottle:bottle})"><img zf-iconic="" icon="circle-x" size="small"></a>
   </div>
 </div>
