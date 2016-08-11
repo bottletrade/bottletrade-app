@@ -25,7 +25,6 @@
   "dependencies": {
     "angular": "~1.5.8",
     "angular-base-apps": "~1.2.6",
-    "angularfire": "~1.0.0",
     "ng-lodash": "~0.2.0",
     "lodash": "~3.6.0",
     "angular-filter": "~0.5.4",

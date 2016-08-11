@@ -71,6 +71,8 @@ var paths = {
       'bower_components/angucomplete-alt/dist/angucomplete-alt.min.js'
     ],
     app: [
+      'bower_components/firebase/firebase.js',
+      'bower_components/angularfire/dist/angularfire.js',
       'client/bottletrade/bottletrade.js',
       'client/bottletrade/**/*.js',
       'client/assets/js/app.js',
