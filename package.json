@@ -1,7 +1,8 @@
 {
   "name": "bottletrade-app",
-  "version": "0.1.2",
+  "version": "0.1.3-0",
   "scripts": {
+    "publish-prerelease": "gulp publish:prerelease && git push --follow-tags && gulp publish:ghpages",
     "publish-patch": "gulp publish:patch && git push --follow-tags && gulp publish:ghpages",
     "publish-minor": "gulp publish:minor && git push --follow-tags && gulp publish:ghpages",
     "publish-major": "gulp publish:major && git push --follow-tags && gulp publish:ghpages",
