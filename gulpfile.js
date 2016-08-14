@@ -299,28 +299,20 @@ gulp.task('default:dist', ['initversion:patch', 'build:dist', 'server:start:dist
   gulp.watch(paths.javascript.app, ['javascript', 'copy:dist']);
 });
 
+gulp.task('initversion:prerelease', function() { return initVersion('prerelease'); });
 gulp.task('initversion:patch', function() { return initVersion('patch'); });
 gulp.task('initversion:minor', function() { return initVersion('minor'); });
 gulp.task('initversion:major', function() { return initVersion('major'); });
+
+gulp.task('bump:prerelease', ['initversion:prerelease'], function() { return bump(); });
 gulp.task('bump:patch', ['initversion:patch'], function() { return bump(); });
 gulp.task('bump:minor', ['initversion:minor'], function() { return bump(); });
 gulp.task('bump:major', ['initversion:major'], function() { return bump(); });
 
-gulp.task('publish:patch', function(cb) {
-  runSequence('build:dist', 'bump:patch', 'build:publish', function() {
-    cb();
-  });
-});
-gulp.task('publish:minor', function(cb) {
-  runSequence('build:dist', 'bump:minor', 'build:publish', function() {
-    cb();
-  });
-});
-gulp.task('publish:major', function(cb) {
-  runSequence('build:dist', 'bump:major', 'build:publish', function() {
-    cb();
-  });
-});
+gulp.task('publish:prerelease', function(cb) {runSequence('build:dist', 'bump:prerelease', 'build:publish', cb); });
+gulp.task('publish:patch', function(cb) { runSequence('build:dist', 'bump:patch', 'build:publish', cb); });
+gulp.task('publish:minor', function(cb) { runSequence('build:dist', 'bump:minor', 'build:publish', cb); });
+gulp.task('publish:major', function(cb) { runSequence('build:dist', 'bump:major', 'build:publish', cb); });
 
 gulp.task('publish:ghpages', function() {
   return gulp.src('./dist/**/*')
