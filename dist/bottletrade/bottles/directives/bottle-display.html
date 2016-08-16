@@ -1,10 +1,10 @@
 <div class="grid-block vertical beer-display">
   <div class="grid-block">
-    <zf-interchange>
+    <ba-interchange>
       <img media="small" src="assets/img/Roseisle_Distillery_600-SM.jpg">
       <img style="max-height: 200px; width: 100%;" media="medium" src="assets/img/Roseisle_Distillery_600-MED.jpg">
       <img style="max-height: 300px; width: 100%;" media="large" src="assets/img/Roseisle_Distillery_600-LG.jpg">
-    </zf-interchange>
+    </ba-interchange>
   </div>
   <div class="grid-block thumbnail-holder small-12">
     <div class="grid-content align-left thumbnail shrink">
@@ -13,16 +13,16 @@
     <div class="grid-content text-left copy-holder">
       <h3>
         {{ bottle.beverage.name }}
-        <zf-action-sheet class="cog-holder">
-          <zf-as-button><img zf-iconic="" icon="cog" size="small"></zf-as-button>
-          <zf-as-content position="top">
+        <ba-action-sheet class="cog-holder">
+          <ba-as-button><img ba-iconic="" icon="cog" size="small"></ba-as-button>
+          <ba-as-content position="top">
             <ul>
               <li>What would you like to do?</li>
               <li><a ui-sref="app.bottles({id: bottle.$id, action: 'edit'})">Edit {{ bottle.beverage.name }}</a></li>
               <li><a>Edit Cover Photo</a></li>
             </ul>
-          </zf-as-content>
-        </zf-action-sheet>
+          </ba-as-content>
+        </ba-action-sheet>
       </h3>
       <div ng-if="bottle.type == 'beer'">
         <h5 ng-if="bottle.beverage.brewery">from <a ui-sref="app.breweries({id: '{{ bottle.beverage.brewery.$id }}'})">{{ bottle.beverage.brewery.name }}</a></h5>
