@@ -1,6 +1,6 @@
 'use strict';
 
-// Foundation for Apps
+// BaseApps for Apps
 //
 // We use this Gulpfile to assemble the documentation, run unit tests,
 // and deploy changes to the live documentation and CDN.
@@ -26,7 +26,7 @@ var gulp        = require('gulp'),
     runSequence = require('run-sequence'),
     semver      = require('semver'),
     modRewrite  = require('connect-modrewrite'),
-    routes      = require('./node_modules/angular-base-apps/bin/gulp-dynamic-routing'),
+    routes      = require('angular-front-router'),
     merge       = require('merge-stream'),
     octophant   = require('octophant'),
     Server      = require('karma').Server;
@@ -68,7 +68,11 @@ var paths = {
       'bower_components/hammerjs/hammer.js',
       'bower_components/ng-lodash/build/ng-lodash.js',
       'bower_components/angular-resource/angular-resource.js',
-      'bower_components/angucomplete-alt/dist/angucomplete-alt.min.js'
+      'bower_components/angucomplete-alt/dist/angucomplete-alt.min.js',
+      'node_modules/angular-icons/lib/iconic.min.js',
+      'node_modules/angular-icons/iconic.js',
+      'node_modules/angular-dynamic-routing/dynamicRouting.js',
+      'node_modules/angular-dynamic-routing/dynamicRouting.animations.js'
     ],
     app: [
       'bower_components/firebase/firebase.js',
@@ -117,7 +121,7 @@ gulp.task('copy', function() {
   merged.add(gulp.src('./client/assets/img/**/*')
     .pipe(gulp.dest('build/assets/img/')));
 
-  merged.add(gulp.src('./bower_components/angular-base-apps/iconic/*.svg')
+  merged.add(gulp.src('./node_modules/angular-icons/icons/iconic/**/*')
     .pipe(gulp.dest('build/assets/img/iconic/')));
 
   return merged;
@@ -129,9 +133,10 @@ gulp.task('copy:templates', ['clean:templates', 'javascript'], function() {
     base: './client/'
   })
     .pipe(routes({
-      angular: true,
       path: 'build/assets/js/routes.js',
-      root: 'client'
+      root: 'client',
+      placeholder: '<routes>',
+      template: "angular.module('dynamicRouting').config(['$FoundationStateProvider', function(FoundationStateProvider){ FoundationStateProvider.registerDynamicRoutes(<routes>); }]);"
     }))
     .pipe(gulp.dest('./build'))
   ;
@@ -174,7 +179,7 @@ gulp.task('sass', function() {
 // 6. JAVASCRIPT
 // - - - - - - - - - - - - - - -
 
-// Compile Foundation JavaScript
+// Compile BaseApps JavaScript
 gulp.task('javascript', function() {
   var merged = merge();
 

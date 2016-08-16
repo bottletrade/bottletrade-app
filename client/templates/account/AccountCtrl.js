@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  angular.module('application').controller("AccountCtrl", function($scope, $state, $firebaseAuth, $timeout, $rootScope, user, FoundationApi) {
+  angular.module('application').controller("AccountCtrl", function($scope, $state, $firebaseAuth, $timeout, $rootScope, user, BaseAppsApi) {
     if ($state.is("app.account.login") && $rootScope.user && !$rootScope.user.isAnonymous) {
       $state.go("app.profile");
       return;
@@ -40,7 +40,7 @@
     $scope.createUser = function() {
       $firebaseAuth().$createUserWithEmailAndPassword($scope.setupData.email, $scope.setupData.password)
         .then(function(userData) {
-          FoundationApi.publish('app-notifications', {
+          BaseAppsApi.publish('app-notifications', {
             content: "User created",
             color: "success",
             autoclose: '5000'
@@ -52,7 +52,7 @@
           $scope.setupData.password = "";
           $scope.loginUser();
         }).catch(function(error) {
-          FoundationApi.publish('app-notifications', {
+          BaseAppsApi.publish('app-notifications', {
             content: error.message,
             color: "alert",
             autoclose: '5000'
@@ -69,7 +69,7 @@
             $state.go("app.profile");
           }, 500);
         }).catch(function(error) {
-          FoundationApi.publish('app-notifications', {
+          BaseAppsApi.publish('app-notifications', {
             content: error.message,
             color: "alert",
             autoclose: '5000'

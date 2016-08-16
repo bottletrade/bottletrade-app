@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  angular.module('application').controller("IndexCtrl", function($scope, $state, $timeout, $firebaseAuth, FoundationApi, SearchService, user) {
+  angular.module('application').controller("IndexCtrl", function($scope, $state, $timeout, $firebaseAuth, BaseAppsApi, SearchService, user) {
     $scope.searchConfig = SearchService.getConfig();
 
     $scope.$watch("searchConfig.query", function(query) {
@@ -18,12 +18,12 @@
 
 	  $scope.closeMenu = function() {
 		  $timeout(function() {
-			  FoundationApi.publish('menu', 'close');
+			  BaseAppsApi.publish('menu', 'close');
 		  });
 	  };
 	  $scope.toggleMenu = function() {
 		  $timeout(function() {
-			  FoundationApi.publish('menu', 'toggle');
+			  BaseAppsApi.publish('menu', 'toggle');
 		  });
 	  };
     $scope.signout = function() {

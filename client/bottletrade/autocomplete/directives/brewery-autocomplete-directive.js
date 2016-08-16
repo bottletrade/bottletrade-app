@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  angular.module('bottletrade.autocomplete').directive('breweryAutocomplete', function($timeout, FoundationApi, BreweryManager) {
+  angular.module('bottletrade.autocomplete').directive('breweryAutocomplete', function($timeout, BaseAppsApi, BreweryManager) {
     return {
       replace: true,
       templateUrl: 'bottletrade/autocomplete/directives/brewery-autocomplete.html',

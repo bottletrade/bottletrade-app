@@ -2,7 +2,7 @@
   'use strict';
 
   angular.module('bottletrade.bottles').factory("BottleManager",
-    function($timeout, FoundationApi, firebaseRef, BTConstants, BottleList, ConfirmModal) {
+    function($timeout, BaseAppsApi, firebaseRef, BTConstants, BottleList, ConfirmModal) {
       return {
         searchByDescription: searchByDescription,
         removeFromList: removeFromList,
@@ -14,7 +14,7 @@
 
         bottle.$remove().then(function(ref) {
           $timeout(function() {
-            FoundationApi.publish('app-notifications', {
+            BaseAppsApi.publish('app-notifications', {
               title: "Bottle Removed!",
               content: beverageName + " has been removed from your cellar",
               color: "success",
@@ -32,7 +32,7 @@
 
             bottleList.$remove(bottle).then(function(ref) {
               $timeout(function() {
-                FoundationApi.publish('app-notifications', {
+                BaseAppsApi.publish('app-notifications', {
                   title: "Bottle Removed!",
                   content: beverageName + " has been removed from your cellar",
                   color: "success",

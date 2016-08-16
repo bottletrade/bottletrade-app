@@ -2,7 +2,7 @@
   'use strict';
 
   angular.module('application').controller("BreweriesCtrl",
-    function($scope, $state, $stateParams, $timeout, FoundationApi, Brewery, BreweryList) {
+    function($scope, $state, $stateParams, $timeout, BaseAppsApi, Brewery, BreweryList) {
       if ($stateParams.id && $stateParams.id !== "new") {
         $scope.brewery = new Brewery($stateParams.id);
       } else {
@@ -25,7 +25,7 @@
         $state.go('app.breweries', { id: brewery.key, action: '' });
 
         $timeout(function() {
-          FoundationApi.publish('app-notifications', {
+          BaseAppsApi.publish('app-notifications', {
             title: "Brewery Added!",
             content: breweryData.name + " has been added to the BottleTrade network",
             color: "success",
@@ -39,7 +39,7 @@
         $state.go('app.breweries', { id: brewery.key, action: '' });
 
         $timeout(function() {
-          FoundationApi.publish('app-notifications', {
+          BaseAppsApi.publish('app-notifications', {
             title: "Brewery Updated!",
             content: breweryData.name + " has been updated in the BottleTrade network",
             color: "success",

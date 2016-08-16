@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  angular.module('bottletrade.bottles').directive('bottleSummary', function($timeout, FoundationApi, BottleList) {
+  angular.module('bottletrade.bottles').directive('bottleSummary', function($timeout, BaseAppsApi, BottleList) {
     return {
       restrict: 'E',
       replace: true,

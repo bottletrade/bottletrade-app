@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  angular.module('bottletrade.beers').directive('addBeer', function(FoundationApi, BeerList) {
+  angular.module('bottletrade.beers').directive('addBeer', function(BaseAppsApi, BeerList) {
     return {
       replace: true,
       templateUrl: 'bottletrade/beers/directives/add-beer.html',

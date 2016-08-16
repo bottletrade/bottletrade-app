@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  angular.module('bottletrade.autocomplete').directive('spiritAutocomplete', function($timeout, FoundationApi, SpiritManager) {
+  angular.module('bottletrade.autocomplete').directive('spiritAutocomplete', function($timeout, BaseAppsApi, SpiritManager) {
     return {
       replace: true,
       templateUrl: 'bottletrade/autocomplete/directives/spirit-autocomplete.html',
