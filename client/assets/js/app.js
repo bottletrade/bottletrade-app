@@ -8,9 +8,6 @@
     'ngLodash',
     'angucomplete-alt',
 
-    // firebase
-    'bottletrade.firebase',
-
     // base apps
     'base',
 
