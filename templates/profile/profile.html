@@ -9,15 +9,15 @@
 		</div>
 	</div>
 	<div class="grid-content">
-		<zf-accordion multi-open="true">
-      <zf-accordion-item title="Cyber Cellar">
+		<ba-accordion multi-open="true">
+      <ba-accordion-item title="Cyber Cellar">
 				<div class="grid-block shrink" ng-repeat="bottle in $parent.$parent.bottles">
 					<bottle-summary data-bottle="bottle" data-remove-bottle="$parent.bottleMgr.removeFromList($parent.$parent.bottles, bottle)"></bottle-summary>
 				</div>
-			</zf-accordion-item>
-      <zf-accordion-item title="Trader Reviews">
+			</ba-accordion-item>
+      <ba-accordion-item title="Trader Reviews">
 				<p>These are the reviews provided by users, these reviews are not editable.</p>
-			</zf-accordion-item>
-		</zf-accordion>
+			</ba-accordion-item>
+		</ba-accordion>
 	</div>
 </div>
