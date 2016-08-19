@@ -11,7 +11,7 @@
   "devDependencies": {
     "angular-dynamic-routing": "^1.0.0",
     "angular-front-router": "^1.0.0",
-    "angular-icons": "^0.0.5",
+    "angular-icons": "^1.0.0",
     "connect-modrewrite": "^0.7.9",
     "front-matter": "^0.2.0",
     "gulp": "^3.8.8",

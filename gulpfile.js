@@ -69,8 +69,11 @@ var paths = {
       'bower_components/ng-lodash/build/ng-lodash.js',
       'bower_components/angular-resource/angular-resource.js',
       'bower_components/angucomplete-alt/dist/angucomplete-alt.min.js',
-      'node_modules/angular-icons/lib/iconic.min.js',
-      'node_modules/angular-icons/iconic.js',
+      'node_modules/angular-icons/dist/lib/iconic.min.js',
+      'node_modules/angular-icons/dist/iconic.js',
+      'node_modules/angular-icons/dist/open-iconic.js',
+      'node_modules/angular-icons/dist/material-icons.js',
+      'node_modules/angular-icons/dist/ionicons.js',
       'node_modules/angular-dynamic-routing/dynamicRouting.js',
       'node_modules/angular-dynamic-routing/dynamicRouting.animations.js'
     ],
@@ -120,9 +123,6 @@ gulp.task('copy', function() {
 
   merged.add(gulp.src('./client/assets/img/**/*')
     .pipe(gulp.dest('build/assets/img/')));
-
-  merged.add(gulp.src('./node_modules/angular-icons/icons/iconic/**/*')
-    .pipe(gulp.dest('build/assets/img/iconic/')));
 
   return merged;
 });
