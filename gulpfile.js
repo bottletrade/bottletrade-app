@@ -26,7 +26,7 @@ var gulp        = require('gulp'),
     runSequence = require('run-sequence'),
     semver      = require('semver'),
     modRewrite  = require('connect-modrewrite'),
-    routes      = require('angular-front-router'),
+    routes      = require('base-apps-router'),
     merge       = require('merge-stream'),
     octophant   = require('octophant'),
     Server      = require('karma').Server;
@@ -41,9 +41,14 @@ var paths = {
     base: [
       './client/index.html'
     ],
-    templates: [
+    partials: [
       './client/**/*.html',
-      '!./client/index.html'
+      '!./client/index.html',
+      '!./client/templates/**/!(app.html)'
+    ],
+    templates: [
+      './client/templates/**/*.html',
+      '!./client/templates/app.html'
     ]
   },
   sass: {
@@ -75,7 +80,9 @@ var paths = {
       'node_modules/angular-icons/dist/material-icons.js',
       'node_modules/angular-icons/dist/ionicons.js',
       'node_modules/angular-dynamic-routing/dynamicRouting.js',
-      'node_modules/angular-dynamic-routing/dynamicRouting.animations.js'
+      'node_modules/angular-dynamic-routing/dynamicRouting.animations.js',
+      'bower_components/angular-base-apps/dist/js/base-apps.js',
+      'bower_components/angular-base-apps/dist/js/base-apps-templates.js'
     ],
     app: [
       'bower_components/firebase/firebase.js',
@@ -135,9 +142,16 @@ gulp.task('copy:templates', ['clean:templates', 'javascript'], function() {
     .pipe(routes({
       path: 'build/assets/js/routes.js',
       root: 'client',
-      placeholder: '<routes>',
-      template: "angular.module('dynamicRouting').config(['$FoundationStateProvider', function(FoundationStateProvider){ FoundationStateProvider.registerDynamicRoutes(<routes>); }]);"
+      library: 'angular'
     }))
+    .pipe(gulp.dest('./build'))
+  ;
+});
+
+gulp.task('copy:partials', function() {
+  return gulp.src(paths.html.partials, {
+    base: './client/'
+  })
     .pipe(gulp.dest('./build'))
   ;
 });
@@ -185,7 +199,7 @@ gulp.task('javascript', function() {
 
   merged.add(gulp.src(paths.javascript.libs)
     .pipe($.if(production, $.uglify()))
-    .pipe($.concat('base-apps-dep.js'))
+    .pipe($.concat('base-apps.js'))
     .pipe(gulp.dest('./build/assets/js/')));
 
   merged.add(gulp.src(paths.javascript.app)
@@ -237,7 +251,7 @@ gulp.task('copy:dist', function() {
     "./build/assets/img/**/*",
     "./build/assets/css/app.css",
     "./build/assets/js/app.js",
-    "./build/assets/js/base-apps-dep.js",
+    "./build/assets/js/base-apps.js",
     "./build/assets/js/routes.js",
     "./build/assets/js/templates.js"
   ], {
@@ -255,7 +269,7 @@ gulp.task('production:enable', function(cb) { production = true; cb(); });
 
 // Build the documentation once
 gulp.task('build', function(cb) {
-  runSequence('clean', ['copy', 'css', 'javascript', 'copy:templates'], function() {
+  runSequence('clean', ['copy', 'css', 'javascript', 'copy:templates', 'copy:partials'], function() {
     cb();
   });
 });
